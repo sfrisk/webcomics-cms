@@ -19,6 +19,11 @@ metalsmith(__dirname)
   .source('./src')
   .destination('./build')
   .use(collections({
+    pages: {
+      pattern: 'pages/**/*.md',
+      sortBy: 'title',
+      reverse: false
+    },
     posts: {
       pattern: 'posts/**/*.md',
       sortBy: 'date',
@@ -28,9 +33,6 @@ metalsmith(__dirname)
       pattern: 'comics/**/*.md',
       sortBy: 'date',
       reverse: true
-    },
-    pages: {
-      pattern: 'pages/**/*.md'
     }
   }))
   .use(markdown())
@@ -45,11 +47,6 @@ metalsmith(__dirname)
       {
         match: { collection: 'comics' },
         pattern: 'comics/:title'
-      }
-      ,
-      {
-        match: { collection: 'pages' },
-        pattern: 'wuuuuut/:title'
       }
     ]
   }))
