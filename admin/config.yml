@@ -1,0 +1,29 @@
+backend:
+  name: github
+  repo: sfrisk/webcomics-cms
+
+media_folder: media_folder
+
+collections:
+  - name: post
+    label: Post
+    folder: src/posts
+    create: true
+    fields:
+      - {name: title, label: Title}
+      - {name: date, label: Date, widget: datetime}
+      - {name: body, label: Body, widget: markdown}
+  - name: comic
+    label: Comic
+    folder: src/comics
+    create: true
+    fields:
+      - {name: title, label: Title}
+      - {name: date, label: Date, widget: datetime}
+      - name: panels
+        label: Panels
+        widget: list
+        fields:
+          - {label: Row, name: row, widget: number}
+          - {label: Column, name: column, widget: number}
+          - {label: Image, name: image, widget: image} 
