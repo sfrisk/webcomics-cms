@@ -7,6 +7,8 @@ collections = require('metalsmith-collections'),
 serve = require('metalsmith-serve'),
 watch = require('metalsmith-watch');
 
+handlebars.registerHelper('moment', require('helper-moment'));
+
 metalsmith(__dirname)
   .metadata({
     site: {
@@ -16,21 +18,6 @@ metalsmith(__dirname)
   })
   .source('./src')
   .destination('./build')
-  .use(markdown())
-  .use(permalinks({
-    relative: false,
-    pattern: ':title',
-  }))
-  .use(layouts({
-    engine: 'handlebars',
-    directory: './layouts',
-    default: 'page.html',
-    pattern: ["*/*/*html","*/*html","*html"],
-    partials: {
-      header: 'partials/header',
-      footer: 'partials/footer'
-    }
-  }))
   .use(collections({
     posts: {
       pattern: 'posts/**/*.md',
@@ -41,6 +28,39 @@ metalsmith(__dirname)
       pattern: 'comics/**/*.md',
       sortBy: 'date',
       reverse: true
+    },
+    pages: {
+      pattern: 'pages/**/*.md'
+    }
+  }))
+  .use(markdown())
+  .use(permalinks({
+    pattern: ':title',
+    relative: false,
+    linksets: [
+      {
+        match: { collection: 'posts' },
+        pattern: 'posts/:title'
+      },
+      {
+        match: { collection: 'comics' },
+        pattern: 'comics/:title'
+      }
+      ,
+      {
+        match: { collection: 'pages' },
+        pattern: 'wuuuuut/:title'
+      }
+    ]
+  }))
+  .use(layouts({
+    engine: 'handlebars',
+    directory: './layouts',
+    default: 'page.html',
+    pattern: ["*/*/*html","*/*html","*html"],
+    partials: {
+      header: 'partials/header',
+      footer: 'partials/footer'
     }
   }))
   .use(serve({

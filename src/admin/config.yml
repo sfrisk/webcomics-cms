@@ -7,7 +7,7 @@ media_folder: media_folder
 collections:
   - name: page
     label: Page
-    folder: src
+    folder: src/pages
     create: true
     fields:
       - {name: title, label: Title}
