@@ -44,7 +44,7 @@ metalsmith(__dirname)
     }
   }))
   .use(serve({
-    port: 8081,
+    port: 8080,
     verbose: true
   }))
   .use(watch({
