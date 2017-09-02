@@ -1,3 +1,4 @@
+'use strict';
 var metalsmith = require('metalsmith'),
 markdown = require('metalsmith-markdown'),
 layouts = require('metalsmith-layouts'),
@@ -6,10 +7,14 @@ permalinks = require('metalsmith-permalinks'),
 collections = require('metalsmith-collections'),
 serve = require('metalsmith-serve'),
 watch = require('metalsmith-watch');
+var env = process.argv[2];
+var devBuild = (env || "dev").trim().toLowerCase() !== 'prod';
+
 
 handlebars.registerHelper('moment', require('helper-moment'));
 
-metalsmith(__dirname)
+var app = metalsmith(__dirname)
+  .clean(true)
   .metadata({
     site: {
       name: 'Webcomic CMS',
@@ -60,7 +65,9 @@ metalsmith(__dirname)
       footer: 'partials/footer'
     }
   }))
-  .use(serve({
+
+if (devBuild) {
+  app.use(serve({
     port: 8080,
     verbose: true
   }))
@@ -70,11 +77,13 @@ metalsmith(__dirname)
       "layout/**/*": "**/*",
     }
   }))
-  .build(function (err) {
-    if (err) {
-      console.log(err);
-    }
-    else {
-      console.log('Webcomic CMS built!');
-    }
-  });
+}
+
+app.build(function (err) {
+  if (err) {
+    console.log(err);
+  }
+  else {
+    console.log('Webcomic CMS built!');
+  }
+});
