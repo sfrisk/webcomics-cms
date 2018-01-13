@@ -1,0 +1,4 @@
+---
+title: "Comic"
+---
+Comic Shit

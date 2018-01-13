@@ -1,0 +1,18 @@
+{{ define "title" }}
+<!-- This will override the default value set in baseof.html; i.e., "{{.Site.Title}}" in the original example-->
+{{ .Title }} – {{ .Site.Title }}
+{{ end }}
+{{ define "main" }}
+Blog TEMPLATE DEFAULT
+
+				<h1>{{.Title}}</h1>
+		{{.Content}}
+<ul>
+<!-- Ranges through content/post/*.md -->
+{{ range .Data.Pages }}
+		<li>
+				<a href="{{.Permalink}}">{{.Date.Format "2006-01-02"}} | {{.Title}}</a>
+		</li>
+{{ end }}
+</ul>
+{{ end }}

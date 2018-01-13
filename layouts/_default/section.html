@@ -1,0 +1,13 @@
+{{ define "title" }}
+<!-- This will override the default value set in baseof.html; i.e., "{{.Site.Title}}" in the original example-->
+{{ .Title }} – {{ .Site.Title }}
+{{ end }}
+{{ define "main" }}
+SECTION TEMPLATE DEFAULT
+<h1>{{ .Title }}</h1>
+<ul>
+	{{ range .Data.Pages }}
+		<a href="{{.Permalink}}">{{.Title}}</a>
+	{{ end }}
+</ul>
+{{ end }}

@@ -1,0 +1,24 @@
+
+contentDir = "content"
+layoutDir = "layouts"
+publishDir = "public"
+buildDrafts = false
+baseURL = "https://yoursite.example.com/"
+canonifyURLs = true
+title = "My Webcomic"
+sectionPagesMenu = "main"
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[params]
+  subtitle = "a webcomic site"
+  author = "Sarah Frisk"
+
+[menu]
+  [[menu.main]]
+  identifier = "home"
+  name       = "Home"
+  url        = "/"
+  weight     = -10
