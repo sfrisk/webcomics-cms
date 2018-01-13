@@ -2,7 +2,7 @@ backend:
   name: github
   repo: sfrisk/webcomics-cms
 
-media_folder: media_folder
+media_folder: static/assets
 
 collections:
   - name: page
@@ -12,7 +12,7 @@ collections:
     fields:
       - {name: title, label: Title}
       - {name: body, label: Body, widget: markdown}
-      - {name: layout, label: Layout, widget: "select", options: ['posts.html', 'page.html']}
+      - {name: inMenu, label: In Menu?, widget: boolean }
   - name: post
     label: Post
     folder: src/posts
@@ -21,7 +21,6 @@ collections:
       - {name: title, label: Title}
       - {name: date, label: Date, widget: datetime}
       - {name: body, label: Body, widget: markdown}
-      - {name: layout, label: Layout, widget: hidden, default: 'post.html'}
   - name: comic
     label: Comic
     folder: src/comics
@@ -29,7 +28,6 @@ collections:
     fields:
       - {name: title, label: Title}
       - {name: date, label: Date, widget: datetime}
-      - {name: layout, label: Layout, widget: hidden, default: 'comic.html'}
       - name: panels
         label: Panels
         widget: list
