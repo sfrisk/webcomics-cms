@@ -7,15 +7,15 @@ media_folder: static/assets
 collections:
   - name: page
     label: Page
-    folder: src/pages
+    folder: content
     create: true
     fields:
       - {name: title, label: Title}
       - {name: body, label: Body, widget: markdown}
       - {name: inMenu, label: In Menu?, widget: boolean }
-  - name: post
-    label: Post
-    folder: src/posts
+  - name: blog
+    label: Blog
+    folder: content/blog
     create: true
     fields:
       - {name: title, label: Title}
@@ -23,7 +23,7 @@ collections:
       - {name: body, label: Body, widget: markdown}
   - name: comic
     label: Comic
-    folder: src/comics
+    folder: content/comic
     create: true
     fields:
       - {name: title, label: Title}
