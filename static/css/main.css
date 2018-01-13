@@ -1,0 +1,40 @@
+.comic_container {
+	/* keeps comic in the center of the page. Doesn't let it go beyond a certain width*/
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 1em;
+}
+
+.comic_title {
+	margin: 0;
+	padding-left: .2em;
+}
+
+@media only screen and (min-width: 768px) {
+	.comic_row {
+		display: flex;
+	}
+}
+
+.comic_panel {
+	padding: .5em; /* I wanted some spacing between my panels */
+ 	text-align: center;
+}
+
+.comic_img {
+	max-width: 100%; 
+	max-height: 500px; /* on mobile devices I wanted all my comics to have about the same height, so speach fonts stay about the same */
+}
+
+@media only screen and (min-width: 768px) {
+	.comic_img {
+		max-width: 100%;
+		height: auto;
+		max-height: auto;
+	}
+}
+
+.comic_author {
+	text-align: right;
+	padding-right: .5em;
+}

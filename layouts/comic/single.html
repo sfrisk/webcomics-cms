@@ -3,13 +3,18 @@
 {{ .Title }} – {{ .Site.Title }}
 {{ end }}
 {{ define "main" }}
-SINGLE TEMPLATE, COMIC
-<h1>{{ .Title }}</h1>
 {{ .Date.Format "01/01/2016" }}
-<p></p>
-{{ range .Params.comic.rows }}
-	{{ range .cols}}
-		<img src="{{ .panel }}" />
-	{{end}}
-{{ end }}
+
+<div class="comic_container">
+	<h1>{{ .Title }}</h1>
+	{{ range .Params.comic.rows }}
+		<div class="comic_row">
+			{{ range .cols}}
+				<div class="comic_panel">
+					<img src="{{ .panel }}" class="comic_img" />
+				</div>
+			{{end}}
+		</div>
+	{{ end }}
+</div>
 {{end}}
