@@ -2,7 +2,8 @@ backend:
   name: github
   repo: sfrisk/webcomics-cms
 
-media_folder: static/assets
+media_folder: static/assets/images
+public_folder: "assets/images"
 publish_mode: editorial_workflow
 
 collections:

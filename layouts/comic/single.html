@@ -5,5 +5,11 @@
 {{ define "main" }}
 SINGLE TEMPLATE, COMIC
 <h1>{{ .Title }}</h1>
-{{ .Content }}
+{{ .Date.Format "01/01/2016" }}
+<p></p>
+{{ range .Params.comic.rows }}
+	{{ range .cols}}
+		<img src="{{ .panel }}" />
+	{{end}}
 {{ end }}
+{{end}}

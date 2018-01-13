@@ -2,6 +2,7 @@
 contentDir = "content"
 layoutDir = "layouts"
 publishDir = "public"
+staticDir = "static"
 buildDrafts = false
 baseURL = "https://comic-cms.netlify.com/"
 canonifyURLs = true
