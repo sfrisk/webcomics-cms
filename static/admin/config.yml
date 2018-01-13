@@ -3,6 +3,7 @@ backend:
   repo: sfrisk/webcomics-cms
 
 media_folder: static/assets
+publish_mode: editorial_workflow
 
 collections:
   - name: page
@@ -28,10 +29,18 @@ collections:
     fields:
       - {name: title, label: Title}
       - {name: date, label: Date, widget: datetime}
-      - name: panels
-        label: Panels
-        widget: list
+      - name: comic
+        label: Comic
+        widget: object
         fields:
-          - {label: Row, name: row, widget: number}
-          - {label: Column, name: column, widget: number}
-          - {label: Image, name: image, widget: image} 
+          - label: Rows
+            name: rows
+            widget: list
+            fields:
+              - label: Panels
+                name: cols
+                widget: list
+                fields:
+                  - name: panel
+                    label: Panel
+                    widget: image
