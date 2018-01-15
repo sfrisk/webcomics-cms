@@ -6,8 +6,10 @@ staticDir = "static"
 buildDrafts = false
 baseURL = "https://comic-cms.netlify.com/"
 canonifyURLs = true
-title = "My Webcomic"
+title = "Webcomic CMS"
 sectionPagesMenu = "main"
+paginate = 10
+paginatePath = "archive"
 
 [taxonomies]
   category = "categories"

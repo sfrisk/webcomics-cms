@@ -1,2 +1,9 @@
-{{ partial "site-menu.html" . }}
+<header class="site-header">
+	<h1 class="site-logo">
+		<a href="{{ .Site.BaseURL }}">
+			{{ .Site.Title }}
+		</a>
+	</h1>
+	{{ partial "site-menu.html" . }}
+</header>
 <main class="site-main">

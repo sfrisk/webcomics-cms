@@ -1,0 +1,47 @@
+{{ $url := .Permalink }}
+{{ $comics := ($.Site.GetPage "section" .Section).Pages.ByPublishDate }}
+	<ul class="comic-nav" aria-label="pagination">
+	{{ range first 1 $comics }}
+		<li class="comic-nav_item">
+			{{if eq $url .Permalink}}
+				<a href="#" aria-disabled="true" class="comic-nav__link disabled first">
+			{{ else }}
+				<a href="{{ .Permalink }}" class="comic-nav__link first">
+			{{ end }}
+			First <span class="aria-hidden">Comic</span></a>
+		</li>
+	{{ end }}
+	<li class="comic-nav_item">
+		{{if .PrevInSection}}
+			<a href="{{.PrevInSection.Permalink}}" class="comic-nav__link prev">
+		{{ else }}
+			<a href="#" aria-disabled="true" class="comic-nav__link prev disabled">
+		{{end}}
+		Prev <span class="aria-hidden">Comic</span></a>
+	</li>
+	<li class="comic-nav_item">
+			<a href="#" aria-current="page" class="comic-nav__link active" >
+				{{ .Title }}
+			</a>
+	</li>
+	<li class="comic-nav_item">
+	{{if .NextInSection}}
+		<a href="{{.NextInSection.Permalink}}" class="comic-nav__link next">
+	{{ else }}
+		<a href="#" class="comic-nav__link next disabled" aria-disabled="true">
+	{{end}}
+		Next <span class="aria-hidden">Comic</span></a>
+	</li>
+	{{ range last 1 $comics }}
+		<li class="comic-nav_item">
+
+		{{if eq $url .Permalink}}
+		<a href="#" aria-disabled="true" class="comic-nav__link last disabled">
+		{{ else }}
+			<a href="{{ .Permalink }}" class="comic-nav__link last">
+		{{ end }}
+		Last <span class="aria-hidden">Comic</span></a>
+		</li>
+	{{ end }}
+	</ul>
+

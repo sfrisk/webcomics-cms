@@ -3,10 +3,8 @@
 {{ .Title }} – {{ .Site.Title }}
 {{ end }}
 {{ define "main" }}
-{{ .Date.Format "01/01/2016" }}
-
-<div class="comic_container">
-	<h1>{{ .Title }}</h1>
+{{ partial "comic-nav.html" . }}
+<article class="comic">
 	{{ range .Params.comic.rows }}
 		<div class="comic_row">
 			{{ range .cols}}
@@ -16,5 +14,14 @@
 			{{end}}
 		</div>
 	{{ end }}
-</div>
+	{{ partial "comic-nav.html" . }}
+	<header class="comic_header">
+		<h1 class="comic_title">{{ .Title }}</h1>
+		<time datetime="{{ .Date }}">{{ .Date.Format "January 2, 2006" }}</time>
+		<address class="comic_author">Author Name</address>
+	</header>
+	<div class="comic_content">
+		{{ .Content }}
+	</div>
+</article>
 {{end}}

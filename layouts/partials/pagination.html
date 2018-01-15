@@ -1,0 +1,74 @@
+{{ $pag := $.Paginator }}
+
+{{ if gt $pag.TotalPages 1 }}
+<ul class="pagination" aria-label="Pagination">
+    {{ with $pag.First }}
+    <li class="pagination__item">
+				{{if eq .PageNumber 1 }}
+					<a href="#" class="pagination__link disabled" aria-disabled="true" >
+				{{ else }}
+					<a href="{{ .URL }}" class="pagination__link">
+				{{ end }}
+					First <span class="aria-hidden">Page</span>
+				</a>
+    </li>
+    {{ end }}
+    <li class="pagination__item">
+				{{ if not $pag.HasPrev }}
+					<a href="#" class="pagination__link disabled" aria-disabled="true" >
+				{{ else }}
+					<a href="{{ $pag.Prev.URL }}" class="pagination__link">
+				{{ end }}
+				Previous <span class="aria-hidden">Page</span></a>
+    </li>
+    {{ $.Scratch.Set "__paginator.ellipsed" false }}
+    {{ range $pag.Pagers }}
+    {{ $right := sub .TotalPages .PageNumber }}
+    {{ $showNumber := or (le .PageNumber 3) (eq $right 0) }}
+    {{ $showNumber := or $showNumber (and (gt .PageNumber (sub $pag.PageNumber 2)) (lt .PageNumber (add $pag.PageNumber 2)))  }}
+    {{ if $showNumber }} 
+        {{ $.Scratch.Set "__paginator.ellipsed" false }}
+        {{ $.Scratch.Set "__paginator.shouldEllipse" false }}
+    {{ else }}
+        {{ $.Scratch.Set "__paginator.shouldEllipse" (not ($.Scratch.Get "__paginator.ellipsed") ) }}
+        {{ $.Scratch.Set "__paginator.ellipsed" true }}
+    {{ end }}
+		{{ if $showNumber }}
+		<li class="pagination__item">
+				{{ if eq . $pag }}
+				<a href="#" aria-current="page" class="pagination__link active" >
+
+				{{ else }}
+					<a href="{{ .URL }}" class="pagination__link" >
+				{{ end}}
+					<span class="aria-hidden">Page</span>
+					{{ .PageNumber }}
+				</a>
+		</li>
+    {{ else if ($.Scratch.Get "__paginator.shouldEllipse") }}
+    <li class="pagination__item">
+			<span class="pagination__link disabled" aria-hidden="true">&hellip;</span>
+		</li>
+    {{ end }}
+    {{ end }}
+		<li class="pagination__item">
+				{{ if not $pag.HasNext }}
+					<a href="#" class="pagination__link disabled" aria-disabled="true" >
+				{{ else }}
+					<a href="{{ $pag.Next.URL }}" class="pagination__link">
+				{{ end }}
+				Next <span class="aria-hidden">Page</span></a>
+    </li>
+    {{ with $pag.Last }}
+		<li class="pagination__item">
+				{{if eq .PageNumber .TotalPages }}
+					<a href="#" class="pagination__link disabled" aria-disabled="true" >
+				{{ else }}
+					<a href="{{ .URL }}" class="pagination__link">
+				{{ end }}
+					Last <span class="aria-hidden">Page</span>
+				</a>
+    </li>
+    {{ end }}
+</ul>
+{{ end }}
