@@ -1,6 +1,5 @@
 ---
-title: "Tavern Wenches"
-description: "A Dungeon Not To Be Mastered"
+title: "Webcomic CMS"
 ---
 
 This is my site

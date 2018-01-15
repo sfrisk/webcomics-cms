@@ -97,6 +97,12 @@ small, .font_small {font-size: 0.8em;}
 	margin: 1em auto;
 }
 
+.site-footer {
+	text-align: center;
+	padding: 2em;
+	opacity: .75;
+}
+
 .comic_title {
 	margin: 0;
 }
