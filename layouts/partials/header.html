@@ -1,9 +1,7 @@
-<header class="site-header">
-	<h1 class="site-logo">
-		<a href="{{ .Site.BaseURL }}">
-			{{ .Site.Title }}
-		</a>
-	</h1>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<a class="navbar-brand" href="{{ .Site.BaseURL }}">
+		{{ .Site.Title }}
+	</a>
 	{{ partial "site-menu.html" . }}
-</header>
+</nav>
 <div class="site-main" role="main">
