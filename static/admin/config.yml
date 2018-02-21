@@ -13,7 +13,7 @@ collections:
 		create: true
 		fields:
 			- {name: title, label: Title}
-			- {name: body, label: Body, widget: markdown}
+			- {name: body, label: Body, widget: "markdown"}
 	- name: blog
 		label: Blog
 		folder: content/blog
@@ -21,7 +21,7 @@ collections:
 		fields:
 			- {name: title, label: Title}
 			- {name: date, label: Date, widget: datetime}
-			- {name: body, label: Body, widget: markdown}
+			- {name: body, label: Body, widget: "markdown"}
 	- name: comic
 		label: Comic
 		folder: content/comic
