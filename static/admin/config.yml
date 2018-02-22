@@ -14,9 +14,9 @@ collections:
     fields:
       - {name: title, label: Title}
       - {name: body, label: Body, widget: "markdown"}
-  - name: blog
-    label: Blog
-    folder: content/blog
+  - name: post
+    label: Bost
+    folder: content/post
     create: true
     fields:
       - {name: title, label: Title}

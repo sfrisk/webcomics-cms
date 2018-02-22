@@ -1,7 +1,7 @@
 {{ $pag := $.Paginator }}
 
 {{ if gt $pag.TotalPages 1 }}
-<nav aria-label="Blog Navigation">
+<nav aria-label="Pagination Navigation">
 <ul class="pagination justify-content-center" aria-label="Pagination">
     {{ with $pag.First }}
     <li class="page-item">
