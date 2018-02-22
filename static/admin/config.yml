@@ -1,46 +1,46 @@
 backend:
-	name: github
-	repo: sfrisk/webcomics-cms
+  name: github
+  repo: sfrisk/webcomics-cms
 
 media_folder: static/assets/images
 public_folder: "assets/images"
 publish_mode: editorial_workflow
 
 collections:
-	- name: page
-		label: Page
-		folder: content
-		create: true
-		fields:
-			- {name: title, label: Title}
-			- {name: body, label: Body, widget: "markdown"}
-	- name: blog
-		label: Blog
-		folder: content/blog
-		create: true
-		fields:
-			- {name: title, label: Title}
-			- {name: date, label: Date, widget: datetime}
-			- {name: body, label: Body, widget: "markdown"}
-	- name: comic
-		label: Comic
-		folder: content/comic
-		create: true
-		fields:
-			- {name: title, label: Title}
-			- {name: date, label: Date, widget: datetime}
-			- name: comic
-				label: Comic
-				widget: object
-				fields:
-					- label: Rows
-						name: rows
-						widget: list
-						fields:
-							- label: Panels
-								name: cols
-								widget: list
-								fields:
-									- name: panel
-										label: Panel
-										widget: image
+  - name: page
+    label: Page
+    folder: "content"
+    create: true
+    fields:
+      - {name: title, label: Title}
+      - {name: body, label: Body, widget: "markdown"}
+  - name: blog
+    label: Blog
+    folder: content/blog
+    create: true
+    fields:
+      - {name: title, label: Title}
+      - {name: date, label: Date, widget: datetime}
+      - {name: body, label: Body, widget: "markdown"}
+  - name: comic
+    label: Comic
+    folder: content/comic
+    create: true
+    fields:
+      - {name: title, label: Title}
+      - {name: date, label: Date, widget: datetime}
+      - name: comic
+        label: Comic
+        widget: object
+        fields:
+          - label: Rows
+            name: rows
+            widget: list
+            fields:
+              - label: Panels
+                name: cols
+                widget: list
+                fields:
+                  - name: panel
+                    label: Panel
+                    widget: image
