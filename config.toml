@@ -14,6 +14,7 @@ paginatePath = "archive"
 [taxonomies]
   category = "categories"
   tag = "tags"
+  author = "authors"
 
 [params]
   subtitle = "a webcomic site"

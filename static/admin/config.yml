@@ -15,7 +15,7 @@ collections:
       - {name: title, label: Title}
       - {name: body, label: Body, widget: "markdown"}
   - name: post
-    label: Bost
+    label: Post
     folder: content/post
     create: true
     fields:
