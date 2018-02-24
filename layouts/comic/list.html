@@ -8,7 +8,11 @@
 	{{ range (.Paginate (.Data.Pages.ByDate.Reverse)).Pages }}
 		<li class="comic-archive__item">
 			<a class="comic-archive__link" href="{{.Permalink}}">
-				<span class="comic-archive__item__title">{{.Title}}</span>
+				<img src="{{.Params.thumbnail}}" class="comic-archive__item__thumb" />
+
+				<span class="comic-archive__item__title">
+					{{.Title}}
+				</span>
 				<span class="comic-archive__item__date">{{ .Date.Format "Jan 2, 2006" }}</span>
 			</a>
 		</li>
