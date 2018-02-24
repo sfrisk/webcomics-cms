@@ -29,6 +29,7 @@ collections:
     fields:
       - {name: title, label: Title}
       - {name: date, label: Date, widget: datetime}
+      - {name: thumbnail, label: Thumbnail, widget: image}
       - name: comic
         label: Comic
         widget: object
