@@ -41,7 +41,7 @@ body {
 	margin: 0;
 }
 
-@media only screen and (min-width: 40em) {
+@media only screen and (min-width: 50em) {
 	.comic_row {
 		display: flex;
 		justify-content: center;
@@ -58,7 +58,7 @@ body {
 	max-height: 500px;
 }
 
-@media only screen and (min-width: 40em) {
+@media only screen and (min-width: 50em) {
 	.comic_img {
 		max-width: 100%;
 		height: auto;
