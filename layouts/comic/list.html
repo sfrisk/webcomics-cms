@@ -29,7 +29,7 @@
 			<div class="col-12 col-md-4">
 				<div class="comic-archive__about">
 					{{ .Content }}
-					{{ $comics := ($.Site.GetPage "comic" .Section).Pages.ByPublishDate }}
+					{{ $comics := ($.Site.GetPage "section" "comic").Pages.ByPublishDate }}
 					{{ range last 1 $comics }}
 						<p class="text-center">
 								<a class="btn btn-primary btn-block" href="{{ .Permalink }}" role="button">Latest Comic</a>

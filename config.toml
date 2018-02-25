@@ -12,9 +12,10 @@ paginate = 10
 paginatePath = "archive"
 
 [taxonomies]
-  category = "categories"
+  chapter = "chapters"
   tag = "tags"
   author = "authors"
+  character = "characters"
 
 [params]
   subtitle = "a webcomic site"
