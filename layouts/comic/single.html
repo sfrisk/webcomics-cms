@@ -22,6 +22,12 @@
 	{{ partial "comic-nav.html" . }}
 	<div class="comic_content">
 		{{ .Content }}
+		<strong>Characters</strong>
+		<ul class="list-unstyled">
+		{{ range .Params.characters }}
+				<li><a href="/characters/{{ . | urlize }}">{{ . }}</a></li>
+		{{ end }}
+		</ul>
 	</div>
 </article>
 

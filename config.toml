@@ -13,7 +13,7 @@ paginatePath = "archive"
 
 [taxonomies]
   tag = "tags"
-  author = "authors"
+  category = "categories"
   character = "characters"
 
 [params]
