@@ -7,6 +7,16 @@ public_folder: "assets/images"
 publish_mode: editorial_workflow
 
 collections:
+  - name: specialPages
+    label: "Special Pages"
+    files:
+      - name: "comic-archive"
+        label: "Comic Archive"
+        file: "content/comic/_index.md"
+        fields:
+          - {label: "Menu Title", name: title, widget: string}
+          - {label: "Page Title", name: pageTitle, widget: string}
+          - {label: Body, name: body, widget: markdown}
   - name: page
     label: Page
     folder: "content"

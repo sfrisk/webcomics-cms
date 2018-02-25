@@ -3,20 +3,44 @@
 {{ .Title }} – {{ .Site.Title }}
 {{ end }}
 {{ define "main" }}
-<h1>{{ .Title }}</h1>
-<ul class="comic-archive">
-	{{ range (.Paginate (.Data.Pages.ByDate.Reverse)).Pages }}
-		<li class="comic-archive__item">
-			<a class="comic-archive__link" href="{{.Permalink}}">
-				<img src="{{.Params.thumbnail}}" class="comic-archive__item__thumb" />
-
-				<span class="comic-archive__item__title">
-					{{.Title}}
-				</span>
-				<span class="comic-archive__item__date">{{ .Date.Format "Jan 2, 2006" }}</span>
-			</a>
-		</li>
-	{{ end }}
-</ul>
-{{ partial "pagination.html" . }}
+<section class="comic-archive">
+	<header class="comic-archive__header">
+			<h1 class="text-center comic-archive__title">{{ .Params.pageTitle }}</h1>
+	</header>
+	<div class="row comic-archive__content">
+		<div class="col-12 col-md-8">
+			<ul class="comic-archive__list">
+					{{ range (.Paginate (.Data.Pages.ByDate.Reverse)).Pages }}
+						<li class="comic-archive__item">
+							<a class="comic-archive__link" href="{{.Permalink}}">
+								<img src="{{.Params.thumbnail}}" class="comic-archive__item__thumb" />
+				
+								<span class="comic-archive__item__title">
+									{{.Title}}
+								</span>
+								<span class="comic-archive__item__date">{{ .Date.Format "Jan 2, 2006" }}</span>
+							</a>
+						</li>
+					{{ end }}
+				</ul>
+				{{ partial "pagination.html" . }}
+		</div>
+		<div class="col-12 col-md-4">
+			<div class="comic-archive__about">
+				{{ .Content }}
+				{{ $comics := ($.Site.GetPage "section" .Section).Pages.ByPublishDate }}
+				{{ range last 1 $comics }}
+					<p class="text-center">
+							<a class="btn btn-primary btn-block" href="{{ .Permalink }}" role="button">Latest Comic</a>
+					</p>
+				{{ end }}
+				{{ range first 1 $comics }}
+					<p class="text-center">
+							<a class="btn btn-primary btn-block" href="{{ .Permalink }}" role="button">First Comic</a>
+					</p>
+				{{ end }}
+			</div>
+		</div>
+	</div>
+</section>
 {{ end }}
