@@ -5,6 +5,11 @@
 {{ define "main" }}
 {{ partial "comic-nav.html" . }}
 <article class="comic">
+	<header class="comic_header">
+		<h1 class="comic_title">{{ .Title }}</h1>
+		<time class="comic_date" datetime="{{ .Date }}">{{ .Date.Format "January 2, 2006" }}</time>
+		<address class="comic_author">Author Name</address>
+	</header>
 	{{ range .Params.comic.rows }}
 		<div class="comic_row">
 			{{ range .cols}}
@@ -15,13 +20,25 @@
 		</div>
 	{{ end }}
 	{{ partial "comic-nav.html" . }}
-	<header class="comic_header">
-		<h1 class="comic_title">{{ .Title }}</h1>
-		<time datetime="{{ .Date }}">{{ .Date.Format "January 2, 2006" }}</time>
-		<address class="comic_author">Author Name</address>
-	</header>
 	<div class="comic_content">
 		{{ .Content }}
 	</div>
 </article>
+
+<script >
+		document.addEventListener('keydown', (event) => {
+			const keyName = event.key;
+			switch (keyName) {
+				case "ArrowLeft":
+					document.getElementsByClassName('prev')[0].click();
+					return;
+				case "ArrowRight":
+					document.getElementsByClassName('next')[0].click();
+					return;
+				default:
+					return;
+			}
+		});
+	</script>
+
 {{end}}

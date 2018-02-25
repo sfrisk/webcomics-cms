@@ -3,13 +3,13 @@
 	<ul class="pagination justify-content-center" aria-label="pagination">
 	{{ range first 1 $comics }}
 		<li class="page-item {{if eq $url .Permalink}}disabled{{ end }}">
-				<a {{if eq $url .Permalink}}href="#" aria-disabled="true" tabindex="-1"{{else}} href="{{ .Permalink }}" {{end}} class="page-link">
+				<a {{if eq $url .Permalink}} href="#" aria-disabled="true" tabindex="-1"{{else}} href="{{ .Permalink }}" {{end}} class="page-link">
 					First <span class="sr-only">Comic</span>
 			</a>
 		</li>
 	{{ end }}
 	<li class="page-item 	{{if not .PrevInSection}}disabled{{ end }}">
-		<a {{if .PrevInSection}} href="{{.PrevInSection.Permalink}}"{{else}} href="#" aria-disabled="true" tabindex="-1" {{end}} class="page-link">
+		<a {{if .PrevInSection}} href="{{.PrevInSection.Permalink}}"{{else}} href="#" aria-disabled="true" tabindex="-1" {{end}} class="page-link prev">
 			Prev <span class="sr-only">Comic</span>
 		</a>
 	</li>
@@ -20,7 +20,7 @@
 			</a>
 	</li>
 	<li class="page-item 	{{if not .NextInSection}}disabled{{ end }}">
-		<a {{if .NextInSection}} href="{{.NextInSection.Permalink}}"{{else}} href="#" aria-disabled="true" tabindex="-1" {{end}} class="page-link">
+		<a {{if .NextInSection}} href="{{.NextInSection.Permalink}}"{{else}} href="#" aria-disabled="true" tabindex="-1" {{end}} class="page-link next">
 			Next <span class="sr-only">Comic</span>
 	</a>
 	</li>
@@ -32,4 +32,3 @@
 		</li>
 	{{ end }}
 	</ul>
-

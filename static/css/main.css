@@ -41,6 +41,36 @@ body {
 	margin: 0;
 }
 
+.comic_header {
+	display: flex;
+	padding: .5em;
+	justify-content: space-between;
+}
+
+.comic_title {
+	font-size: .9rem;
+	margin: 0;
+	padding: 0;
+	display: block;
+	line-height: 1;
+}
+
+.comic_date {
+	font-size: .9rem;
+	margin: 0;
+	padding: 0;
+	display: block;
+	line-height: 1;
+}
+
+.comic_author {
+	font-size: .9rem;
+	margin: 0;
+	padding: 0;
+	display: block;
+	line-height: 1;
+}
+
 @media only screen and (min-width: 50em) {
 	.comic_row {
 		display: flex;
@@ -146,4 +176,12 @@ body {
 	display: block;
 	margin-top: 0;
 	margin-bottom: 2em;
+}
+
+.pagination {
+	align-items: stretch;
+}
+
+.page-link {
+	height: 100%;
 }
