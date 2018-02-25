@@ -94,7 +94,7 @@ body {
 	max-height: 500px;
 }
 
-@media only screen and (min-width: 50em) {
+@media (min-width: 992px) {
 	.comic_img {
 		max-width: 100%;
 		height: auto;

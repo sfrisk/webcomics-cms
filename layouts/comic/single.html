@@ -8,7 +8,7 @@
 	<header class="comic_header">
 		<h1 class="comic_title">{{ .Title }}</h1>
 		<time class="comic_date" datetime="{{ .Date }}">{{ .Date.Format "January 2, 2006" }}</time>
-		<address class="comic_author">Author Name</address>
+		<address class="comic_author">&copy; {{ .Site.Params.Author }}</address>
 	</header>
 	{{ range .Params.comic.rows }}
 		<div class="comic_row">

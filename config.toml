@@ -12,14 +12,13 @@ paginate = 10
 paginatePath = "archive"
 
 [taxonomies]
-  chapter = "chapters"
   tag = "tags"
   author = "authors"
   character = "characters"
 
 [params]
   subtitle = "a webcomic site"
-  author = "Sarah Frisk"
+  author = "Site Author"
 
 [menu]
   [[menu.main]]
