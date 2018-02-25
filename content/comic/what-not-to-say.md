@@ -1,6 +1,6 @@
 ---
-title: What Not To Say
-date: 2018-02-05T01:00:24-05:00
+title: 'What Not To Say: Undead Pickup Lines'
+date: 2018-02-05T06:00:24.000Z
 thumbnail: /assets/images/thumb.png
 comic:
   rows:
