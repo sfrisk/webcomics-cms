@@ -1,12 +1,26 @@
 {{ define "main" }}
 <main class="container">
+	<a href="/characters/">Characters</a>
     <article>
         <header>
             <h1>{{.Title}}</h1>
         </header>
         {{.Content}}
     </article>
-    <ul>
+  
+
+
+			{{ $author := index .Site.Data.characters .Data.Term }}
+
+		{{ if $author.thumbnail }}
+			<img src="{{ $author.thumbnail }}" />
+		{{ end }}
+
+		{{ if $author.description  }}
+			{{ $author.description | markdownify }}
+		{{ end }}
+
+			<ul>	
     {{ range .Data.Pages }}
         <li>
             <a href="{{.Permalink}}">{{.Date.Format "2006-01-02"}} | {{.Title}}</a>
