@@ -142,7 +142,6 @@ body {
 .comic-archive__link {
 	display: block;
 	height: 5em;
-	white-space: nowrap;
 	cursor: pointer;
 	display: flex;
 	justify-content: flex-start;

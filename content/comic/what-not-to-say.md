@@ -1,7 +1,7 @@
 ---
 title: 'What Not To Say: Undead Pickup Lines'
 date: 2018-02-05T06:00:24.000Z
-thumbnail: /assets/images/thumb.png,
+thumbnail: /assets/images/thumb.png
 characters: ['Akorlara']
 comic:
   rows:

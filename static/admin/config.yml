@@ -4,7 +4,6 @@ backend:
 
 media_folder: static/assets/images
 public_folder: "assets/images"
-publish_mode: editorial_workflow
 
 collections:
   - name: specialPages
@@ -17,15 +16,6 @@ collections:
           - {label: "Menu Title", name: title, widget: string}
           - {label: "Page Title", name: pageTitle, widget: string}
           - {label: Body, name: body, widget: markdown}
-  - name: characters
-    label: Characters
-    folder: "content/characters"
-    create: true
-    fields:
-      - {name: title, label: Title}
-      - {name: slug, label: Slug}
-      - {name: body, label: Body, widget: "markdown"}
-      - {name: avatar, label: Avatar, widget: image}
   - name: page
     label: Page
     folder: "content"
