@@ -21,8 +21,8 @@ paginatePath = "archive"
   author = "Site Author"
 
 [menu]
+
   [[menu.main]]
-  identifier = "home"
-  name       = "Home"
-  url        = "/"
-  weight     = -10
+  name = "About"
+  url = "/about/"
+  weight = 0

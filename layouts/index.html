@@ -6,45 +6,49 @@
 {{ $comics := ($.Site.GetPage "section" "comic").Pages.ByPublishDate }}
 {{ $posts := ($.Site.GetPage "section" "post").Pages.ByPublishDate }}
 
-<div class="container">
+<div class="container page">
 	<div class="row">
 		<div class="col-sm-4">
 			{{ range last 1 $comics }}
-			<div class="card">
-				<img class="card-img" src="{{.Params.thumbnail}}" alt="{{.Title}}">
-				<div class="card-body">
-					<p class="card-text">
-						Read the Latest
-						<a class="btn btn-primary btn-block" href="{{ .Permalink }}" role="button">Latest Comic</a>
-					</p>
+			<a href="{{ .Permalink }}" title="{{.Title}}">
+				<div class="card">
+					<img class="card-img" src="{{.Params.thumbnail}}" alt="{{.Title}}">
+					<div class="card-body">
+						<p class="card-text">
+							Read the Latest
+						</p>
+					</div>
 				</div>
-			</div>
+			</a>
 			{{ end }}
 		</div>
 		<div class="col-sm-4">
 			{{ range first 1 $comics }}
+			<a href="{{ .Permalink }}" title="{{.Title}}">
 			<div class="card">
 				<img class="card-img" src="{{.Params.thumbnail}}" alt="{{.Title}}">
 				<div class="card-body">
 					<p class="card-text">
-						New Reader? Start at the beginning!	
-						<a class="btn btn-primary btn-block" href="{{ .Permalink }}" role="button">First Comic</a>
+						Start at the beginning!	
 					</p>
 				</div>
 			</div>
 			{{ end }}
 		</div>
-		<div class="col-sm-4">
-			<div class="card">
-					<img class="card-img" src="" alt="">
-					<div class="card-body">
-						<p class="card-text">
-							Wondering what is even happening here?
-							<a class="btn btn-primary btn-block" href="" role="button">About</a>
-						</p>
+			<div class="col-sm-4">
+					<a href="/about" title="About">
+
+				<div class="card">
+						<img class="card-img" src="/assets/images/bobmimic.png" alt="">
+						<div class="card-body">
+							<p class="card-text">
+								Learn more
+							</p>
+						</div>
 					</div>
-				</div>
-		</div>
+				</a>
+			</div>
+	
 	</div>
 		{{range last 1 $posts}}
 			<article class="post">

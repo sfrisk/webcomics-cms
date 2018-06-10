@@ -32,15 +32,10 @@ body {
 	grid-row-end: 3;
 }
 
-.comic {
+.page {
 	background: #fff;
 	padding: 1em;
-}
-
-@media (min-width: 992px) {
-	.comic {
-		margin: 1em auto;
-	}
+	margin: 1em auto;
 }
 
 .comic_title {
