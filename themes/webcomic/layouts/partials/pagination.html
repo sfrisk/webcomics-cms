@@ -1,0 +1,38 @@
+{{ $pag := $.Paginator }}
+
+{{ if gt $pag.TotalPages 1 }}
+<nav aria-label="Pagination Navigation">
+	<ul class="pagination justify-content-center" aria-label="pagination">
+    {{ $.Scratch.Set "__paginator.ellipsed" false }}
+    {{ range $pag.Pagers }}
+    {{ $right := sub .TotalPages .PageNumber }}
+    {{ $showNumber := or (le .PageNumber 3) (eq $right 0) }}
+    {{ $showNumber := or $showNumber (and (gt .PageNumber (sub $pag.PageNumber 2)) (lt .PageNumber (add $pag.PageNumber 2)))  }}
+    {{ if $showNumber }} 
+        {{ $.Scratch.Set "__paginator.ellipsed" false }}
+        {{ $.Scratch.Set "__paginator.shouldEllipse" false }}
+    {{ else }}
+        {{ $.Scratch.Set "__paginator.shouldEllipse" (not ($.Scratch.Get "__paginator.ellipsed") ) }}
+        {{ $.Scratch.Set "__paginator.ellipsed" true }}
+    {{ end }}
+		{{ if $showNumber }}
+    <li class="page-item {{ if eq . $pag }}active{{end}}">
+				{{ if eq . $pag }}
+				<a href="#" aria-current="page" class="page-link" >
+				{{ else }}
+					<a href="{{ .URL }}" class="page-link" >
+				{{ end}}
+					<span class="sr-only">Page</span>
+					{{ .PageNumber }}
+				</a>
+		</li>
+    {{ else if ($.Scratch.Get "__paginator.shouldEllipse") }}
+    <li class="page-item">
+				<span class="page-link disabled" sr-only="true">&hellip;</span>
+		</li>
+    {{ end }}
+    {{ end }}
+
+</ul>
+</nav>
+{{ end }}

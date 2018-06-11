@@ -1,0 +1,10 @@
+{
+	{{ with eq .Kind  "section"}}
+    "section" : "{{ $.Section }}",
+{{ end }}
+{{ with eq .Kind  "taxonomy"}}
+    "taxonomy" : "{{ $.Data.Singular }}",
+		"term" : "{{ $.Data.Term }}",
+		
+{{ end }}
+}

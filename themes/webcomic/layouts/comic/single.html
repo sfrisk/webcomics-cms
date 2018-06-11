@@ -1,0 +1,50 @@
+{{ define "title" }}
+<!-- This will override the default value set in baseof.html; i.e., "{{.Site.Title}}" in the original example-->
+{{ .Title }} – {{ .Site.Title }}
+{{ end }}
+{{ define "main" }}
+<article class="page comic container">
+	{{ partial "comic-nav.html" . }}
+	<header class="comic_header">
+		<h1 class="comic_title">{{ .Title }}</h1>
+		<time class="comic_date" datetime="{{ .Date }}">{{ .Date.Format "January 2, 2006" }}</time>
+		<address class="comic_author">&copy; {{ .Site.Params.Author }}</address>
+	</header>
+	{{ range .Params.comic.rows }}
+		<div class="comic_row">
+			{{ range .cols}}
+				<div class="comic_panel">
+					<img src="{{ .panel }}" class="comic_img" />
+				</div>
+			{{end}}
+		</div>
+	{{ end }}
+	{{ partial "comic-nav.html" . }}
+	<div class="comic_content">
+		{{ .Content }}
+		<strong>Characters</strong>
+		<ul class="list-unstyled">
+		{{ range .Params.characters }}
+				<li><a href="/characters/{{ . | urlize }}">{{ . }}</a></li>
+		{{ end }}
+		</ul>
+	</div>
+</article>
+
+<script >
+		document.addEventListener('keydown', (event) => {
+			const keyName = event.key;
+			switch (keyName) {
+				case "ArrowLeft":
+					document.getElementsByClassName('prev')[0].click();
+					return;
+				case "ArrowRight":
+					document.getElementsByClassName('next')[0].click();
+					return;
+				default:
+					return;
+			}
+		});
+	</script>
+
+{{end}}

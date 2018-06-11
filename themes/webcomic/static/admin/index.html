@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Manager</title>
+
+  <!-- Include the styles for the Netlify CMS UI, after your own styles -->
+  <link rel="stylesheet" href="https://unpkg.com/netlify-cms@^1.0.0/dist/cms.css" />
+
+</head>
+<body>
+  <!-- Include the script that builds the page and powers Netlify CMS -->
+  <script src="https://unpkg.com/netlify-cms@^1.0.0/dist/cms.js"></script>
+  <script>
+      var CategoriesControl = createClass({
+        handleChange: function(e) {
+          this.props.onChange(e.target.value.split(',').map((e) => e.trim()));
+        },
+      
+        render: function() {
+          var value = this.props.value;
+          console.log(this.props);
+          console.log(CMS)
+          console.log(CMS.getWidget("relation"))
+          return h(
+            'div',
+            {},
+            h(
+              'input', 
+              { 
+                type: 'text',
+                value: value ? value.join(', ') : '',
+                onChange: this.handleChange,
+                className: 'nc-controlPane-widget'
+              }
+            ),
+            'List categories options here'
+          );
+        }
+      });
+      
+      var CategoriesPreview = createClass({
+        render: function() {
+          return h('ul', {},
+            this.props.value.map(function(val, index) {
+              return h('li', {key: index}, val);
+            })
+          );
+        }
+      });
+      
+      CMS.registerWidget('categories', CategoriesControl, CategoriesPreview);
+      </script>
+</body>
+</html>
