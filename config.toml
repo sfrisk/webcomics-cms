@@ -10,6 +10,11 @@ title = "Webcomic CMS"
 sectionPagesMenu = "main"
 paginate = 10
 paginatePath = "archive"
+theme = "webcomic"
+
+[outputs]
+  section = ["HTML", "JSON", "RSS"]
+  taxonomy = ["HTML", "json"]
 
 [taxonomies]
   tag = "tags"
@@ -21,8 +26,10 @@ paginatePath = "archive"
   author = "Site Author"
 
 [menu]
+  [[menu.main]]
+  name = "Characters"
+  url = "/characters/"
 
   [[menu.main]]
   name = "About"
   url = "/about/"
-  weight = 0
