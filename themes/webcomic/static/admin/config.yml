@@ -38,6 +38,7 @@ collections:
       - {name: title, label: Title}
       - {name: date, label: Date, widget: datetime}
       - {name: thumbnail, label: Thumbnail, widget: image}
+      - {name: og_image, label: Social Image (1200 x 630px), widget: image}
       - label: "Characters"
         name: "characters"
         widget: "categories"
