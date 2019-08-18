@@ -24,6 +24,7 @@
 		{{ range .Params.comic.rows }}
 				{{ range .cols}}
 				<meta property="og:image" content="{{ .panel }}" />
+				<meta property="twitter:image" content="{{ .panel }}" />
 				{{end}}
 			</div>
 		{{ end }}
