@@ -20,8 +20,8 @@
 	<meta name="twitter:site" content="{{ .Site.Params.twitter_site }}" />
 	<meta name="twitter:creator" content="{{ .Site.Params.twitter_creator }}" />
 
-	<meta property="og:image" content="{{ $.Site.BaseURL }}{{ if (isset .Params "og_image") }}{{ .Params.og_image_fb }}{{ else }}{{ .Site.Params.og_image }}{{ end }}" />
-	<meta property="twitter:image" content="{{ $.Site.BaseURL }}{{ if (isset .Params "og_image_fb") }}{{ .Params.og_image }}{{ else }}{{ .Site.Params.og_image }}{{ end }}" />
+	<meta property="og:image" content="{{ $.Site.BaseURL }}{{ if (isset .Params "og_image") }}{{ .Params.og_image }}{{ else }}{{ .Site.Params.og_image }}{{ end }}" />
+	<meta property="twitter:image" content="{{ $.Site.BaseURL }}{{ if (isset .Params "og_image") }}{{ .Params.og_image }}{{ else }}{{ .Site.Params.og_image }}{{ end }}" />
 
 
 
