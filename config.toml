@@ -24,6 +24,15 @@ theme = "webcomic"
 [params]
   subtitle = "a webcomic site"
   author = "Site Author"
+  og_description = "test"
+  og_image = ""
+  og_site_name = "Webcomic CMS"
+  twitter_site = "@TavernWenches"
+  twitter_creator = "@SarahFrisk"
+  twitter_image = ""
+  creator = ""
+  og_type = "website"
+  og_local = "en-US"
 
 [menu]
   [[menu.main]]

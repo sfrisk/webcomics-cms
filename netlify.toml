@@ -8,10 +8,10 @@
   HUGO_ENABLEGITINFO = "true"
 
 [context.deploy-preview.environment]
-  HUGO_VERSION = "0.41"
+  HUGO_VERSION = "0.57"
 
 [context.branch-deploy.environment]
-  HUGO_VERSION = "0.41"
+  HUGO_VERSION = "0.57"
 
 [context.next.environment]
   HUGO_BASEURL = "https://next--gohugoio.netlify.com/"
