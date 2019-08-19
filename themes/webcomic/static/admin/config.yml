@@ -41,8 +41,15 @@ collections:
       - {name: og_image, label: Social Image (1200 x 630px), widget: image}
       - label: "Characters"
         name: "characters"
-        widget: "categories"
-        collection: "character"
+        widget: "relation"
+        collection: "characters"
+        searchFields: ["title"]
+        valueField: "title"
+        displayFields: ["title"]
+      # - label: "Characters"
+      #   name: "characters"
+      #   widget: "categories"
+      #   collection: "character"
         # collection: "character"
         # searchFields: ["title"]
         # valueField: "title"

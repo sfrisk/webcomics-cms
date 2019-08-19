@@ -3,13 +3,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<base href="{{ $.Site.BaseURL }}">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link rel="stylesheet" href="/css/main.css"/>
-	<title>
-		{{ block "title" . }}
-			{{ .Site.Title }}
-		{{ end }}
-	</title>
+	{{ $options := (dict "targetPath" "main.css" "outputStyle" "compressed" "enableSourceMap" true "includePaths" (slice "node_modules/myscss")) }}
+	{{ $styles := resources.Get "scss/main.scss" | toCSS $options }}
+	<link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen">
+	<title>{{ block "title" . }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
 	<meta property="og:title" content="{{ if (isset .Params "og_title") }}{{ .Params.og_title }}{{ else }}{{ .Title }}{{ end }}">
+	<meta property="og:site_name" content="{{ .Site.Title }}">
 	<meta property="og:description" content="{{ if (isset .Params "og_description") }}{{ .Params.og_description }}{{ else }}{{ .Site.Params.og_description }}{{ end }}">
 	<meta property="og:url" content="{{ .Permalink }}">
 	<meta property="og:type" content="{{ if (isset .Params "og_type") }}{{ .Params.og_type }}{{ else }}{{ .Site.Params.og_type }}{{ end }}">
@@ -19,13 +18,8 @@
 	<meta property="twitter:description" content="{{ if (isset .Params "og_description") }}{{ .Params.og_description }}{{ else }}{{ .Site.Params.og_description }}{{ end }}">
 	<meta name="twitter:site" content="{{ .Site.Params.twitter_site }}" />
 	<meta name="twitter:creator" content="{{ .Site.Params.twitter_creator }}" />
-
 	<meta property="og:image" content="{{ $.Site.BaseURL }}{{ if (isset .Params "og_image") }}{{ .Params.og_image }}{{ else }}{{ .Site.Params.og_image }}{{ end }}" />
 	<meta property="twitter:image" content="{{ $.Site.BaseURL }}{{ if (isset .Params "og_image") }}{{ .Params.og_image }}{{ else }}{{ .Site.Params.og_image }}{{ end }}" />
-
-
-
-<!-- something with multiple images -->
 
 	{{ with .OutputFormats.Get "rss" -}}
     {{ printf `<link rel="%s" type="%s+%s" href="%s" title="%s" />` .Rel .MediaType.Type .MediaType.Suffix .Permalink $.Site.Title | safeHTML }}
