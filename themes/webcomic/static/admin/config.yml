@@ -3,23 +3,32 @@ backend:
   repo: sfrisk/webcomics-cms
 
 media_folder: static/assets/images
-public_folder: "assets/images"
+public_folder: assets/images
 
 collections:
   - name: page
     label: Page
-    folder: "content"
+    folder: content
     create: true
     fields:
       - {name: title, label: Title}
-      - {name: body, label: Body, widget: "markdown"}
+      - {name: body, label: Body, widget: markdown}
+  # - name: character
+  #   label: Character
+  #   folder: data/characters
+  #   create: true
+  #   extension: toml
+  #   fields:
+  #     - {name: title, label: Title}
+  #     - {name: thumbnail, label: Thumbnail, widget: image}
+  #     - {label: Description, name: description, widget: markdown}
   - name: character
     label: Character
-    folder: "data/characters"
+    folder: content/characters
     create: true
-    extension: toml
     fields:
       - {name: title, label: Title}
+      - {name: name, label: Name}
       - {name: thumbnail, label: Thumbnail, widget: image}
       - {label: Description, name: description, widget: markdown}
   - name: post
@@ -29,7 +38,7 @@ collections:
     fields:
       - {name: title, label: Title}
       - {name: date, label: Date, widget: datetime}
-      - {name: body, label: Body, widget: "markdown"}
+      - {name: body, label: Body, widget: markdown}
   - name: comic
     label: Comic
     folder: content/comic
@@ -37,34 +46,14 @@ collections:
     fields:
       - {name: title, label: Title}
       - {name: date, label: Date, widget: datetime}
-      - {name: thumbnail, label: Thumbnail, widget: image}
-      - {name: og_image, label: Social Image (1200 x 630px), widget: image}
-      - label: "Characters"
-        name: "characters"
-        widget: "relation"
-        collection: "characters"
-        searchFields: ["title"]
-        valueField: "title"
-        displayFields: ["title"]
-      # - label: "Characters"
-      #   name: "characters"
-      #   widget: "categories"
-      #   collection: "character"
-        # collection: "character"
-        # searchFields: ["title"]
-        # valueField: "title"
-        # displayFields: ["title"]
-      # - name: characters,
-      #   label: Characters,
-      #   widget: list
-      #   fields:
-      #     - name: character
-      #       label: Character
-      #       widget: relation
-      #       collection: "characters"
-      #       searchFields: ["title"]
-      #       valueField: "title"
-      #       displayFields: ["title"]
+      - label: Characters
+        name: characters
+        widget: relation
+        collection: character
+        searchFields: [title]
+        valueField: title
+        displayFields: [title]
+        multiple: true
       - name: comic
         label: Comic
         widget: object
@@ -80,3 +69,8 @@ collections:
                   - name: panel
                     label: Panel
                     widget: image
+      - {name: thumbnail, label: Thumbnail, widget: image}
+      - {name: og_title, label: Social Share Title, widget: string}
+      - {name: og_image, label: Social Share Image (1200 x 630px), widget: image}
+      - {name: og_description, label: Social Share Description, widget: text}
+      - {name: og_type, widget: hidden, default: article}
