@@ -1,7 +1,0 @@
-{
-	"terms": [
-		{{ range $key, $value := .Data.Terms.ByCount }}
-      "{{ $value.Name }}",
-    {{ end }}
-	]
-}

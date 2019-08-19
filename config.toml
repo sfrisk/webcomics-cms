@@ -19,7 +19,6 @@ theme = "webcomic"
 [taxonomies]
   tag = "tags"
   category = "categories"
-  character = "characters"
 
 [params]
   subtitle = "a webcomic site"
@@ -35,9 +34,6 @@ theme = "webcomic"
   og_local = "en-US"
 
 [menu]
-  [[menu.main]]
-  name = "Characters"
-  url = "/characters/"
 
   [[menu.main]]
   name = "About"

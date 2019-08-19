@@ -13,24 +13,14 @@ collections:
     fields:
       - {name: title, label: Title}
       - {name: body, label: Body, widget: markdown}
-  # - name: character
-  #   label: Character
-  #   folder: data/characters
-  #   create: true
-  #   extension: toml
-  #   fields:
-  #     - {name: title, label: Title}
-  #     - {name: thumbnail, label: Thumbnail, widget: image}
-  #     - {label: Description, name: description, widget: markdown}
   - name: character
     label: Character
     folder: content/characters
     create: true
     fields:
-      - {name: title, label: Title}
-      - {name: name, label: Name}
+      - {name: title, label: Name}
       - {name: thumbnail, label: Thumbnail, widget: image}
-      - {label: Description, name: description, widget: markdown}
+      - {label: Description, name: body, widget: markdown}
   - name: post
     label: Post
     folder: content/post

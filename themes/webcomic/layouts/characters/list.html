@@ -1,0 +1,21 @@
+{{ define "main" }}
+<main class="container page">
+  <h1>{{ .Title }}</h1>
+  <ul class="list-group">
+    {{ range .Data.Pages }}
+      <li class="list-group-item">
+        <a href="{{.Permalink}}">
+
+      {{ if .Params.thumbnail }}
+        <img style="height: 40px; margin-right: 10px;" src="{{.Params.thumbnail}}"  alt="{{ .Title}}" /> 
+
+      {{ else }}
+        <div style="height: 40px; margin-right: 10px; width: 40px; display: inline-block; background: grey; vertical-align: middle;"></div>
+      {{ end }} 
+      {{ .Title }}
+      </a>
+    </li>
+    {{ end }}
+  </ul>
+</main>
+{{ end }}

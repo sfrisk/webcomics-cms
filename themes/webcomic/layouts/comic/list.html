@@ -1,9 +1,5 @@
-{{ define "title" }}
-<!-- This will override the default value set in baseof.html; i.e., "{{.Site.Title}}" in the original example-->
-{{ .Title }} – {{ .Site.Title }}
-{{ end }}
 {{ define "main" }}
-<section class="comic-archive">
+<main class="comic-archive">
 	<header class="comic-archive__header">
 			<h1 class="text-center comic-archive__title">{{ .Params.pageTitle }}</h1>
 	</header>
@@ -47,5 +43,5 @@
 			</div>
 		</div>
 	</div>
-</section>
+</main>
 {{ end }}
