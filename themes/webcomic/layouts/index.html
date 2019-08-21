@@ -35,21 +35,6 @@
 			</div>
 			{{ end }}
 		</div>
-	
 	</div>
-		{{range last 1 $posts}}
-			<article class="post">
-				<h3><a 
-					href="{{.Permalink}}">
-						{{.Title}}
-				</a></h3>
-				<span class="post-meta">
-						Posted on <time>{{.Date.Format "January 1, 2006"}}</time>
-				</span>
-				<div class="post-summary">
-					{{.Content}}
-				</div>
-			</article>
-		{{ end}}
 </div>
 {{ end }}
