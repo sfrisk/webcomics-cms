@@ -1,10 +1,10 @@
 {{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\" ?>" | safeHTML }}
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>{{ if eq  .Title  .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{.}} on {{ end }}{{ .Site.Title }}{{ end }}</title>
+    <title>{{if (isset .Params "rssTitle") }}{{ .Params.rssTitle }}{{ else if eq  .Title  .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{.}} on {{ end }}{{ .Site.Title }}{{ end }}</title>
     <link>{{ .Permalink }}</link>
     <description>Recent content {{ if ne  .Title  .Site.Title }}{{ with .Title }}in {{.}} {{ end }}{{ end }}on {{ .Site.Title }}</description>
-    <generator>Hugo -- gohugo.io</generator>{{ with .Site.LanguageCode }}
+    {{ with .Site.LanguageCode }}
     <language>{{.}}</language>{{end}}{{ with .Site.Author.email }}
     <managingEditor>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</managingEditor>{{end}}{{ with .Site.Author.email }}
     <webMaster>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</webMaster>{{end}}{{ with .Site.Copyright }}
@@ -21,18 +21,17 @@
       {{ with .Site.Author.email }}<author>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</author>{{end}}
       <guid>{{ .Permalink }}</guid>
       <description>{{ .Summary | html }}</description>
-      {{if .Params.comic.rows }}
+      <content:encoded><![CDATA[
         {{ range .Params.comic.rows }}
-          {{if .cols}}
+          <div class="comic_row">
             {{ range .cols}}
-              <media:content
-                url="{{ $.Site.BaseURL }}{{ .panel }}"
-                medium="image"
-                expression="full"/>
-            {{ end }}
-          {{ end }}
+              <div class="comic_panel">
+                <img src="{{ .panel }}" class="comic_img" />
+              </div>
+            {{end}}
+          </div>
         {{ end }}
-      {{ end }}
+      ]]</content:encoded>
     </item>
     {{ end }}
   </channel>

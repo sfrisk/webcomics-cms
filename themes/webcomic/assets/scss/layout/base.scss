@@ -1,0 +1,11 @@
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.row {
+  @media (min-width: $bp_md) {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+  }
+}

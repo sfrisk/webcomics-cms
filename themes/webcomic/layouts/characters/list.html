@@ -1,5 +1,5 @@
 {{ define "main" }}
-<main class="container page">
+<div class="container page">
   <h1>{{ .Title }}</h1>
   <ul class="list-group">
     {{ range .Data.Pages }}
@@ -17,5 +17,5 @@
     </li>
     {{ end }}
   </ul>
-</main>
+</div>
 {{ end }}

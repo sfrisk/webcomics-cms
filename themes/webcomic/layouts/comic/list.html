@@ -1,11 +1,20 @@
 {{ define "main" }}
-<main class="comic-archive">
+<div class="comic-archive">
 	<header class="comic-archive__header">
 			<h1 class="text-center comic-archive__title">{{ .Params.pageTitle }}</h1>
 	</header>
-	<div class="container comic-archive__content">
+	<div class="container comic-archive__container">
 		<div class="row">
-			<div class="col-12 col-md-8">
+			<div class="comic-archive__about">
+				{{ .Content }}
+				{{ $comics := ($.Site.GetPage "section" "comic").Pages.ByPublishDate }}
+				{{ range first 1 $comics }}
+					<p class="text-center">
+							<a class="btn btn-primary btn-block" href="{{ .Permalink }}" role="button">First Comic</a>
+					</p>
+				{{ end }}
+			</div>
+			<div class="comic-archive__content">
 				<ul class="comic-archive__list">
 						{{ range (.Paginate (.Data.Pages.ByDate.Reverse)).Pages }}
 							<li class="comic-archive__item">
@@ -22,26 +31,7 @@
 					</ul>
 					{{ partial "pagination.html" . }}
 			</div>
-			<div class="col-12 col-md-4">
-				<div class="comic-archive__about">
-					{{ .Content }}
-					{{ $comics := ($.Site.GetPage "section" "comic").Pages.ByPublishDate }}
-					{{ range last 1 $comics }}
-						<p class="text-center">
-								<a class="btn btn-primary btn-block" href="{{ .Permalink }}" role="button">Latest Comic</a>
-						</p>
-					{{ end }}
-					{{ range first 1 $comics }}
-						<p class="text-center">
-								<a class="btn btn-primary btn-block" href="{{ .Permalink }}" role="button">First Comic</a>
-						</p>
-					{{ end }}
-					{{ range .AlternativeOutputFormats -}}
-<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
-{{ end -}}
-				</div>
-			</div>
 		</div>
 	</div>
-</main>
+</div>
 {{ end }}

@@ -1,0 +1,34 @@
+.comic-navigation {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 35em;
+  margin: 0 auto;
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    svg {
+      margin: .5em;
+      fill: #fff;
+    }
+    &:hover,
+    &:focus {
+      opacity: .75;
+    }
+    &.disabled {
+      opacity: .65;
+    }
+    // @media (min-width: $bp_md) {
+    //   color: #343a40;
+    //   svg {
+    //     fill: #343a40;
+    //   }
+    // }
+  }
+}

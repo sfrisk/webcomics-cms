@@ -21,9 +21,9 @@ collections:
       - {name: title, label: Name}
       - {name: thumbnail, label: Thumbnail, widget: image}
       - {label: Description, name: body, widget: markdown}
-  - name: post
-    label: Post
-    folder: content/post
+  - name: news
+    label: News
+    folder: content/news
     create: true
     fields:
       - {name: title, label: Title}

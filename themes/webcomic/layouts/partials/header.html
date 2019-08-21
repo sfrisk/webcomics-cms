@@ -1,7 +1,19 @@
-<div class="content">
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="{{ .Site.BaseURL }}">
-			{{ .Site.Title }}
+<header class="site-header">
+	<a href="#main-content" class="site-header__skipNav">Skip to main content</a>
+	<nav class="site-header__nav" aria-label="Main Navigation">
+		<a class="site-header__logo" title="{{ .Site.Title }}" href="{{ .Site.BaseURL }}">
+			<svg aria-hidden="true" height="48" width="48">
+				<use xlink:href="/sprites/solid.svg#home"></use>
+			</svg>
+			<span class="site-header__name">{{ .Site.Title }}</span>
+			<span aria-hidden="true" class="site-header__mobile-name">Home</span>
 		</a>
-		{{ partial "site-menu.html" . }}
+		{{ $currentPage := . }}
+		{{ range .Site.Menus.main }}
+				<a class="site-header__menu__link" href="{{.URL}}" title="{{ .Name }}">
+					{{ partial "menu-logo.html" . }}
+					<span>{{ .Name }}</span>
+				</a>
+		{{ end }}
 	</nav>
+</header>

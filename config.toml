@@ -13,16 +13,15 @@ paginatePath = "archive"
 theme = "webcomic"
 
 [outputs]
-  section = ["HTML", "JSON", "RSS"]
-  taxonomy = ["HTML", "json"]
+  section = ["HTML", "RSS"]
 
 [taxonomies]
   tag = "tags"
   category = "categories"
 
 [params]
+  author = "S Frisk"
   subtitle = "a webcomic site"
-  author = "Site Author"
   og_description = "test"
   og_image = ""
   og_site_name = "Webcomic CMS"
@@ -32,9 +31,4 @@ theme = "webcomic"
   creator = ""
   og_type = "website"
   og_local = "en-US"
-
-[menu]
-
-  [[menu.main]]
-  name = "About"
-  url = "/about/"
+  facebook_page = ""

@@ -2,9 +2,8 @@
 # See https://github.com/gohugoio/hugoThemes#themetoml for an example
 
 name = "Webcomic"
-licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE.md"
-description = ""
-tags = ["comic"]
+description = "A responsive webcomic theme"
+tags = ["comic", "webcomic", "responsive"]
 features = []
 min_version = "0.32.4"
 

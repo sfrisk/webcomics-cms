@@ -1,0 +1,28 @@
+.btn {
+  display: inline-block;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  background-color: #2f2f2f;
+  border: 1px solid #2f2f2f;
+  text-decoration: none;
+  padding: .25em;
+  border-radius: 4px;
+  &:hover {
+    opacity: .75;
+    text-decoration: none;
+  }
+
+  // Disabled comes first so active can properly restyle
+  &.disabled,
+  &:disabled {
+    opacity: .6;
+  }
+
+  &-block {
+    display: block;
+  }
+}

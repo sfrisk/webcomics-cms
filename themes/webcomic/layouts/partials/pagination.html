@@ -2,7 +2,7 @@
 
 {{ if gt $pag.TotalPages 1 }}
 <nav aria-label="Pagination Navigation">
-	<ul class="pagination justify-content-center" aria-label="pagination">
+	<ul class="pagination" aria-label="pagination">
     {{ $.Scratch.Set "__paginator.ellipsed" false }}
     {{ range $pag.Pagers }}
     {{ $right := sub .TotalPages .PageNumber }}
@@ -16,19 +16,19 @@
         {{ $.Scratch.Set "__paginator.ellipsed" true }}
     {{ end }}
 		{{ if $showNumber }}
-    <li class="page-item {{ if eq . $pag }}active{{end}}">
+    <li class="pagination__item {{ if eq . $pag }}active{{end}}">
 				{{ if eq . $pag }}
-				<a href="#" aria-current="page" class="page-link" >
+				  <a href="#" aria-current="page" class="pagination__link current" >
 				{{ else }}
-					<a href="{{ .URL }}" class="page-link" >
+					<a href="{{ .URL }}" class="pagination__link" >
 				{{ end}}
 					<span class="sr-only">Page</span>
 					{{ .PageNumber }}
 				</a>
 		</li>
     {{ else if ($.Scratch.Get "__paginator.shouldEllipse") }}
-    <li class="page-item">
-				<span class="page-link disabled" sr-only="true">&hellip;</span>
+    <li class="pagination__item">
+				<span class="pagination__link disabled" sr-only="true">&hellip;</span>
 		</li>
     {{ end }}
     {{ end }}

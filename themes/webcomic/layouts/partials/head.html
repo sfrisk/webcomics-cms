@@ -2,11 +2,10 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<base href="{{ $.Site.BaseURL }}">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	{{ $options := (dict "targetPath" "main.css" "outputStyle" "compressed" "enableSourceMap" true "includePaths" (slice "node_modules/myscss")) }}
 	{{ $styles := resources.Get "scss/main.scss" | toCSS $options }}
 	<link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen">
-	<title>{{ block "title" . }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
+	<title>{{ .Title }} - {{ .Site.Title }}</title>
 	<meta property="og:title" content="{{ if (isset .Params "og_title") }}{{ .Params.og_title }}{{ else }}{{ .Title }}{{ end }}">
 	<meta property="og:site_name" content="{{ .Site.Title }}">
 	<meta property="og:description" content="{{ if (isset .Params "og_description") }}{{ .Params.og_description }}{{ else }}{{ .Site.Params.og_description }}{{ end }}">

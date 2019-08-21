@@ -1,0 +1,13 @@
+{{ if eq .Name "Cast" }}
+  <svg aria-hidden="true" height="48" width="48">
+    <use xlink:href="/sprites/solid.svg#users"></use>
+  </svg>
+{{ else if eq .Name "Comic"}}
+  <svg aria-hidden="true" height="48" width="48">
+    <use xlink:href="/sprites/solid.svg#book-open"></use>
+  </svg>
+{{ else if eq .Name "News"}}
+  <svg aria-hidden="true" height="48" width="48">
+    <use xlink:href="/sprites/solid.svg#newspaper"></use>
+  </svg>
+{{ end }}

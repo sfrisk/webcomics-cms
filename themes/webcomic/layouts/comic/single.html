@@ -3,12 +3,12 @@
 {{ .Title }} – {{ .Site.Title }}
 {{ end }}
 {{ define "main" }}
-<article class="page comic container">
-	{{ partial "comic-nav.html" . }}
+<div class="page comic container">
+	<div class="comic-nav_top">
+		{{ partial "comic-nav.html" . }}
+	</div>
 	<header class="comic_header">
 		<h1 class="comic_title">{{ .Title }}</h1>
-		<time class="comic_date" datetime="{{ .Date }}">{{ .Date.Format "January 2, 2006" }}</time>
-		<address class="comic_author">&copy; {{ .Site.Params.Author }}</address>
 	</header>
 	{{ range .Params.comic.rows }}
 		<div class="comic_row">
@@ -19,7 +19,9 @@
 			{{end}}
 		</div>
 	{{ end }}
-	{{ partial "comic-nav.html" . }}
+	<!-- <div class="comic-nav_bottom">
+			{{ partial "comic-nav.html" . }}
+		</div> -->
 	<div class="comic_content">
 		{{ .Content }}
 		<strong>Characters</strong>
@@ -29,22 +31,30 @@
 		{{ end }}
 		</ul>
 	</div>
-</article>
+</div>
 
 <script >
-		document.addEventListener('keydown', (event) => {
-			const keyName = event.key;
-			switch (keyName) {
-				case "ArrowLeft":
-					document.getElementsByClassName('prev')[0].click();
-					return;
-				case "ArrowRight":
-					document.getElementsByClassName('next')[0].click();
-					return;
-				default:
-					return;
-			}
-		});
-	</script>
+		if (/Mobi|Android/i.test(navigator.userAgent)) {
+			window.onscroll = function() {
+					if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
+							document.getElementsByClassName('next')[0].click();
+					}
+			};
+		} else {
+			document.addEventListener('keydown', (event) => {
+				const keyName = event.key;
+				switch (keyName) {
+					case "ArrowLeft":
+						document.getElementsByClassName('prev')[0].click();
+						return;
+					case "ArrowRight":
+						document.getElementsByClassName('next')[0].click();
+						return;
+					default:
+						return;
+				}
+			});
+		}
+		</script>
 
 {{end}}
