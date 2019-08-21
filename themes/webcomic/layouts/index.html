@@ -4,7 +4,6 @@
 {{ end }}
 {{ define "main" }}
 {{ $comics := ($.Site.GetPage "section" "comic").Pages.ByPublishDate }}
-{{ $posts := ($.Site.GetPage "section" "post").Pages.ByPublishDate }}
 
 <div class="container page">
 	<div class="row">
