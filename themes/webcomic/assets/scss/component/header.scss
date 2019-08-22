@@ -55,10 +55,6 @@
     fill: #fff;
     width: 32px;
     height: 32px;
-    @media (min-width: $bp_sm) {
-      width: 48px;
-      height: 48px;
-    }
     @media (min-width: $bp_md) {
       display: none;
     }
@@ -108,10 +104,6 @@
     fill: #fff;
     width: 32px;
     height: 32px;
-    @media (min-width: $bp_sm) {
-      width: 48px;
-      height: 48px;
-    }
     @media (min-width: $bp_md) {
       display: none;
     }
