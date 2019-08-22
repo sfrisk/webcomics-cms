@@ -72,16 +72,6 @@
   }
 }
 
-.site-header__mobile-name {
-  display: none;
-  @media (min-width: $bp_sm) {
-    display: block;
-  }
-  @media (min-width: $bp_md) {
-    display: none;
-  }
-}
-
 .site-header__menu__link {
   display: flex;
   flex-direction: column;
@@ -96,7 +86,7 @@
   }
   span {
     display: none;
-    @media (min-width: $bp_sm) {
+    @media (min-width: $bp_md) {
       display: block;
     }
   }
