@@ -1,39 +1,30 @@
-{{ define "title" }}
-<!-- This will override the default value set in baseof.html; i.e., "{{.Site.Title}}" in the original example-->
-{{ .Title }} – {{ .Site.Title }}
-{{ end }}
 {{ define "main" }}
 {{ $comics := ($.Site.GetPage "section" "comic").Pages.ByPublishDate }}
-
-<div class="container page">
-	<div class="row">
-		<div class="col-sm-4">
-			{{ range last 1 $comics }}
-			<a href="{{ .Permalink }}" title="{{.Title}}">
-				<div class="card">
-					<img class="card-img" src="{{.Params.thumbnail}}" alt="{{.Title}}">
-					<div class="card-body">
-						<p class="card-text">
-							Read the Latest
-						</p>
-					</div>
-				</div>
+{{ $randomCharacter := shuffle ($.Site.GetPage "section" "characters").Pages | first 1 }}
+	<div class="home">
+		<header class="home__header">
+			<h1 class="home__title">{{.Title}}</h1>
+		</header>
+		{{ range last 1 $comics }}
+			<a class="home__link home__read-latest" href="{{ .Permalink }}" title="{{.Title}}">
+					<!-- <img class="card-img" src="{{.Params.thumbnail}}" alt="{{.Title}}"> -->
+					Read Latest Comic
 			</a>
-			{{ end }}
-		</div>
-		<div class="col-sm-4">
-			{{ range first 1 $comics }}
-			<a href="{{ .Permalink }}" title="{{.Title}}">
-			<div class="card">
-				<img class="card-img" src="{{.Params.thumbnail}}" alt="{{.Title}}">
-				<div class="card-body">
-					<p class="card-text">
-						Start at the beginning!	
-					</p>
-				</div>
-			</div>
-			{{ end }}
-		</div>
+		{{ end }}
+		{{ range first 1 $comics }}
+			<a class="home__link home__read-first" href="{{ .Permalink }}" title="{{.Title}}">
+				<!-- <img class="card-img" src="{{.Params.thumbnail}}" alt="{{.Title}}"> -->
+				New Reader? Start Here!
+			</a>
+		{{ end }}
+		<a class="home__link home__patreon" href="https://patreon.com" title="Patreon">
+			<!-- <img class="card-img" src="{{.Params.thumbnail}}" alt="{{.Title}}"> -->
+			Join Us on Patreon!
+		</a>
+		<!-- {{ range first 1 $randomCharacter }}
+			<a class="home__link home__character" href="{{ .Permalink }}" title="{{.Title}}">
+				Featured Character: {{ .Title }}
+			</a>
+		{{ end }} -->
 	</div>
-</div>
 {{ end }}
