@@ -5,6 +5,7 @@
   align-items: center;
   width: 100%;
   z-index: 1;
+  padding-bottom: env(safe-area-inset-bottom);
   @media (min-width: $bp_md) {
     position: -webkit-sticky;
     position: sticky;
