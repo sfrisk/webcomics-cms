@@ -32,16 +32,23 @@
 					>
 			{{ end }}
 				{{ $desktop_2400x := $desktop.Resize "2400x" }}
+				{{ $desktop_2000x := $desktop.Resize "2000x" }}
+				{{ $desktop_1600x := $desktop.Resize "1600x" }}
 				{{ $desktop_1200x := $desktop.Resize "1200x" }}
 				{{ $desktop_1000x := $desktop.Resize "1000x" }}
+				{{ $desktop_800x := $desktop.Resize "800x" }}
+
 				<source 
 					{{if (isset .Params "comic_mobile") }}
 						media="(min-width: 768px)"
 					{{ end }}
 					sizes="(max-width: 1200px) 100vw, 1200px" 
 					srcset="
+						{{ $desktop_800x.Permalink }} 800w,
 						{{ $desktop_1000x.Permalink }} 1000w,
 						{{ $desktop_1200x.Permalink }} 1200w,
+						{{ $desktop_1600x.Permalink }} 1600w,
+						{{ $desktop_2000x.Permalink }} 2000w,
 						{{ $desktop_2400x.Permalink }} 2400w"
 					sizes="100vw"
 					>
