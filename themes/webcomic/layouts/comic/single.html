@@ -11,28 +11,44 @@
 		<h1 class="comic__title">{{ .Title }}</h1>
 	</header>
 
-	{{ if or (isset .Params "comic_mobile") (isset .Params "comic_desktop")}}
+	{{ if (isset .Params "comic_desktop")}}
+		{{ $desktop := resources.Get .Params.comic_desktop}}
 		<picture class="comic__whole">
 			<!-- TODO: Add Image processing to this for 1x, 2x, etc-->
 			{{ if (isset .Params "comic_mobile") }}
-				{{ $image := resources.Get .Params.comic_mobile}}
-				{{ $image_1x := $image.Resize "767x" }}
-					<source media="(max-width: 767px)" srcset="{{ $image.Permalink }} 2x, {{ $image_1x.Permalink }} 1x">
+				{{ $mobile := resources.Get .Params.comic_mobile}}
+				{{ $mobile_1200x := $mobile.Resize "1200x" }}
+				{{ $mobile_1000x := $mobile.Resize "1000x" }}
+				{{ $mobile_600x := $mobile.Resize "600x" }}
+				{{ $mobile_500x := $mobile.Resize "500x" }}
+				<source 
+					media="(max-width: 768px)"
+					sizes="(max-width: 768px) 100vw, 1200px" 
+					srcset="
+						{{ $mobile_500x.Permalink }} 500w,
+						{{ $mobile_600x.Permalink }} 600w,
+						{{ $mobile_1000x.Permalink }} 1000w,
+						{{ $mobile_1200x.Permalink }} 1200w"
+					sizes="100vw"
+					>
 			{{ end }}
-			{{ if (isset .Params "comic_desktop") }}
-				{{ $image := resources.Get .Params.comic_desktop}}
-				{{ $image_1x := $image.Resize "1200x" }}
-				<source media="(min-width: 768px)" srcset="{{ $image.Permalink }} 2x, {{ $image_1x.Permalink }} 1x">
-			{{ end }}
-			{{ if (isset .Params "comic_mobile") }}
-				{{ $image := resources.Get .Params.comic_mobile}}
-				<img src="{{ $image.Permalink }}" alt="Comic for {{ .Title }}">
-			{{ else}}
-				{{ $image := resources.Get .Params.comic_desktop }}
-				<img src="{{ $image.Permalink }}" alt="Comic for {{ .Title }}">
-			{{ end }}
-
-		</picture>
+				{{ $desktop_2400x := $desktop.Resize "2400x" }}
+				{{ $desktop_1200x := $desktop.Resize "1200x" }}
+				{{ $desktop_1000x := $desktop.Resize "1000x" }}
+				<source 
+					{{if (isset .Params "comic_mobile") }}
+						media="(min-width: 768px)"
+					{{ end }}
+					sizes="(max-width: 1200px) 100vw, 1200px" 
+					srcset="
+						{{ $desktop_1000x.Permalink }} 1000w,
+						{{ $desktop_1200x.Permalink }} 1200w,
+						{{ $desktop_2400x.Permalink }} 2400w"
+					sizes="100vw"
+					>
+				<img
+					src="{{ $desktop_1200x.Permalink }}"
+					alt="Comic for {{ .Title }}">
 	{{ else }}
 		{{ range .Params.comic.rows }}
 			<div class="comic__row">
