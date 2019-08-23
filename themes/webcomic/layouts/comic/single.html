@@ -10,18 +10,30 @@
 	<header class="comic_header">
 		<h1 class="comic_title">{{ .Title }}</h1>
 	</header>
-	{{ range .Params.comic.rows }}
-		<div class="comic_row">
-			{{ range .cols}}
-				<div class="comic_panel">
-					<img src="{{ .panel }}" class="comic_img" />
-				</div>
-			{{end}}
-		</div>
+	{{ if or (isset .Params "comic_mobile") (isset .Params "comic_desktop")}}
+		<picture class="comic__whole">
+			<!-- TODO: Add Image processing to this for 1x, 2x, etc-->
+			{{ if (isset .Params "comic_mobile") }}
+				<source media="(man-width: 767px)" srcset="{{ .Params.comic_mobile }}">
+			{{ end }}
+			{{ if (isset .Params "comic_desktop") }}
+				<source media="(min-width: 768px)" srcset="{{ .Params.comic_desktop }}">
+			{{ end }}
+			<img src="{{ if (isset .Params "comic_mobile") }}{{ .Params.comic_mobile }}{{else}}{{ .Params.comic_desktop }}{{ end}}" alt="Comic for {{ .Title }}">
+	
+		</picture>
+	{{ else }}
+		{{ range .Params.comic.rows }}
+			<div class="comic_row">
+				{{ range .cols}}
+					<div class="comic_panel">
+						<img src="{{ .panel }}" class="comic_img" />
+					</div>
+				{{end}}
+			</div>
+		{{ end }}
 	{{ end }}
-	<!-- <div class="comic-nav_bottom">
-			{{ partial "comic-nav.html" . }}
-		</div> -->
+
 	<div class="comic_content">
 		{{ .Content }}
 		<strong>Characters</strong>

@@ -36,6 +36,13 @@
 	line-height: 1;
 }
 
+.comic__whole {
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+}
+
 @media (min-width: $bp_md) {
 	.comic_row {
 		display: flex;
@@ -45,7 +52,14 @@
 
 .comic_panel {
 	padding: .5em;
- 	text-align: center;
+	 height: 33em;
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
+	 @media (min-width: $bp_md) {
+		height: auto;
+		display: block;
+	 }
 }
 
 .comic_img {

@@ -13,7 +13,7 @@
 	{{ end }}
 	<li class="comic-navigation__item 	{{if not .PrevInSection}}disabled{{ end }}">
 		<a {{if .PrevInSection}} href="{{.PrevInSection.Permalink}}"{{else}} aria-disabled="true" tabindex="-1" {{end}} class="comic-navigation__link prev">
-			<svg aria-hidden="true" height="18" width="18">
+			<svg aria-hidden="true" height="18" width="10">
 				<use xlink:href="/sprites/solid.svg#angle-left"></use>
 			</svg>
 			Prev <span class="sr-only">Comic</span>
@@ -31,7 +31,7 @@
 			{{ end }}
 				class="comic-navigation__link next {{if not .NextInSection}}disabled{{ end }}">
 				Next <span class="sr-only">Comic</span>
-				<svg aria-hidden="true" height="18" width="18">
+				<svg aria-hidden="true" height="18" width="10">
 					<use xlink:href="/sprites/solid.svg#angle-right"></use>
 				</svg>
 			{{if .NextInSection}}

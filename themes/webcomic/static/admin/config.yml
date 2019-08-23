@@ -44,8 +44,14 @@ collections:
         valueField: title
         displayFields: [title]
         multiple: true
+      - name: comic_desktop
+        label: Desktop Comic Image (Upload a 2x version of your comic here)
+        widget: image
+      - name: comic_mobile
+        label: Mobile Comic Image (Upload a 760px wide version of your comic for mobile devices)
+        widget: image
       - name: comic
-        label: Comic
+        label: Comic (Panel By Panel - Use this to upload each panel individually to be used in both mobile/desktop layouts)
         widget: object
         fields:
           - label: Rows
