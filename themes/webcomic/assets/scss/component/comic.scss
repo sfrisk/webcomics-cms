@@ -51,11 +51,8 @@
 }
 
 .comic__panel {
-	padding: .5em;
-	 height: 33em;
-	 display: flex;
-	 align-items: center;
-	 justify-content: center;
+		padding: .5em;
+		text-align: center;
 	 @media (min-width: $bp_md) {
 		height: auto;
 		display: block;
