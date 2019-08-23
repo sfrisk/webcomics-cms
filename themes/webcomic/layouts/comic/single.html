@@ -15,19 +15,39 @@
 		<picture class="comic__whole">
 			<!-- TODO: Add Image processing to this for 1x, 2x, etc-->
 			{{ if (isset .Params "comic_mobile") }}
-				<source media="(man-width: 767px)" srcset="{{ .Params.comic_mobile }}">
+				{{ $image := resources.Get .Params.comic_mobile}}
+				{{ $image_1x := $image.Resize "767x" }}
+					<source media="(max-width: 767px)" srcset="{{ $image.Permalink }} 2x, {{ $image_1x.Permalink }} 1x">
 			{{ end }}
 			{{ if (isset .Params "comic_desktop") }}
-				<source media="(min-width: 768px)" srcset="{{ .Params.comic_desktop }}">
+				{{ $image := resources.Get .Params.comic_desktop}}
+				{{ $image_1x := $image.Resize "1200x" }}
+				<source media="(min-width: 768px)" srcset="{{ $image.Permalink }} 2x, {{ $image_1x.Permalink }} 1x">
 			{{ end }}
-			<img src="{{ if (isset .Params "comic_mobile") }}{{ .Params.comic_mobile }}{{else}}{{ .Params.comic_desktop }}{{ end}}" alt="Comic for {{ .Title }}">
+			{{ if (isset .Params "comic_mobile") }}
+				{{ $image := resources.Get .Params.comic_mobile}}
+				<img src="{{ $image.Permalink }}" alt="Comic for {{ .Title }}">
+			{{ else}}
+				{{ $image := resources.Get .Params.comic_desktop }}
+				<img src="{{ $image.Permalink }}" alt="Comic for {{ .Title }}">
+			{{ end }}
+
 		</picture>
 	{{ else }}
 		{{ range .Params.comic.rows }}
 			<div class="comic__row">
 				{{ range .cols}}
 					<div class="comic__panel">
-						<img src="{{ .panel }}" class="comic__img" />
+						{{ $image := resources.Get .panel}}
+						{{ $noRetina := print "x" (div $image.Height 2) }}
+						{{ $image_1x := $image.Resize $noRetina }}
+						{{ $image_mobile := $image.Resize "x500" }}
+						{{ $image_mobile2x := $image.Resize "x1000" }}
+						<picture>
+							<source media="(max-width: 767px)" srcset="{{ $image_mobile2x.Permalink }} 2x, {{ $image_mobile.Permalink }} 1x">
+							<source media="(min-width: 768px)" srcset="{{ $image.Permalink }} 2x, {{ $image_1x.Permalink }} 1x">
+							<img src="{{ $image_mobile.Permalink }}" class="comic__img">
+						</picture>
 					</div>
 				{{end}}
 			</div>
