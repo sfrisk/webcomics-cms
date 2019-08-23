@@ -14,7 +14,6 @@
 	{{ if (isset .Params "comic_desktop")}}
 		{{ $desktop := resources.Get .Params.comic_desktop}}
 		<picture class="comic__whole">
-			<!-- TODO: Add Image processing to this for 1x, 2x, etc-->
 			{{ if (isset .Params "comic_mobile") }}
 				{{ $mobile := resources.Get .Params.comic_mobile}}
 				{{ $mobile_1200x := $mobile.Resize "1200x" }}
@@ -49,7 +48,7 @@
 				<img
 					src="{{ $desktop_1200x.Permalink }}"
 					alt="Comic for {{ .Title }}">
-	{{ else }}
+		{{ else }}
 		{{ range .Params.comic.rows }}
 			<div class="comic__row">
 				{{ range .cols}}
