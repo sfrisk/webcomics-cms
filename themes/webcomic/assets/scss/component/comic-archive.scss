@@ -53,14 +53,11 @@
   }
   &:hover,
   &:focus	{
-    background: #fbfbfb;
+		background: #fbfbfb;
+		text-decoration: none;
+		color: black;
+		outline: 0;
   }
-
-}
-
-.comic-archive__link:hover {
-	text-decoration: none;
-	color: black;
 }
 
 .comic-archive__item__title {
