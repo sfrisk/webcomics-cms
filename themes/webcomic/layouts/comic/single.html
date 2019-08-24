@@ -113,7 +113,24 @@
 	});
 	var loadMore = document.getElementsByClassName('comic__load-more')[0];
 
-	if (/Mobi|Andorid/i.test(navigator.userAgent)) {
+	var isMobile = {
+    Windows: function() {
+        return /IEMobile/i.test(navigator.userAgent);
+    },
+    Android: function() {
+        return /Android/i.test(navigator.userAgent);
+    },
+    BlackBerry: function() {
+        return /BlackBerry/i.test(navigator.userAgent);
+    },
+    iOS: function() {
+        return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
+    }
+};
+	if (isMobile.any()) {
 		window.addEventListener('touchmove', function (event) {
 			if (window.matchMedia('screen and (max-width: 768px)').matches) {
 					if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 300) {
