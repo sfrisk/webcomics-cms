@@ -43,6 +43,13 @@
 			}
 		}
 	}
+	&__footer {
+		&__image {
+			@media (min-width: $bp_md) {
+				display: none;
+			}
+		}
+	}
 	&__load-more {
 		height: 200px;
 		display: flex;
