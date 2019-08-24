@@ -73,7 +73,7 @@
 	}
 }
 
-.comic-nav_top {
+.comic-nav__top {
 	position: fixed;
 	width: 100%;
 	top: 0;
@@ -86,9 +86,24 @@
 	}
 }
 
-.comic-nav_bottom {
-  display: none;
-  @media (min-width: $bp_md) {
-    display: block;
-  }
+.comic__load-more {
+	height: 200px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	@media (min-width: $bp_md) {
+		display: none;
+	}
+	svg {
+		transition: fill 1s linear; 
+	}
+	&.active {
+		svg {
+			fill: green;
+		}
+	}
+	&.hidden {
+		display: none;
+	}
 }

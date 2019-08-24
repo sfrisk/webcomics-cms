@@ -4,7 +4,7 @@
 {{ end }}
 {{ define "main" }}
 <div class="page comic container">
-	<div class="comic-nav_top">
+	<div class="comic-nav__top">
 		{{ partial "comic-nav.html" . }}
 	</div>
 	<header class="comic__header">
@@ -86,30 +86,53 @@
 		{{ end }}
 		</ul>
 	</div>
+
+	{{if .NextInSection}}
+		<div class="comic__load-more">
+			Scroll Down For Next Episode! <br>
+			<svg aria-hidden="true" height="50" width="50">
+				<use xlink:href="/sprites/solid.svg#arrow-circle-down"></use>
+			</svg>
+		</div>
+	{{ end }}
 </div>
 
 <script >
-		if (/Mobi|Android/i.test(navigator.userAgent)) {
-			window.onscroll = function() {
+	document.addEventListener('keydown', (event) => {
+		const keyName = event.key;
+		switch (keyName) {
+			case "ArrowLeft":
+				document.getElementsByClassName('prev')[0].click();
+				return;
+			case "ArrowRight":
+				document.getElementsByClassName('next')[0].click();
+				return;
+			default:
+				return;
+		}
+	});
+	var loadMore = document.getElementsByClassName('comic__load-more')[0];
+
+	if (/Mobi|Andorid/i.test(navigator.userAgent)) {
+		window.addEventListener('touchmove', function (event) {
+			if (window.matchMedia('screen and (max-width: 768px)').matches) {
+					if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 300) {
+						loadMore.classList.add('active');
+					}
+			}
+		});
+		window.addEventListener('touchend', function (event) {
+			loadMore.classList.remove('active')
+			if (window.matchMedia('screen and (max-width: 768px)').matches) {
 					if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
 							document.getElementsByClassName('next')[0].click();
 					}
-			};
-		} else {
-			document.addEventListener('keydown', (event) => {
-				const keyName = event.key;
-				switch (keyName) {
-					case "ArrowLeft":
-						document.getElementsByClassName('prev')[0].click();
-						return;
-					case "ArrowRight":
-						document.getElementsByClassName('next')[0].click();
-						return;
-					default:
-						return;
-				}
-			});
-		}
-		</script>
+			}
+		});
+	} else {
+		loadMore.classList.add('hidden')
+	}
+		
+</script>
 
 {{end}}
