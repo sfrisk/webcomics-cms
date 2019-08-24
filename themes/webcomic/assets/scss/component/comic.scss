@@ -1,8 +1,10 @@
-.comic.container {
-	padding-top: 4em;
-}
 
 .comic {
+	padding-top: 2em;
+	@media (min-width: $bp_md) {
+		padding-top: 1em;
+	}
+
 	&__header {
 		padding: .5em;
 		&__title {

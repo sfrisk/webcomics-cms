@@ -3,6 +3,15 @@
   max-width: 1200px;
 }
 
+.page {
+	background: #fff;
+	padding: 1em;
+	margin: 0 auto;
+  @media (min-width: $bp_md) {
+    margin: 1em auto;
+  }
+}
+
 .row {
   @media (min-width: $bp_md) {
     display: grid;
