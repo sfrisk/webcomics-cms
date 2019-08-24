@@ -96,6 +96,7 @@
 		display: none;
 	}
 	svg {
+		margin: 1em;
 		transition: fill .5s linear; 
 	}
 	&.active {
