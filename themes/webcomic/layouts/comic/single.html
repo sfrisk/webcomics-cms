@@ -4,11 +4,29 @@
 {{ end }}
 {{ define "main" }}
 <div class="page comic container">
-	<div class="comic-nav__top">
-		{{ partial "comic-nav.html" . }}
-	</div>
+	{{ partial "comic-nav.html" . }}
 	<header class="comic__header">
 		<h1 class="comic__title">{{ .Title }}</h1>
+		{{ if (isset .Params "comic_header_mobile")}}
+			{{ $header_mobile := resources.Get .Params.comic_header_mobile}}
+			{{ $header_mobile_1200x := $header_mobile.Resize "1200x" }}
+			{{ $header_mobile_1000x := $header_mobile.Resize "1000x" }}
+			{{ $header_mobile_600x := $header_mobile.Resize "600x" }}
+			{{ $header_mobile_500x := $header_mobile.Resize "500x" }}
+			<picture class="comic__header__image">
+				<source 
+					sizes="(max-width: 1200px) 100vw, 1200px" 
+					srcset="
+						{{ $header_mobile_500x.Permalink }} 500w,
+						{{ $header_mobile_600x.Permalink }} 600w,
+						{{ $header_mobile_1000x.Permalink }} 1000w,
+						{{ $header_mobile_1200x.Permalink }} 1200w"
+					>
+				<img
+					src="{{ $header_mobile_1200x.Permalink }}"
+					alt="{{ .Title }} by {{ .Site.Params.author }} ">
+			</picture>
+		{{ end }}
 	</header>
 
 	{{ if (isset .Params "comic_desktop")}}
@@ -60,7 +78,7 @@
 		{{ range .Params.comic.rows }}
 			<div class="comic__row">
 				{{ range .cols}}
-					<div class="comic__panel">
+					<div class="comic__panel ">
 						{{ $image := resources.Get .panel}}
 						{{ $noRetina := print "x" (div $image.Height 2) }}
 						{{ $image_1x := $image.Resize $noRetina }}
@@ -69,13 +87,35 @@
 						<picture>
 							<source media="(max-width: 767px)" srcset="{{ $image_mobile2x.Permalink }} 2x, {{ $image_mobile.Permalink }} 1x">
 							<source media="(min-width: 768px)" srcset="{{ $image.Permalink }} 2x, {{ $image_1x.Permalink }} 1x">
-							<img src="{{ $image_mobile.Permalink }}" class="comic__img">
+							<img src="{{ $image_mobile.Permalink }}" class="comic__panel__image">
 						</picture>
 					</div>
 				{{end}}
 			</div>
 		{{ end }}
 	{{ end }}
+	<footer class="comic__footer">
+		{{ if (isset .Params "comic_footer_mobile")}}
+		{{ $footer_mobile := resources.Get .Params.comic_footer_mobile}}
+		{{ $footer_mobile_1200x := $footer_mobile.Resize "1200x" }}
+		{{ $footer_mobile_1000x := $footer_mobile.Resize "1000x" }}
+		{{ $footer_mobile_600x := $footer_mobile.Resize "600x" }}
+		{{ $footer_mobile_500x := $footer_mobile.Resize "500x" }}
+		<picture class="comic__footer__image">
+			<source 
+				sizes="(max-width: 1200px) 100vw, 1200px" 
+				srcset="
+					{{ $footer_mobile_500x.Permalink }} 500w,
+					{{ $footer_mobile_600x.Permalink }} 600w,
+					{{ $footer_mobile_1000x.Permalink }} 1000w,
+					{{ $footer_mobile_1200x.Permalink }} 1200w"
+				>
+			<img
+				src="{{ $footer_mobile_1200x.Permalink }}"
+				alt="{{ .Title }} by {{ .Site.Params.author }} ">
+		</picture>
+	{{ end }}
+	</footer>
 
 	<div class="comic__content">
 		{{ .Content }}

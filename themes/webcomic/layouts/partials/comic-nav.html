@@ -1,6 +1,7 @@
 {{ $url := .Permalink }}
 {{ $comics := ($.Site.GetPage "section" .Section).Pages.ByPublishDate }}
-	<ul class="comic-navigation" aria-label="comic navigation">
+<div class="comic-navigation">
+	<ul class="comic-navigation__list" aria-label="comic navigation">
 	{{ range first 1 $comics }}
 		<li class="comic-navigation__item {{if eq $url .Permalink}}disabled{{ end }}">
 				<a {{if eq $url .Permalink}} aria-disabled="true" tabindex="-1"{{else}} href="{{ .Permalink }}" {{end}} class="comic-navigation__link">
@@ -60,3 +61,4 @@
 		</li>
 	{{ end }}
 	</ul>
+</div>

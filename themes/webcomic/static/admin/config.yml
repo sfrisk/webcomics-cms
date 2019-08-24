@@ -44,6 +44,14 @@ collections:
         valueField: title
         displayFields: [title]
         multiple: true
+      - name: comic_header_mobile
+        label: Comic Header (Mobile)
+        required: false
+        widget: image
+      - name: comic_footer_mobile
+        label: Comic Footer (Mobile)
+        required: false
+        widget: image
       - name: comic_desktop
         label: Desktop Comic Image (Upload a 2x version of your comic here)
         required: false
@@ -67,8 +75,8 @@ collections:
                   - name: panel
                     label: Panel
                     widget: image
-      - {name: thumbnail, label: Thumbnail, widget: image}
-      - {name: og_title, label: Social Share Title, widget: string}
-      - {name: og_image, label: Social Share Image (1200 x 630px), widget: image}
-      - {name: og_description, label: Social Share Description, widget: text}
+      - {name: thumbnail, label: Thumbnail (Appears in Comic Archive), widget: image}
+      - {name: og_title, label: Social Share Title, widget: string, required: false}
+      - {name: og_image, label: Social Share Image (1200 x 630px), widget: image, required: false}
+      - {name: og_description, label: Social Share Description, widget: text, required: false}
       - {name: og_type, widget: hidden, default: article}

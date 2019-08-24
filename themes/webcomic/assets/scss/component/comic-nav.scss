@@ -1,13 +1,24 @@
 .comic-navigation {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 35em;
-  margin: 0 auto;
-
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+  padding: .5em 1em;
+  background: #343a40;
+  @media (min-width: $bp_md) {
+		top: 3.35em;
+		background: #64717d;
+  }
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 35em;
+    margin: 0 auto;
+  }  
   &__link {
     display: inline-flex;
     align-items: center;
