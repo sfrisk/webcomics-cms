@@ -46,13 +46,13 @@ body {
 	min-height: 100%;
   grid-template-rows: 1fr auto;
 	font-size: 1rem;
-	margin-bottom: 48px;
+	padding-bottom: 100px;
 	padding-bottom: env(safe-area-inset-bottom);;
 	@media (min-width: $bp_sm) {
-		margin-bottom: 87px;
+		padding-bottom: 87px;
 	}
 	@media (min-width: $bp_md) {
-		margin-bottom: 0;
+		padding-bottom: 0;
 	}
 }
 
