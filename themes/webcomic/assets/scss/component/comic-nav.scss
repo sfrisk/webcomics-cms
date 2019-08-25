@@ -18,12 +18,29 @@
     align-items: center;
     max-width: 35em;
     margin: 0 auto;
-  }  
+    color: #fff;
+  } 
+  &__item {
+    &.current {
+      text-align: center;
+      max-width: 40%;
+      font-size: .8em;
+      @media (min-width: $bp_md) {
+        font-size: 1em;
+      }
+    }
+  } 
   &__link {
     display: inline-flex;
     align-items: center;
     color: #fff;
     text-decoration: none;
+    span {
+      display: none;
+      @media (min-width: $bp_md) {
+        display: inline-block;
+      }
+    }
     svg {
       margin: .5em;
       fill: #fff;

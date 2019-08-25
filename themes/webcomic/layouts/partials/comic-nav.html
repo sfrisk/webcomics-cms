@@ -8,7 +8,7 @@
 					<svg aria-hidden="true" height="18" width="18">
 						<use xlink:href="/sprites/solid.svg#angle-double-left"></use>
 					</svg>
-					First <span class="sr-only">Comic</span>
+					<span>First <span class="sr-only">Comic</span></span>
 			</a>
 		</li>
 	{{ end }}
@@ -17,13 +17,12 @@
 			<svg aria-hidden="true" height="18" width="10">
 				<use xlink:href="/sprites/solid.svg#angle-left"></use>
 			</svg>
-			Prev <span class="sr-only">Comic</span>
+			<span>Prev <span class="sr-only">Comic</span></span>
 		</a>
 	</li>
-	<!-- <li class="comic-navigation__item active">
+	<li class="comic-navigation__item current" aria-hidden="true">
 			{{ .Title }}
-			<span class="sr-only">(Current Comic)</span>
-	</li> -->
+	</li>
 	<li class="comic-navigation__item">
 			{{if .NextInSection}}
 				<a href="{{.NextInSection.Permalink}}"
@@ -31,7 +30,7 @@
 				<span
 			{{ end }}
 				class="comic-navigation__link next {{if not .NextInSection}}disabled{{ end }}">
-				Next <span class="sr-only">Comic</span>
+				<span>Next <span class="sr-only">Comic</span></span>
 				<svg aria-hidden="true" height="18" width="10">
 					<use xlink:href="/sprites/solid.svg#angle-right"></use>
 				</svg>
@@ -49,7 +48,7 @@
 				<a href="{{ .Permalink }}"
 			{{ end }}
 				class="comic-navigation__link last {{if eq $url .Permalink}}disabled{{ end }}">
-				Last <span class="sr-only">Comic</span>
+				<span>Last <span class="sr-only">Comic</span></span>
 				<svg aria-hidden="true" height="18" width="18">
 					<use xlink:href="/sprites/solid.svg#angle-double-right"></use>
 				</svg>
