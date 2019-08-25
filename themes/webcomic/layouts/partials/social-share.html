@@ -1,0 +1,72 @@
+{{ $share_subject :=  "Thought you might enjoy this!" }}
+{{ $share_statement :=  (print "Check out "  .Title " on " .Site.Title " " .Permalink) }}
+<div class="social-share">
+  <ul class="social-share__list">
+    <li class="social-share__item">
+      <a
+        class="social-share__link"
+        title="Share on Twitter"
+        href="https://twitter.com/intent/tweet?text={{ htmlEscape $share_statement }}"
+        target="comic-share">
+        <span class="sr-only">Share on Twitter</span>
+        <svg aria-hidden="true"
+         class="social-share__icon">
+				  <use xlink:href="/sprites/brands.svg#twitter"></use>
+			  </svg>
+      </a>
+    </li>
+    <li class="social-share__item">
+      <a 
+        class="social-share__link"
+        title="Share on Facebook"
+        href="https://www.facebook.com/sharer/sharer.php?u={{ htmlEscape $share_statement }}"
+        target="comic-share">
+        <span class="sr-only">Share on Facebook</span>
+        <svg aria-hidden="true"
+         class="social-share__icon">
+          <use xlink:href="/sprites/brands.svg#facebook-f"></use>
+        </svg>
+      </a>
+    </li>
+    <li class="social-share__item">
+      <a 
+        title="Share via Email"
+        class="social-share__link"
+        href="mailto:?&subject={{ htmlEscape $share_subject }}&body={{ htmlEscape $share_statement }}">
+        <span class="sr-only">Share via Email</span>
+        <svg
+          aria-hidden="true"
+          class="social-share__icon">
+          <use xlink:href="/sprites/solid.svg#envelope"></use>
+        </svg>
+      </a>
+    </li>
+    <li class="social-share__item">
+      <button
+        aria-label="Copy URL"
+        onClick="copy()"
+        id="copy_url__button"
+        class="social-share__link">
+        <span class="sr-only">Copy URL</span>
+        <svg aria-hidden="true" 
+          class="social-share__icon">
+          <use xlink:href="/sprites/solid.svg#copy"></use>
+        </svg>
+      </button>
+      </li>
+  </ul>
+</div>
+
+<script type="text/javascript">
+  function copy(e) {
+    event.preventDefault();
+    var el = document.createElement('textarea');
+    el.value = {{ .Permalink }};
+    el.setAttribute('readonly', '');
+    el.style = {position: 'absolute', left: '-9999px'};
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  }
+</script>

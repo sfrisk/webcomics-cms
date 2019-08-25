@@ -23,7 +23,7 @@
   &__item {
     &.current {
       text-align: center;
-      max-width: 40%;
+      width: 40%;
       font-size: .8em;
       @media (min-width: $bp_md) {
         font-size: 1em;

@@ -1,0 +1,22 @@
+.social-share {
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__item {
+    margin: 0 2em;
+  }
+  &__link {
+    border: 0;
+    background: transparent;
+    display: block;
+  }
+  &__icon {
+    height: 2em;
+    width: 2em;
+  }
+}

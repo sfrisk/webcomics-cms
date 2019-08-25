@@ -6,8 +6,9 @@
 <div class="posts container">
 		<h1>{{.Title}}</h1>
 		<p class="post-meta">
-							<time>{{.Date.Format "January 1, 2006"}}</time>
+				<time>{{.Date.Format "January 1, 2006"}}</time>
 		</p>
 		{{.Content}}
+		{{ partial "social-share.html" . }}
 </div>
 {{ end }}

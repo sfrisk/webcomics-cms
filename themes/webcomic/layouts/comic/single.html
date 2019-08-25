@@ -114,19 +114,23 @@
 	</picture>
 {{ end }}
 
+	{{ partial "social-share.html" . }}
 
 	<header class="comic__header">
 			<h1 class="comic__title">{{ .Title }}</h1>
+			<p class="comic-meta">
+				<time>{{.Date.Format "January 1, 2006"}}</time>
+			</p>
 	</header>
 
 	<div class="comic__content">
 		{{ .Content }}
-		<strong>Characters</strong>
+		<!-- <strong>Characters</strong>
 		<ul class="list-unstyled">
 		{{ range .Params.characters }}
 				<li><a href="/characters/{{ . | urlize }}">{{ . }}</a></li>
 		{{ end }}
-		</ul>
+		</ul> -->
 	</div>
 
 	{{if .NextInSection}}
@@ -134,7 +138,7 @@
 			<svg aria-hidden="true" height="50" width="50">
 				<use xlink:href="/sprites/solid.svg#arrow-circle-down"></use>
 			</svg>
-			Next Episode
+			Next Page
 		</div>
 	{{ end }}
 </div>
