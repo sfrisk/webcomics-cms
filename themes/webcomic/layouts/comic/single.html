@@ -117,21 +117,31 @@
 	{{ partial "social-share.html" . }}
 
 	<header class="comic__header">
-			<h1 class="comic__title">{{ .Title }}</h1>
-			<p class="comic-meta">
+			<h1 class="comic__header_title">{{ .Title }}</h1>
+			<p class="comic__meta">
 				<time>{{.Date.Format "January 1, 2006"}}</time>
 			</p>
 	</header>
 
+	{{ with .Content}}
 	<div class="comic__content">
-		{{ .Content }}
-		<!-- <strong>Characters</strong>
+		{{- . -}}
+	</div>
+	{{ end }}
+
+			<!-- <strong>Characters</strong>
 		<ul class="list-unstyled">
 		{{ range .Params.characters }}
 				<li><a href="/characters/{{ . | urlize }}">{{ . }}</a></li>
 		{{ end }}
 		</ul> -->
+
+	{{ if (isset .Params "transcript")}}
+	<div class="comic__transcript">
+		<h2>Transcript</h2>
+		{{ .Params.transcript | markdownify}}
 	</div>
+	{{ end }}
 
 	{{if .NextInSection}}
 		<div class="comic__load-more">
