@@ -3,22 +3,38 @@
 <div class="comic-navigation">
 	<ul class="comic-navigation__list" aria-label="comic navigation">
 	{{ range first 1 $comics }}
-		<li class="comic-navigation__item {{if eq $url .Permalink}}disabled{{ end }}">
-				<a {{if eq $url .Permalink}} aria-disabled="true" tabindex="-1"{{else}} href="{{ .Permalink }}" {{end}} class="comic-navigation__link">
-					<svg aria-hidden="true" height="18" width="18">
-						<use xlink:href="/sprites/solid.svg#angle-double-left"></use>
-					</svg>
-					<span>First <span class="sr-only">Comic</span></span>
-			</a>
-		</li>
-	{{ end }}
-	<li class="comic-navigation__item 	{{if not .PrevInSection}}disabled{{ end }}">
-		<a {{if .PrevInSection}} href="{{.PrevInSection.Permalink}}"{{else}} aria-disabled="true" tabindex="-1" {{end}} class="comic-navigation__link prev">
-			<svg aria-hidden="true" height="18" width="10">
-				<use xlink:href="/sprites/solid.svg#angle-left"></use>
+		{{if eq $url .Permalink}}
+			<span
+		{{else}}
+			<a href="{{ .Permalink }}"
+		{{ end }}
+			class="comic-navigation__link first {{if eq $url .Permalink}}disabled{{ end }}">
+			<svg aria-hidden="true" height="18" width="18">
+				<use xlink:href="/sprites/solid.svg#angle-double-left"></use>
 			</svg>
-			<span>Prev <span class="sr-only">Comic</span></span>
-		</a>
+			<span>First <span class="sr-only">Comic</span></span>
+		{{if eq $url .Permalink}}
+			</span>
+		{{else}}
+			</a>
+		{{ end }}
+	{{ end }}
+	<li class="comic-navigation__item">
+			{{if .PrevInSection}}
+				<a href="{{.PrevInSection.Permalink}}"
+			{{else}}
+				<span
+			{{ end }}
+				class="comic-navigation__link prev {{if not .PrevInSection}}disabled{{ end }}">
+				<svg aria-hidden="true" height="18" width="10">
+					<use xlink:href="/sprites/solid.svg#angle-left"></use>
+				</svg>
+				<span>Prev <span class="sr-only">Comic</span></span>
+			{{if .PrevInSection}}
+				</a>
+			{{else}}
+				</span>
+			{{ end }}
 	</li>
 	<li class="comic-navigation__item current" aria-hidden="true">
 			{{ .Title }}
