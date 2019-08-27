@@ -1,10 +1,7 @@
 <header class="site-header">
 	<a href="#main-content" class="site-header__skipNav">Skip to main content</a>
-	{{ if (isset .Params "transcript")}}
-		<a href="#comic-transcript" class="site-header__skipNav">Skip to comic transcription</a>
-	{{ end }}
 	<nav class="site-header__nav" aria-label="Main Navigation">
-		<a class="site-header__logo" title="{{ .Site.Title }}" aria-label="{{ .Site.Title }}" href="{{ .Site.BaseURL }}">
+		<a class="site-header__logo" title="{{ .Site.Title }}" href="{{ .Site.BaseURL }}">
 			<svg aria-hidden="true" height="48" width="48">
 				<use xlink:href="/sprites/solid.svg#home"></use>
 			</svg>
@@ -12,11 +9,10 @@
 		</a>
 		{{ $currentPage := . }}
 		{{ range .Site.Menus.main }}
-				<a class="site-header__menu__link" href="{{.URL}}" title="{{ .Name }}" aria-label="{{ .Name }}">
+				<a class="site-header__menu__link" href="{{.URL}}" title="{{ .Name }}">
 					{{ partial "menu-logo.html" . }}
 					<span>{{ .Name }}</span>
 				</a>
 		{{ end }}
-		{{ partial "socials.html" . }}
 	</nav>
 </header>

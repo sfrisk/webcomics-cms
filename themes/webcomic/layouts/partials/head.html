@@ -6,7 +6,6 @@
 	{{ $styles := resources.Get "scss/main.scss" | toCSS $options }}
 	<link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen">
 	<title>{{ .Title }} - {{ .Site.Title }}</title>
-	<meta name="description" content="{{ if (isset .Params "og_description") }}{{ .Params.og_description }}{{ else }}{{ .Site.Params.og_description }}{{ end }}">
 	<meta property="og:title" content="{{ if (isset .Params "og_title") }}{{ .Params.og_title }}{{ else }}{{ .Title }}{{ end }}">
 	<meta property="og:site_name" content="{{ .Site.Title }}">
 	<meta property="og:description" content="{{ if (isset .Params "og_description") }}{{ .Params.og_description }}{{ else }}{{ .Site.Params.og_description }}{{ end }}">

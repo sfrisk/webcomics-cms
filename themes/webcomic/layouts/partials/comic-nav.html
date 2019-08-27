@@ -1,15 +1,15 @@
 {{ $url := .Permalink }}
 {{ $comics := ($.Site.GetPage "section" .Section).Pages.ByPublishDate }}
 <div class="comic-navigation">
-	<nav class="comic-navigation__list" aria-label="comic navigation">
+	<ul class="comic-navigation__list" aria-label="comic navigation">
 	{{ range first 1 $comics }}
 		{{if eq $url .Permalink}}
 			<span
 		{{else}}
-			<a href="{{ .Permalink }}" aria-label="First Comic"
+			<a href="{{ .Permalink }}"
 		{{ end }}
 			class="comic-navigation__link first {{if eq $url .Permalink}}disabled{{ end }}">
-			<svg aria-hidden="true" height="18" width="18">r
+			<svg aria-hidden="true" height="18" width="18">
 				<use xlink:href="/sprites/solid.svg#angle-double-left"></use>
 			</svg>
 			<span>First <span class="sr-only">Comic</span></span>
@@ -19,8 +19,9 @@
 			</a>
 		{{ end }}
 	{{ end }}
+	<li class="comic-navigation__item">
 			{{if .PrevInSection}}
-				<a href="{{.PrevInSection.Permalink}}" aria-label="Previous Comic"
+				<a href="{{.PrevInSection.Permalink}}"
 			{{else}}
 				<span
 			{{ end }}
@@ -34,11 +35,13 @@
 			{{else}}
 				</span>
 			{{ end }}
-	<span class="comic-navigation__item current" aria-hidden="true">
+	</li>
+	<li class="comic-navigation__item current" aria-hidden="true">
 			{{ .Title }}
-	</span>
+	</li>
+	<li class="comic-navigation__item">
 			{{if .NextInSection}}
-				<a href="{{.NextInSection.Permalink}}" aria-label="Next Comic"
+				<a href="{{.NextInSection.Permalink}}"
 			{{else}}
 				<span
 			{{ end }}
@@ -52,11 +55,13 @@
 			{{else}}
 				</span>
 			{{ end }}
+	</li>
 	{{ range last 1 $comics }}
+		<li class="comic-navigation__item">
 			{{if eq $url .Permalink}}
 				<span
 			{{else}}
-				<a href="{{ .Permalink }}" aria-label="Last Comic"
+				<a href="{{ .Permalink }}"
 			{{ end }}
 				class="comic-navigation__link last {{if eq $url .Permalink}}disabled{{ end }}">
 				<span>Last <span class="sr-only">Comic</span></span>
@@ -68,6 +73,7 @@
 			{{else}}
 				</a>
 			{{ end }}
+		</li>
 	{{ end }}
-			</nav>
+	</ul>
 </div>

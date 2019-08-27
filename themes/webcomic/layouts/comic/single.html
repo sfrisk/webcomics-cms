@@ -1,3 +1,7 @@
+{{ define "title" }}
+<!-- This will override the default value set in baseof.html; i.e., "{{.Site.Title}}" in the original example-->
+{{ .Title }} – {{ .Site.Title }}
+{{ end }}
 {{ define "main" }}
 <div class="page comic container">
 	{{ partial "comic-nav.html" . }}
@@ -82,7 +86,7 @@
 						<picture>
 							<source media="(max-width: 767px)" srcset="{{ $image_mobile2x.Permalink }} 2x, {{ $image_mobile.Permalink }} 1x">
 							<source media="(min-width: 768px)" srcset="{{ $image.Permalink }} 2x, {{ $image_1x.Permalink }} 1x">
-							<img src="{{ $image_mobile.Permalink }}" class="comic__panel__image" alt="Comic Panel">
+							<img src="{{ $image_mobile.Permalink }}" class="comic__panel__image">
 						</picture>
 					</div>
 				{{end}}
@@ -133,7 +137,7 @@
 		</ul> -->
 
 	{{ if (isset .Params "transcript")}}
-	<div class="comic__transcript" id="comic-transcript">
+	<div class="comic__transcript">
 		<h2>Transcript</h2>
 		{{ .Params.transcript | markdownify}}
 	</div>

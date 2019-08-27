@@ -3,8 +3,7 @@
 <div class="social-share">
   <ul class="social-share__list">
     <li class="social-share__item">
-      <a 
-        rel="noreferrer"
+      <a
         class="social-share__link"
         title="Share on Twitter"
         href="https://twitter.com/intent/tweet?text={{ htmlEscape $share_statement }}"
@@ -18,7 +17,6 @@
     </li>
     <li class="social-share__item">
       <a 
-        rel="noreferrer"
         class="social-share__link"
         title="Share on Facebook"
         href="https://www.facebook.com/sharer/sharer.php?u={{ htmlEscape $share_statement }}"
@@ -31,8 +29,7 @@
       </a>
     </li>
     <li class="social-share__item">
-      <a  
-        rel="noreferrer"
+      <a 
         title="Share via Email"
         class="social-share__link"
         href="mailto:?&subject={{ htmlEscape $share_subject }}&body={{ htmlEscape $share_statement }}">
@@ -62,7 +59,7 @@
 
 <script type="text/javascript">
   function copy(e) {
-    e.preventDefault();
+    event.preventDefault();
     var el = document.createElement('textarea');
     el.value = {{ .Permalink }};
     el.setAttribute('readonly', '');
