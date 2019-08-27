@@ -61,9 +61,12 @@
 }
 
 .comic-archive__item__title {
-	font-size: 1.2em;
+	font-size: .8em;
 	text-align: left;
 	flex-grow: 2;
+	@media (min-width: $bp_md) {
+		font-size: 1.2em
+	}
 }
 
 .comic-archive__item__thumb {
@@ -74,12 +77,15 @@
 }
 
 .comic-archive__item__date {
-	font-size: .8em;
+	font-size: .7em;
 	color: #b1b1b1;
 	letter-spacing: 1px;
 	text-align: right;
   flex-grow: 1;
-  min-width: 100px;
+	min-width: 100px;
+	@media (min-width: $bp_md) {
+		font-size: .8em
+	}
 }
 
 .comic-archive__about {
