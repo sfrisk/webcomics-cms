@@ -184,7 +184,7 @@
 };
 	if (isMobile.any()) {
 		window.addEventListener('touchmove', function (event) {
-			if (window.matchMedia('screen and (max-width: 768px)').matches) {
+			if (window.innerWidth < 768) {
 					if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 300) {
 						loadMore.classList.add('active');
 					}
@@ -192,7 +192,7 @@
 		});
 		window.addEventListener('touchend', function (event) {
 			loadMore.classList.remove('active')
-			if (window.matchMedia('screen and (max-width: 768px)').matches) {
+			if (window.innerWidth < 768) {
 					if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
 							document.getElementsByClassName('next')[0].click();
 					}
