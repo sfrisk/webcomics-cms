@@ -1,7 +1,7 @@
 <header class="site-header">
-	<a href="#main-content" class="site-header__skipNav">Skip to main content</a>
+	<a href="{{.Permalink}}#main-content" class="site-header__skipNav">Skip to main content</a>
 	{{ if (isset .Params "transcript")}}
-		<a href="#comic-transcript" class="site-header__skipNav">Skip to comic transcription</a>
+		<a href="{{.Permalink}}#comic-transcript" class="site-header__skipNav">Skip to comic transcription</a>
 	{{ end }}
 	<nav class="site-header__nav" aria-label="Main Navigation">
 		<a class="site-header__logo" title="{{ .Site.Title }}" aria-label="{{ .Site.Title }}" href="{{ .Site.BaseURL }}">

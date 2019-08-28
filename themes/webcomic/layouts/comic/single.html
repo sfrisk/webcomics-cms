@@ -67,12 +67,17 @@
 					>
 				<img
 					src="{{ $desktop_1200x.Permalink }}"
-					alt="Comic for {{ .Title }}">
+					{{ if (isset .Params "transcript")}}
+						aria-details=”comic-transcript”
+					{{ end }}
+					alt="">
 		</picture>
 		{{ else }}
+		{{ $.Scratch.Set "counter" 0 }}
 		{{ range .Params.comic.rows }}
 			<div class="comic__row">
 				{{ range .cols}}
+					{{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}
 					<div class="comic__panel ">
 						{{ $image := resources.Get .panel}}
 						{{ $noRetina := print "x" (div $image.Height 2) }}
@@ -82,7 +87,14 @@
 						<picture>
 							<source media="(max-width: 767px)" srcset="{{ $image_mobile2x.Permalink }} 2x, {{ $image_mobile.Permalink }} 1x">
 							<source media="(min-width: 768px)" srcset="{{ $image.Permalink }} 2x, {{ $image_1x.Permalink }} 1x">
-							<img src="{{ $image_mobile.Permalink }}" class="comic__panel__image" alt="Comic Panel">
+							<img
+								src="{{ $image_mobile.Permalink }}"
+								class="comic__panel__image"
+								alt=""
+								{{ if isset . "transcript" }} 
+									aria-details=”comic-transcript-panel-{{$.Scratch.Get "counter"}}”
+								{{ end }}
+							>
 						</picture>
 					</div>
 				{{end}}
@@ -106,7 +118,7 @@
 			>
 		<img
 			src="{{ $footer_mobile_1200x.Permalink }}"
-			alt="{{ .Title }} by {{ .Site.Params.author }} ">
+			alt="">
 	</picture>
 {{ end }}
 
@@ -132,12 +144,25 @@
 		{{ end }}
 		</ul> -->
 
-	{{ if (isset .Params "transcript")}}
 	<div class="comic__transcript" id="comic-transcript">
 		<h2>Transcript</h2>
-		{{ .Params.transcript | markdownify}}
+		{{ if (isset .Params "transcript")}}
+			{{ .Params.transcript | markdownify}}
+		{{ end }}
+		{{ $.Scratch.Set "counter" 0 }}
+		{{ range .Params.comic.rows }}
+				{{ range .cols}}
+					{{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}
+						{{ if isset . "transcript" }} 
+						<div id="comic-transcript-panel-{{$.Scratch.Get "counter"}}">
+							<h3>Panel {{$.Scratch.Get "counter"}}</h3>
+								{{ .transcript | markdownify}}
+						</div>
+						{{ end }}
+				{{end}}
+		{{ end }}
+
 	</div>
-	{{ end }}
 
 	{{if .NextInSection}}
 		<div class="comic__load-more">
