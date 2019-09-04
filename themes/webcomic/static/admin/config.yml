@@ -7,19 +7,40 @@ public_folder: assets/images
 
 collections:
   - name: page
-    label: Page
-    folder: content
-    create: true
-    fields:
-      - {name: title, label: Title}
-      - {name: body, label: Body, widget: markdown}
+    label: Pages
+    files:
+      - name: 'home'
+        label: 'Home'
+        file: "content/_index.md"
+        fields:
+          - {name: title, label: Title}
+          - {name: weight, label: Weight, widget: number }
+          - {name: body, label: Body, widget: markdown}
+      - name: 'cast'
+        label: 'Cast'
+        file: "content/character/_index.md"
+        fields:
+          - {name: title, label: Title}
+          - {name: weight, label: Weight, widget: number }
+          - {name: body, label: Body, widget: markdown}
+      - name: 'comic-index'
+        label: 'Comic'
+        file: "content/comic/_index.md"
+        fields:
+          - {name: pageTitle, label: Title}
+          - {name: title, label: Navigation Title}
+          - {name: weight, label: Weight, widget: number }
+          - {name: rssTitle, label: RSS Feed Title}
+          - {name: body, label: Body, widget: markdown}
   - name: character
     label: Character
-    folder: content/characters
+    folder: content/character
+    filter: {field: "type", value: "character"}
     create: true
     fields:
       - {name: title, label: Name}
       - {name: type, value: character, widget: hidden}
+      - {name: featured, label: Featured, value: false, widget: boolean}
       - {name: thumbnail, label: Thumbnail, widget: image}
       - {label: Description, name: body, widget: markdown}
   - name: news
@@ -34,6 +55,7 @@ collections:
     label: Comic
     folder: content/comic
     create: true
+    filter: {field: "type", value: "comic"}
     fields:
       - {name: title, label: Title}
       - {name: date, label: Date, widget: datetime}
