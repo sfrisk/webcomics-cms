@@ -1,0 +1,29 @@
+{{ define "main" }}
+<div class="container page character">
+    <header>
+      <h1>{{.Title}}</h1>
+    </header>
+    {{.Content}}
+
+  {{ $character := .Title }}
+  {{ $comics := where (where .Site.Pages.ByPublishDate "Type" "comic") ".Params.characters" "intersect" (slice $character)  }}
+
+  <h2>Appearences</h2>
+  <dl>
+    <dt>Comics:</dt>
+    <dd>{{ len $comics }}</dd>
+    {{ range last 1 $comics }}
+      <dt>Recent Appearance:</dt>
+      <dd><a href="{{.Permalink}}" title=".Title">{{.Title}}</a></dd>
+    {{ end}}
+    {{ range first 1 $comics }}
+      <dt>First Appearance:</dt>
+      <dd><a href="{{.Permalink}}" title=".Title">{{.Title}}</a></dd>
+    {{ end}}
+  </dl>
+
+
+
+
+</div>
+{{ end }}

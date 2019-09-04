@@ -210,8 +210,10 @@
 	if (isMobile.any()) {
 		window.addEventListener('touchmove', function (event) {
 			if (window.innerWidth < 768) {
-					if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 300) {
+					if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
 						loadMore.classList.add('active');
+					} else {
+						loadMore.classList.remove('active')
 					}
 			}
 		});

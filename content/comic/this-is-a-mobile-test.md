@@ -1,6 +1,7 @@
 ---
 title: This is a Mobile Test
 date: 2019-08-22T23:51:27.494Z
+type: comic
 characters:
   - Akorlara
   - Horbin

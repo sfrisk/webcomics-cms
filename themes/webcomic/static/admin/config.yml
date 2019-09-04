@@ -19,6 +19,7 @@ collections:
     create: true
     fields:
       - {name: title, label: Name}
+      - {name: type, value: character, widget: hidden}
       - {name: thumbnail, label: Thumbnail, widget: image}
       - {label: Description, name: body, widget: markdown}
   - name: news
@@ -36,6 +37,7 @@ collections:
     fields:
       - {name: title, label: Title}
       - {name: date, label: Date, widget: datetime}
+      - {name: type, value: comic, widget: hidden}
       - label: Characters
         name: characters
         widget: relation

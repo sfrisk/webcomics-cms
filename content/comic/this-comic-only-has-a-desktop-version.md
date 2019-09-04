@@ -1,6 +1,7 @@
 ---
 title: This comic only has a desktop version
 date: 2019-08-23T00:37:33.248Z
+type: comic
 characters:
   - Lulu
 comic_desktop: /assets/images/wenches-113.jpg
