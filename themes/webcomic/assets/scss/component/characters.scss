@@ -1,0 +1,50 @@
+.characters {
+  &__group {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+    grid-auto-rows: 1fr;
+    &::before {
+      content: '';
+      width: 0;
+      padding-bottom: 100%;
+      grid-row: 1 / 1;
+      grid-column: 1 / 1;
+    }
+    > *:first-child {
+      grid-row: 1 / 1;
+      grid-column: 1 / 1;
+    }
+    > * {
+      padding: 1em;
+    }
+  }
+  &__item {
+    position: relative;
+    &__thumb {
+      transition: opacity .5s ease-out;
+    }
+    &:hover, &:focus {
+      img {
+        opacity: .25;
+      }
+      div {
+        opacity: 1;
+      }
+    }
+  }
+  &__details {
+    transition: opacity .5s ease-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $site-text;
+    font-weight: bold;
+    font-size: 2em;
+    opacity: 0;
+  }
+}

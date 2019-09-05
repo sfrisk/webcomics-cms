@@ -1,13 +1,14 @@
-{{ define "title" }}
-<!-- This will override the default value set in baseof.html; i.e., "{{.Site.Title}}" in the original example-->
-{{ .Title }} – {{ .Site.Title }}
-{{ end }}
 {{ define "main" }}
-<div class="posts container">
-		<h1>{{.Title}}</h1>
-		<p class="post-meta">
-				<time>{{.Date.Format "January 1, 2006"}}</time>
-		</p>
+<div class="page__header">
+    <div class="text-center page__title">News</div>
+</div>
+<div class="post container page">
+		<header class="post__header">
+			<h1>{{ .Title }}</h1>
+			<p class="post-meta">
+					<time>{{.Date.Format "January 1, 2006"}}</time>
+			</p>
+		</header>
 		{{.Content}}
 		{{ partial "social-share.html" . }}
 </div>

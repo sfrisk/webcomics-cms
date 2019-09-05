@@ -6,9 +6,18 @@
 .page {
 	background: $page-background;
 	padding: 1em;
-	margin: 0 auto;
-  @media (min-width: $bp_md) {
-    margin: 1em auto 4em;
+  margin: -3em auto 3em;
+
+  &__header {
+    width: 100%;
+    background: $header-bg;
+  }
+  &__title {
+    color: $header-color;
+    padding: 2em 1em 3em 1em;
+    margin: 0;
+    text-align: center;
+    font-size: 2em;
   }
 }
 

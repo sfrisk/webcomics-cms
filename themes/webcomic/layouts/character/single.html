@@ -1,9 +1,9 @@
 {{ define "main" }}
+<header class="page__header">
+    <h1 class="text-center page__title">{{ .Title }}</h1>
+</header>
 <div class="container page character">
-    <header>
-      <h1>{{.Title}}</h1>
-    </header>
-    {{.Content}}
+  {{.Content}}
 
   {{ $character := .Title }}
   {{ $comics := where (where .Site.Pages.ByPublishDate "Type" "comic") ".Params.characters" "intersect" (slice $character)  }}
@@ -21,9 +21,6 @@
       <dd><a href="{{.Permalink}}" title=".Title">{{.Title}}</a></dd>
     {{ end}}
   </dl>
-
-
-
 
 </div>
 {{ end }}

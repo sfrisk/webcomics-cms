@@ -22,6 +22,7 @@
 @import "./component/comic-nav.scss";
 @import "./component/pagination.scss";
 @import "./component/social-share.scss";
+@import "./component/characters.scss";
 @import "./component/home.scss";
 
 html {
@@ -63,17 +64,6 @@ a {
 img {
 	max-width: 100%;
 	height: auto;
-}
-
-.posts {
-	background: $page-background;
-	padding: 1em;
-}
-
-@media (min-width: 992px) {
-	.posts {
-		margin: 1em auto;
-	}
 }
 
 .post-list {
