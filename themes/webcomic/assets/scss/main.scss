@@ -30,7 +30,7 @@ html {
   height: 100%;
   font-family: sans-serif;
 	line-height: 1.15;
-	background: #343a40;
+	background: $html-background;
 }
 
 *, *:before, *:after {
@@ -38,11 +38,11 @@ html {
 }
 
 body {
-	background: #f5f5f5;;
+	background-color: $site-background;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 400;
 	line-height: 1.45;
-	color: #333;
+	color: $site-text;
 	display: grid;
 	min-height: 100%;
   grid-template-rows: 1fr auto;
@@ -56,13 +56,17 @@ body {
 	}
 }
 
+a {
+	color: $site-link;
+}
+
 img {
 	max-width: 100%;
 	height: auto;
 }
 
 .posts {
-	background: #fff;
+	background: $page-background;
 	padding: 1em;
 }
 
@@ -86,11 +90,10 @@ img {
 	text-decoration: none;
 	font-size: 1.5rem;
 	line-height: 1.4;
-	color: black;
 }
 
 .post-meta {
-	color: #333;
+	color: $site-text;
 	font-size: .8em;
 	display: block;
 	margin-top: 0;

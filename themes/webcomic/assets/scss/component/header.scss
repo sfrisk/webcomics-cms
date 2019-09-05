@@ -1,12 +1,13 @@
 .site-header {
   position: fixed;
   bottom: 0;
-  background: #343a40;
+  background: $site-header-mobile-bg;
   align-items: center;
   width: 100%;
   z-index: 1;
   padding-bottom: env(safe-area-inset-bottom);
   @media (min-width: $bp_md) {
+    background: $site-header-bg;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
@@ -15,21 +16,19 @@
   }
   a, button {
     text-decoration: none;
-    &:hover, &:focus {
-      opacity: .75;
-    }
   }
   &__skipNav {
     position: fixed;
     top: -50px;
     left: 0;
-    background: black;
+    background: $skip-nav-bg;
     border-radius: 1px;
-    color: #fff;
+    color: $site-header-bg;
     padding: 8px;
-    z-index: 100;
+    z-index: 10000;
     &:focus {
       top: 0;
+      opacity: 1;
       outline-color:transparent;	
       transition: top .1s ease-in;
     }
@@ -43,13 +42,13 @@
     }
   }
   &__logo { 
-    color: #fff;
+    color: $site-header-link;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: .5em 1em;
     svg {
-      fill: #fff;
+      fill: $site-header-mobile-link;
       width: 32px;
       height: 32px;
       @media (min-width: $bp_md) {
@@ -75,7 +74,7 @@
     padding: .5em 1em;
     background: transparent;
     border: 0;
-    color: #fff;
+    color: $site-header-mobile-link;
     &.social-trigger {
       @media (min-width: $bp_md) {
         display: none;
@@ -85,7 +84,7 @@
       width: auto;
       display: inline-block;
       padding: .5rem;
-      color: #fff;
+      color: $site-header-link;
     }
     span {
       display: none;
@@ -94,7 +93,7 @@
       }
     }
     svg {
-      fill: #fff;
+      fill: $site-header-mobile-link;
       width: 32px;
       height: 32px;
       @media (min-width: $bp_md) {
@@ -121,7 +120,7 @@
     flex-direction: column;
     justify-content: flex-end;
     a {
-      background: black;
+      background: $header-socials-bg;
       border-radius: 100%;
       display: flex;
       align-items: center;
@@ -129,18 +128,23 @@
       height: 2.5em;
       min-height: 2.5em; 
       width: 2.5em;
+      border: 2px solid $header-socials-color;
       margin: .5em 0 0 0;
+      color: $header-socials-color;
       @media (min-height: 600) {
         height: 3em;
         min-height: 3em; 
         width: 3em;
         margin: 1em 0 0 0;
       }
+      @media (min-width: $bp_md) {
+        border: 0;
+      }
     }
     svg {
       height: 1em;
       width: 1em;
-      fill: white;
+      fill: $site-header-link;
       @media (min-height: 600) {
         height: 1.5em;
         width: 1.5em;
@@ -170,7 +174,7 @@
         margin: 0 .5em;
         height: 1.5em;
         width: 1.5em;
-        fill: #fff;
+        fill: $header-socials-color;
       }
     }
     &__trigger {

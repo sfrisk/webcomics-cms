@@ -17,8 +17,7 @@ $grid-size-lg: 100 / 3 + vw;
     grid-column: 1 / 1;
   }
   > * {
-    background: rgba(0,0,0,0.1);
-    border: 1px white solid;
+    border: 1px $page-background solid;
   }
   &__link {
     margin: .5em;
@@ -26,6 +25,7 @@ $grid-size-lg: 100 / 3 + vw;
     text-align: center;
     align-items: center;
     justify-content: center;
+    background: $page-background;
     @media (min-width: $bp_md) {
       margin: 1em;
     }
@@ -36,6 +36,7 @@ $grid-size-lg: 100 / 3 + vw;
     text-align: center;
     align-items: center;
     justify-content: center;
+    background: $page-background;
     grid-row: 1 / 1;
     grid-column-start: 1;
     grid-column-end: span 2;

@@ -2,12 +2,12 @@
   display: inline-block;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
-  color: #fff;
+  color: $button-color;
   text-align: center;
   vertical-align: middle;
   user-select: none;
-  background-color: #2f2f2f;
-  border: 1px solid #2f2f2f;
+  background-color: $button-bg;
+  border: 1px solid $button-bg;
   text-decoration: none;
   padding: .25em;
   border-radius: 4px;

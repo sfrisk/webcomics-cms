@@ -4,10 +4,10 @@
 	top: 0;
 	left: 0;
   padding: .5em 1em;
-  background: #343a40;
+  background: $site-header-bg;
   @media (min-width: $bp_md) {
 		top: 3.35em;
-		background: #64717d;
+		background: $comic-nav-bg;
   }
   &__list {
     margin: 0;
@@ -18,7 +18,7 @@
     align-items: center;
     max-width: 35em;
     margin: 0 auto;
-    color: #fff;
+    color: $comic-nav-link;
   } 
   &__item {
     &.current {
@@ -33,7 +33,7 @@
   &__link {
     display: inline-flex;
     align-items: center;
-    color: #fff;
+    color: $comic-nav-link;
     text-decoration: none;
     span {
       display: none;
@@ -43,7 +43,7 @@
     }
     svg {
       margin: .5em;
-      fill: #fff;
+      fill: $comic-nav-link;
     }
     &:hover,
     &:focus {

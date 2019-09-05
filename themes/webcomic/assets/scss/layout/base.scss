@@ -4,11 +4,11 @@
 }
 
 .page {
-	background: #fff;
+	background: $page-background;
 	padding: 1em;
 	margin: 0 auto;
   @media (min-width: $bp_md) {
-    margin: 1em auto;
+    margin: 1em auto 4em;
   }
 }
 

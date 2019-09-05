@@ -57,11 +57,11 @@
 		}
 		svg {
 			margin: 1em;
-			transition: fill .5s linear; 
+			transition: fill .25s linear; 
 		}
 		&.active {
 			svg {
-				fill: green;
+				fill: $site-link;
 			}
 		}
 		&.hidden {

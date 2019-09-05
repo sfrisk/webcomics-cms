@@ -10,7 +10,7 @@
   }
   &__link {
     text-decoration: none;
-    color: #2f2f2f;
+    color: $pagination-color;
     &.current {
       font-weight: bold;
     }
