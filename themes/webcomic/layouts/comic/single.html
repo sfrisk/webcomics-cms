@@ -68,7 +68,7 @@
 				<img
 					src="{{ $desktop_1200x.Permalink }}"
 					{{ if (isset .Params "transcript")}}
-						aria-details=”comic-transcript”
+						aria-details="comic-transcript"
 					{{ end }}
 					alt="">
 		</picture>
@@ -92,7 +92,7 @@
 								class="comic__panel__image"
 								alt="{{ if isset . "transcript" }}{{.transcript}}{{end}}"
 								{{ if isset . "transcript" }} 
-									aria-details=”comic-transcript-panel-{{$.Scratch.Get "counter"}}”
+									aria-details="comic-transcript-panel-{{$.Scratch.Get "counter"}}"
 								{{ end }}
 							>
 						</picture>
