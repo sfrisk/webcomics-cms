@@ -1,11 +1,9 @@
 {{ define "main" }}
-<main>
-    <article>
-        <header>
-            <h1>{{.Title}}</h1>
-        </header>
-        {{.Content}}
-    </article>
+<header class="page__header">
+    <h1 class="text-center page__title">{{ .Title }}</h1>
+</header>
+<div class="container page">
+    {{ .Content }}
     <ul>
     {{ range .Data.Pages }}
         <li>
@@ -13,5 +11,5 @@
         </li>
     {{ end }}
     </ul>
-</main>
+</div>
 {{ end }}
