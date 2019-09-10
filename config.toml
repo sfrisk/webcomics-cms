@@ -4,7 +4,7 @@ publishDir = "public"
 staticDir = "static"
 assetDir = "static"
 buildDrafts = false
-baseURL = ""
+baseURL = "/"
 canonifyURLs = true
 title = "Tavern Wenches"
 sectionPagesMenu = "main"
@@ -21,8 +21,8 @@ theme = "webcomic"
 
 [params]
   author = "S Frisk"
-  subtitle = "a webcomic site"
-  og_description = "test"
+  subtitle = "A Dungeon Not to Be Mastered"
+  og_description = "A webcomic following the lives of the tavern wenches serving in an RPG campaign."
   og_image = ""
   og_site_name = "Webcomic CMS"
   twitter_site = "TavernWenches"
