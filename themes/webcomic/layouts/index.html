@@ -1,30 +1,36 @@
 {{ define "main" }}
 {{ $comics := ($.Site.GetPage "section" "comic").Pages.ByPublishDate }}
 {{ $randomCharacter := shuffle ($.Site.GetPage "section" "characters").Pages | first 1 }}
+<header class="home__header">
+	<h1 class="home__title">{{.Params.Subtitle}}</h1>
+	<img class="home__banner" src="/assets/images/home.png" />
+</header>	
 	<div class="home">
-		<header class="home__header">
-			<h1 class="home__title">{{.Title}}</h1>
-		</header>
 		{{ range last 1 $comics }}
 			<a class="home__link home__read-latest" href="{{ .Permalink }}" title="{{.Title}}">
 					<!-- <img class="card-img" src="{{.Params.thumbnail}}" alt="{{.Title}}"> -->
-					Read Latest Comic
+					<span>Latest</span>
 			</a>
 		{{ end }}
 		{{ range first 1 $comics }}
 			<a class="home__link home__read-first" href="{{ .Permalink }}" title="{{.Title}}">
 				<!-- <img class="card-img" src="{{.Params.thumbnail}}" alt="{{.Title}}"> -->
-				New Reader? Start Here!
+				<span>Start At The Beginning</span>
 			</a>
 		{{ end }}
 		<a class="home__link home__patreon" href="https://patreon.com" title="Patreon">
 			<!-- <img class="card-img" src="{{.Params.thumbnail}}" alt="{{.Title}}"> -->
-			Join Us on Patreon!
+			<span>Join Us on Patreon!</span>
 		</a>
-		<!-- {{ range first 1 $randomCharacter }}
-			<a class="home__link home__character" href="{{ .Permalink }}" title="{{.Title}}">
-				Featured Character: {{ .Title }}
-			</a>
-		{{ end }} -->
+		<h2 class="home__subheader">Meet the Wenches</h2>
+		<a class="home__link home__wenches">
+				<span>Veronica</span>
+		</a>
+		<a class="home__link home__wenches">
+				<span>Anita</span>
+		</a>
+		<a class="home__link home__wenches">
+				<span>Lulu</span>
+		</a>
 	</div>
 {{ end }}

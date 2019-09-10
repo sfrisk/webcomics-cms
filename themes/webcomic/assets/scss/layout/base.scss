@@ -1,13 +1,19 @@
 .container {
-  margin: 0 auto;
-  max-width: 1200px;
+  margin: 0;
+  width: auto;
+  @media (min-width: $bp_md) {
+    margin: 0 2em;
+  }
+  @media (min-width: $bp_xl) {
+    margin: 0 auto;
+    max-width: calc(1400px - 2em);
+  }
 }
 
 .page {
 	background: $page-background;
-	padding: 1em;
-  margin: -3em auto 3em;
-
+  padding: 1em;
+  margin-top: -3em;
   &__header {
     width: 100%;
     background: $header-bg;

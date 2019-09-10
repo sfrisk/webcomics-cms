@@ -3,6 +3,7 @@
     <h1 class="text-center page__title">{{ .Title }}</h1>
 </header>
 <div class="container page">
+	{{ .Content }}
 	<ul>
 		{{ range .Data.Pages }}
 			<a href="{{.Permalink}}">{{.Title}}</a>

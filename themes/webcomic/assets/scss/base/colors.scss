@@ -1,39 +1,42 @@
-$grain: #d7cec7;
-$blackboard: #565656;
-$oxblood: #76323f;
-$tan: #c09f80;
-$white: #fcfcfc;
-$black: #131313;
+$color1: #ECE2D0;
+$color2: #A26769;
+$color3: #6D2E46;
+$color4: #D5B9B2;
+$color5: #CEBEBE;
+$white: #fbf8f9;
+$black: #1a0b11;
 
-$html-background: $black;
-$site-background: $grain;
-$site-link: $oxblood;
+$html-background: $color1;
+$site-background: $color1;
+$site-link: $color3;
 $site-text: $black;
 
-$skip-nav-bg: $blackboard;
+$skip-nav-bg: $color2;
 $site-header-bg: $white;
 $site-header-mobile-bg: $black;
-$site-header-mobile-link: $grain;
-$site-header-link: $oxblood;
+$site-header-mobile-link: $white;
+$site-header-link: $color3;
 
-$header-socials-color: $oxblood;
+$header-socials-color: $color3;
 $header-socials-bg: $white;
 
-$header-bg: $blackboard;
+$header-bg: $color2;
 $header-color: $white;
+
+$heading-color: $color3;
 
 $page-background: $white;
 
-$button-bg: $blackboard;
+$button-bg: $color2;
 $button-color: $white;
 
 $pagination-color: $black;
 
-$comic-nav-bg: $blackboard;
+$comic-nav-bg: $color2;
 $comic-nav-link: $white;
 
-$comic-archive-border: $grain;
+$comic-archive-border: $color1;
 $comic-archive-link-bg: $white;
 $comic-archive-link-color: $black;
 $comic-archive-link-date-color: lighten($black, 25%);
-$comic-archive-link-visited: $blackboard;
+$comic-archive-link-visited: $color2;

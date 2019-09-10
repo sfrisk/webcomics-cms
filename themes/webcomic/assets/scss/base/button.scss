@@ -1,6 +1,6 @@
 .btn {
   display: inline-block;
-  font-family: 'Roboto', sans-serif;
+  font-family: $sans-serif;
   font-weight: 400;
   color: $button-color;
   text-align: center;
@@ -11,6 +11,8 @@
   text-decoration: none;
   padding: .25em;
   border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
   &:hover {
     opacity: .75;
     text-decoration: none;

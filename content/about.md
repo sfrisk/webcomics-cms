@@ -1,6 +1,7 @@
 ---
 title: "About"
-weight: 25
+weight: 50
+menu: main
 ---
 
 Things that should be on here:
