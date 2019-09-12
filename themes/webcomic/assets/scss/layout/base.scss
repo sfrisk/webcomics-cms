@@ -1,5 +1,5 @@
 .container {
-  margin: 0;
+  margin: 0 1em;
   width: auto;
   @media (min-width: $bp_md) {
     margin: 0 2em;
@@ -14,6 +14,7 @@
 	background: $page-background;
   padding: 1em;
   margin-top: -3em;
+  margin-bottom: 2em;
   &__header {
     width: 100%;
     background: $header-bg;

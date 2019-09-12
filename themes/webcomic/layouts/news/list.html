@@ -3,23 +3,23 @@
     <h1 class="text-center page__title">{{ .Title }}</h1>
 </header>
 <div class="posts container page">
-		<ul class="post-list">
+		<div class="posts-list">
 		<!-- Ranges through content/post/*.md -->
 		{{ range .Data.Pages }}
-				<li class="post">
+				<article class="post">
 						<a 
-							class="post-title"
+							class="post__title"
 							href="{{.Permalink}}">
 								{{.Title}}
 						</a>
-						<span class="post-meta">
+						<span class="post__meta">
 							<time>{{.Date.Format "January 1, 2006"}}</time>
 						</span>
-						<div class="post-summary">
+						<div class="post__summary">
 							{{.Content}}
 						</div>
-				</li>
+					</article>
 		{{ end }}
-		</ul>
+			</div>
 </div>
 {{ end }}

@@ -1,0 +1,20 @@
+
+.post {
+  margin-bottom: 4em;
+  &__title {
+    text-decoration: none;
+    font-size: 1.5rem;
+    line-height: 1.4;
+  }
+  &__meta {
+    color: $site-text;
+    font-weight: bold;
+    font-size: .9em;
+    display: block;
+    margin-top: 0;
+    margin-bottom: 2em;
+  }
+  &__content {
+    font-size: 1.15em;
+  }
+}

@@ -1,28 +1,50 @@
 {{ define "main" }}
 {{ $comics := ($.Site.GetPage "section" "comic").Pages.ByPublishDate }}
+{{ $news := ($.Site.GetPage "section" "news").Pages.ByPublishDate  }}
 {{ $randomCharacter := shuffle ($.Site.GetPage "section" "characters").Pages | first 1 }}
 <header class="home__header">
 	<h1 class="home__title">{{.Params.Subtitle}}</h1>
 	<img class="home__banner" src="/assets/images/home.png" />
 </header>	
-	<div class="home">
+	<div class="home container">
+		<div class="home__news">
+			<h2 class="home__news__header">News from the Tavern</h2>
+			{{ range last 1 $news }}
+				<article>
+					<header class="post__header">
+						<h1 class="post__title">{{ .Title }}</h1>
+						<p class="post__meta">
+								<time>{{.Date.Format "January 1, 2006"}}</time>
+						</p>
+					</header>
+					<div class="post__content home__news__content">
+						{{.Content}}
+					</div>
+				</article>
+				{{ partial "social-share.html" . }}
+					<a href="{{ .Permalink }}" class="home__news__archive">Read More</a>
+			{{ end }}
+			</div>
 		{{ range last 1 $comics }}
 			<a class="home__link home__read-latest" href="{{ .Permalink }}" title="{{.Title}}">
-					<!-- <img class="card-img" src="{{.Params.thumbnail}}" alt="{{.Title}}"> -->
-					<span>Latest</span>
-			</a>
-		{{ end }}
-		{{ range first 1 $comics }}
-			<a class="home__link home__read-first" href="{{ .Permalink }}" title="{{.Title}}">
-				<!-- <img class="card-img" src="{{.Params.thumbnail}}" alt="{{.Title}}"> -->
-				<span>Start At The Beginning</span>
+					<span>Latest Comic</span>
 			</a>
 		{{ end }}
 		<a class="home__link home__patreon" href="https://patreon.com" title="Patreon">
-			<!-- <img class="card-img" src="{{.Params.thumbnail}}" alt="{{.Title}}"> -->
 			<span>Join Us on Patreon!</span>
 		</a>
-		<h2 class="home__subheader">Meet the Wenches</h2>
+		{{ range first 1 $comics }}
+			<a class="home__link home__read-first" href="{{ .Permalink }}" title="{{.Title}}">
+				<span>First Comic</span>
+			</a>
+		{{ end }}
+		<a class="home__link home__comic-archive" href="/comic" title="Comic Archive">
+			<span>Browse Comic Archive</span>
+		</a>
+		<div class="home__subheader">
+				<h2>Meet the Wenches</h2>
+				<p>Get to know the wenches of <em>A Need for Mead</em></p>
+		</div>
 		<a class="home__link home__wenches">
 				<span>Veronica</span>
 		</a>

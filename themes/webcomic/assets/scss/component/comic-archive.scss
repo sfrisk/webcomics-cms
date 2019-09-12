@@ -50,7 +50,8 @@
   color: $comic-archive-link-color;
   background: $comic-archive-link-bg;
   &:visited {
-    color: $comic-archive-link-visited;
+		color: $comic-archive-link-visited;
+		background: darken($comic-archive-link-bg, 5%)
   }
   &:hover,
   &:focus	{

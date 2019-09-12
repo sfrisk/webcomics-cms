@@ -22,6 +22,7 @@
 @import "./component/social-share.scss";
 @import "./component/characters.scss";
 @import "./component/home.scss";
+@import "./component/post.scss";
 
 html {
 	font-size: 1em;
@@ -37,7 +38,7 @@ html {
 }
 
 body {
-	background-color: $site-background;
+	background: $site-background url('../assets/images/pattern.png') repeat center center;
 	font-weight: 400;
 	line-height: 1.45;
 	color: $site-text;
@@ -45,13 +46,7 @@ body {
 	min-height: 100%;
   grid-template-rows: 1fr auto;
 	font-size: 1rem;
-	padding-bottom: 100px;
-	@media (min-width: $bp_sm) {
-		padding-bottom: 87px;
-	}
-	@media (min-width: $bp_md) {
-		padding-bottom: 0;
-	}
+	padding-bottom: 0px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -63,6 +58,7 @@ h1 {
 	font-weight: bold;
 	font-variant: small-caps;
 	letter-spacing: 2px;
+	margin: 0;
 }
 
 a {
@@ -72,39 +68,6 @@ a {
 img {
 	max-width: 100%;
 	height: auto;
-}
-
-.post-list {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-.post {
-	margin-bottom: 4em;
-}
-
-.post-title {
-	text-decoration: none;
-	font-size: 1.5rem;
-	line-height: 1.4;
-}
-
-.post-meta {
-	color: $site-text;
-	font-size: .8em;
-	display: block;
-	margin-top: 0;
-	margin-bottom: 2em;
-}
-
-.pagination {
-  align-items: stretch;
-  margin: 0;
-}
-
-.page-link {
-	height: 100%;
 }
 
 .sr-only {

@@ -4,12 +4,14 @@
 </div>
 <div class="post container page">
 		<header class="post__header">
-			<h1>{{ .Title }}</h1>
-			<p class="post-meta">
+			<h1 class="post__title">{{ .Title }}</h1>
+			<p class="post__meta">
 					<time>{{.Date.Format "January 1, 2006"}}</time>
 			</p>
 		</header>
-		{{.Content}}
+		<div class="post__content">
+			{{.Content}}
+		</div>
 		{{ partial "social-share.html" . }}
 </div>
 {{ end }}

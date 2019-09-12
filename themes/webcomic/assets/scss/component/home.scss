@@ -1,13 +1,13 @@
-$grid-size: 100 / 6 + vw;
-$grid-size-lg: 100 / 3 + vw;
+$grid-size: 6;
+$grid-size-lg: 6;
 
 .home {
   margin-top: 1em;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax($grid-size, 1fr));
+  grid-template-columns: repeat($grid-size, 1fr);
   // grid-auto-rows: 1fr;
-  @media (min-width: $bp_lg) {
-    grid-template-columns: repeat(auto-fill, minmax($grid-size-lg, 1fr));
+  @media (min-width: $bp_md) {
+    grid-template-columns: repeat($grid-size-lg, 1fr);
   }
   &__link {
     margin: .5rem;
@@ -15,13 +15,18 @@ $grid-size-lg: 100 / 3 + vw;
     text-align: center;
     align-items: center;
     justify-content: center;
-    background: $color3;
+    background: $color2;
+    background: linear-gradient($color2, darken($color2, 10%));
     min-height: 10em;
     text-decoration: none;
     position: relative;
     @media (min-width: $bp_md) {
       margin: 1rem;
       min-height: 20em;
+    }
+    &:hover, &:focus {
+      background: rgba($color2, .8);
+      background: linear-gradient(rgba($color2, .8), darken(rgba($color2, .8), 10%));
     }
     span {
       color: $white;
@@ -44,6 +49,7 @@ $grid-size-lg: 100 / 3 + vw;
   &__header {
     position: relative;   
     background: $color3;
+    background: linear-gradient($color3, darken($color3, 10%));
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -63,8 +69,65 @@ $grid-size-lg: 100 / 3 + vw;
       right: 1em;
       width: auto;
     }
-    @media (min-width: $bp_lg) {
+    @media (min-width: $bp_md) {
       font-size: 2em;
+    }
+  }
+  &__news {
+    grid-column-start: 1;
+    grid-column-end:span 6;
+    grid-row-start: 3;
+    margin: .5rem;
+    padding: 1em 1em 4em 1em;
+    background: $white;
+    position:relative;
+    @media (min-width: $bp_lg) {
+      grid-column-start: 1;
+      grid-column-end:span 4;
+      grid-row-start: 2;
+      margin: 1em;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    &__header {
+      text-align: center;
+    }
+    &__content {
+      max-height: 400px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 1em;
+      @media (min-width: $bp_md) {
+        max-height: 500px;
+      }
+      &:after {
+        width: 100%;
+        content: '';
+        display: block;
+        bottom: 0;
+        left: 0;
+        height: 6em;
+        position: absolute;
+        background: linear-gradient(transparent, $white);
+      }
+    }
+    &__archive {
+        color: $white;
+        position: absolute;
+        background: rgba($black, .8);
+        padding: .2em 1em;
+        font-family: $serif;
+        font-weight: bold;
+        font-variant: small-caps;
+        letter-spacing: 1px;
+        text-decoration: none;
+        font-size: .8em;
+        bottom: 1em;
+        right: 1em; 
+        @media (min-width: $bp_md) {
+          font-size: 1.2em;
+         }
     }
   }
   &__read-latest {
@@ -72,37 +135,59 @@ $grid-size-lg: 100 / 3 + vw;
     grid-column-end: span 3;
     @media (min-width: $bp_lg) {
       grid-column-start: 1;
-      grid-column-end: 1;
+      grid-column-end: span 2;
+      grid-row-start: 1;
+    }
+  }
+  &__comic-archive {
+    display: none;
+    @media (min-width: $bp_lg) {
+      display: flex;
+      grid-column-start: 5;
+      grid-column-end: span 2;
+      grid-row-start: 1;
     }
   }
   &__read-first {
     grid-column-start: 4;
     grid-column-end: span 3;
+    grid-row-start: 1;
     @media (min-width: $bp_lg) {
-      grid-column-start: 2;
-      grid-column-end: 2;
+      grid-column-start: 3;
+      grid-column-end: span 2;
+      grid-row-start: 1;
     }
   }
   &__patreon {
     grid-column-start: 1;
     grid-column-end: span 6;
     @media (min-width: $bp_lg) {
-      grid-column-start: 3;
-      grid-column-end: 3;
+      grid-column-start: 5;
+      grid-column-end: span 2;
+      grid-row-start: 2;
     }
   }
   &__wenches {
     grid-column: span 2;
-    @media (min-width: $bp_lg) {
-      grid-column: span 1;
-    }
   }
   &__subheader {
     margin: .5rem;
+    text-shadow: 0 0 2px rgba($black, .8); 
     grid-column-start: 1;
     grid-column-end: end;
+    padding: .2em 1em;
     @media (min-width: $bp_md) {
       margin: 1rem;
+    }
+    h2 {
+      margin: 0;
+      color: $white;
+    }
+    p {
+      margin: 0;
+      font-weight: bold;
+      font-size: 1.25em;
+      color: $white;
     }
   }
 }

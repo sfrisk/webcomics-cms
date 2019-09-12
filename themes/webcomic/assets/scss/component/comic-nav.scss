@@ -24,7 +24,11 @@
     &.current {
       text-align: center;
       width: 40%;
-      font-size: .8em;
+      font-size: .9em;
+      font-family: $serif;
+      letter-spacing: 2px;
+      font-variant: small-caps;
+      font-weight: bold; 
       @media (min-width: $bp_md) {
         font-size: 1em;
       }

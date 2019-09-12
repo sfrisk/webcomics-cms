@@ -1,23 +1,43 @@
 <header class="site-header">
-	<a href="{{.Permalink}}#main-content" class="site-header__skipNav">Skip to main content</a>
-	{{ if (isset .Params "transcript")}}
-		<a href="{{.Permalink}}#comic-transcript" class="site-header__skipNav">Skip to comic transcription</a>
-	{{ end }}
-	<nav class="site-header__nav" aria-label="Main Navigation">
-		<a class="site-header__logo" title="{{ .Site.Title }}" aria-label="{{ .Site.Title }}" href="{{ .Site.BaseURL }}">
-			<svg class="site-header__logo__mobile" aria-hidden="true" height="48" width="48">
-				<use xlink:href="/sprites/solid.svg#home"></use>
-			</svg>
-			<span class="site-header__name">
-					{{ partial "logo.html" . }}</span>
-		</a>
-		{{ $currentPage := . }}
-		{{ range .Site.Menus.main }}
-				<a class="site-header__menu__link" href="{{.URL}}" title="{{ .Name }}" aria-label="{{ .Name }}">
-					{{ partial "menu-logo.html" . }}
-					<span>{{ .Name }}</span>
-				</a>
+	<div class="container">
+		<a href="{{.Permalink}}#main-content" class="site-header__skipNav">Skip to main content</a>
+		{{ if (isset .Params "transcript")}}
+			<a href="{{.Permalink}}#comic-transcript" class="site-header__skipNav">Skip to comic transcription</a>
 		{{ end }}
-		{{ partial "socials.html" . }}
-	</nav>
+		<nav class="site-header__nav" aria-label="Main Navigation">
+			<a class="site-header__logo" title="{{ .Site.Title }}" aria-label="{{ .Site.Title }}" href="{{ .Site.BaseURL }}">
+				<svg class="site-header__logo__mobile" aria-hidden="true" height="48" width="48">
+					<use xlink:href="/sprites/solid.svg#home"></use>
+				</svg>
+				<span class="site-header__name">{{ partial "logo.html" . }}</span>
+			</a>
+			{{ $currentPage := . }}
+			{{ range .Site.Menus.main }}
+					<a class="site-header__menu__link" href="{{.URL}}" title="{{ .Name }}" aria-label="{{ .Name }}">
+						{{ partial "menu-logo.html" . }}
+						<span>{{ .Name }}</span>
+					</a>
+			{{ end }}
+			{{ partial "socials.html" . }}
+		</nav>
+	</div>
 </header>
+<div id="top-of-site-pixel-anchor"></div>
+<script type="text/javascript">
+	var header = document.getElementsByClassName('site-header')[0];
+  if (
+    "IntersectionObserver" in window &&
+    "IntersectionObserverEntry" in window &&
+    "intersectionRatio" in window.IntersectionObserverEntry.prototype
+  ) {
+    let observer = new IntersectionObserver(entries => {
+      if (entries[0].boundingClientRect.y < 0) {
+        header.classList.add("active");
+      } else {
+        header.classList.remove("active");
+      }
+    });
+    observer.observe(document.querySelector("#top-of-site-pixel-anchor"));
+  }
+
+</script>

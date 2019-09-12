@@ -6,13 +6,6 @@
   <div class="characters__group">
     {{ range .Data.Pages }}
       <a href="{{.Permalink}}" class="characters__item" title="{{ .Title}}">
-        {{ $thumbnail := resources.Get .Params.thumbnail}}
-        {{ $thumbnail_2x := $thumbnail.Fill "520x520" }}
-        {{ $thumbnail_1x := $thumbnail.Fill "260x260"}}
-        <picture class="characters__item__thumb">
-          <source srcset="{{ $thumbnail_2x.Permalink }} 2x, {{ $thumbnail_1x.Permalink }} 1x">
-          <img src="{{ $thumbnail_1x.Permalink }}" alt="">
-        </picture>
         <div class="characters__details">
           {{ .Title }}
         </div>
