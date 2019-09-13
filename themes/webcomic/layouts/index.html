@@ -73,20 +73,32 @@
 			</div>
 		<div class="home__subheader">
 				<h2>New Reader?</h2>
-				<p>Get to know the wenches of <em>A Need for Mead</em></p>
+				<p><em>Tavern Wenches</em> follows the adventures of the NPC tavern wenches of <em>A Need for Mead</em> as they face down lecherous PCs, point the way towards Epic Quests, and try to make sure the tavern is still standing come morning.</p>
 		</div>
+		<a class="home__link home__wenches" href="/about">
+				<span>About the Comic</span>
+		</a>
+		<a class="home__link home__wenches" href="/character">
+				<span>Meet the Cast</span>
+		</a>
+		{{ range first 1 $comics }}
+			<a class="home__link home__wenches" href="{{ .Permalink }}" title="{{.Title}}">
+				<span>Start at the Beginning</span>
+			</a>
+		{{ end }}
 		<div class="home__subheader">
 				<h2>Meet the Wenches</h2>
 				<p>Get to know the wenches of <em>A Need for Mead</em></p>
 		</div>
-		<a class="home__link home__wenches">
-				<span>Veronica</span>
-		</a>
-		<a class="home__link home__wenches">
-				<span>Anita</span>
-		</a>
-		<a class="home__link home__wenches">
-				<span>Lulu</span>
-		</a>
+		{{ range .Params.featuredCharacters }}
+			{{ $url := printf "/%s/%s.md"  "character" ( . | urlize ) }}
+			{{ with $.Site.GetPage $url }}
+
+			<a class="home__link home__wenches" href="{{ .Permalink }}">
+					<span>{{ .Title }}</span>
+			</a>
+			{{end}}
+	
+		{{ end }}
 	</div>
 {{ end }}

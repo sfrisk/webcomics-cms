@@ -37,7 +37,7 @@ $pagination-color: $black;
 $comic-nav-bg: $color2;
 $comic-nav-link: $white;
 
-$comic-archive-border: $color1;
+$comic-archive-border: lighten($color2, 30%);
 $comic-archive-link-bg: $white;
 $comic-archive-link-color: $black;
 $comic-archive-link-date-color: lighten($black, 25%);

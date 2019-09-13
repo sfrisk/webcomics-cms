@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "New Readers"
 weight: 50
 menu: main
 ---

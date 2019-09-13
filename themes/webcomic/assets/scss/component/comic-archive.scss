@@ -51,7 +51,7 @@
   background: $comic-archive-link-bg;
   &:visited {
 		color: $comic-archive-link-visited;
-		background: darken($comic-archive-link-bg, 5%)
+		background: darken($comic-archive-link-bg, 3%)
   }
   &:hover,
   &:focus	{
@@ -85,6 +85,7 @@
 	text-align: right;
   flex-grow: 1;
 	min-width: 100px;
+	padding-right: 1em;
 	@media (min-width: $bp_md) {
 		font-size: .8em
 	}
