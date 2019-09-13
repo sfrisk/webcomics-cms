@@ -1,12 +1,58 @@
 {{ define "main" }}
 {{ $comics := ($.Site.GetPage "section" "comic").Pages.ByPublishDate }}
 {{ $news := ($.Site.GetPage "section" "news").Pages.ByPublishDate  }}
-{{ $randomCharacter := shuffle ($.Site.GetPage "section" "characters").Pages | first 1 }}
+{{ $banner := resources.Get .Params.bannerImage}}
+{{ $banner_4000x := $banner.Resize "4000x" }}
+{{ $banner_3200x := $banner.Resize "3200x" }}
+{{ $banner_2400x := $banner.Resize "2400x" }}
+{{ $banner_2000x := $banner.Resize "2000x" }}
+{{ $banner_1600x := $banner.Resize "1600x" }}
+{{ $banner_1200x := $banner.Resize "1200x" }}
+{{ $banner_1000x := $banner.Resize "1000x" }}
+{{ $banner_800x := $banner.Resize "800x" }}
+{{ $banner_600x := $banner.Resize "600x" }}
+{{ $banner_500x := $banner.Resize "500x" }}
+
 <header class="home__header">
 	<h1 class="home__title">{{.Params.Subtitle}}</h1>
-	<img class="home__banner" src="/assets/images/home.png" />
+	<picture class="home__banner-wrap">
+		<source 
+			sizes="(max-width: 2000px) 100vw, 2000px" 
+			srcset="
+				{{ $banner_500x.Permalink }} 500w,
+				{{ $banner_600x.Permalink }} 600w,
+				{{ $banner_800x.Permalink }} 800w,
+				{{ $banner_1000x.Permalink }} 1000w,
+				{{ $banner_1200x.Permalink }} 1200w,
+				{{ $banner_1600x.Permalink }} 1600w,
+				{{ $banner_2000x.Permalink }} 2000w,
+				{{ $banner_2400x.Permalink }} 2400w,
+				{{ $banner_3200x.Permalink }} 3200w,
+				{{ $banner_4000x.Permalink }} 4000w"
+			>
+		<img
+			class="home__banner" 
+			src="{{ $banner_1200x.Permalink }}"
+			alt="{{ .Title }}">
+	</picture>
 </header>	
 	<div class="home container">
+		{{ range last 1 $comics }}
+			<a class="home__link home__read-latest" href="{{ .Permalink }}" title="{{.Title}}">
+					<span>Latest Comic</span>
+			</a>
+		{{ end }}
+		<a class="home__link home__patreon" href="https://patreon.com" title="Patreon">
+			<span>Join Us on Patreon!</span>
+		</a>
+		{{ range first 1 $comics }}
+			<a class="home__link home__read-first" href="{{ .Permalink }}" title="{{.Title}}">
+				<span>First Comic</span>
+			</a>
+		{{ end }}
+		<a class="home__link home__comic-archive" href="/comic" title="Comic Archive">
+			<span>Browse Comic Archive</span>
+		</a>
 		<div class="home__news">
 			<h2 class="home__news__header">News from the Tavern</h2>
 			{{ range last 1 $news }}
@@ -25,22 +71,10 @@
 					<a href="{{ .Permalink }}" class="home__news__archive">Read More</a>
 			{{ end }}
 			</div>
-		{{ range last 1 $comics }}
-			<a class="home__link home__read-latest" href="{{ .Permalink }}" title="{{.Title}}">
-					<span>Latest Comic</span>
-			</a>
-		{{ end }}
-		<a class="home__link home__patreon" href="https://patreon.com" title="Patreon">
-			<span>Join Us on Patreon!</span>
-		</a>
-		{{ range first 1 $comics }}
-			<a class="home__link home__read-first" href="{{ .Permalink }}" title="{{.Title}}">
-				<span>First Comic</span>
-			</a>
-		{{ end }}
-		<a class="home__link home__comic-archive" href="/comic" title="Comic Archive">
-			<span>Browse Comic Archive</span>
-		</a>
+		<div class="home__subheader">
+				<h2>New Reader?</h2>
+				<p>Get to know the wenches of <em>A Need for Mead</em></p>
+		</div>
 		<div class="home__subheader">
 				<h2>Meet the Wenches</h2>
 				<p>Get to know the wenches of <em>A Need for Mead</em></p>

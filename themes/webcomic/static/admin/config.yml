@@ -16,6 +16,7 @@ collections:
           - {name: title, label: Title}
           - {name: weight, label: Weight, widget: number }
           - {name: body, label: Body, widget: markdown}
+          - {name: bannerImage, label: Banner Image, widget: image}
       - name: 'cast'
         label: 'Cast'
         file: "content/character/_index.md"

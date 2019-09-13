@@ -55,6 +55,9 @@ $grid-size-lg: 6;
     flex-direction: column;
     justify-content: center;
   }
+  &__banner-wrap {
+    display: flex;
+  }
   &__title {
     color: $white;
     margin: 0;
