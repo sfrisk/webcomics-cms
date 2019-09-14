@@ -41,4 +41,4 @@ $comic-archive-border: lighten($color2, 30%);
 $comic-archive-link-bg: $white;
 $comic-archive-link-color: $black;
 $comic-archive-link-date-color: lighten($black, 25%);
-$comic-archive-link-visited: $color2;
+$comic-archive-link-visited:  scale-color($black, $lightness: 50%,  $saturation: -80%);

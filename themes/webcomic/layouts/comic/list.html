@@ -13,7 +13,7 @@
 							<a class="btn btn-primary btn-block" href="{{ .Permalink }}" role="button">First Comic</a>
 					</p>
 					<p class="text-center">
-							<a class="btn btn-primary btn-block" href="{{ .Permalink }}" role="button">Continue Where You Left Off</a>
+						<a id="comic-continue" class="btn btn-inverse btn-block hidden" role="button">Continue Quest</a>
 					</p>
 				{{ end }}
 			</div>
@@ -42,4 +42,14 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	var continueQuest = document.getElementById('comic-continue');
+	var currentComic = localStorage.getItem('current-comic');
+	if (currentComic) {
+		continueQuest.href = currentComic;
+		continueQuest.classList.remove('hidden')
+	}
+</script>
+
 {{ end }}

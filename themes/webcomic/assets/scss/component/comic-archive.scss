@@ -51,7 +51,11 @@
   background: $comic-archive-link-bg;
   &:visited {
 		color: $comic-archive-link-visited;
-		background: darken($comic-archive-link-bg, 3%)
+		background: scale-color($comic-archive-link-bg, $lightness: -3%,  $saturation: -60%);
+
+		.comic-archive__item__date {
+			color: scale-color($comic-archive-link-date-color, $lightness: 50%,  $saturation: -80%);
+		}
   }
   &:hover,
   &:focus	{

@@ -13,6 +13,17 @@
   border-radius: 4px;
   text-transform: uppercase;
   letter-spacing: .5px;
+
+  &-inverse {
+    background-color: $button-color;
+    border: 1px solid $button-bg;
+    color:  $button-bg;
+    &:hover {
+      background: rgba($button-bg, .05);
+      opacity: 1;
+      text-decoration: none;
+    }
+  }
   &:hover {
     opacity: .75;
     text-decoration: none;

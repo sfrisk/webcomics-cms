@@ -175,6 +175,9 @@
 </div>
 
 <script >
+
+localStorage.setItem('current-comic', '{{.Permalink}}');
+
 	document.addEventListener('keydown', (event) => {
 		const keyName = event.key;
 		switch (keyName) {
