@@ -112,7 +112,7 @@ $grid-size-lg: 6;
         left: 0;
         height: 6em;
         position: absolute;
-        background: linear-gradient(transparent, $white);
+        background: linear-gradient(rgba($white, 0), $white);
       }
     }
     &__archive {
