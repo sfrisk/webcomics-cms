@@ -52,6 +52,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+		transition: color .25s linear, background .25s linear; 
 		@media (min-width: $bp_md) {
 			display: none;
 		}
@@ -60,6 +61,8 @@
 			transition: fill .25s linear; 
 		}
 		&.active {
+			color: $site-link;
+			background: rgba($white, .5);
 			svg {
 				fill: $site-link;
 			}
