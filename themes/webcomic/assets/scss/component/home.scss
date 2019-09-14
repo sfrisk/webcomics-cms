@@ -171,7 +171,12 @@ $grid-size-lg: 6;
     }
   }
   &__wenches {
-    grid-column: span 2;
+    grid-column: span 6;
+    height: 60vw;
+    @media (min-width: $bp_md) {
+      grid-column: span 2;
+      height: auto;
+    }
   }
   &__subheader {
     margin: .5rem;
