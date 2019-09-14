@@ -18,7 +18,10 @@
 						<span>{{ .Name }}</span>
 					</a>
 			{{ end }}
-			{{ partial "socials.html" . }}
+
+			<div class="site-header__socials">
+				{{ partial "socials.html" . }}
+			</div>
 		</nav>
 	</div>
 </header>
@@ -38,6 +41,6 @@
       }
     });
     observer.observe(document.querySelector("#top-of-site-pixel-anchor"));
-  }
+	}
 
 </script>

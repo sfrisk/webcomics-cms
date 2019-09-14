@@ -1,10 +1,4 @@
-<button class="site-header__menu__link social-trigger" aria-label="Toggle list of places you can follow us" onClick="triggerSocials()">
-  <span class="sr-only">Get Notifications on Social Media</span>
-  <svg aria-hidden="true">
-    <use xlink:href="/sprites/solid.svg#bell"></use>
-  </svg> 
-</button>
-<div class="site-header__socials closed">
+
   {{ if (isset .Site.Params "patreon") }}
     <a rel="noreferrer" target="_blank" href="https://www.patreon.com/{{ .Site.Params.patreon }}" title="Join us on Patreon">
       <span class="sr-only">Join us on Patreon</span>
@@ -75,15 +69,4 @@
       <use xlink:href="/sprites/solid.svg#rss"></use>
     </svg>
   </a>
-</div>
 
-<script type="text/javascript">
-  function triggerSocials() {
-    var socials = document.getElementsByClassName('site-header__socials')[0];
-    if (socials.classList.contains('closed')) {
-      socials.classList.remove('closed');
-    } else {
-      socials.classList.add('closed');
-    }
-  }
-</script>

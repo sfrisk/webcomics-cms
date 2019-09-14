@@ -4,13 +4,14 @@
 
 		</div>
 		<div class="site-footer__right">
-				{{ partial "logo.html" . }}
-				<br >
+				<span class="site-footer__logo">{{ partial "logo.html" . }}</span>
 				<span class="site-footer__copy">&copy;{{ now.Format "2006"}} {{ .Site.Params.author}}</span>
-				<br>
 				{{ if (isset .Site.Params "patreon") }}
 				<em>Support me on <a rel="noreferrer" target="_blank" href="https://www.patreon.com/{{ .Site.Params.patreon }}" title="Patreon">Patreon</a>!</em>
 				{{ end }}
+				<div class="site-footer__socials">
+					{{ partial "socials.html" . }}
+				</div>
 		</div>
 	</div>
 </footer>

@@ -21,6 +21,7 @@
 	}
 	&__copy {
 		text-transform: uppercase;
+		display: block;
 	}
 	&__left {
 		display: none;
@@ -33,10 +34,39 @@
 		font-size: .8em;
 		@media (min-width: $bp_md) {
 			text-align: right;
+			font-size: 1.2em;
 		}
 	}
-	svg {
-		color: rgba($white, .7);
+
+	&__logo {
+		display: block;
 		margin-bottom: .5em;
+		@media (min-width: $bp_md) {
+			margin-bottom: 1em;
+		}
+		svg {
+			color: rgba($white, .7);
+		}
+	}
+
+	&__socials {
+		margin-top: 1.5em;
+		a {
+			text-decoration: none;
+			margin-right: 1em;
+			@media (min-width: $bp_md) {
+				margin-right: 0;
+				margin-left: 1.25em;
+			}
+		}
+		svg {
+			width: 24px;
+			height: 24px;
+			fill: rgba($white, .7);
+			@media (min-width: $bp_md) {
+				width: 32px;
+				height: 32px;
+			}
+		}
 	}
 }
