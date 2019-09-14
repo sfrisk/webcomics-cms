@@ -1,9 +1,12 @@
 .characters {
   &__group {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
     grid-auto-rows: 1fr;
     grid-gap: 1em;
+    @media (min-width: $bp_md) {
+      grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    }
     &::before {
       content: '';
       width: 0;
@@ -40,7 +43,10 @@
     position: absolute;
     bottom: 1em;
     right: 1em; 
-    font-size: 1.2em;
+    font-size: .8em;
     max-width: 75%;
+    @media (min-width: $bp_md) {
+      font-size: 1.2em;
+    }
   }
 }
