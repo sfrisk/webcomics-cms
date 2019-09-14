@@ -37,8 +37,11 @@
 	</picture>
 </header>	
 	<div class="home container">
+		<a class="home__link home__read-latest hidden" id="comic-continue"  title="Continue Quest">
+				<span>Continue Quest</span>
+		</a>
 		{{ range last 1 $comics }}
-			<a class="home__link home__read-latest" href="{{ .Permalink }}" title="{{.Title}}">
+			<a class="home__link home__read-latest" id="comic-latest" href="{{ .Permalink }}" title="{{.Title}}">
 					<span>Latest Comic</span>
 			</a>
 		{{ end }}
@@ -51,7 +54,7 @@
 			</a>
 		{{ end }}
 		<a class="home__link home__comic-archive" href="/comic" title="Comic Archive">
-			<span>Browse Comic Archive</span>
+			<span>Comic Archive</span>
 		</a>
 		<div class="home__news">
 			<h2 class="home__news__header">News from the Tavern</h2>
@@ -101,4 +104,15 @@
 	
 		{{ end }}
 	</div>
+
+	<script>
+			var continueQuest = document.getElementById('comic-continue');
+			var latestComic = document.getElementById('comic-latest');
+			var currentComic = localStorage.getItem('current-comic');
+			if (currentComic) {
+				continueQuest.href = currentComic;
+				continueQuest.classList.remove('hidden')
+				latestComic.classList.add('hidden')
+			}
+		</script>
 {{ end }}
