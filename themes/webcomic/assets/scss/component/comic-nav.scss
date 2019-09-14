@@ -5,9 +5,14 @@
 	left: 0;
   padding: .5em 1em;
   background: $comic-nav-bg;
+  z-index: 10000;
+  box-shadow: 0 .4em .4em rgba($black, 0.4); 
   @media (min-width: $bp_md) {
-		top: 3.35em;
+		top: 2.75em;
 		background: $comic-nav-bg;
+  }
+  @media (min-width: 875px) {
+    top: 3.4em;
   }
   &__list {
     margin: 0;

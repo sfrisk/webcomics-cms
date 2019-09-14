@@ -1,12 +1,42 @@
 .site-footer {
-	text-align: center;
-	padding: 2em;
+	padding: 2em 0 5em;
 	grid-row-start: 2;
 	grid-row-end: 3;
 	background: $site-footer;
-	padding-bottom: 5em;
 	margin-top: 2em;
+	font-weight: bold;
+	opacity: .9;
+	color: rgba($white, .7);
+	a {
+		color: rgba($white, .7);
+	}
 	@media (min-width: $bp_md) {
-		padding-bottom: 2em;
+		text-align: right;
+		padding: 4em 0 2em 0;
+	}
+	.container {
+		display: flex;
+		justify-content: space-between;
+		align-content: center;
+	}
+	&__copy {
+		text-transform: uppercase;
+	}
+	&__left {
+		display: none;
+		@media (min-width: $bp_md) {
+			display: flex;
+		}
+	}
+	&__right {
+		text-align: left;
+		font-size: .8em;
+		@media (min-width: $bp_md) {
+			text-align: right;
+		}
+	}
+	svg {
+		color: rgba($white, .7);
+		margin-bottom: .5em;
 	}
 }

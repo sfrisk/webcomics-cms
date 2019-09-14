@@ -16,7 +16,7 @@
     transition: box-shadow .3s ease-in;
     box-shadow: 0 0 0 transparent;
     &.active {
-      box-shadow: 0 0 1em rgba($black, 0.4); 
+      box-shadow: 0 .4em .4em rgba($black, 0.4); 
     }
   }
   a, button {
@@ -89,13 +89,24 @@
     @media (min-width: $bp_md) {
       width: auto;
       display: inline-block;
-      padding: .5rem;
+      padding: .4rem;
       color: $site-header-link;
+    }
+    @media (min-width: 875px) {
+      padding: .6rem;
     }
     span {
       display: none;
       @media (min-width: $bp_md) {
         display: block;
+        font-family: $serif;
+        font-weight: bold;
+        font-variant: small-caps;
+        letter-spacing: 1px;
+        font-size: .7em;
+      }
+      @media (min-width: 875px) {
+        font-size: 1em;
       }
     }
     svg {
