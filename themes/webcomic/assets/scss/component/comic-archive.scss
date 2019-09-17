@@ -69,13 +69,13 @@
 .comic-archive__item__title {
 	font-size: .8em;
 	text-align: left;
-	flex-grow: 2;
+	width: calc(100% - 180px);
 	@media (min-width: $bp_md) {
 		font-size: 1.2em
 	}
 }
 
-.comic-archive__item__thumb {
+.comic-archive__item__thumb img{
 	height:80px;
 	width: 80px;
   margin-right: 1em;

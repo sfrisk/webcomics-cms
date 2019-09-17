@@ -95,10 +95,25 @@
 		{{ range .Params.featuredCharacters }}
 			{{ $url := printf "/%s/%s.md"  "character" ( . | urlize ) }}
 			{{ with $.Site.GetPage $url }}
-
-			<a class="home__link home__wenches" href="{{ .Permalink }}">
+				{{ $thumb := resources.Get .Params.thumbnail}}
+				{{ $thumb_1400x := $thumb.Resize "1400x" }}
+				{{ $thumb_700x := $thumb.Resize "700x" }}
+				{{ $thumb_350x := $thumb.Resize "350x" }}
+				<a class="home__link home__wenches" href="{{ .Permalink }}">
+					<picture class="characters__thumb">
+						<source 
+							srcset="
+								{{ $thumb_1400x.Permalink }} 1400w,
+								{{ $thumb_700x.Permalink }} 700w,
+								{{ $thumb_350x.Permalink }} 350w"
+							>
+						<img
+							class="characters__thumb" 
+							src="{{ $thumb_350x.Permalink }}"
+							alt="{{ .Title }}">
+					</picture>
 					<span>{{ .Title }}</span>
-			</a>
+				</a>
 			{{end}}
 	
 		{{ end }}

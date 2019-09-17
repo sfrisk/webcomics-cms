@@ -20,6 +20,7 @@
 @import "./component/comic-nav.scss";
 @import "./component/pagination.scss";
 @import "./component/social-share.scss";
+@import "./component/character.scss";
 @import "./component/characters.scss";
 @import "./component/home.scss";
 @import "./component/post.scss";
@@ -69,6 +70,26 @@ a {
 img {
 	max-width: 100%;
 	height: auto;
+}
+
+dt {
+	font-weight: bold;
+	color: $site-link;
+	display: inline;
+	padding-right: .5em;
+	margin: 0;
+}
+
+dd {
+	display: inline;
+	margin: 0;
+}
+
+
+hr {
+	height: 2px;
+	border: 0;
+	background: $site-link;
 }
 
 .sr-only {

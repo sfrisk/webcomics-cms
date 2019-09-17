@@ -172,8 +172,9 @@ $grid-size-lg: 6;
   }
   &__wenches {
     grid-column: span 6;
-    height: 60vw;
-    @media (min-width: $bp_md) {
+    display: flex;
+    align-items: flex-end;
+    @media (min-width: $bp_sm) {
       grid-column: span 2;
       height: auto;
     }

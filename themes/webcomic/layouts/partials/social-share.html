@@ -62,7 +62,6 @@
 
 <script type="text/javascript">
   function copy(e) {
-    e.preventDefault();
     var el = document.createElement('textarea');
     el.value = {{ .Permalink }};
     el.setAttribute('readonly', '');

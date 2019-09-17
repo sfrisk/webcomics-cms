@@ -1,24 +1,111 @@
 {{ define "main" }}
 <header class="page__header">
-    <h1 class="text-center page__title">{{ .Title }}</h1>
+    <h1 class="page__title">{{ .Title }}</h1>
+    <p class="page__subtitle">Human, Bar Wench, and Owner of <em>Need for Mead</em>, Chaotic Good</p>
 </header>
 <div class="container page character">
   {{.Content}}
+<div class="character__column"> 
+   <hr/>
+  <dl class="character-stats">
+    <div class="character-stat">
+        <dt>Class</dt>
+        <dd>Level 3 Bard / College of Lore</dd>
+      </div>
+    <div class="character-stat">
+      <dt>Armor Class</dt>
+      <dd>11</dd>
+    </div>
+    <div class="character-stat">
+      <dt>Hit Points</dt>
+      <dd>18</dd>
+    </div>
+    <div class="character-stat">
+      <dt>Speed</dt>
+      <dd>30 ft</dd>
+    </div>
+  </dl>
+  <hr/>
+  <table class="character__ability">
+    <thead>
+      <tr>
+        <th class="character__ability__header">STR</th>
+        <th class="character__ability__header">DEX</th>
+        <th class="character__ability__header">CON</th>
+        <th class="character__ability__header">INT</th>
+        <th class="character__ability__header">WIS</th>
+        <th class="character__ability__header">CHA</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>11 (0)</td>
+        <td>13 (+1)</td>
+        <td>11 (0)</td>
+        <td>14 (+2)</td>
+        <td>14 (+)</td>
+        <td>16 (+3)</td>
+      </tr>
+    </tbody>
+  </table>
+  <hr/>
+  <dl class="character-stats">
+    <div class="character-stat">
+      <dt>Proficency Bonus</dt>
+      <dd>+2</dd>
+    </div>
+    <div class="character-stat">
+      <dt>Saving Throws</dt>
+      <dd>Dex +3, Cha +5</dd>
+    </div>
+    <div class="character-stat">
+      <dt>Skills</dt>
+      <dd>Deception +5, History +4, Investigation +4 Preception +4 Performance +5, Persuasion +5, Sleight of Hand +3</dd>
+    </div>
+    <div class="character-stat">
+      <dt>Senses</dt>
+      <dd>Passive Perception 14</dd>
+    </div>
+    <div class="character-stat">
+      <dt>Languages</dt>
+      <dd>Common</dd>
+    </div>
+  </dl>
+  <hr/>
+  <h3>Spellcasting.</h3>
+  <p>Lulu is a 3rd level spellcaster with spellcasting ability Charisma.</p>
+  <p>Cantrips (at will): <em>message, vicious mockery</em></p>
+  <p>1st Level (4 slots): <em>comprehend languages, create or destroy water, disguise self, unseen servant</em></p>
+  <p>2nd Level (2 slots): <em>calm emotions, enthrall</em></p>
+  <h3>Bardic Inspiration </h3>
+  <p>Lulu can inspire others through stirring words or music. To do so, she use a bonus action on her turn to choose one creature other than herself within 60 feet of you who can hear you. That creature gains one Bardic Inspiration die, a d6. Once within the next 10 minutes, the creature can roll the die and add the number rolled to one ability check, attack roll, or saving throw it makes.  She can use this ability 3 times before needing a long rest.</p>
+  <h3>Song of Rest</h3>
+  <p>Lulu can use soothing oration to help revitalize her wounded allies during a short rest.  If any friendly creatures that can hear her performance regain hit points at the end of a short rest by spending one or more Hit Dice, each of those creatures regain an extra 1d6 hit points;</p>
+  <h3>Cutting Wounds</h3>
+  <p>Lulu can use her wit to distract, confuse, or sap the confidence and competence of others.  When a creature she can see within 60 ft of her makes an attack roll, an ability check, or a damage roll, she can use her reaction to expend one of her uses of Bardic Inspiration, rolling a Bardic Inspiration die and subtracting the number rolled from the creature's roll.  The creature is immune if it can't hear her or if it's immune to being charmed.</p>
 
+
+</div>
   {{ $character := .Title }}
   {{ $comics := where (where .Site.Pages.ByPublishDate "Type" "comic") ".Params.characters" "intersect" (slice $character)  }}
 
   <h2>Appearences</h2>
   <dl>
-    <dt>Comics:</dt>
-    <dd>{{ len $comics }}</dd>
+    <div>
+      <dt>Comics:</dt>
+      <dd>{{ len $comics }}</dd>
+    </div>
     {{ range last 1 $comics }}
-      <dt>Recent Appearance:</dt>
-      <dd><a href="{{.Permalink}}" title=".Title">{{.Title}}</a></dd>
+      <div>
+        <dt>Recent Appearance:</dt>
+        <dd><a href="{{.Permalink}}" title=".Title">{{.Title}}</a></dd>
+      </div>
     {{ end}}
     {{ range first 1 $comics }}
-      <dt>First Appearance:</dt>
-      <dd><a href="{{.Permalink}}" title=".Title">{{.Title}}</a></dd>
+      <div>
+        <dt>First Appearance:</dt>
+        <dd><a href="{{.Permalink}}" title=".Title">{{.Title}}</a></dd>
+      </div>
     {{ end}}
   </dl>
 

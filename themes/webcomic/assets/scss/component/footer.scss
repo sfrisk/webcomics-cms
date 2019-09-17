@@ -48,6 +48,14 @@
 		@media (min-width: $bp_md) {
 			margin-bottom: 1em;
 		}
+		svg {
+			width: 200px;
+			height: auto;
+			@media (min-width: $bp_md) {
+				width: 300px;
+				height: auto;
+			}	
+		}
 	}
 
 	&__socials {

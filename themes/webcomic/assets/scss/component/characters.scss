@@ -18,19 +18,22 @@
       grid-row: 1 / 1;
       grid-column: 1 / 1;
     }
-    > * {
-      padding: 1em;
-    }
   }
   &__item {
     position: relative;
     background: $color3;
     background: linear-gradient($color3, darken($color3, 10%));
     transition: background .5s ease-out;
+    display: flex;
+    align-items: flex-end;
     &:hover, &:focus {
       background: rgba($color3, .8);
       background: linear-gradient(rgba($color3, .8), darken(rgba($color3, .8), 10%));
     }
+  }
+  &__thumb {
+    display: flex;
+    align-items: flex-end;
   }
   &__details {
     color: $white;
