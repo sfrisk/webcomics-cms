@@ -44,12 +44,18 @@
 </div>
 
 <script>
-	var continueQuest = document.getElementById('comic-continue');
+	var comics = [{{ range $comics }}{{ .Permalink }},{{ end }}]
 	var currentComic = localStorage.getItem('current-comic');
-	if (currentComic) {
-		continueQuest.href = currentComic;
-		continueQuest.classList.remove('hidden')
-	}
+	var continueQuest = document.getElementById('comic-continue');
+
+	comics.forEach((comic, index) => {
+		if (comic == currentComic) {
+			if (comics.length > index + 2) {
+				continueQuest.href = comics[index+1];
+				continueQuest.classList.remove('hidden')
+			}
+		}
+	})
 </script>
 
 {{ end }}

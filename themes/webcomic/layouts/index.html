@@ -120,13 +120,20 @@
 	</div>
 
 	<script>
-			var continueQuest = document.getElementById('comic-continue');
-			var latestComic = document.getElementById('comic-latest');
-			var currentComic = localStorage.getItem('current-comic');
-			if (currentComic) {
-				continueQuest.href = currentComic;
-				continueQuest.classList.remove('hidden')
-				latestComic.classList.add('hidden')
+		var comics = [{{ range $comics }}{{ .Permalink }},{{ end }}]
+		var continueQuest = document.getElementById('comic-continue');
+		var latestComic = document.getElementById('comic-latest');
+		var currentComic = localStorage.getItem('current-comic');
+
+		comics.forEach((comic, index) => {
+			if (comic == currentComic) {
+				if (comics.length > index + 2) {
+					continueQuest.href = comics[index+1];
+					continueQuest.classList.remove('hidden')
+					latestComic.classList.add('hidden')
+
+				}
 			}
+		})
 		</script>
 {{ end }}

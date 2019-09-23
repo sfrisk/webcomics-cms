@@ -23,7 +23,7 @@
 	</div>
 	{{ end }}
 </footer>
-	{{ if eq .Section "comic" }}
+	{{ if and (eq .Section "comic") (ne .Title "Comic") }}
 	<script >
 			localStorage.setItem('current-comic', '{{.Permalink}}');
 			
