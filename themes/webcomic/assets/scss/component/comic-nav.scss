@@ -11,7 +11,7 @@
 		top: 2.75em;
 		background: $comic-nav-bg;
   }
-  @media (min-width: 875px) {
+  @media (min-width: $bp_lg) {
     top: 3.4em;
   }
   &__list {

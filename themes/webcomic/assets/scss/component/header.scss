@@ -97,7 +97,7 @@
       color: $site-header-link;
     }
     @media (min-width: 875px) {
-      padding: .6rem;
+      padding: .5rem;
     }
     span {
       display: none;
@@ -109,7 +109,7 @@
         letter-spacing: 1px;
         font-size: .7em;
       }
-      @media (min-width: 875px) {
+      @media (min-width: $bp_lg) {
         font-size: 1em;
       }
     }
@@ -170,10 +170,17 @@
         min-height: auto;
       }
       svg {
+        margin: 0 .25em;
+        height: 1em;
+        width: 1em;
+        fill: $header-socials-color;
+      }
+    }
+    @media (min-width: $bp_lg) {
+      svg {
         margin: 0 .5em;
         height: 1.5em;
         width: 1.5em;
-        fill: $header-socials-color;
       }
     }
     &__trigger {

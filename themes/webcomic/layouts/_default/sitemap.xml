@@ -1,0 +1,41 @@
+{{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\" ?>" | safeHTML }}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+	xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+	xmlns:xhtml="http://www.w3.org/1999/xhtml">
+	{{ range .Data.Pages }}
+	<url>
+		<loc>{{ .Permalink }}</loc>
+		{{ if (isset .Params "comic_desktop")}}
+			{{ $desktop := resources.Get .Params.comic_desktop }}
+			<image:image>
+				<image:loc>{{ $desktop.Permalink }}</image:loc>
+				{{ if (isset .Params "transcript")}}
+				<image:caption>{{ .Params.transcript }}</image:caption>
+				{{ end }}
+			</image:image>
+		{{ end }}
+		{{ if (isset .Params "comic")}}
+			{{ range .Params.comic.rows }}
+				{{ range .cols }}
+					{{ $panel := resources.Get .panel }}
+					<image:image>
+						<image:loc>{{ $panel.Permalink }}</image:loc>
+						{{ if isset . "transcript" }}
+						<image:caption>{{ .transcript }}</image:caption>
+						{{ end }}
+					</image:image>
+				{{ end }}
+			{{end}}
+		{{ end }}
+		{{ if not .Lastmod.IsZero }}
+			<lastmod>{{ safeHTML ( .Lastmod.Format "2006-01-02T15:04:05-07:00" ) }}</lastmod>
+		{{ end }}
+		{{ with .Sitemap.ChangeFreq }}
+			<changefreq>{{ . }}</changefreq>
+		{{ end }}
+		{{ if (isset .Params "priority")}}
+		<priority>{{ .Params.priority }}</priority>
+		{{ end }}
+	</url>
+	{{ end }}
+</urlset>

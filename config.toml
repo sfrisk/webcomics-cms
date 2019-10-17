@@ -15,9 +15,9 @@ theme = "webcomic"
 [outputs]
   section = ["HTML", "RSS"]
 
-[taxonomies]
-  tag = "tags"
-  category = "categories"
+# [taxonomies]
+#   tag = "tags"
+#   category = "categories"
 
 [params]
   author = "S Frisk"
@@ -37,3 +37,4 @@ theme = "webcomic"
   # youtube = ""
   # twitch = ""
   patreon = "friskycomics"
+  webtoon = "https://www.webtoons.com"
