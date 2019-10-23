@@ -62,6 +62,12 @@
       </svg>
     </a>
   {{ end }}
+  {{ if (isset .Site.Params "webtoon") }}
+  <a rel="noreferrer" target="_blank" href="{{ .Site.Params.webtoon }}" title="Follow on Twitch">
+    <span class="sr-only">Subscribe on Webtoon</span>
+    {{ partial "icons/webtoon.html" . }}
+  </a>
+{{ end }}
   <a rel="noreferrer" target="_blank" href="/comic/index.xml" title="Subscribe to RSS Feed">
     <span class="sr-only">Subscribe to RSS Feed</span>
     <svg aria-hidden="true"
