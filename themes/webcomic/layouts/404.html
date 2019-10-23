@@ -1,4 +1,8 @@
 {{ define "main"}}
-<h1 >404</h1>
-<p>Well this is awkward. <a href="{{ "/" | relURL }}">Go Home</a></p>
+<header class="page__header">
+	<h1 class="text-center page__title">404: Content Not Found</h1>
+</header>
+<div class="posts container page">
+	<p>Well this is awkward. <a href="{{ "/" | relURL }}">Go Home</a></p>
+</div>
 {{ end }}

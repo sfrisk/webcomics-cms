@@ -35,6 +35,8 @@
 		{{ end }}
 		{{ if (isset .Params "priority")}}
 		<priority>{{ .Params.priority }}</priority>
+		{{ else }}
+		<priority>{{ .Sitemap.Priority }}</priority>
 		{{ end }}
 	</url>
 	{{ end }}

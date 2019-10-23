@@ -4,7 +4,7 @@ publishDir = "public"
 staticDir = "static"
 assetDir = "static"
 buildDrafts = false
-baseURL = "/"
+baseURL = "https://comic-cms.netlify.com"
 canonifyURLs = true
 title = "Tavern Wenches"
 sectionPagesMenu = "main"
@@ -12,10 +12,14 @@ paginate = 10
 paginatePath = "archive"
 theme = "webcomic"
 
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+
 [outputs]
   section = ["HTML", "RSS"]
 
-# [taxonomies]
+[taxonomies]
 #   tag = "tags"
 #   category = "categories"
 
@@ -25,7 +29,7 @@ theme = "webcomic"
   og_description = "A webcomic following the lives of the tavern wenches serving in an RPG campaign."
   og_image = ""
   og_site_name = "Webcomic CMS"
-  twitter_site = "TavernWenches"
+twitter_site = "TavernWenches"
   twitter_creator = "SarahFrisk"
   twitter_image = ""
   og_type = "website"

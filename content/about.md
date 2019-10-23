@@ -2,7 +2,7 @@
 title: "New Readers"
 weight: 50
 menu: main
-priority: 1
+priority: .8
 ---
 
 Things that should be on here:

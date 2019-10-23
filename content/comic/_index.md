@@ -1,6 +1,7 @@
 ---
 title: "Comic"
 weight: 1
+priority: .8
 rssTitle: "Tavern Wenches Comic by Sarah Frisk"
 pageTitle: "Tavern Wenches' Archive"
 ---
