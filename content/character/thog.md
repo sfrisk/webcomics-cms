@@ -1,7 +1,7 @@
 ---
 title: Thog
-name: Thog
-thumbnail: /assets/images/thumb-3.png
 type: character
+characterType: pc
+thumbnail: /assets/images/thumb-3.png
 ---
 Half orc
