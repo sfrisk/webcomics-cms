@@ -1,28 +1,38 @@
 {{ define "main" }}
+{{ $c := .Params.characterSheet }}
+{{ $scratch := newScratch }}
 <header class="page__header">
-    <h1 class="page__title">{{ .Title }}</h1>
-    <p class="page__subtitle">Human, Bar Wench, and Owner of <em>Need for Mead</em>, Chaotic Good</p>
+  <h1 class="page__title">
+    {{ .Title }}
+  </h1>
 </header>
 <div class="container page character">
-  {{.Content}}
-<div class="character__column"> 
-   <hr/>
+{{ .Content }}
+{{ if .Params.characterSheet }} 
+<div class="character__character-sheet"> 
+  <h2 class="character__name">
+    {{ .Title }}
+  </h2>
+  <p class="no-margin">
+    <em>{{ $c.race }}, {{ $c.alignment }}</em>
+  </p>
+  <hr/>
   <dl class="character-stats">
     <div class="character-stat">
         <dt>Class</dt>
-        <dd>Level 3 Bard / College of Lore</dd>
+        <dd>Level {{$c.level}} {{$c.class}}</dd>
       </div>
     <div class="character-stat">
       <dt>Armor Class</dt>
-      <dd>11</dd>
+      <dd>{{$c.ac}}</dd>
     </div>
     <div class="character-stat">
       <dt>Hit Points</dt>
-      <dd>18</dd>
+      <dd>{{$c.hp}}</dd>
     </div>
     <div class="character-stat">
       <dt>Speed</dt>
-      <dd>30 ft</dd>
+      <dd>{{$c.speed}} ft</dd>
     </div>
   </dl>
   <hr/>
@@ -39,12 +49,20 @@
     </thead>
     <tbody>
       <tr>
-        <td>11 (0)</td>
-        <td>13 (+1)</td>
-        <td>11 (0)</td>
-        <td>14 (+2)</td>
-        <td>14 (+)</td>
-        <td>16 (+3)</td>
+        {{ $abilityScores := $c.abilityScores }}
+        {{ $strMod := math.Floor (div (sub $abilityScores.str 10) 2)}}
+        {{ $dexMod := math.Floor (div (sub $abilityScores.dex 10) 2)}}
+        {{ $conMod := math.Floor (div (sub $abilityScores.con 10) 2)}}
+        {{ $intMod := math.Floor (div (sub $abilityScores.int 10) 2)}}
+        {{ $wisMod := math.Floor (div (sub $abilityScores.wis 10) 2)}}
+        {{ $chaMod := math.Floor (div (sub $abilityScores.cha 10) 2)}}
+
+        <td>{{ $abilityScores.str }} ({{ $strMod }})</td>
+        <td>{{ $abilityScores.dex }} ({{ $dexMod }})</td>
+        <td>{{ $abilityScores.con }} ({{ $conMod }})</td>
+        <td>{{ $abilityScores.int }} ({{ $intMod }})</td>
+        <td>{{ $abilityScores.wis }} ({{ $wisMod }})</td>
+        <td>{{ $abilityScores.cha }} ({{ $chaMod }})</td>
       </tr>
     </tbody>
   </table>
@@ -52,44 +70,96 @@
   <dl class="character-stats">
     <div class="character-stat">
       <dt>Proficency Bonus</dt>
-      <dd>+2</dd>
+      <dd>{{ $c.proficiencyBonus }}</dd>
     </div>
     <div class="character-stat">
       <dt>Saving Throws</dt>
-      <dd>Dex +3, Cha +5</dd>
+      <dd>
+        {{ range $i, $savingThrow := $c.savingThrows }}{{ if $i }}, {{ end }}{{ humanize $savingThrow }}
+        {{ $scratch.Set "mod" 0 }}
+        {{if eq $savingThrow "str" }}
+        {{ $scratch.Set "mod" $strMod }}
+        {{else if eq $savingThrow "dex" }}
+        {{ $scratch.Set "mod" $dexMod }}
+        {{else if eq $savingThrow "con" }}
+        {{ $scratch.Set "mod" $conMod }}
+        {{else if eq $savingThrow "int" }}
+        {{ $scratch.Set "mod" $intMod }}
+        {{else if eq $savingThrow "wis" }}
+        {{ $scratch.Set "mod" $wisMod }}
+        {{else if eq $savingThrow "cha" }}
+        {{ $scratch.Set "mod" $chaMod }}
+        {{end}}
+        ({{add ($scratch.Get "mod") $c.proficiencyBonus}}){{ end }}
+      </dd>
     </div>
     <div class="character-stat">
       <dt>Skills</dt>
-      <dd>Deception +5, History +4, Investigation +4 Preception +4 Performance +5, Persuasion +5, Sleight of Hand +3</dd>
+      <dd>
+        {{ range $i, $skill := $c.skills }}{{ if $i }}, {{ end }}{{ $skill }}
+        {{ $scratch.Set "mod" 0 }}
+        ({{add ($scratch.Get "mod") $c.proficiencyBonus}}){{ end }}
+      </dd>
     </div>
     <div class="character-stat">
       <dt>Senses</dt>
-      <dd>Passive Perception 14</dd>
+      {{ $scratch.Set "advantage" 0 }}
+      {{ if in $c.skills "Perception" }}
+        {{ $scratch.Set "advantage" $c.proficiencyBonus }}
+      {{ end }}
+      <dd>Passive Perception {{add 10 (add $wisMod ($scratch.Get "advantage"))}}</dd>
     </div>
     <div class="character-stat">
       <dt>Languages</dt>
-      <dd>Common</dd>
+      <dd>{{ range $i, $language := $c.languages }}{{ if $i }}, {{ end }}{{ $language }}{{end}}</dd>
     </div>
   </dl>
   <hr/>
-  <h3>Spellcasting.</h3>
-  <p>Lulu is a 3rd level spellcaster with spellcasting ability Charisma.</p>
-  <p>Cantrips (at will): <em>message, vicious mockery</em></p>
-  <p>1st Level (4 slots): <em>comprehend languages, create or destroy water, disguise self, unseen servant</em></p>
-  <p>2nd Level (2 slots): <em>calm emotions, enthrall</em></p>
-  <h3>Bardic Inspiration </h3>
-  <p>Lulu can inspire others through stirring words or music. To do so, she use a bonus action on her turn to choose one creature other than herself within 60 feet of you who can hear you. That creature gains one Bardic Inspiration die, a d6. Once within the next 10 minutes, the creature can roll the die and add the number rolled to one ability check, attack roll, or saving throw it makes.  She can use this ability 3 times before needing a long rest.</p>
-  <h3>Song of Rest</h3>
-  <p>Lulu can use soothing oration to help revitalize her wounded allies during a short rest.  If any friendly creatures that can hear her performance regain hit points at the end of a short rest by spending one or more Hit Dice, each of those creatures regain an extra 1d6 hit points;</p>
-  <h3>Cutting Wounds</h3>
-  <p>Lulu can use her wit to distract, confuse, or sap the confidence and competence of others.  When a creature she can see within 60 ft of her makes an attack roll, an ability check, or a damage roll, she can use her reaction to expend one of her uses of Bardic Inspiration, rolling a Bardic Inspiration die and subtracting the number rolled from the creature's roll.  The creature is immune if it can't hear her or if it's immune to being charmed.</p>
-
+  <h2 class="character__header">Actions</h2>
+  <dl class="character-stats">
+    {{ range $i, $action := $c.actions }}
+    <div class="character-stat">
+      <dt>{{ $action.title }}</dt>
+      <dd>{{ $action.description }}</dd>
+    </div>
+    {{ end }}
+  </dl>
+  <h2 class="character__header">Equipment</h2>
+  <ul>
+    {{ range $i, $item := $c.equipment }}
+    <li>{{ $item.item }}</li>
+    {{ end }}
+  </ul>
+  <h2 class="character__header">Roleplaying Notes</h2>
+  <dl class="character-stats">
+    <div class="character-stat">
+      <dt>Background</dt>
+      <dd>{{ $c.roleplaying.background }}</dd>
+    </div>
+    <div class="character-stat">
+      <dt>Personality Trait</dt>
+      <dd>{{ $c.roleplaying.trait }}</dd>
+    </div>
+    <div class="character-stat">
+      <dt>Ideal</dt>
+      <dd>{{ $c.roleplaying.ideal }}</dd>
+    </div>
+    <div class="character-stat">
+      <dt>Bond</dt>
+      <dd>{{ $c.roleplaying.bond }}</dd>
+    </div>
+    <div class="character-stat">
+      <dt>Flaw</dt>
+      <dd>{{ $c.roleplaying.flaw }}</dd>
+    </div>
+  </dl>
 
 </div>
+{{ end }}
   {{ $character := .Title }}
   {{ $comics := where (where .Site.Pages.ByPublishDate "Type" "comic") ".Params.characters" "intersect" (slice $character)  }}
 
-  <h2>Appearences</h2>
+  <h2 class="character__header">Appearences</h2>
   <dl>
     <div>
       <dt>Comics:</dt>

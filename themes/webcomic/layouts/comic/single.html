@@ -2,125 +2,33 @@
 <div class="page comic container">
 	{{ partial "comic-nav.html" . }}
 
-	{{ if (isset .Params "comic_header_mobile")}}
-		{{ $header_mobile := resources.Get .Params.comic_header_mobile}}
-		{{ $header_mobile_1200x := $header_mobile.Resize "1200x" }}
-		{{ $header_mobile_1000x := $header_mobile.Resize "1000x" }}
-		{{ $header_mobile_600x := $header_mobile.Resize "600x" }}
-		{{ $header_mobile_500x := $header_mobile.Resize "500x" }}
-		<picture class="comic__header__image">
-			<source 
-				sizes="(max-width: 1200px) 100vw, 1200px" 
-				srcset="
-					{{ $header_mobile_500x.Permalink }} 500w,
-					{{ $header_mobile_600x.Permalink }} 600w,
-					{{ $header_mobile_1000x.Permalink }} 1000w,
-					{{ $header_mobile_1200x.Permalink }} 1200w"
-				>
-			<img
-				src="{{ $header_mobile_1200x.Permalink }}"
-				alt="{{ .Title }} by {{ .Site.Params.author }} ">
-		</picture>
+	{{ $.Scratch.Set "counter" 0 }}
+	{{ range .Params.comic.rows }}
+		<div class="comic__row">
+			{{ range .cols}}
+				{{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}
+				<div class="comic__panel ">
+					{{ $image := resources.Get .panel}}
+					{{ $noRetina := print "x" (div $image.Height 2) }}
+					{{ $image_1x := $image.Resize $noRetina }}
+					{{ $image_mobile := $image.Resize "x500" }}
+					{{ $image_mobile2x := $image.Resize "x1000" }}
+					<picture>
+						<source media="(max-width: 767px)" srcset="{{ $image_mobile2x.Permalink }} 2x, {{ $image_mobile.Permalink }} 1x">
+						<source media="(min-width: 768px)" srcset="{{ $image.Permalink }} 2x, {{ $image_1x.Permalink }} 1x">
+						<img
+							src="{{ $image_mobile.Permalink }}"
+							class="comic__panel__image"
+							alt="{{ if isset . "transcript" }}{{.transcript}}{{end}}"
+							{{ if isset . "transcript" }} 
+								aria-details="comic-transcript-panel-{{$.Scratch.Get "counter"}}"
+							{{ end }}
+						>
+					</picture>
+				</div>
+			{{end}}
+		</div>
 	{{ end }}
-
-
-	{{ if (isset .Params "comic_desktop")}}
-		{{ $desktop := resources.Get .Params.comic_desktop}}
-		<picture class="comic__whole">
-			{{ if (isset .Params "comic_mobile") }}
-				{{ $mobile := resources.Get .Params.comic_mobile}}
-				{{ $mobile_1200x := $mobile.Resize "1200x" }}
-				{{ $mobile_1000x := $mobile.Resize "1000x" }}
-				{{ $mobile_600x := $mobile.Resize "600x" }}
-				{{ $mobile_500x := $mobile.Resize "500x" }}
-				<source 
-					media="(max-width: 768px)"
-					sizes="(max-width: 768px) 100vw, 1200px" 
-					srcset="
-						{{ $mobile_500x.Permalink }} 500w,
-						{{ $mobile_600x.Permalink }} 600w,
-						{{ $mobile_1000x.Permalink }} 1000w,
-						{{ $mobile_1200x.Permalink }} 1200w"
-					sizes="100vw"
-					>
-			{{ end }}
-				{{ $desktop_2400x := $desktop.Resize "2400x" }}
-				{{ $desktop_2000x := $desktop.Resize "2000x" }}
-				{{ $desktop_1600x := $desktop.Resize "1600x" }}
-				{{ $desktop_1200x := $desktop.Resize "1200x" }}
-				{{ $desktop_1000x := $desktop.Resize "1000x" }}
-				{{ $desktop_800x := $desktop.Resize "800x" }}
-
-				<source 
-					{{if (isset .Params "comic_mobile") }}
-						media="(min-width: 768px)"
-					{{ end }}
-					sizes="(max-width: 1200px) 100vw, 1200px" 
-					srcset="
-						{{ $desktop_800x.Permalink }} 800w,
-						{{ $desktop_1000x.Permalink }} 1000w,
-						{{ $desktop_1200x.Permalink }} 1200w,
-						{{ $desktop_1600x.Permalink }} 1600w,
-						{{ $desktop_2000x.Permalink }} 2000w,
-						{{ $desktop_2400x.Permalink }} 2400w"
-					sizes="100vw"
-					>
-				<img
-					src="{{ $desktop_1200x.Permalink }}"
-					{{ if (isset .Params "transcript")}}
-						aria-details="comic-transcript"
-					{{ end }}
-					alt="">
-		</picture>
-		{{ else }}
-		{{ $.Scratch.Set "counter" 0 }}
-		{{ range .Params.comic.rows }}
-			<div class="comic__row">
-				{{ range .cols}}
-					{{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}
-					<div class="comic__panel ">
-						{{ $image := resources.Get .panel}}
-						{{ $noRetina := print "x" (div $image.Height 2) }}
-						{{ $image_1x := $image.Resize $noRetina }}
-						{{ $image_mobile := $image.Resize "x500" }}
-						{{ $image_mobile2x := $image.Resize "x1000" }}
-						<picture>
-							<source media="(max-width: 767px)" srcset="{{ $image_mobile2x.Permalink }} 2x, {{ $image_mobile.Permalink }} 1x">
-							<source media="(min-width: 768px)" srcset="{{ $image.Permalink }} 2x, {{ $image_1x.Permalink }} 1x">
-							<img
-								src="{{ $image_mobile.Permalink }}"
-								class="comic__panel__image"
-								alt="{{ if isset . "transcript" }}{{.transcript}}{{end}}"
-								{{ if isset . "transcript" }} 
-									aria-details="comic-transcript-panel-{{$.Scratch.Get "counter"}}"
-								{{ end }}
-							>
-						</picture>
-					</div>
-				{{end}}
-			</div>
-		{{ end }}
-	{{ end }}
-	{{ if (isset .Params "comic_footer_mobile")}}
-	{{ $footer_mobile := resources.Get .Params.comic_footer_mobile}}
-	{{ $footer_mobile_1200x := $footer_mobile.Resize "1200x" }}
-	{{ $footer_mobile_1000x := $footer_mobile.Resize "1000x" }}
-	{{ $footer_mobile_600x := $footer_mobile.Resize "600x" }}
-	{{ $footer_mobile_500x := $footer_mobile.Resize "500x" }}
-	<picture class="comic__footer__image">
-		<source 
-			sizes="(max-width: 1200px) 100vw, 1200px" 
-			srcset="
-				{{ $footer_mobile_500x.Permalink }} 500w,
-				{{ $footer_mobile_600x.Permalink }} 600w,
-				{{ $footer_mobile_1000x.Permalink }} 1000w,
-				{{ $footer_mobile_1200x.Permalink }} 1200w"
-			>
-		<img
-			src="{{ $footer_mobile_1200x.Permalink }}"
-			alt="">
-	</picture>
-{{ end }}
 
 	{{ partial "social-share.html" . }}
 

@@ -87,11 +87,17 @@ dd {
 	margin: 0;
 }
 
+p {
+	&.no-margin {
+		margin: 0;
+	}
+}
 
 hr {
-	height: 2px;
+	width: 100%;
 	border: 0;
 	background: $site-link;
+	height: 4px;
 }
 
 .sr-only {

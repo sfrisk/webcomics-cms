@@ -15,13 +15,15 @@
 	position: relative;
 	margin-top: -3em;
 	margin-bottom: 3em;
+	min-height: 500px;
 }
 
 .comic-archive__content {
 	@media (min-width: $bp_md) {
     grid-column-start: 1;
     grid-column-end: span 8;
-    grid-row-start: 1;
+		grid-row-start: 1;
+		min-height: 500px;
   }
 }
 
@@ -73,6 +75,11 @@
 	@media (min-width: $bp_md) {
 		font-size: 1.2em
 	}
+}
+
+.comic-archive__item__thumb  {
+	display: flex;
+	align-items: center;
 }
 
 .comic-archive__item__thumb img{

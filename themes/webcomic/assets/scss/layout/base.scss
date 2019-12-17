@@ -15,6 +15,9 @@
   padding: 1em;
   margin-top: -3em;
   margin-bottom: 2em;
+  @media (min-width: $bp_md) {
+    min-height: 500px;
+  }
   &__header {
     width: 100%;
     background: $header-bg;

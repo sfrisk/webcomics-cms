@@ -49,9 +49,83 @@ collections:
     fields:
       - {name: title, label: Name}
       - {name: type, value: character, widget: hidden}
-      - {name: featured, label: Featured, value: false, widget: boolean}
+      - {name: characterType, label: Type, widget: select, multiple: false, options: ['wench', 'npc', 'pc', 'other']}
+      - {name: featured, label: Featured, value: false, required: false, widget: boolean}
       - {name: thumbnail, label: Thumbnail, widget: image}
       - {label: Description, name: body, widget: markdown}
+      - label: Character Sheet
+        name: characterSheet
+        widget: object
+        required: false
+        fields:
+          - {name: class, label: Class, widget: select, required: false, multiple: false, options: [Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, Warlock, Wizard]}
+          - {name: level, label: Level, widget: number, required: false, valueType: int }
+          - {name: race, label: Race, widget: select, required: false, multiple: false, options: [Dragonborn, Dwarf, Elf, Gnome, Half-Elf, Halfling, Half-Orc, Human, Tiefling]}
+          - {name: size, label: Size, widget: select, required: false, multiple: false, options: [Small, Medium]}
+          - {name: alignment, label: Alignment, widget: select, required: false, options: [Lawful Good, Neutral Good, Chaotic Good, Lawful Neutral, Neutral, Chaotic Neutral, Lawful Evil, Neutral Evil, Chaotic Evil]}
+          - {name: speed, label: Speed, widget: number, required: false, valueType: int }
+          - {name: hp, label: Hit Points, widget: number, required: false}
+          - {name: ac, label: Armor Class, widget: number, required: false}
+          - name: abilityScores
+            label: Ability Scores
+            widget: object
+            required: false
+            fields:
+              - {name: str, label: Strength, widget: number, required: false, valueType: int}
+              - {name: dex, label: Dexterity, widget: number, required: false, valueType: int}
+              - {name: con, label: Constitution, widget: number, required: false, valueType: int}
+              - {name: int, label: Intelligence, widget: number, required: false, valueType: int}
+              - {name: wis, label: Wisdom, widget: number, required: false, valueType: int}
+              - {name: cha, label: Charisma, widget: number, required: false, valueType: int}
+          - {name: proficiencyBonus, label: Proficiency Bonus, widget: number, required: false, valueType: int}
+          - {name: savingThrows, label: Saving Throws, widget: select, required: false, multiple: true, options: [str, dex, con, int, wis, cha]}
+          - {name: skills, label: Skills, widget: select, required: false, multiple: true, options: [Athletics, Acrobatics, Sleight of Hand, Stealth, Arcana, History, Investigation, Nature, Religion, Animal Handling, Insight, Medicine, Perception, Survival, Deception, Intimidiation, Performance, Persuasion]}
+          - {name: languages, label: Languages, widget: select, required: false, multiple: true, options: [Common, Dwarvish, Elvish, Giant, Gnomish, Goblin, Halfling, Orc, Abyssal, Celestial, Draconic, Deep Speech, Infernal, Primordial, Sylvan, Undercommon]}
+          - {name: armor, label: Armor, required: false}
+          - {name: weapons, label: Weapons, required: false}
+          - {name: tools, label: Tools, required: false}
+          - name: features
+            label: Features
+            widget: list
+            required: false
+            fields:
+              - {name: title, label: Title, required: false}
+              - {name: description, label: Description, required: false}
+          - name: spellcasting
+            label: Spellcasting
+            required: false
+            fields:
+              - {name: spellcastingAbility, label: Spellcasting Ability, widget: number, required: false, valueType: int}
+              - {name: cantrips, label: Cantrips}
+              - {name: lvl1, label: 1st Level}
+              - {name: lvl2, label: 2nd Level}
+              - {name: lvl3, label: 3rd Level}
+              - {name: lvl4, label: 4th Level}
+          - name: actions
+            label: Actions
+            widget: list
+            required: false
+            fields:
+              - {name: title, label: Title, required: false}
+              - {name: description, label: Description, required: false}
+          - name: roleplaying
+            label: Roleplaying Info
+            widget: object
+            required: false
+            fields:
+            - {name: background, label: Background, required: false}
+            - {name: event, label: Defining Event, required: false}
+            - {name: trait, label: Personality Trait, required: false}
+            - {name: ideal, label: Ideal, required: false}
+            - {name: bond, label: Bond, required: false}
+            - {name: flaw, label: Flaw, required: false}
+          - name: equipment
+            label: Equipment
+            widget: list
+            required: false
+            fields:
+              - {name: item, label: Item, required: false}
+          - {name: trinket, label: Trinket, required: false}
   - name: news
     label: News
     folder: content/news
@@ -77,22 +151,6 @@ collections:
         valueField: title
         displayFields: [title]
         multiple: true
-      - name: comic_header_mobile
-        label: Comic Header (Mobile)
-        required: false
-        widget: image
-      - name: comic_footer_mobile
-        label: Comic Footer (Mobile)
-        required: false
-        widget: image
-      - name: comic_desktop
-        label: Desktop Comic Image (Upload a 2x version of your comic here)
-        required: false
-        widget: image
-      - name: comic_mobile
-        label: Mobile Comic Image (Upload a 760px wide version of your comic for mobile devices)
-        widget: image
-        required: false
       - name: comic
         label: Comic (Panel By Panel - Use this to upload each panel individually to be used in both mobile/desktop layouts)
         widget: object

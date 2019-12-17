@@ -5,12 +5,13 @@
 <div class="container page characters">
   <div class="characters__group">
     {{ range .Data.Pages }}
-    {{ $thumb := resources.Get .Params.thumbnail}}
-    {{ $thumb_1400x := $thumb.Resize "1400x" }}
-    {{ $thumb_700x := $thumb.Resize "700x" }}
-    {{ $thumb_350x := $thumb.Resize "350x" }}
       <a href="{{.Permalink}}" class="characters__item" title="{{ .Title}}">
         <picture class="characters__thumb">
+        {{ if (isset .Params "thumbnail")}}
+          {{ $thumb := resources.Get .Params.thumbnail}}
+          {{ $thumb_1400x := $thumb.Resize "1400x" }}
+          {{ $thumb_700x := $thumb.Resize "700x" }}
+          {{ $thumb_350x := $thumb.Resize "350x" }}
           <source 
             srcset="
               {{ $thumb_1400x.Permalink }} 1400w,
@@ -21,6 +22,7 @@
             class="characters__thumb" 
             src="{{ $thumb_350x.Permalink }}"
             alt="{{ .Title }}">
+        {{ end }}
         </picture>
         <div class="characters__details">
           {{ .Title }}
