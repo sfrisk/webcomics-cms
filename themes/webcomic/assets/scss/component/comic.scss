@@ -78,6 +78,10 @@
     box-shadow: 1px 4px 14px $character-shadow;
     border-top: 4px solid $character-border;
 		border-bottom: 4px solid $character-border;
+		&__title {
+			margin: 0;
+			text-transform: uppercase
+		}
 		@media (min-width: $bp_md) {
       -moz-column-count: 2;
       -webkit-column-count: 2;
