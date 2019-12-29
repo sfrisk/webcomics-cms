@@ -9,9 +9,9 @@
         <picture class="characters__thumb">
         {{ if (isset .Params "thumbnail")}}
           {{ $thumb := resources.Get .Params.thumbnail}}
-          {{ $thumb_1400x := $thumb.Resize "1400x" }}
-          {{ $thumb_700x := $thumb.Resize "700x" }}
-          {{ $thumb_350x := $thumb.Resize "350x" }}
+          {{ $thumb_1400x := $thumb.Resize "1400x q100" }}
+          {{ $thumb_700x := $thumb.Resize "700x q100" }}
+          {{ $thumb_350x := $thumb.Resize "350x q100" }}
           <source 
             srcset="
               {{ $thumb_1400x.Permalink }} 1400w,

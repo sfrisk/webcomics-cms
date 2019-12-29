@@ -2,16 +2,16 @@
 {{ $comics := ($.Site.GetPage "section" "comic").Pages.ByPublishDate }}
 {{ $news := ($.Site.GetPage "section" "news").Pages.ByPublishDate  }}
 {{ $banner := resources.Get .Params.bannerImage}}
-{{ $banner_4000x := $banner.Resize "4000x" }}
-{{ $banner_3200x := $banner.Resize "3200x" }}
-{{ $banner_2400x := $banner.Resize "2400x" }}
-{{ $banner_2000x := $banner.Resize "2000x" }}
-{{ $banner_1600x := $banner.Resize "1600x" }}
-{{ $banner_1200x := $banner.Resize "1200x" }}
-{{ $banner_1000x := $banner.Resize "1000x" }}
-{{ $banner_800x := $banner.Resize "800x" }}
-{{ $banner_600x := $banner.Resize "600x" }}
-{{ $banner_500x := $banner.Resize "500x" }}
+{{ $banner_4000x := $banner.Resize "4000x q100" }}
+{{ $banner_3200x := $banner.Resize "3200x q100" }}
+{{ $banner_2400x := $banner.Resize "2400x q100" }}
+{{ $banner_2000x := $banner.Resize "2000x q100" }}
+{{ $banner_1600x := $banner.Resize "1600x q100" }}
+{{ $banner_1200x := $banner.Resize "1200x q100" }}
+{{ $banner_1000x := $banner.Resize "1000x q100" }}
+{{ $banner_800x := $banner.Resize "800x q100" }}
+{{ $banner_600x := $banner.Resize "600x q100" }}
+{{ $banner_500x := $banner.Resize "500x q100" }}
 
 <header class="home__header">
 	<h1 class="home__title">{{.Params.Subtitle}}</h1>
@@ -96,9 +96,9 @@
 			{{ $url := printf "/%s/%s.md"  "character" ( . | urlize ) }}
 			{{ with $.Site.GetPage $url }}
 				{{ $thumb := resources.Get .Params.thumbnail}}
-				{{ $thumb_1400x := $thumb.Resize "1400x" }}
-				{{ $thumb_700x := $thumb.Resize "700x" }}
-				{{ $thumb_350x := $thumb.Resize "350x" }}
+				{{ $thumb_1400x := $thumb.Resize "1400x q100" }}
+				{{ $thumb_700x := $thumb.Resize "700x q100" }}
+				{{ $thumb_350x := $thumb.Resize "350x q100" }}
 				<a class="home__link home__wenches" href="{{ .Permalink }}">
 					<picture class="characters__thumb">
 						<source 

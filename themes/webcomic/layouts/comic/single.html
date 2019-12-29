@@ -9,10 +9,10 @@
 				{{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}
 				<div class="comic__panel ">
 					{{ $image := resources.Get .panel}}
-					{{ $noRetina := print "x" (div $image.Height 2) }}
+					{{ $noRetina := print "x" (div $image.Height 2) " q100" }}
 					{{ $image_1x := $image.Resize $noRetina }}
-					{{ $image_mobile := $image.Resize "x500" }}
-					{{ $image_mobile2x := $image.Resize "x1000" }}
+					{{ $image_mobile := $image.Resize "x500 q100" }}
+					{{ $image_mobile2x := $image.Resize "x1000 q100" }}
 					<picture>
 						<source media="(max-width: 767px)" srcset="{{ $image_mobile2x.Permalink }} 2x, {{ $image_mobile.Permalink }} 1x">
 						<source media="(min-width: 768px)" srcset="{{ $image.Permalink }} 2x, {{ $image_1x.Permalink }} 1x">
