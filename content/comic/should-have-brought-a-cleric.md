@@ -22,3 +22,4 @@ comic:
 thumbnail: /assets/images/wenches-003-thumb.jpg
 og_image: /assets/images/wenches-003.jpg
 ---
+
