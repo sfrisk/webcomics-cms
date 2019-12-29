@@ -1,12 +1,10 @@
 ---
-title: How Could This Happen?
-date: 2019-01-01T00:00:00.000Z
+title: Unexpected Results
+date: 2019-01-13T00:00:00.000Z
 type: comic
 characters:
   - Horbin
-  - Xavros
   - Veronica
-  - Thog
 comic:
   rows:
     - cols:
@@ -20,4 +18,3 @@ comic:
 thumbnail: /assets/images/wenches-001-thumb.jpg
 og_image: /assets/images/wenches-001.jpg
 ---
-Welcome to a series of comics where I test out different potential layouts and features a webcomic artist could to promote their comic.
