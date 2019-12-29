@@ -151,6 +151,7 @@ collections:
         valueField: title
         displayFields: [title]
         multiple: true
+        required: false
       - name: comic
         label: Comic (Panel By Panel - Use this to upload each panel individually to be used in both mobile/desktop layouts)
         widget: object
@@ -158,19 +159,21 @@ collections:
           - label: Rows
             name: rows
             widget: list
+            required: false
             fields:
               - label: Panels
                 name: cols
                 widget: list
+                required: false
                 fields:
                   - name: panel
                     label: Panel
                     widget: image
+                    required: false
                   - name: transcript
                     label: Transcript
                     widget: markdown
-      - {name: body, label: Body, widget: markdown}
-      - {name: transcript, label: Comic Transcript (Full), widget: markdown, required: false}
+                    required: false
       - {name: thumbnail, label: Thumbnail (Appears in Comic Archive), widget: image}
       - {name: og_title, label: Social Share Title, widget: string, required: false}
       - {name: og_image, label: Social Share Image (1200 x 630px), widget: image, required: false}
