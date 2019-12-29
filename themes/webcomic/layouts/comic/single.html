@@ -35,7 +35,7 @@
 	<header class="comic__header">
 			<h1 class="comic__header_title">{{ .Title }}</h1>
 			<p class="comic__meta">
-				<time>{{.Date.Format "January 1, 2006"}}</time>
+				<time>{{.Date.Format "Jan 2, 2006"}}</time>
 			</p>
 	</header>
 
@@ -46,23 +46,19 @@
 	{{ end }}
 
 	<div class="comic__transcript" id="comic-transcript">
-		<h2>Transcript</h2>
-		{{ if (isset .Params "transcript")}}
-			{{ .Params.transcript | markdownify}}
-		{{ end }}
+		<h2 class="comic__transcript__title">Transcript</h2>
 		{{ $.Scratch.Set "counter" 0 }}
 		{{ range .Params.comic.rows }}
 				{{ range .cols}}
 					{{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}
 						{{ if isset . "transcript" }} 
-						<div id="comic-transcript-panel-{{$.Scratch.Get "counter"}}">
-							<h3>Panel {{$.Scratch.Get "counter"}}</h3>
+						<div class="comic__transcript__panel" id="comic-transcript-panel-{{$.Scratch.Get "counter"}}">
+							<h3 class="comic__transcript__panel-header">Panel {{$.Scratch.Get "counter"}}</h3>
 								{{ .transcript | markdownify}}
 						</div>
 						{{ end }}
 				{{end}}
 		{{ end }}
-
 	</div>
 
 </div>

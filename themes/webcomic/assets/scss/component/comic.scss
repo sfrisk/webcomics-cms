@@ -72,4 +72,25 @@
 			display: none;
 		}
 	}
+	&__transcript {
+		background: $character-background;
+    padding: 1em;
+    box-shadow: 1px 4px 14px $character-shadow;
+    border-top: 4px solid $character-border;
+		border-bottom: 4px solid $character-border;
+		@media (min-width: $bp_md) {
+      -moz-column-count: 2;
+      -webkit-column-count: 2;
+      column-count: 2;
+      margin: 0 auto;
+      column-gap: 2em;
+		}
+		&__panel {
+			break-inside: avoid;
+			&-header {
+				font-family: $sans-serif;
+				border-bottom: 1px solid $site-link;
+			}
+		}
+	}
 }
