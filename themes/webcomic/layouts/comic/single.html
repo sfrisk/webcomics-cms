@@ -30,9 +30,6 @@
 							src="{{ $image_mobile.Permalink }}"
 							class="comic__panel__image"
 							alt="{{ if isset . "transcript" }}{{.transcript}}{{end}}"
-							{{ if isset . "transcript" }} 
-								aria-details="comic-transcript-panel-{{$.Scratch.Get "counter"}}"
-							{{ end }}
 						>
 					</picture>
 				</div>
@@ -49,8 +46,9 @@
 	</div>
 	{{ end }}
 	{{ if eq ($.Scratch.Get "isTranscript") true }}
-	<div class="comic__transcript" id="comic-transcript">
-		<h2 class="comic__transcript__title">Transcript</h2>
+	<details class="comic__transcript" id="comic-transcript">
+		<summary class="comic__transcript__title">Transcript</summary>
+		<div class="comic__transcript__content">
 		{{ $.Scratch.Set "counter" 0 }}
 		{{ range .Params.comic.rows }}
 				{{ range .cols}}
@@ -63,9 +61,10 @@
 						{{ end }}
 				{{end}}
 		{{ end }}
-	</div>
+		</div>
+	</details>
 	{{ end }}
 
-</div>
+</article>
 
 {{end}}

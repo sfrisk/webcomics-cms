@@ -60,6 +60,9 @@
 
 	&__socials {
 		margin-top: 1.5em;
+		@media (min-width: $bp_md) {
+			display: none;
+		}	
 		a {
 			text-decoration: none;
 			margin-right: 1em;

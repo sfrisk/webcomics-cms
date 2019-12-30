@@ -41,6 +41,13 @@ collections:
           - {name: weight, label: Weight, widget: number }
           - {name: rssTitle, label: RSS Feed Title}
           - {name: body, label: Body, widget: markdown}
+  - name: chapter
+    label: Chapter
+    folder: content/chapter
+    create: true
+    fields:
+      - {name: title, label: Title}
+      - {name: type, value: chapter, widget: hidden}
   - name: character
     label: Character
     folder: content/character
