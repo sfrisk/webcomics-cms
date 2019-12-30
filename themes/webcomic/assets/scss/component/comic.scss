@@ -4,16 +4,19 @@
 	background: white;
 
 	&__header {
-		&__title {
-			font-size: .9rem;
-			margin: 0;
-			padding: 0;
-			display: block;
-			line-height: 1;
+		padding: 1em 0;
+		text-align: center;
+		@media (min-width: $bp_md) {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
+			padding: .5em;
 		}
-		&__image {
+		&__title {
+			font-size: 1em;
+			padding-bottom: 1em;
 			@media (min-width: $bp_md) {
-				display: none;
+				padding-bottom: 0;
 			}
 		}
 	}
@@ -47,6 +50,19 @@
 			}
 		}
 	}
+	&__meta {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		padding: 1em .5em;
+		align-items: center;
+		time {
+			line-height: 1em;
+		}
+		@media (min-width: $bp_md) {
+			padding: 0 .5em 1em;
+		}
+	}
 	&__load-more {
 		height: 200px;
 		display: flex;
@@ -74,7 +90,8 @@
 	}
 	&__transcript {
 		background: $character-background;
-    padding: 1em;
+		padding: 1em;
+		margin: 1em 0;
     box-shadow: 1px 4px 14px $character-shadow;
     border-top: 4px solid $character-border;
 		border-bottom: 4px solid $character-border;

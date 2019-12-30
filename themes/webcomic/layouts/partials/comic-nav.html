@@ -34,9 +34,9 @@
 			{{else}}
 				</span>
 			{{ end }}
-	<span class="comic-navigation__item current" aria-hidden="true">
-			{{ .Title }}
-	</span>
+			<span class="comic-navigation__item current" aria-hidden="true">
+					{{ .Title }}
+			</span>
 			{{if .NextInSection}}
 				<a href="{{.NextInSection.Permalink}}" aria-label="Next Comic"
 			{{else}}

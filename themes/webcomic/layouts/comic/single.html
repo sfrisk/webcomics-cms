@@ -1,8 +1,15 @@
 {{ define "main" }}
-<div class="page comic container">
+<article class="page comic container">
 	{{ partial "comic-nav.html" . }}
 
 	{{ $.Scratch.Set "counter" 0 }}
+	{{ $.Scratch.Set "isTranscript" false }}
+	<header class="comic__header">
+		<h1 class="comic__header__title">{{ .Title }}</h1>
+		{{ if and (isset .Site.Params "author") (isset .Site.Params "author_site") }}
+			<a class="comic__header__author" rel="author" href="{{ .Site.Params.author_site }}" target="_blank">{{ .Site.Params.author }}</a>
+		{{ end }}
+	</header>
 	{{ range .Params.comic.rows }}
 		<div class="comic__row">
 			{{ range .cols}}
@@ -13,6 +20,9 @@
 					{{ $image_1x := $image.Resize $noRetina }}
 					{{ $image_mobile := $image.Resize "x500 q100" }}
 					{{ $image_mobile2x := $image.Resize "x1000 q100" }}
+					{{ if isset . "transcript" }} 
+						{{ $.Scratch.Set "isTranscript" true }}
+					{{ end }}
 					<picture>
 						<source media="(max-width: 767px)" srcset="{{ $image_mobile2x.Permalink }} 2x, {{ $image_mobile.Permalink }} 1x">
 						<source media="(min-width: 768px)" srcset="{{ $image.Permalink }} 2x, {{ $image_1x.Permalink }} 1x">
@@ -29,22 +39,16 @@
 			{{end}}
 		</div>
 	{{ end }}
-
-	{{ partial "social-share.html" . }}
-
-	<header class="comic__header">
-			<h1 class="comic__header_title">{{ .Title }}</h1>
-			<p class="comic__meta">
-				<time>{{.Date.Format "Jan 2, 2006"}}</time>
-			</p>
-	</header>
-
+	<div class="comic__meta">
+		<time datetime="{{.Date.Format "2006-01-02"}}">{{.Date.Format "Jan 2, 2006"}}</time>
+		{{ partial "social-share.html" . }}
+	</div>
 	{{ with .Content}}
 	<div class="comic__content">
 		{{- . -}}
 	</div>
 	{{ end }}
-
+	{{ if eq ($.Scratch.Get "isTranscript") true }}
 	<div class="comic__transcript" id="comic-transcript">
 		<h2 class="comic__transcript__title">Transcript</h2>
 		{{ $.Scratch.Set "counter" 0 }}
@@ -60,6 +64,7 @@
 				{{end}}
 		{{ end }}
 	</div>
+	{{ end }}
 
 </div>
 
