@@ -62,14 +62,13 @@
 					<header class="post__header">
 						<h1 class="post__title">{{ .Title }}</h1>
 						<p class="post__meta">
-								<time>{{.Date.Format "January 1, 2006"}}</time>
+							<time datetime="{{.Date.Format "2006-01-02"}}">{{.Date.Format "January 1, 2006"}}</time>
 						</p>
 					</header>
 					<div class="post__content home__news__content">
 						{{.Content}}
 					</div>
 				</article>
-				{{ partial "social-share.html" . }}
 					<a href="{{ .Permalink }}" class="home__news__archive">Read More</a>
 			{{ end }}
 			</div>
