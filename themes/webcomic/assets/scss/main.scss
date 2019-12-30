@@ -49,7 +49,7 @@ body {
 	font-size: 1rem;
 	padding-bottom: 0px;
 	@media (min-width: $bp_md) {
-		background: $site-background url('../assets/images/pattern.png') repeat center center;
+		background: $site-background url('../assets/images/pattern.png') repeat center top;
 	}
 }
 
