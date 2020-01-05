@@ -2,6 +2,7 @@
 title: How Could This Happen?
 date: 2019-01-13T00:00:01.000Z
 type: comic
+chapter: You Meet in a Tavern
 characters:
   - Horbin
   - Xavros
@@ -20,3 +21,4 @@ comic:
 thumbnail: /assets/images/wenches-002-thumb.jpg
 og_image: /assets/images/wenches-002.jpg
 ---
+
