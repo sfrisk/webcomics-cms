@@ -100,10 +100,13 @@
 		}
 		&__title {
 			margin: 0;
-			text-transform: uppercase;
-			font-family: $serif;
 			color: $heading-color;
-			font-size: 1.5em;
+			h2 {
+				margin: 0;
+				display: inline;
+				font-size: 1.5em;
+				text-transform: uppercase;
+			}
 		}
 		&__content {
 			@media (min-width: $bp_md) {

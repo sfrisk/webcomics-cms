@@ -35,7 +35,14 @@
 				</span>
 			{{ end }}
 			<span class="comic-navigation__item current" aria-hidden="true">
-					{{ .Title }}
+				{{ $.Scratch.Set "counter" 1 }}	
+				{{ $title := .Title }}
+				{{ range $comics }}
+					{{ if eq $title .Title}}
+						Episode {{$.Scratch.Get "counter"}}
+					{{ end }}
+					{{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}
+				{{ end}}
 			</span>
 			{{if .NextInSection}}
 				<a href="{{.NextInSection.Permalink}}" aria-label="Next Comic"

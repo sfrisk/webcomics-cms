@@ -4,6 +4,7 @@ backend:
 
 media_folder: static/assets/images
 public_folder: assets/images
+publish_mode: editorial_workflow
 
 collections:
   - name: page
@@ -12,6 +13,7 @@ collections:
       - name: 'home'
         label: 'Home'
         file: "content/_index.md"
+        preview_path: ""
         fields:
           - {name: title, label: Title}
           - {name: weight, label: Weight, widget: number }
@@ -28,6 +30,7 @@ collections:
       - name: 'cast'
         label: 'Cast'
         file: "content/character/_index.md"
+        preview_path: "character/"
         fields:
           - {name: title, label: Title}
           - {name: weight, label: Weight, widget: number }
@@ -35,6 +38,7 @@ collections:
       - name: 'comic-index'
         label: 'Comic'
         file: "content/comic/_index.md"
+        preview_path: "comic/"
         fields:
           - {name: pageTitle, label: Title}
           - {name: title, label: Navigation Title}
@@ -51,6 +55,7 @@ collections:
   - name: character
     label: Character
     folder: content/character
+    preview_path: "character/{{slug}}/"
     filter: {field: "type", value: "character"}
     create: true
     fields:
@@ -137,6 +142,7 @@ collections:
     label: News
     folder: content/news
     create: true
+    preview_path: "news/{{slug}}/"
     fields:
       - {name: title, label: Title}
       - {name: date, label: Date, widget: datetime}
@@ -145,6 +151,7 @@ collections:
     label: Comic
     folder: content/comic
     create: true
+    preview_path: "comic/{{slug}}/"
     filter: {field: "type", value: "comic"}
     fields:
       - {name: title, label: Title}
