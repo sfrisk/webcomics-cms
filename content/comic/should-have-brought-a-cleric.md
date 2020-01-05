@@ -2,6 +2,7 @@
 title: Should Have Brought A Cleric
 date: 2019-01-13T00:00:02.000Z
 type: comic
+chapter: You Meet in a Tavern
 characters:
   - Horbin
   - Xavros
