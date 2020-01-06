@@ -4,7 +4,7 @@ backend:
 
 media_folder: static/assets/images
 public_folder: assets/images
-publish_mode: editorial_workflow
+# publish_mode: editorial_workflow
 
 collections:
   - name: page
@@ -47,13 +47,16 @@ collections:
           - {name: body, label: Body, widget: markdown}
   - name: chapter
     label: Chapter
-    folder: content/chapter
+    folder: data/chapters
     create: true
+    extension: json
     fields:
-      - {name: title, label: Title}
-      - {name: type, value: chapter, widget: hidden}
+      - {name: title, label: Chapter Title}
+      - {name: number, label: Chapter Number, widget: number}
+      - {name: description, label: Description, widget: text}
   - name: character
     label: Character
+    slug: "{{slug}}"
     folder: content/character
     preview_path: "character/{{slug}}/"
     filter: {field: "type", value: "character"}
@@ -139,6 +142,7 @@ collections:
               - {name: item, label: Item, required: false}
           - {name: trinket, label: Trinket, required: false}
   - name: news
+    slug: "{{slug}}"
     label: News
     folder: content/news
     create: true
@@ -148,6 +152,7 @@ collections:
       - {name: date, label: Date, widget: datetime}
       - {name: body, label: Body, widget: markdown}
   - name: comic
+    slug: "{{chapter}}/{{slug}}"
     label: Comic
     folder: content/comic
     create: true
@@ -157,6 +162,15 @@ collections:
       - {name: title, label: Title}
       - {name: date, label: Date, widget: datetime}
       - {name: type, value: comic, widget: hidden}
+      - label: Chapter
+        name: chapter
+        widget: relation
+        collection: chapter
+        searchFields: [title, number]
+        valueField: title
+        displayFields: [title, number]
+        multiple: false
+        required: true
       - label: Characters
         name: characters
         widget: relation

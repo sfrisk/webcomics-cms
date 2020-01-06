@@ -98,6 +98,17 @@
       <dd>
         {{ range $i, $skill := $c.skills }}{{ if $i }}, {{ end }}{{ $skill }}
         {{ $scratch.Set "mod" 0 }}
+        {{ if eq $skill "Athletics" }}
+          {{ $scratch.Set "mod" $strMod }}
+        {{ else if or (eq $skill "Acrobatics") (eq $skill "Sleight of Hand") (eq $skill "Stealth")}}
+          {{ $scratch.Set "mod" $dexMod }}
+        {{ else if or (eq $skill "Arcana") (eq $skill "History") (eq $skill "Investigation") (eq $skill "Nature") (eq $skill "Religion")}}
+          {{ $scratch.Set "mod" $intMod }}
+        {{ else if or (eq $skill "Animal Handling") (eq $skill "Insight") (eq $skill "Medicine") (eq $skill "Perception") (eq $skill "Survival")}}
+          {{ $scratch.Set "mod" $wisMod }}
+        {{ else if or (eq $skill "Deception") (eq $skill "Intimidation") (eq $skill "Performance") (eq $skill "Persuasion")}}
+          {{ $scratch.Set "mod" $chaMod }}
+        {{ end }}
         ({{add ($scratch.Get "mod") $c.proficiencyBonus}}){{ end }}
       </dd>
     </div>

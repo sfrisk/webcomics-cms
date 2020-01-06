@@ -2,6 +2,7 @@
 title: Unexpected Results
 date: 2019-01-13T00:00:00.000Z
 type: comic
+chapter: You Meet in a Tavern
 characters:
   - Horbin
   - Veronica
