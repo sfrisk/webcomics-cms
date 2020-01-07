@@ -64,6 +64,7 @@ characterSheet:
     lvl1Slots: 2
     lvl1: >-
       Comprehend Languages, Detect Magic, Unseen Servent, Mage Armor, Magic Missile, Identify
+  trinket: Diary with seven missing pages
   weapons: 'daggers, darts, slings, quaterstaff, light crossbows'
 ---
 Wizard of wizardingness

@@ -17,12 +17,11 @@
       column-gap: 2em;
     }
   }
-  &-stats {
-    margin: .5em 0;
+  &__section {
     break-inside: avoid;
   }
-  &-stat {
-    break-inside: avoid;
+  &-stats {
+    margin: .5em 0;
   }
   &__ability {
     width: 100%;
@@ -51,8 +50,5 @@
       margin: 0 auto;
       column-gap: 2em;
     }
-  }
-  &__appearences {
-    break-inside: avoid;
   }
 }

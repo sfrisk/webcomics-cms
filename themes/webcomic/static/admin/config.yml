@@ -68,6 +68,7 @@ collections:
       - {name: featured, label: Featured, value: false, required: false, widget: boolean}
       - {name: thumbnail, label: Thumbnail, widget: image}
       - {label: Description, name: body, widget: markdown}
+      - {label: GM Notes, name: notes, required: false }
       - label: Character Sheet
         name: characterSheet
         widget: object

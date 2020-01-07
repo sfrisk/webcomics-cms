@@ -127,69 +127,84 @@
   <hr/>
   {{ if isset $c.spellcasting "ability"}}
     {{ $spell := $c.spellcasting }}
-    <h2 class="character__header">Spellcasting</h2>
-    <p>{{.Title}} is a level {{ $spell.level }} spellcaster. {{.Title}}'s spellcasting ability is {{ $spell.ability }} (spell save DC{{ $spell.dcSave }}; +{{ $spell.attack }} to hit with spell attacks) and has the following spells prepared:</p>
+    <div class="character__section">
+      <h2 class="character__header">Spellcasting</h2>
+      <p>{{.Title}} is a level {{ $spell.level }} spellcaster. {{.Title}}'s spellcasting ability is {{ $spell.ability }} (spell save DC{{ $spell.dcSave }}; +{{ $spell.attack }} to hit with spell attacks) and has the following spells prepared:</p>
+      <dl class="character-stats">
+        {{ if isset $spell "cantrips"}}
+          <div class="character-stat">
+            <dt>Cantrips (at will)</dt>
+            <dd>{{ $spell.cantrips }}</dd>
+          </div>
+        {{ end }}
+        {{ if isset $spell "lvl1"}}
+          <div class="character-stat">
+            <dt>1st Level ({{ $spell.lvl1Slots }} slots)</dt>
+            <dd>{{ $spell.lvl1 }}</dd>
+          </div>
+        {{ end}}
+      </dl>
+    </div>
+  {{ end }}
+  <div class="character__section">
+    <h2 class="character__header">Actions</h2>
     <dl class="character-stats">
-      {{ if isset $spell "cantrips"}}
-        <div class="character-stat">
-          <dt>Cantrips (at will)</dt>
-          <dd>{{ $spell.cantrips }}</dd>
-        </div>
+      {{ range $i, $action := $c.actions }}
+      <div class="character-stat">
+        <dt>{{ $action.title }}</dt>
+        <dd>{{ $action.description }}</dd>
+      </div>
       {{ end }}
-      {{ if isset $spell "lvl1"}}
-        <div class="character-stat">
-          <dt>1st Level ({{ $spell.lvl1Slots }} slots)</dt>
-          <dd>{{ $spell.lvl1 }}</dd>
-        </div>
-      {{ end}}
+    </dl>
+  </div>
+  <div class="character__section">
+    <h2 class="character__header">Equipment</h2>
+    <ul>
+      {{ range $i, $item := $c.equipment }}
+      <li>{{ $item.item }}</li>
+      {{ end }}
+    </ul>
+    {{ if isset $c "trinket"}}
+    <dl class="character-stats">
+      <div class="character-stat">
+        <dt>Trinket</dt>
+        <dd>{{ $c.trinket }}</dd>
+      </div>
     </dl>
     {{ end }}
-  <h2 class="character__header">Actions</h2>
-  <dl class="character-stats">
-    {{ range $i, $action := $c.actions }}
-    <div class="character-stat">
-      <dt>{{ $action.title }}</dt>
-      <dd>{{ $action.description }}</dd>
-    </div>
-    {{ end }}
-  </dl>
-  <h2 class="character__header">Equipment</h2>
-  <ul>
-    {{ range $i, $item := $c.equipment }}
-    <li>{{ $item.item }}</li>
-    {{ end }}
-  </ul>
-  <h2 class="character__header">Roleplaying Notes</h2>
-  <dl class="character-stats">
-    <div class="character-stat">
-      <dt>Background</dt>
-      <dd>{{ $c.roleplaying.background }}</dd>
-    </div>
-    <div class="character-stat">
-      <dt>Personality Trait</dt>
-      <dd>{{ $c.roleplaying.trait }}</dd>
-    </div>
-    <div class="character-stat">
-      <dt>Ideal</dt>
-      <dd>{{ $c.roleplaying.ideal }}</dd>
-    </div>
-    <div class="character-stat">
-      <dt>Bond</dt>
-      <dd>{{ $c.roleplaying.bond }}</dd>
-    </div>
-    <div class="character-stat">
-      <dt>Flaw</dt>
-      <dd>{{ $c.roleplaying.flaw }}</dd>
-    </div>
-  </dl>
-
+  </div>
+  <div class="character__section">
+    <h2 class="character__header">Roleplaying Notes</h2>
+    <dl class="character-stats">
+      <div class="character-stat">
+        <dt>Background</dt>
+        <dd>{{ $c.roleplaying.background }}</dd>
+      </div>
+      <div class="character-stat">
+        <dt>Personality Trait</dt>
+        <dd>{{ $c.roleplaying.trait }}</dd>
+      </div>
+      <div class="character-stat">
+        <dt>Ideal</dt>
+        <dd>{{ $c.roleplaying.ideal }}</dd>
+      </div>
+      <div class="character-stat">
+        <dt>Bond</dt>
+        <dd>{{ $c.roleplaying.bond }}</dd>
+      </div>
+      <div class="character-stat">
+        <dt>Flaw</dt>
+        <dd>{{ $c.roleplaying.flaw }}</dd>
+      </div>
+    </dl>
+  </div>
 </div>
 {{ end }}
   <div class="character__content">
     {{ .Content }}
     {{ $character := .Title }}
     {{ $comics := where (where .Site.Pages.ByPublishDate "Type" "comic") ".Params.characters" "intersect" (slice $character)  }}
-    <div class="character__appearences">
+    <div class="character__section">
       <h2 class="character__header">Appearences</h2>
       <dl>
         <div>
