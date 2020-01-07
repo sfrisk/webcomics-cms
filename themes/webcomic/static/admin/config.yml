@@ -112,7 +112,7 @@ collections:
             required: false
             widget: object
             fields:
-            - {name: level, label: Spellcaster Level, widget: number, required: false}
+              - {name: level, label: Spellcaster Level, widget: number, required: false}
               - {name: dcSave, label: DC Save, widget: number, required: false, valueType: int}
               - {name: attack, label: Attack, widget: number, required: false, valueType: int}
               - {name: ability, label: Spellcasting Ability, widget: select, required: false, multiple: false, options: [Intelligence, Wisdom, Charisma]}

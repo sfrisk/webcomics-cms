@@ -19,7 +19,11 @@
   <dl class="character-stats">
     <div class="character-stat">
         <dt>Class</dt>
+        {{ if isset $c "class" }}
         <dd>Level {{$c.level}} {{$c.class}}</dd>
+        {{ else }}
+        <dd>N/A</dd>
+        {{ end }}
       </div>
     <div class="character-stat">
       <dt>Armor Class</dt>
@@ -146,6 +150,7 @@
       </dl>
     </div>
   {{ end }}
+  {{ if isset $c "actions"}}
   <div class="character__section">
     <h2 class="character__header">Actions</h2>
     <dl class="character-stats">
@@ -157,6 +162,7 @@
       {{ end }}
     </dl>
   </div>
+  {{ end }}
   <div class="character__section">
     <h2 class="character__header">Equipment</h2>
     <ul>

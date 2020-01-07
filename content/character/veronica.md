@@ -12,6 +12,7 @@ characterSheet:
     str: 13
     wis: 12
   ac: 12
+  hp: 14
   alignment: Chaotic Neutral
   equipment:
     - item: A scroll case stuffed full of notes from studies

@@ -1,7 +1,6 @@
 ---
 title: "New Readers"
 weight: 50
-menu: main
 priority: .8
 ---
 
