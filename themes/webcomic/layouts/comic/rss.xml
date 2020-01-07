@@ -22,11 +22,13 @@
       <guid>{{ .Permalink }}</guid>
       <description>{{ .Summary | html }}</description>
       <content:encoded>
+        <![CDATA[
         {{ range .Params.comic.rows }}
             {{ range .cols}}
                 <img src="{{ absURL .panel }}" />
             {{end}}
         {{ end }}
+        ]]>
       </content:encoded>
     </item>
     {{ end }}
