@@ -7,7 +7,6 @@
   </h1>
 </header>
 <div class="container page character">
-{{ .Content }}
 {{ if .Params.characterSheet }} 
 <div class="character__character-sheet"> 
   <h2 class="character__name">
@@ -126,6 +125,25 @@
     </div>
   </dl>
   <hr/>
+  {{ if isset $c.spellcasting "ability"}}
+    {{ $spell := $c.spellcasting }}
+    <h2 class="character__header">Spellcasting</h2>
+    <p>{{.Title}} is a level {{ $spell.level }} spellcaster. {{.Title}}'s spellcasting ability is {{ $spell.ability }} (spell save DC{{ $spell.dcSave }}; +{{ $spell.attack }} to hit with spell attacks) and has the following spells prepared:</p>
+    <dl class="character-stats">
+      {{ if isset $spell "cantrips"}}
+        <div class="character-stat">
+          <dt>Cantrips (at will)</dt>
+          <dd>{{ $spell.cantrips }}</dd>
+        </div>
+      {{ end }}
+      {{ if isset $spell "lvl1"}}
+        <div class="character-stat">
+          <dt>1st Level ({{ $spell.lvl1Slots }} slots)</dt>
+          <dd>{{ $spell.lvl1 }}</dd>
+        </div>
+      {{ end}}
+    </dl>
+    {{ end }}
   <h2 class="character__header">Actions</h2>
   <dl class="character-stats">
     {{ range $i, $action := $c.actions }}
@@ -167,28 +185,32 @@
 
 </div>
 {{ end }}
-  {{ $character := .Title }}
-  {{ $comics := where (where .Site.Pages.ByPublishDate "Type" "comic") ".Params.characters" "intersect" (slice $character)  }}
-
-  <h2 class="character__header">Appearences</h2>
-  <dl>
-    <div>
-      <dt>Comics:</dt>
-      <dd>{{ len $comics }}</dd>
+  <div class="character__content">
+    {{ .Content }}
+    {{ $character := .Title }}
+    {{ $comics := where (where .Site.Pages.ByPublishDate "Type" "comic") ".Params.characters" "intersect" (slice $character)  }}
+    <div class="character__appearences">
+      <h2 class="character__header">Appearences</h2>
+      <dl>
+        <div>
+          <dt>Comics:</dt>
+          <dd>{{ len $comics }}</dd>
+        </div>
+        {{ range last 1 $comics }}
+          <div>
+            <dt>Recent Appearance:</dt>
+            <dd><a href="{{.Permalink}}" title=".Title">{{.Title}}</a></dd>
+          </div>
+        {{ end}}
+        {{ range first 1 $comics }}
+          <div>
+            <dt>First Appearance:</dt>
+            <dd><a href="{{.Permalink}}" title=".Title">{{.Title}}</a></dd>
+          </div>
+        {{ end}}
+      </dl>
     </div>
-    {{ range last 1 $comics }}
-      <div>
-        <dt>Recent Appearance:</dt>
-        <dd><a href="{{.Permalink}}" title=".Title">{{.Title}}</a></dd>
-      </div>
-    {{ end}}
-    {{ range first 1 $comics }}
-      <div>
-        <dt>First Appearance:</dt>
-        <dd><a href="{{.Permalink}}" title=".Title">{{.Title}}</a></dd>
-      </div>
-    {{ end}}
-  </dl>
+  </div>
 
 </div>
 {{ end }}

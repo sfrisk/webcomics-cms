@@ -27,7 +27,7 @@ characterSheet:
   class: Barbarian
   equipment:
     - item: >-
-        Explorer’s Pack ( backpack, bedroll, mess kit, tinderbox, 10 torches, 10 days of rations, and a waterskin.  Pack has 50 ft of hempen rope strapped to the side of it)
+        Explorer’s Pack (backpack, bedroll, mess kit, tinderbox, 10 torches, 10 days of rations, and a waterskin.  Pack has 50 ft of hempen rope strapped to the side of it)
     - item: Greataxe
     - item: (2) Handaxes
     - item: (4) Javelins

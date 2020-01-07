@@ -109,13 +109,21 @@ collections:
           - name: spellcasting
             label: Spellcasting
             required: false
+            widget: object
             fields:
-              - {name: spellcastingAbility, label: Spellcasting Ability, widget: number, required: false, valueType: int}
-              - {name: cantrips, label: Cantrips}
-              - {name: lvl1, label: 1st Level}
-              - {name: lvl2, label: 2nd Level}
-              - {name: lvl3, label: 3rd Level}
-              - {name: lvl4, label: 4th Level}
+            - {name: level, label: Spellcaster Level, widget: number, required: false}
+              - {name: dcSave, label: DC Save, widget: number, required: false, valueType: int}
+              - {name: attack, label: Attack, widget: number, required: false, valueType: int}
+              - {name: ability, label: Spellcasting Ability, widget: select, required: false, multiple: false, options: [Intelligence, Wisdom, Charisma]}
+              - {name: cantrips, label: Cantrips, required: false}
+              - {name: lvl1, label: 1st Level, required: false}
+              - {name: lvl1Slots, label: 1st Level Spell Slots, required: false, widget: number}
+              - {name: lvl2, label: 2nd Level, required: false}
+              - {name: lvl2Slots, label: 2nd Level Spell Slots, required: false, widget: number}
+              - {name: lvl3, label: 3rd Level, required: false}
+              - {name: lvl3Slots, label: 3rd Level Spell Slots, required: false, widget: number}
+              - {name: lvl4, label: 4th Level, required: false}
+              - {name: lvl4Slots, label: 4th Level Spell Slots, required: false, widget: number}
           - name: actions
             label: Actions
             widget: list
