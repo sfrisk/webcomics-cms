@@ -35,6 +35,15 @@ characterSheet:
     - Medicine
     - Investigation
   speed: 30
+  spellcasting:
+    ability: Intelligence
+    cantrips: 'Firebolt, Light, Ray of Frost'
+    dcSave: 13
+    level: 1
+    lvl1: >-
+      Comprehend Languages, Detect Magic, Unseen Servent, Mage armor, Magic
+      missile, Identify
+    lvl2: ''
   weapons: 'daggers, darts, slings, quaterstaff, light crossbows'
 ---
 Wizard of wizardingness
