@@ -23,12 +23,14 @@
       <description>{{ .Summary | html }}</description>
       <content:encoded>
         <![CDATA[
+        <div>
         {{ range .Params.comic.rows }}
             {{ range .cols}}
                 <img src="{{ absURL .panel }}" />
             {{end}}
         {{ end }}
-        ]]>
+        </div>
+        ]>
       </content:encoded>
     </item>
     {{ end }}
