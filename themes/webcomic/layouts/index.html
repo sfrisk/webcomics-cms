@@ -44,9 +44,9 @@
 					<span>Latest Comic</span>
 			</a>
 		{{ end }}
-		<!-- <a class="home__link home__patreon" href="https://patreon.com" title="Patreon">
+		<a class="home__link home__patreon" href="https://patreon.com" title="Patreon">
 			<span>Join Us on Patreon!</span>
-		</a> -->
+		</a>
 		{{ range first 1 $comics }}
 			<a class="home__link home__read-first" href="{{ .Permalink }}" title="{{.Title}}">
 				<span>First Comic</span>
@@ -55,7 +55,6 @@
 		<a class="home__link home__comic-archive" href="/comic" title="Comic Archive">
 			<span>Comic Archive</span>
 		</a>
-		<!--
 		<div class="home__news">
 			<h2 class="home__news__header">News from the Tavern</h2>
 			{{ range last 1 $news }}
@@ -70,10 +69,9 @@
 						{{.Content}}
 					</div>
 				</article>
-					<a href="{{ .Permalink }}" class="home__news__archive">Read More</a>
+				<a href="{{ .Permalink }}" class="home__news__archive">Read More</a>
 			{{ end }}
-			</div>
-		-->
+		</div>
 		<div class="home__subheader">
 				<h2>New Reader?</h2>
 				<p><em>Tavern Wenches</em> follows the adventures of the NPC tavern wenches of <em>A Need for Mead</em> as they face down lecherous PCs, point the way towards Epic Quests, and try to make sure the tavern is still standing come morning.</p>
