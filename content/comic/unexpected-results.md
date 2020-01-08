@@ -12,10 +12,13 @@ comic:
         - panel: /assets/images/wenches-001-a.jpg
         - panel: /assets/images/wenches-001-b.jpg
         - panel: /assets/images/wenches-001-c.jpg
-    - cols:
         - panel: /assets/images/wenches-001-d.jpg
+    - cols:
         - panel: /assets/images/wenches-001-e.jpg
+    - cols:
         - panel: /assets/images/wenches-001-f.jpg
+        - panel: /assets/images/wenches-001-g.jpg
+        - panel: /assets/images/wenches-001-h.jpg
 thumbnail: /assets/images/wenches-001-thumb.jpg
 og_image: /assets/images/wenches-001.jpg
 ---

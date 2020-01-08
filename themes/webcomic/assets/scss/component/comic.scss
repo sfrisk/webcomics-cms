@@ -39,7 +39,7 @@
 			@media (min-width: $bp_md) {
 				max-width: 100%;
 				height: auto;
-				max-height: auto;
+				max-height: inherit;
 			}
 		}
 	}
