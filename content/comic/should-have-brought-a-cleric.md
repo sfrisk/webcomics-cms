@@ -63,6 +63,6 @@ comic:
             panel. He is smirking. "Thog impressed," he says.
 thumbnail: /assets/images/wenches-003-thumb.jpg
 og_image: /assets/images/wenches-003.jpg
-og_description: ''
+og_description: The wizard decides they should try to help their companion.
 ---
 
