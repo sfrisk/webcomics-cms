@@ -1,9 +1,15 @@
 .characters {
+  .page__header {
+    height: 10em;
+  }
+  .container {
+    padding-top: 3em;
+  }
   &__group {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
     grid-auto-rows: 1fr;
-    grid-gap: 1em;
+    grid-gap: 3em;
     @media (min-width: $bp_md) {
       grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
     }
@@ -20,6 +26,9 @@
     }
   }
   &__item {
+    border-radius: 100%;
+    border: 3px solid $white;
+    overflow: hidden;
     position: relative;
     background: $color3;
     background: linear-gradient($color3, darken($color3, 10%));
@@ -38,16 +47,17 @@
   &__details {
     color: $white;
     background: rgba($black, .8);
-    padding: .2em 1em;
+    padding: .2em 2em;
     font-family: $serif;
     font-weight: bold;
     font-variant: small-caps;
     letter-spacing: 1px;
     position: absolute;
     bottom: 1em;
-    right: 1em; 
+    right: 0; 
+    left: 0;
+    text-align: center;
     font-size: .8em;
-    max-width: 75%;
     @media (min-width: $bp_md) {
       font-size: 1.2em;
     }

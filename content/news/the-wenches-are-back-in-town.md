@@ -1,11 +1,14 @@
 ---
 title: The Wenches are Back in Town
-date: 2019-01-13T05:00:00.000Z
+date: 2020-01-11T05:00:00.000Z
 ---
+
+The dark demiplane can be a strange and dangerous place, and known to warp the very fabric of space and time.  You go on many adventures, learn new skills, and sometimes find you aren't always the same person you were when you left.
+
+That being said, Tavern Wenches will be rebooted on January 13, 2020.
+
+To keep up to date with the latest updates, you can follow me on [Instagram](https://www.instagram.com/friskycomics/), [Facebook](https://www.facebook.com/TavernWenches/), and [Twitter](https://twitter.com/sarahfrisk).
+
 I've missed you peeps.
 
-For those of you who are new to Tavern Wenches, welcome! Tavern Wenches is a comic about a group of people who are running a tavern in a medieval fantasy RPG, who are doing their best to make sure the tavern is still standing come morning. It's a story that is near and dear to my heart, and I'm excited to be bringing it back this 2020.
-
-Those of you who have been here before may notice that things look a bit different. Or a lot different. It the past four or five years, my art and writing have changed lot, so this new site shall be a bit of a reboot of the Tavern Wenches world. I'm pretty excited and happy about the change of format, and I hope you will be too.  We'll have the chance to get to know the characters a lot better than we did the first time around, and I have a lot of fun stories planned out.
-
-I'm still working on finishing up the last touches of the site, so expect to see more here in the days to come!
+S Frisk
