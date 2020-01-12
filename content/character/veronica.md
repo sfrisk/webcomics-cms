@@ -42,4 +42,4 @@ characterSheet:
     - Religion
   speed: 30
 ---
-Veronica is a sweet innocent young woman who was captured by a mysterious dark spell castor for an unknown summoning spell. If rescued, she is greatful to her rescuers.
+Veronica is a sweet innocent young woman who was captured by a mysterious dark spell caster for an unknown summoning spell. If rescued, she is greatful to her rescuers.

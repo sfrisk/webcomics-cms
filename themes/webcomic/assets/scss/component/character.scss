@@ -69,7 +69,9 @@
       background: $color5;
       border-radius: 100%;
       overflow: hidden;
-      max-width: 350px;
+      width: 350px;
+      max-width: 100%;
+      height: auto;
       margin: 1em auto;
     }
   }
