@@ -39,7 +39,7 @@
 				{{ $title := .Title }}
 				{{ range $comics }}
 					{{ if eq $title .Title}}
-						Episode {{$.Scratch.Get "counter"}}
+						Page {{$.Scratch.Get "counter"}}
 					{{ end }}
 					{{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}
 				{{ end}}

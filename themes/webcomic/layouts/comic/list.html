@@ -32,7 +32,14 @@
 									</picture>
 									{{ end }}
 									<span class="comic-archive__item__title">
-										{{.Title}}
+										{{ $.Scratch.Set "counter" 1 }}	
+										{{ $title := .Title }}
+										{{ range $comics }}
+											{{ if eq $title .Title}}
+												Page {{$.Scratch.Get "counter"}}: {{.Title}}
+											{{ end }}
+											{{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}
+										{{ end}}
 									</span>
 									<span class="comic-archive__item__date">{{ .Date.Format "Jan 2, 2006" }}</span>
 								</a>

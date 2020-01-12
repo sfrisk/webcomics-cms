@@ -13,6 +13,14 @@
 {{ $banner_600x := $banner.Resize "600x q100" }}
 {{ $banner_500x := $banner.Resize "500x q100" }}
 
+{{ $firstImage := resources.Get .Params.firstcomic}}
+{{ $firstImage_1000x := $firstImage.Resize "1000x q100" }}
+{{ $firstImage_500x := $firstImage.Resize "500x q100" }}
+
+{{ $lastImage := resources.Get .Params.latestcomic}}
+{{ $lastImage_1000x := $firstImage.Resize "1000x q100" }}
+{{ $lastImage_500x := $firstImage.Resize "500x q100" }}
+
 {{ $castImage := resources.Get .Params.cast}}
 {{ $castImage_1400x := $castImage.Resize "1200x q100" }}
 {{ $castImage_700x := $castImage.Resize "700x q100" }}
@@ -46,7 +54,18 @@
 		</a>
 		{{ range last 1 $comics }}
 			<a class="home__link home__read-latest" id="comic-latest" href="{{ .Permalink }}" title="{{.Title}}">
-					<span>Latest Comic</span>
+				<picture class="characters__thumb">
+					<source 
+						srcset="
+							{{ $lastImage.Permalink }} 1000w,
+							{{ $lastImage.Permalink }} 500w"
+						>
+					<img
+						class="characters__thumb" 
+						src="{{ $lastImage.Permalink }}"
+						alt="Latest Comic">
+				</picture>
+				<span>Latest Comic</span>
 			</a>
 		{{ end }}
 		<a class="home__link home__patreon" href="https://patreon.com" title="Patreon">
@@ -54,6 +73,17 @@
 		</a>
 		{{ range first 1 $comics }}
 			<a class="home__link home__read-first" href="{{ .Permalink }}" title="{{.Title}}">
+				<picture class="characters__thumb">
+					<source 
+						srcset="
+							{{ $firstImage.Permalink }} 1000w,
+							{{ $firstImage.Permalink }} 500w"
+						>
+					<img
+						class="characters__thumb" 
+						src="{{ $firstImage.Permalink }}"
+						alt="First Comic">
+				</picture>
 				<span>First Comic</span>
 			</a>
 		{{ end }}
@@ -61,7 +91,7 @@
 			<span>Comic Archive</span>
 		</a>
 		<div class="home__news">
-			<h2 class="home__news__header">News from the Tavern</h2>
+			<h2 class="home__news__header">Tales from the Tavern</h2>
 			{{ range last 1 $news }}
 				<article>
 					<header class="post__header">
@@ -77,7 +107,7 @@
 				<a href="{{ .Permalink }}" class="home__news__archive">Read More</a>
 			{{ end }}
 		</div>
-		<div class="home__subheader">
+		<!-- <div class="home__subheader">
 				<h2>New Reader?</h2>
 				<p><em>Tavern Wenches</em> follows the adventures of the NPC tavern wenches of <em>A Need for Mead</em> as they face down lecherous PCs, point the way towards Epic Quests, and try to make sure the tavern is still standing come morning.</p>
 		</div>
@@ -103,8 +133,8 @@
 			<a class="home__link home__wenches" href="{{ .Permalink }}" title="{{.Title}}">
 				<span>Start at the Beginning</span>
 			</a>
-		{{ end }}
-
+		{{ end }} -->
+<!-- 
 		<div class="home__subheader">
 				<h2>Meet the Wenches</h2>
 				<p>Get to know the wenches of <em>A Need for Mead</em></p>
@@ -134,7 +164,7 @@
 			{{end}}
 	
 		{{ end }}
-	</div>
+	</div> -->
 
 	<script>
 		var comics = [{{ range $comics }}{{ .Permalink }},{{ end }}]
