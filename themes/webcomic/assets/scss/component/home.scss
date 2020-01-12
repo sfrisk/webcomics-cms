@@ -180,10 +180,21 @@ $grid-size-lg: 6;
   &__patreon {
     grid-column-start: 1;
     grid-column-end: span 6;
+    max-height: 400px;
     @media (min-width: $bp_lg) {
       grid-column-start: 5;
       grid-column-end: span 2;
       grid-row-start: 2;
+      max-height: none;
+    }
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      @media (min-width: $bp_sm) {
+        max-height: none;
+      }
     }
   }
   &__wenches {

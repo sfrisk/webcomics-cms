@@ -89,17 +89,10 @@
 			</a>
 		{{ end }}
 		<a class="home__link home__patreon" href="https://patreon.com" title="Patreon">
-			<picture class="characters__thumb">
-				<source 
-					srcset="
-						{{ $patreon_1000x.Permalink }} 1000w,
-						{{ $patreon_500x.Permalink }} 500w"
-					>
-				<img
-					class="characters__thumb" 
-					src="{{ $patreon_500x.Permalink }}"
-					alt="Patreon">
-			</picture>
+			<img
+				class="characters__thumb" 
+				src="{{ $patreon.Permalink }}"
+				alt="Patreon">
 			<span>Join Us on Patreon!</span>
 		</a>
 		{{ range first 1 $comics }}
