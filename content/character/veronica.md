@@ -3,7 +3,7 @@ title: Veronica
 type: character
 characterType: wench
 thumbnail: /assets/images/veronica.png
-og_image: /assets/images/veronica.png
+og_image: /assets/images/veronica_og.jpg
 censor: true
 characterSheet:
   abilityScores:

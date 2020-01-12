@@ -3,7 +3,7 @@ title: Horbin
 type: character
 characterType: pc
 thumbnail: /assets/images/horbin.png
-og_image: /assets/images/horbin.png
+og_image: /assets/images/horbin_og.jpg
 characterSheet:
   abilityScores:
     cha: 8
