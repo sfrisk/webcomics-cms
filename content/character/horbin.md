@@ -50,9 +50,9 @@ characterSheet:
     - description: See rulebook for details
       title: Halfling Traits
     - title: Criminal Contact
-      description: See rulebook for details
+      description: Horbin has a reliable at trustworthy contact (his former boss in the Thieves' Guild) who acts as his liaison to a network of other criminals
     - title: Expertise
-      description: Thieves Tools, Stealth
+      description: Thieves' Tools, Stealth
   hp: 10
   languages:
     - Common
