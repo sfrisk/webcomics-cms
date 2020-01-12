@@ -13,6 +13,11 @@
 {{ $banner_600x := $banner.Resize "600x q100" }}
 {{ $banner_500x := $banner.Resize "500x q100" }}
 
+{{ $castImage := resources.Get .Params.cast}}
+{{ $castImage_1400x := $castImage.Resize "1200x q100" }}
+{{ $castImage_700x := $castImage.Resize "700x q100" }}
+{{ $castImage_350x := $castImage.Resize "350x q100" }}
+
 <header class="home__header">
 	<h1 class="home__title">{{.Params.Subtitle}}</h1>
 	<picture class="home__banner-wrap">
@@ -80,14 +85,26 @@
 				<span>About the Comic</span>
 		</a>
 		<a class="home__link home__wenches" href="/character">
-				<span>Meet the Cast</span>
+			<picture class="characters__thumb">
+				<source 
+					srcset="
+						{{ $castImage.Permalink }} 1400w,
+						{{ $castImage.Permalink }} 700w,
+						{{ $castImage.Permalink }} 350w"
+					>
+				<img
+					class="characters__thumb" 
+					src="{{ $castImage.Permalink }}"
+					alt="Meet the Cast">
+			</picture>
+			<span>Meet the Cast</span>
 		</a>
 		{{ range first 1 $comics }}
 			<a class="home__link home__wenches" href="{{ .Permalink }}" title="{{.Title}}">
 				<span>Start at the Beginning</span>
 			</a>
 		{{ end }}
-		
+
 		<div class="home__subheader">
 				<h2>Meet the Wenches</h2>
 				<p>Get to know the wenches of <em>A Need for Mead</em></p>

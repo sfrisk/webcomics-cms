@@ -28,7 +28,7 @@ characterSheet:
     - item: Bottle of Black Inc
     - item: Quill
     - item: Small Knife
-    - item: Letter from a dead colleague posing questions he can't answer
+    - item: Letter from a missing (or dead) colleague posing questions he can't answer
     - item: Common Clothes
     - item: Small Pouch with 10GP
   hp: 8
@@ -45,7 +45,7 @@ characterSheet:
     bond: My life's work is a series of tombs related to a specific field of lore
     flaw: I am easily distracted by the promise of knowledge
     ideal: The path to power and greatness is through knowledge
-    trait: Im the most knowledgeable and well read so clearly I would make the best leader
+    trait: I'm the most knowledgeable and well read so clearly I would make the best leader
   savingThrows:
     - int
     - wis
@@ -68,4 +68,8 @@ characterSheet:
   trinket: Diary with seven missing pages
   weapons: 'daggers, darts, slings, quaterstaff, light crossbows'
 ---
-Wizard of wizardingness
+If asked, Xavros will proudly declare that he was the natural leader of the PC party, and everyone naturally and almost instantly chose to look to him as their leader.  After all, who wouldn't look up to a wizard with, what some might argue, a questionable long amount of time spent in university? True, he had issues becoming the leader in any of the extracurricular activities he was in at the university, but everyone knew those were based on popularity contests rather than actual knowledge and skill at leadership.  Eventually Xavros would prove himself and his abilities to the world, he just needed the right situation to present itself. 
+
+The right situation did present itself three months ago after his favorite mentor mysteriously went missing, leaving only a torn journal of some of her notes behind. The other professors insisted - rather forcibly - that it was time for him to get out of the hallowed halls of academia and get some "practical" experience. Not sure why no one had his university seemed at all concerned about the disappearance of his mentor, Xavros swore to find out what happened to her and her research, and struck out to the east where he knew a tomb she had been looking for was said to have been located. 
+
+While at a tavern, he overheard the bartender telling another employee about the unfortunate kidnapping of a village girl a few miles away rumors of a strange glow at an abandoned lighthouse.  Remembering something his mentor had mentioned, Xavros wondered if this had something to do with  one of the rumored summoning spells in the tomb his mentor had had been looking for. Knowing he did not have the physical power to take on the tower alone, he cleverly convinced two physical types, Thog and Horbin, to investigate the matter with him.

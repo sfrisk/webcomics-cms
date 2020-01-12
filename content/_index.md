@@ -4,6 +4,7 @@ subtitle: "A Dungeon Not To Be Mastered"
 weight: 20
 priority: 1
 bannerImage: /assets/images/home.png
+cast: /assets/images/cast.png
 featuredCharacters:
   - Veronica
   - Lulu

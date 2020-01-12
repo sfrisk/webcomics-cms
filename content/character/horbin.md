@@ -49,6 +49,8 @@ characterSheet:
       title: Sneak Attack
     - description: See rulebook for details
       title: Halfling Traits
+    - title: Criminal Contact
+      description: See rulebook for details
   hp: 10
   languages:
     - Common
@@ -84,4 +86,8 @@ characterSheet:
     last chapter missing
   weapons: 'simple weapons, hand crossbow, longsword, rapier, shortsword'
 ---
-He is a rogue halfling!
+Horbin is a halfling with one goal in life: to become the most legendary thief that ever lived. After he was caught red handed trying to steal from a powerful noble, he barely managed to escape alive with the help of members of his Thieves' Guild by going through a labyrinth of sewers underneath the city.
+
+Once freed, his guild informed him it was time to move on, as his botched attempt to steal from the noble had brought down unwanted attention from members of law enforcement on the Thieves' Guild.  Despite not being able to return for the foreseable future, this didn't seem to worry Horbin too much. Instead, he chose to see this an opportunty to seek his fortune and hone his skills, leaving the city that raised him with a handfull of supplies and a worn, ripped up copy of a book that is all he had left from his childhood.
+
+While stopping at a tavern to have a few beers and lighten a few purses, he happened to overhear tales of a captured damsel that needed "stealing" from a dark magic user. Deciding that such a heist could only improve his reputation, he decided to team up with Xavros and Thog to investigate.

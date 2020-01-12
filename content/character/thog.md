@@ -80,4 +80,13 @@ characterSheet:
   trinket: A bronze pentacle with an etching of a rat's head in its center
   weapons: 'simple weapons, martial weapons'
 ---
-Thog is the stoic, and half orc of few words of the PC Party.
+Thog grew up in a relatively peaceful village to the south, where 
+he worked as a leatherworker. Nothing made Thog happier than making items with his own hands, and he was known through the various tribes for his skill. Most of the leather based equipment he wears he made himself.
+
+One day, just after dusk, danger struck his village in the form of a strange wild beast with glowing red eyes. Thog, desperate to save his people, stood alone against the monster while the rest of his people ran to safety. In the midst of the battle, Thog felt a rage take over him he had never felt before, allowing him to fight with a skill and ferocity he had never been able to harness before. After defeating the monster, he found an odd medallion around the creature's neck, upon removing it, the creature disappeared.
+
+Thog brought the strange medallion to the shaman of his village, who determined that the creature had been sent by a powerful magic user, but for what reason they did not know. However, it was decided, after Thog's bravery in battle was witnessed, that he must be the one to go out and find the person who sent such a creature to attack their village.
+
+Reluctant to leave the life he loved behind, but wanting to help protect those in his village as well, he packed up what he could of his life in the village, and began traveling towards civilization in search of information, although his efforts to communicate with others was sometimes hindered by his less than perfect grasp of the Common language. It was at a tavern off the side of the road he found what he felt was his first lead on what might be the dark magic user who sent the monster after his people, and thus paired up with Horbin and Xavros to investigate.
+
+

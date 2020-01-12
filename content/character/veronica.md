@@ -4,6 +4,7 @@ type: character
 characterType: wench
 thumbnail: /assets/images/veronica.png
 og_image: /assets/images/veronica.png
+censor: true
 characterSheet:
   abilityScores:
     cha: 12
@@ -41,4 +42,4 @@ characterSheet:
     - Religion
   speed: 30
 ---
-Veronica! She's the serving wench!
+Veronica is a sweet innocent young woman who was captured by a mysterious dark spell castor for an unknown summoning spell. If rescued, she is greatful to her rescuers.

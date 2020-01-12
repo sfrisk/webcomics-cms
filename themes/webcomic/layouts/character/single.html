@@ -11,7 +11,7 @@
 <div class="container page character">
   {{ if gt (len $comics) 0 }}
   {{ if .Params.characterSheet }} 
-  <div class="character__character-sheet"> 
+  <div class="character__character-sheet {{if eq .Params.censor true}}character__character-sheet_censor{{end}}"> 
     <h2 class="character__name">
       {{ .Title }}
     </h2>
@@ -81,6 +81,7 @@
       <div class="character-stat">
         <dt>Saving Throws</dt>
         <dd>
+          {{ if isset $c "savingThrows" }}
           {{ range $i, $savingThrow := $c.savingThrows }}{{ if $i }}, {{ end }}{{ humanize $savingThrow }}
           {{ $scratch.Set "mod" 0 }}
           {{if eq $savingThrow "str" }}
@@ -97,6 +98,9 @@
           {{ $scratch.Set "mod" $chaMod }}
           {{end}}
           ({{add ($scratch.Get "mod") $c.proficiencyBonus}}){{ end }}
+          {{ else }}
+            N/A
+          {{ end }}
         </dd>
       </div>
       <div class="character-stat">
@@ -233,6 +237,26 @@
         </dl>
       </div>
     </div>
+  {{ else }}
+    <p class="character__no-info">No information about this character at this time.</p>
   {{ end }}
+  <div class="character__section">
+    {{ if (isset .Params "thumbnail")}}
+    {{ $thumb := resources.Get .Params.thumbnail}}
+    {{ $thumb_700x := $thumb.Resize "700x q100" }}
+    {{ $thumb_350x := $thumb.Resize "350x q100" }}
+    <picture class="character__image">
+    <source 
+      srcset="
+        {{ $thumb_700x.Permalink }} 700w,
+        {{ $thumb_350x.Permalink }} 350w"
+      >
+      <img
+        class="characters__thumb" 
+        src="{{ $thumb_350x.Permalink }}"
+        alt="{{ .Title }}">
+      </picture>
+    {{ end }}
+  </div>
 </div>
 {{ end }}

@@ -16,6 +16,16 @@
       margin: 0 auto;
       column-gap: 2em;
     }
+    &_censor {
+      user-select: none;
+      li, dd, td {
+        background: $black;
+      }
+      dd {
+        min-width: 200px;
+        display: inline-block;
+      }
+    }
   }
   &__section {
     break-inside: avoid;
@@ -42,13 +52,33 @@
     border-bottom: 1px solid $site-link;
   }
   &__content {
-    padding: 1em 0;
+    margin: 1.5em 0;
+    p {
+      margin: 0 0 16px 0;
+    }
     @media (min-width: $bp_md) {
       -moz-column-count: 2;
       -webkit-column-count: 2;
       column-count: 2;
-      margin: 0 auto;
+      margin: 2em auto;
       column-gap: 2em;
     }
+  }
+  &__image {
+    img {
+      background: $color5;
+      border-radius: 100%;
+      overflow: hidden;
+      max-width: 350px;
+      margin: 1em auto;
+    }
+  }
+  &__no-info {
+    font-family: $sans-serif;
+    text-align: center;
+    width: 75%;
+    margin: 2em auto;
+    color: $site-header-link;
+    font-size: 2em;
   }
 }
