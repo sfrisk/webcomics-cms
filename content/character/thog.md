@@ -3,6 +3,7 @@ title: Thog
 type: character
 characterType: pc
 thumbnail: /assets/images/thog.png
+og_image: /assets/images/thog.png
 characterSheet:
   abilityScores:
     cha: 10

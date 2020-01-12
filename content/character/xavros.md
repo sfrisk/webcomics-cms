@@ -3,6 +3,7 @@ title: Xavros
 type: character
 characterType: pc
 thumbnail: /assets/images/xavros.png
+og_image: /assets/images/xavros.png
 characterSheet:
   abilityScores:
     cha: 11
