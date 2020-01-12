@@ -1,237 +1,238 @@
 {{ define "main" }}
 {{ $c := .Params.characterSheet }}
 {{ $scratch := newScratch }}
+{{ $character := .Title }}
+{{ $comics := where (where .Site.Pages.ByPublishDate "Type" "comic") ".Params.characters" "intersect" (slice $character)  }}
 <header class="page__header">
   <h1 class="page__title">
     {{ .Title }}
   </h1>
 </header>
 <div class="container page character">
-{{ if .Params.characterSheet }} 
-<div class="character__character-sheet"> 
-  <h2 class="character__name">
-    {{ .Title }}
-  </h2>
-  <p class="no-margin">
-    <em>{{ $c.race }}, {{ $c.alignment }}</em>
-  </p>
-  <hr/>
-  <dl class="character-stats">
-    <div class="character-stat">
-        <dt>Class</dt>
-        {{ if isset $c "class" }}
-        <dd>Level {{$c.level}} {{$c.class}}</dd>
-        {{ else }}
-        <dd>N/A</dd>
-        {{ end }}
-      </div>
-    <div class="character-stat">
-      <dt>Armor Class</dt>
-      <dd>{{$c.ac}}</dd>
-    </div>
-    <div class="character-stat">
-      <dt>Hit Points</dt>
-      <dd>{{$c.hp}}</dd>
-    </div>
-    <div class="character-stat">
-      <dt>Speed</dt>
-      <dd>{{$c.speed}} ft</dd>
-    </div>
-  </dl>
-  <hr/>
-  <table class="character__ability">
-    <thead>
-      <tr>
-        <th class="character__ability__header">STR</th>
-        <th class="character__ability__header">DEX</th>
-        <th class="character__ability__header">CON</th>
-        <th class="character__ability__header">INT</th>
-        <th class="character__ability__header">WIS</th>
-        <th class="character__ability__header">CHA</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        {{ $abilityScores := $c.abilityScores }}
-        {{ $strMod := math.Floor (div (sub $abilityScores.str 10) 2)}}
-        {{ $dexMod := math.Floor (div (sub $abilityScores.dex 10) 2)}}
-        {{ $conMod := math.Floor (div (sub $abilityScores.con 10) 2)}}
-        {{ $intMod := math.Floor (div (sub $abilityScores.int 10) 2)}}
-        {{ $wisMod := math.Floor (div (sub $abilityScores.wis 10) 2)}}
-        {{ $chaMod := math.Floor (div (sub $abilityScores.cha 10) 2)}}
-
-        <td>{{ $abilityScores.str }} ({{ $strMod }})</td>
-        <td>{{ $abilityScores.dex }} ({{ $dexMod }})</td>
-        <td>{{ $abilityScores.con }} ({{ $conMod }})</td>
-        <td>{{ $abilityScores.int }} ({{ $intMod }})</td>
-        <td>{{ $abilityScores.wis }} ({{ $wisMod }})</td>
-        <td>{{ $abilityScores.cha }} ({{ $chaMod }})</td>
-      </tr>
-    </tbody>
-  </table>
-  <hr/>
-  <dl class="character-stats">
-    <div class="character-stat">
-      <dt>Proficency Bonus</dt>
-      <dd>{{ $c.proficiencyBonus }}</dd>
-    </div>
-    <div class="character-stat">
-      <dt>Saving Throws</dt>
-      <dd>
-        {{ range $i, $savingThrow := $c.savingThrows }}{{ if $i }}, {{ end }}{{ humanize $savingThrow }}
-        {{ $scratch.Set "mod" 0 }}
-        {{if eq $savingThrow "str" }}
-        {{ $scratch.Set "mod" $strMod }}
-        {{else if eq $savingThrow "dex" }}
-        {{ $scratch.Set "mod" $dexMod }}
-        {{else if eq $savingThrow "con" }}
-        {{ $scratch.Set "mod" $conMod }}
-        {{else if eq $savingThrow "int" }}
-        {{ $scratch.Set "mod" $intMod }}
-        {{else if eq $savingThrow "wis" }}
-        {{ $scratch.Set "mod" $wisMod }}
-        {{else if eq $savingThrow "cha" }}
-        {{ $scratch.Set "mod" $chaMod }}
-        {{end}}
-        ({{add ($scratch.Get "mod") $c.proficiencyBonus}}){{ end }}
-      </dd>
-    </div>
-    <div class="character-stat">
-      <dt>Skills</dt>
-      <dd>
-        {{ range $i, $skill := $c.skills }}{{ if $i }}, {{ end }}{{ $skill }}
-        {{ $scratch.Set "mod" 0 }}
-        {{ if eq $skill "Athletics" }}
-          {{ $scratch.Set "mod" $strMod }}
-        {{ else if or (eq $skill "Acrobatics") (eq $skill "Sleight of Hand") (eq $skill "Stealth")}}
-          {{ $scratch.Set "mod" $dexMod }}
-        {{ else if or (eq $skill "Arcana") (eq $skill "History") (eq $skill "Investigation") (eq $skill "Nature") (eq $skill "Religion")}}
-          {{ $scratch.Set "mod" $intMod }}
-        {{ else if or (eq $skill "Animal Handling") (eq $skill "Insight") (eq $skill "Medicine") (eq $skill "Perception") (eq $skill "Survival")}}
-          {{ $scratch.Set "mod" $wisMod }}
-        {{ else if or (eq $skill "Deception") (eq $skill "Intimidation") (eq $skill "Performance") (eq $skill "Persuasion")}}
-          {{ $scratch.Set "mod" $chaMod }}
-        {{ end }}
-        ({{add ($scratch.Get "mod") $c.proficiencyBonus}}){{ end }}
-      </dd>
-    </div>
-    <div class="character-stat">
-      <dt>Senses</dt>
-      {{ $scratch.Set "advantage" 0 }}
-      {{ if in $c.skills "Perception" }}
-        {{ $scratch.Set "advantage" $c.proficiencyBonus }}
-      {{ end }}
-      <dd>Passive Perception {{add 10 (add $wisMod ($scratch.Get "advantage"))}}</dd>
-    </div>
-    <div class="character-stat">
-      <dt>Languages</dt>
-      <dd>{{ range $i, $language := $c.languages }}{{ if $i }}, {{ end }}{{ $language }}{{end}}</dd>
-    </div>
-  </dl>
-  <hr/>
-  {{ if isset $c.spellcasting "ability"}}
-    {{ $spell := $c.spellcasting }}
-    <div class="character__section">
-      <h2 class="character__header">Spellcasting</h2>
-      <p>{{.Title}} is a level {{ $spell.level }} spellcaster. {{.Title}}'s spellcasting ability is {{ $spell.ability }} (spell save DC{{ $spell.dcSave }}; +{{ $spell.attack }} to hit with spell attacks) and has the following spells prepared:</p>
-      <dl class="character-stats">
-        {{ if isset $spell "cantrips"}}
-          <div class="character-stat">
-            <dt>Cantrips (at will)</dt>
-            <dd>{{ $spell.cantrips }}</dd>
-          </div>
-        {{ end }}
-        {{ if isset $spell "lvl1"}}
-          <div class="character-stat">
-            <dt>1st Level ({{ $spell.lvl1Slots }} slots)</dt>
-            <dd>{{ $spell.lvl1 }}</dd>
-          </div>
-        {{ end}}
-      </dl>
-    </div>
-  {{ end }}
-  {{ if isset $c "actions"}}
-  <div class="character__section">
-    <h2 class="character__header">Actions</h2>
-    <dl class="character-stats">
-      {{ range $i, $action := $c.actions }}
-      <div class="character-stat">
-        <dt>{{ $action.title }}</dt>
-        <dd>{{ $action.description }}</dd>
-      </div>
-      {{ end }}
-    </dl>
-  </div>
-  {{ end }}
-  <div class="character__section">
-    <h2 class="character__header">Equipment</h2>
-    <ul>
-      {{ range $i, $item := $c.equipment }}
-      <li>{{ $item.item }}</li>
-      {{ end }}
-    </ul>
-    {{ if isset $c "trinket"}}
+  {{ if gt (len $comics) 0 }}
+  {{ if .Params.characterSheet }} 
+  <div class="character__character-sheet"> 
+    <h2 class="character__name">
+      {{ .Title }}
+    </h2>
+    <p class="no-margin">
+      <em>{{ $c.race }}, {{ $c.alignment }}</em>
+    </p>
+    <hr/>
     <dl class="character-stats">
       <div class="character-stat">
-        <dt>Trinket</dt>
-        <dd>{{ $c.trinket }}</dd>
-      </div>
-    </dl>
-    {{ end }}
-  </div>
-  <div class="character__section">
-    <h2 class="character__header">Roleplaying Notes</h2>
-    <dl class="character-stats">
-      <div class="character-stat">
-        <dt>Background</dt>
-        <dd>{{ $c.roleplaying.background }}</dd>
-      </div>
-      <div class="character-stat">
-        <dt>Personality Trait</dt>
-        <dd>{{ $c.roleplaying.trait }}</dd>
-      </div>
-      <div class="character-stat">
-        <dt>Ideal</dt>
-        <dd>{{ $c.roleplaying.ideal }}</dd>
-      </div>
-      <div class="character-stat">
-        <dt>Bond</dt>
-        <dd>{{ $c.roleplaying.bond }}</dd>
-      </div>
-      <div class="character-stat">
-        <dt>Flaw</dt>
-        <dd>{{ $c.roleplaying.flaw }}</dd>
-      </div>
-    </dl>
-  </div>
-</div>
-{{ end }}
-  <div class="character__content">
-    {{ .Content }}
-    {{ $character := .Title }}
-    {{ $comics := where (where .Site.Pages.ByPublishDate "Type" "comic") ".Params.characters" "intersect" (slice $character)  }}
-    <div class="character__section">
-      <h2 class="character__header">Appearences</h2>
-      <dl>
-        <div>
-          <dt>Comics:</dt>
-          <dd>{{ len $comics }}</dd>
+          <dt>Class</dt>
+          {{ if isset $c "class" }}
+          <dd>Level {{$c.level}} {{$c.class}}</dd>
+          {{ else }}
+          <dd>N/A</dd>
+          {{ end }}
         </div>
-        {{ range last 1 $comics }}
-          <div>
-            <dt>Recent Appearance:</dt>
-            <dd><a href="{{.Permalink}}" title=".Title">{{.Title}}</a></dd>
-          </div>
-        {{ end}}
-        {{ range first 1 $comics }}
-          <div>
-            <dt>First Appearance:</dt>
-            <dd><a href="{{.Permalink}}" title=".Title">{{.Title}}</a></dd>
-          </div>
-        {{ end}}
+      <div class="character-stat">
+        <dt>Armor Class</dt>
+        <dd>{{$c.ac}}</dd>
+      </div>
+      <div class="character-stat">
+        <dt>Hit Points</dt>
+        <dd>{{$c.hp}}</dd>
+      </div>
+      <div class="character-stat">
+        <dt>Speed</dt>
+        <dd>{{$c.speed}} ft</dd>
+      </div>
+    </dl>
+    <hr/>
+    <table class="character__ability">
+      <thead>
+        <tr>
+          <th class="character__ability__header">STR</th>
+          <th class="character__ability__header">DEX</th>
+          <th class="character__ability__header">CON</th>
+          <th class="character__ability__header">INT</th>
+          <th class="character__ability__header">WIS</th>
+          <th class="character__ability__header">CHA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          {{ $abilityScores := $c.abilityScores }}
+          {{ $strMod := math.Floor (div (sub $abilityScores.str 10) 2)}}
+          {{ $dexMod := math.Floor (div (sub $abilityScores.dex 10) 2)}}
+          {{ $conMod := math.Floor (div (sub $abilityScores.con 10) 2)}}
+          {{ $intMod := math.Floor (div (sub $abilityScores.int 10) 2)}}
+          {{ $wisMod := math.Floor (div (sub $abilityScores.wis 10) 2)}}
+          {{ $chaMod := math.Floor (div (sub $abilityScores.cha 10) 2)}}
+
+          <td>{{ $abilityScores.str }} ({{ $strMod }})</td>
+          <td>{{ $abilityScores.dex }} ({{ $dexMod }})</td>
+          <td>{{ $abilityScores.con }} ({{ $conMod }})</td>
+          <td>{{ $abilityScores.int }} ({{ $intMod }})</td>
+          <td>{{ $abilityScores.wis }} ({{ $wisMod }})</td>
+          <td>{{ $abilityScores.cha }} ({{ $chaMod }})</td>
+        </tr>
+      </tbody>
+    </table>
+    <hr/>
+    <dl class="character-stats">
+      <div class="character-stat">
+        <dt>Proficency Bonus</dt>
+        <dd>{{ $c.proficiencyBonus }}</dd>
+      </div>
+      <div class="character-stat">
+        <dt>Saving Throws</dt>
+        <dd>
+          {{ range $i, $savingThrow := $c.savingThrows }}{{ if $i }}, {{ end }}{{ humanize $savingThrow }}
+          {{ $scratch.Set "mod" 0 }}
+          {{if eq $savingThrow "str" }}
+          {{ $scratch.Set "mod" $strMod }}
+          {{else if eq $savingThrow "dex" }}
+          {{ $scratch.Set "mod" $dexMod }}
+          {{else if eq $savingThrow "con" }}
+          {{ $scratch.Set "mod" $conMod }}
+          {{else if eq $savingThrow "int" }}
+          {{ $scratch.Set "mod" $intMod }}
+          {{else if eq $savingThrow "wis" }}
+          {{ $scratch.Set "mod" $wisMod }}
+          {{else if eq $savingThrow "cha" }}
+          {{ $scratch.Set "mod" $chaMod }}
+          {{end}}
+          ({{add ($scratch.Get "mod") $c.proficiencyBonus}}){{ end }}
+        </dd>
+      </div>
+      <div class="character-stat">
+        <dt>Skills</dt>
+        <dd>
+          {{ range $i, $skill := $c.skills }}{{ if $i }}, {{ end }}{{ $skill }}
+          {{ $scratch.Set "mod" 0 }}
+          {{ if eq $skill "Athletics" }}
+            {{ $scratch.Set "mod" $strMod }}
+          {{ else if or (eq $skill "Acrobatics") (eq $skill "Sleight of Hand") (eq $skill "Stealth")}}
+            {{ $scratch.Set "mod" $dexMod }}
+          {{ else if or (eq $skill "Arcana") (eq $skill "History") (eq $skill "Investigation") (eq $skill "Nature") (eq $skill "Religion")}}
+            {{ $scratch.Set "mod" $intMod }}
+          {{ else if or (eq $skill "Animal Handling") (eq $skill "Insight") (eq $skill "Medicine") (eq $skill "Perception") (eq $skill "Survival")}}
+            {{ $scratch.Set "mod" $wisMod }}
+          {{ else if or (eq $skill "Deception") (eq $skill "Intimidation") (eq $skill "Performance") (eq $skill "Persuasion")}}
+            {{ $scratch.Set "mod" $chaMod }}
+          {{ end }}
+          ({{add ($scratch.Get "mod") $c.proficiencyBonus}}){{ end }}
+        </dd>
+      </div>
+      <div class="character-stat">
+        <dt>Senses</dt>
+        {{ $scratch.Set "advantage" 0 }}
+        {{ if in $c.skills "Perception" }}
+          {{ $scratch.Set "advantage" $c.proficiencyBonus }}
+        {{ end }}
+        <dd>Passive Perception {{add 10 (add $wisMod ($scratch.Get "advantage"))}}</dd>
+      </div>
+      <div class="character-stat">
+        <dt>Languages</dt>
+        <dd>{{ range $i, $language := $c.languages }}{{ if $i }}, {{ end }}{{ $language }}{{end}}</dd>
+      </div>
+    </dl>
+    <hr/>
+    {{ if isset $c.spellcasting "ability"}}
+      {{ $spell := $c.spellcasting }}
+      <div class="character__section">
+        <h2 class="character__header">Spellcasting</h2>
+        <p>{{.Title}} is a level {{ $spell.level }} spellcaster. {{.Title}}'s spellcasting ability is {{ $spell.ability }} (spell save DC{{ $spell.dcSave }}; +{{ $spell.attack }} to hit with spell attacks) and has the following spells prepared:</p>
+        <dl class="character-stats">
+          {{ if isset $spell "cantrips"}}
+            <div class="character-stat">
+              <dt>Cantrips (at will)</dt>
+              <dd>{{ $spell.cantrips }}</dd>
+            </div>
+          {{ end }}
+          {{ if isset $spell "lvl1"}}
+            <div class="character-stat">
+              <dt>1st Level ({{ $spell.lvl1Slots }} slots)</dt>
+              <dd>{{ $spell.lvl1 }}</dd>
+            </div>
+          {{ end}}
+        </dl>
+      </div>
+    {{ end }}
+    {{ if isset $c "actions"}}
+    <div class="character__section">
+      <h2 class="character__header">Actions</h2>
+      <dl class="character-stats">
+        {{ range $i, $action := $c.actions }}
+        <div class="character-stat">
+          <dt>{{ $action.title }}</dt>
+          <dd>{{ $action.description }}</dd>
+        </div>
+        {{ end }}
+      </dl>
+    </div>
+    {{ end }}
+    <div class="character__section">
+      <h2 class="character__header">Equipment</h2>
+      <ul>
+        {{ range $i, $item := $c.equipment }}
+        <li>{{ $item.item }}</li>
+        {{ end }}
+      </ul>
+      {{ if isset $c "trinket"}}
+      <dl class="character-stats">
+        <div class="character-stat">
+          <dt>Trinket</dt>
+          <dd>{{ $c.trinket }}</dd>
+        </div>
+      </dl>
+      {{ end }}
+    </div>
+    <div class="character__section">
+      <h2 class="character__header">Roleplaying Notes</h2>
+      <dl class="character-stats">
+        <div class="character-stat">
+          <dt>Background</dt>
+          <dd>{{ $c.roleplaying.background }}</dd>
+        </div>
+        <div class="character-stat">
+          <dt>Personality Trait</dt>
+          <dd>{{ $c.roleplaying.trait }}</dd>
+        </div>
+        <div class="character-stat">
+          <dt>Ideal</dt>
+          <dd>{{ $c.roleplaying.ideal }}</dd>
+        </div>
+        <div class="character-stat">
+          <dt>Bond</dt>
+          <dd>{{ $c.roleplaying.bond }}</dd>
+        </div>
+        <div class="character-stat">
+          <dt>Flaw</dt>
+          <dd>{{ $c.roleplaying.flaw }}</dd>
+        </div>
       </dl>
     </div>
   </div>
-
+  {{ end }}
+    <div class="character__content">
+      {{ .Content }}
+      <div class="character__section">
+        <h2 class="character__header">Appearences</h2>
+        <dl>
+          <div>
+            <dt>Comics:</dt>
+            <dd>{{ len $comics }}</dd>
+          </div>
+          {{ range last 1 $comics }}
+            <div>
+              <dt>Recent Appearance:</dt>
+              <dd><a href="{{.Permalink}}" title=".Title">{{.Title}}</a></dd>
+            </div>
+          {{ end}}
+          {{ range first 1 $comics }}
+            <div>
+              <dt>First Appearance:</dt>
+              <dd><a href="{{.Permalink}}" title=".Title">{{.Title}}</a></dd>
+            </div>
+          {{ end}}
+        </dl>
+      </div>
+    </div>
+  {{ end }}
 </div>
 {{ end }}
