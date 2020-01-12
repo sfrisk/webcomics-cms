@@ -18,6 +18,7 @@ $grid-size-lg: 6;
     align-items: center;
     justify-content: center;
     background: $black;
+    transition: background .35s ease-out;
     // background: linear-gradient($color2, darken($color2, 10%));
     min-height: 10em;
     text-decoration: none;
@@ -25,6 +26,9 @@ $grid-size-lg: 6;
     @media (min-width: $bp_md) {
       margin: 1rem;
       min-height: 20em;
+    }
+    img {
+      transition: opacity .35s ease-out;
     }
     &:hover, &:focus {
       background: $color2;
