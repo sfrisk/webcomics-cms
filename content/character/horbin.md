@@ -45,12 +45,14 @@ characterSheet:
         oil, 5 day rations, tinderbox, waterskins, 50 ft hempen rope on side
     - item: Playing Card Set
   features:
-    - description: (1d6)
+    - description: 1d6
       title: Sneak Attack
     - description: See rulebook for details
       title: Halfling Traits
     - title: Criminal Contact
       description: See rulebook for details
+    - title: Expertise
+      description: Thieves Tools, Stealth
   hp: 10
   languages:
     - Common
