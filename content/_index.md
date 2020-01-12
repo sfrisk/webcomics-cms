@@ -5,8 +5,9 @@ weight: 20
 priority: 1
 bannerImage: /assets/images/home.png
 cast: /assets/images/cast.png
-firstcomic:  /assets/images/first-comic.jpg
-latestcomic:  /assets/images/latest-comic.jpg
+firstcomic: /assets/images/first-comic.jpg
+latestcomic: /assets/images/latest-comic.jpg
+archive: /assets/images/archive.jpg
 featuredCharacters:
   - Veronica
   - Lulu

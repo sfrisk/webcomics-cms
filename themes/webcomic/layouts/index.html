@@ -21,6 +21,10 @@
 {{ $lastImage_1000x := $firstImage.Resize "1000x q100" }}
 {{ $lastImage_500x := $firstImage.Resize "500x q100" }}
 
+{{ $archiveImage := resources.Get .Params.archive}}
+{{ $archiveImage_1000x := $archiveImage.Resize "1000x q100" }}
+{{ $larchiveImage_500x := $archiveImage.Resize "500x q100" }}
+
 {{ $castImage := resources.Get .Params.cast}}
 {{ $castImage_1400x := $castImage.Resize "1200x q100" }}
 {{ $castImage_700x := $castImage.Resize "700x q100" }}
@@ -99,6 +103,17 @@
 			</a>
 		{{ end }}
 		<a class="home__link home__comic-archive" href="/comic" title="Comic Archive">
+			<picture class="characters__thumb">
+				<source 
+					srcset="
+						{{ $archiveImage.Permalink }} 1000w,
+						{{ $archiveImage.Permalink }} 500w"
+					>
+				<img
+					class="characters__thumb" 
+					src="{{ $archiveImage.Permalink }}"
+					alt="Comic Archive">
+			</picture>
 			<span>Comic Archive</span>
 		</a>
 		<div class="home__news">
