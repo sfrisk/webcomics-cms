@@ -2,16 +2,37 @@
   .page__header {
     height: 10em;
   }
+  &__subheader {
+    margin: 1rem;
+    text-align: center;
+    padding: .2em 1em;
+    @media (min-width: $bp_md) {
+      margin: 1rem;
+    }
+    h2 {
+      margin: 0;
+      color: $black;
+      border-radius: 4px;
+      box-shadow: 0 0 2px rgba($black, .8); 
+      display: inline;
+      background: $color1;
+      padding: .2em .5em;
+    }
+  }
   .container {
     padding-top: 3em;
+    max-width: 1200px;
   }
   &__group {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
     grid-auto-rows: 1fr;
     grid-gap: 3em;
+    margin-bottom: 5em;
     @media (min-width: $bp_md) {
-      grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+      max-width: 1200px;
+      margin: 2em auto 6em;
+      grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     }
     &::before {
       content: '';
@@ -27,17 +48,15 @@
   }
   &__item {
     border-radius: 100%;
-    border: 3px solid $white;
+    border: 4px solid $color1;
     overflow: hidden;
     position: relative;
     background: $color3;
-    background: linear-gradient($color3, darken($color3, 10%));
     transition: background .5s ease-out;
     display: flex;
     align-items: flex-end;
     &:hover, &:focus {
-      background: rgba($color3, .8);
-      background: linear-gradient(rgba($color3, .8), darken(rgba($color3, .8), 10%));
+      background: $color2;
     }
   }
   &__thumb {
