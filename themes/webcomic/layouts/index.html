@@ -17,13 +17,18 @@
 {{ $firstImage_1000x := $firstImage.Resize "1000x q100" }}
 {{ $firstImage_500x := $firstImage.Resize "500x q100" }}
 
+{{ $patreon := resources.Get .Params.patreon}}
+{{ $patreon_1000x := $patreon.Resize "1000x q100" }}
+{{ $patreon_500x := $patreon.Resize "500x q100" }}
+
+
 {{ $lastImage := resources.Get .Params.latestcomic}}
-{{ $lastImage_1000x := $firstImage.Resize "1000x q100" }}
-{{ $lastImage_500x := $firstImage.Resize "500x q100" }}
+{{ $lastImage_1000x := $lastImage.Resize "1000x q100" }}
+{{ $lastImage_500x := $lastImage.Resize "500x q100" }}
 
 {{ $archiveImage := resources.Get .Params.archive}}
 {{ $archiveImage_1000x := $archiveImage.Resize "1000x q100" }}
-{{ $larchiveImage_500x := $archiveImage.Resize "500x q100" }}
+{{ $archiveImage_500x := $archiveImage.Resize "500x q100" }}
 
 {{ $castImage := resources.Get .Params.cast}}
 {{ $castImage_1400x := $castImage.Resize "1200x q100" }}
@@ -57,13 +62,13 @@
 			<picture class="characters__thumb">
 				<source 
 					srcset="
-						{{ $lastImage.Permalink }} 1000w,
-						{{ $lastImage.Permalink }} 500w"
+						{{ $lastImage_1000x.Permalink }} 1000w,
+						{{ $lastImage_500x.Permalink }} 500w"
 					>
 				<img
 					class="characters__thumb" 
-					src="{{ $lastImage.Permalink }}"
-					alt="Latest Comic">
+					src="{{ $lastImage_500x.Permalink }}"
+					alt="Continue Comic">
 			</picture>
 			<span>Continue Quest</span>
 		</a>
@@ -72,18 +77,29 @@
 				<picture class="characters__thumb">
 					<source 
 						srcset="
-							{{ $lastImage.Permalink }} 1000w,
-							{{ $lastImage.Permalink }} 500w"
+							{{ $lastImage_1000x.Permalink }} 1000w,
+							{{ $lastImage_500x.Permalink }} 500w"
 						>
 					<img
 						class="characters__thumb" 
-						src="{{ $lastImage.Permalink }}"
+						src="{{ $lastImage_500x.Permalink }}"
 						alt="Latest Comic">
 				</picture>
 				<span>Latest Comic</span>
 			</a>
 		{{ end }}
 		<a class="home__link home__patreon" href="https://patreon.com" title="Patreon">
+			<picture class="characters__thumb">
+				<source 
+					srcset="
+						{{ $patreon_1000x.Permalink }} 1000w,
+						{{ $patreon_500x.Permalink }} 500w"
+					>
+				<img
+					class="characters__thumb" 
+					src="{{ $patreon_500x.Permalink }}"
+					alt="Patreon">
+			</picture>
 			<span>Join Us on Patreon!</span>
 		</a>
 		{{ range first 1 $comics }}
@@ -91,12 +107,12 @@
 				<picture class="characters__thumb">
 					<source 
 						srcset="
-							{{ $firstImage.Permalink }} 1000w,
-							{{ $firstImage.Permalink }} 500w"
+							{{ $firstImage_1000x.Permalink }} 1000w,
+							{{ $firstImage_500x.Permalink }} 500w"
 						>
 					<img
 						class="characters__thumb" 
-						src="{{ $firstImage.Permalink }}"
+						src="{{ $firstImage_500x.Permalink }}"
 						alt="First Comic">
 				</picture>
 				<span>First Comic</span>
@@ -106,12 +122,12 @@
 			<picture class="characters__thumb">
 				<source 
 					srcset="
-						{{ $archiveImage.Permalink }} 1000w,
-						{{ $archiveImage.Permalink }} 500w"
+						{{ $archiveImage_1000x.Permalink }} 1000w,
+						{{ $archiveImage_500x.Permalink }} 500w"
 					>
 				<img
 					class="characters__thumb" 
-					src="{{ $archiveImage.Permalink }}"
+					src="{{ $archiveImage_500x.Permalink }}"
 					alt="Comic Archive">
 			</picture>
 			<span>Comic Archive</span>
@@ -123,14 +139,14 @@
 					<header class="post__header">
 						<h1 class="post__title">{{ .Title }}</h1>
 						<p class="post__meta">
-							<time datetime="{{.Date.Format "2006-01-02"}}">{{.Date.Format "January 1, 2006"}}</time>
+							<time datetime="{{.Date.Format "2006-01-02"}}">{{.Date.Format "January 2, 2006"}}</time>
 						</p>
 					</header>
 					<div class="post__content home__news__content">
 						{{.Content}}
 					</div>
 				</article>
-				<a href="{{ .Permalink }}" class="home__news__archive">Read More</a>
+				<a href="/news/" class="home__news__archive">Read More</a>
 			{{ end }}
 		</div>
 		<!-- <div class="home__subheader">

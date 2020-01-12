@@ -14,7 +14,18 @@
     margin-top: 0;
     margin-bottom: 2em;
   }
-  &__content {
-    font-size: 1.15em;
+  &__summary {
+    p:first-child {
+      &::first-letter {
+        color: $color3;
+        font-weight: bold;
+        font-family: serif;
+        font-size: 3.5em;
+        float: left;
+        position: relative;
+        margin-top: .1em;
+        margin-right: .1em;
+      }
+    }
   }
 }

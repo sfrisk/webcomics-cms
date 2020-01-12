@@ -8,6 +8,7 @@ cast: /assets/images/cast.png
 firstcomic: /assets/images/first-comic.jpg
 latestcomic: /assets/images/latest-comic.jpg
 archive: /assets/images/archive.jpg
+patreon: /assets/images/veronica.png
 featuredCharacters:
   - Veronica
   - Lulu

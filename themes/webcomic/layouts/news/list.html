@@ -1,24 +1,21 @@
 {{ define "main" }}
 <header class="page__header">
-    <h1 class="text-center page__title">{{ .Title }}</h1>
+    <h1 class="text-center page__title">{{ .Params.pageTitle }}</h1>
 </header>
 <div class="posts container page">
 		<div class="posts-list">
-		<!-- Ranges through content/post/*.md -->
 		{{ range .Data.Pages }}
 				<article class="post">
-						<a 
-							class="post__title"
-							href="{{.Permalink}}">
-								{{.Title}}
-						</a>
-						<span class="post__meta">
-							<time>{{.Date.Format "January 1, 2006"}}</time>
-						</span>
-						<div class="post__summary">
-							{{.Content}}
-						</div>
-					</article>
+					<header class="post__header">
+						<h1 class="post__title">{{ .Title }}</h1>
+						<p class="post__meta">
+							<time datetime="{{.Date.Format "2006-01-02"}}">{{.Date.Format "January 2, 2006"}}</time>
+						</p>
+					</header>
+					<div class="post__summary">
+						{{.Content}}
+					</div>
+				</article>
 		{{ end }}
 			</div>
 </div>
