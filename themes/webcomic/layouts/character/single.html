@@ -134,6 +134,14 @@
         <dt>Languages</dt>
         <dd>{{ range $i, $language := $c.languages }}{{ if $i }}, {{ end }}{{ $language }}{{end}}</dd>
       </div>
+      {{ if isset $c "features"}}
+      {{ range $i, $feature := $c.features }}
+        <div class="character-stat">
+          <dt>{{ $feature.title }}</dt>
+          <dd>{{ $feature.description }}</dd>
+        </div>
+        {{ end }}
+      {{ end }}
     </dl>
     <hr/>
     {{ if isset $c.spellcasting "ability"}}
