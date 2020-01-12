@@ -94,13 +94,25 @@ $grid-size-lg: 6;
       justify-content: space-between;
     }
     &__header {
-      text-align: center;
+      border-bottom: 1px solid $character-border;
     }
     &__content {
       max-height: 400px;
       overflow: hidden;
       position: relative;
       margin-bottom: 1em;
+      p:first-child {
+        &::first-letter {
+          color: $color3;
+          font-weight: bold;
+          font-family: serif;
+          font-size: 3.5em;
+          float: left;
+          position: relative;
+          margin-top: .1em;
+          margin-right: .1em;
+        }
+      }
       @media (min-width: $bp_md) {
         max-height: 500px;
       }

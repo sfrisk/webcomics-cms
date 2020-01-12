@@ -50,7 +50,18 @@
 </header>	
 	<div class="home container">
 		<a class="home__link home__read-latest hidden" id="comic-continue"  title="Continue Quest">
-				<span>Continue Quest</span>
+			<picture class="characters__thumb">
+				<source 
+					srcset="
+						{{ $lastImage.Permalink }} 1000w,
+						{{ $lastImage.Permalink }} 500w"
+					>
+				<img
+					class="characters__thumb" 
+					src="{{ $lastImage.Permalink }}"
+					alt="Latest Comic">
+			</picture>
+			<span>Continue Quest</span>
 		</a>
 		{{ range last 1 $comics }}
 			<a class="home__link home__read-latest" id="comic-latest" href="{{ .Permalink }}" title="{{.Title}}">
@@ -91,7 +102,7 @@
 			<span>Comic Archive</span>
 		</a>
 		<div class="home__news">
-			<h2 class="home__news__header">Tales from the Tavern</h2>
+			<h2 class="home__news__header">Rumors from the Tavern</h2>
 			{{ range last 1 $news }}
 				<article>
 					<header class="post__header">

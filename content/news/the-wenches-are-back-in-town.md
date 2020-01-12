@@ -7,7 +7,7 @@ The dark demiplane can be a strange and dangerous place, and known to warp the v
 
 That being said, Tavern Wenches will be rebooted on January 13, 2020.
 
-To keep up to date with the latest updates, you can follow me on [Instagram](https://www.instagram.com/friskycomics/), [Facebook](https://www.facebook.com/TavernWenches/), and [Twitter](https://twitter.com/sarahfrisk).
+To keep up to date with the latest updates, you can follow me on [Instagram](https://www.instagram.com/friskycomics/), [Facebook](https://www.facebook.com/TavernWenches/), and [Twitter](https://twitter.com/sarahfrisk) or subscribe to our [Mailing List](https://mailchi.mp/b006f726f0e0/tavern-wenches) to get all the Tavern Wenches updates sent direct to your email!
 
 I've missed you peeps.
 
