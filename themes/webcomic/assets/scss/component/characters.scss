@@ -6,31 +6,33 @@
     margin: 1rem;
     text-align: center;
     padding: .2em 1em;
-    @media (min-width: $bp_md) {
-      margin: 1rem;
-    }
     h2 {
       margin: 0;
       color: $black;
       border-radius: 4px;
       box-shadow: 0 0 2px rgba($black, .8); 
-      display: inline;
+      display: inline-block;
       background: $color1;
       padding: .2em .5em;
     }
   }
   .container {
-    padding-top: 3em;
     max-width: 1200px;
+    margin: 0 auto;
+    padding: 3em 2em 0em;
   }
   &__group {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
     grid-auto-rows: 1fr;
     grid-gap: 3em;
     margin-bottom: 5em;
+    margin-top: 2em;
     @media (min-width: $bp_md) {
-      max-width: 1200px;
+      margin: 2em auto 6em;
+      grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    }
+    @media (min-width: $bp_lg) {
       margin: 2em auto 6em;
       grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     }
