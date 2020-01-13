@@ -4,6 +4,9 @@
 	@media (min-width: $bp_md) {
 		margin: 5em 1em 0;
 	}
+	@media (min-width: $bp_lg) {
+		margin: 5em auto 0;
+	}
 	&__header {
 		padding: 1em 0;
 		text-align: center;
