@@ -85,6 +85,7 @@ $grid-size-lg: 6;
     }
   }
   &__news {
+    border-radius: 10px;
     grid-column-start: 1;
     grid-column-end:span 6;
     grid-row-start: 3;
