@@ -27,12 +27,13 @@ characterSheet:
         piercing damage
       title: Shortsword
   alignment: Lawful Neutral
+  archetype: Thief
   armor: light armor
   class: Rogue
   equipment:
-    - item: (1) dark common clothes with hood
-    - item: (1) crowbar
-    - item: (1) small pouch containing 15 GP
+    - item: (1) Dark common clothes with hood
+    - item: (1) Crowbar
+    - item: (1) Small pouch containing 15 GP
     - item: (1) Leather Armor
     - item: (1) Short Sword
     - item: (1) Quiver of (20) Arrows
@@ -45,7 +46,7 @@ characterSheet:
         oil, 5 day rations, tinderbox, waterskins, 50 ft hempen rope on side
     - item: Playing Card Set
   features:
-    - description: 1d6
+    - description: 2d6
       title: Sneak Attack
     - description: See rulebook for details
       title: Halfling Traits
@@ -53,11 +54,21 @@ characterSheet:
       description: Horbin has a reliable at trustworthy contact (his former boss in the Thieves' Guild) who acts as his liaison to a network of other criminals
     - title: Expertise
       description: Thieves' Tools, Stealth
-  hp: 10
+    - title: Thieves' Cant
+      description: See Handbook for Details
+    - title: Cunning Action
+      description: See Handbook for Details
+    - title: Roguish Archetype
+      description: See Handbook for Details
+    - title: Fast Hands
+      description: See Handbook for Details
+    - title: Second-Story Work
+      description: See Handbook for Details
+  hp: 24
   languages:
     - Common
     - Halfling
-  level: 1
+  level: 3
   proficiencyBonus: 2
   race: Halfling
   roleplaying:

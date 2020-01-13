@@ -75,6 +75,7 @@ collections:
         required: false
         fields:
           - {name: class, label: Class, widget: select, required: false, multiple: false, options: [Barbarian, Bard, Cleric, Druid, Fighter, Monk, Paladin, Ranger, Rogue, Sorcerer, Warlock, Wizard]}
+          - {name: archetype, label: Archetype, required: false}
           - {name: level, label: Level, widget: number, required: false, valueType: int }
           - {name: race, label: Race, widget: select, required: false, multiple: false, options: [Dragonborn, Dwarf, Elf, Gnome, Half-Elf, Halfling, Half-Orc, Human, Tiefling]}
           - {name: size, label: Size, widget: select, required: false, multiple: false, options: [Small, Medium]}
@@ -117,14 +118,11 @@ collections:
               - {name: attack, label: Attack, widget: number, required: false, valueType: int}
               - {name: ability, label: Spellcasting Ability, widget: select, required: false, multiple: false, options: [Intelligence, Wisdom, Charisma]}
               - {name: cantrips, label: Cantrips, required: false}
-              - {name: lvl1, label: 1st Level, required: false}
+              - {name: spells, label: Spells, required: false}
               - {name: lvl1Slots, label: 1st Level Spell Slots, required: false, widget: number}
               - {name: lvl2, label: 2nd Level, required: false}
-              - {name: lvl2Slots, label: 2nd Level Spell Slots, required: false, widget: number}
               - {name: lvl3, label: 3rd Level, required: false}
-              - {name: lvl3Slots, label: 3rd Level Spell Slots, required: false, widget: number}
               - {name: lvl4, label: 4th Level, required: false}
-              - {name: lvl4Slots, label: 4th Level Spell Slots, required: false, widget: number}
           - name: actions
             label: Actions
             widget: list

@@ -24,6 +24,7 @@ characterSheet:
         Melee or Ranged Weapons. +5 to attack, reaching 5ft, one target, (1d6+3) piercing damage, ranged (30/120), (1d6+3) slashing damage
       title: Javelin
   alignment: Chaotic Good
+  archetype: Path of the Berserker
   armor: 'light armor, medium armor, shields'
   class: Barbarian
   equipment:
@@ -51,11 +52,17 @@ characterSheet:
     - description: >-
         (2 rages, +2 rage damage).  While raging, Thog has advantage on STR based checks and saving throws.  When Thog makes a melee weapon attack using STR, he gains a +2 bonus to the damage roll.  Rage lasts for one minute, and Thog gets two rages per long rest.
       title: Rage
-  hp: 14
+    - title: Reckless Attack
+      description: See Handbook for Details
+    - title: Danger Sense
+      description: See Handbook for Details
+    - title: Primal Path
+      description: See Handbook for Details
+  hp: 32
   languages:
     - Common
     - Orc
-  level: 1
+  level: 3
   proficiencyBonus: 2
   race: Half-Orc
   roleplaying:

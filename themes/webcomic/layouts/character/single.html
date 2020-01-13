@@ -23,7 +23,7 @@
       <div class="character-stat">
           <dt>Class</dt>
           {{ if isset $c "class" }}
-          <dd>Level {{$c.level}} {{$c.class}}</dd>
+          <dd>Level {{$c.level}} {{$c.class}} {{ if .Params.characterSheet.archetype }} ({{$c.archetype }}) {{ end }}</dd>
           {{ else }}
           <dd>N/A</dd>
           {{ end }}
@@ -119,6 +119,9 @@
           {{ else if or (eq $skill "Deception") (eq $skill "Intimidation") (eq $skill "Performance") (eq $skill "Persuasion")}}
             {{ $scratch.Set "mod" $chaMod }}
           {{ end }}
+          {{ if and (eq $character "Horbin") (eq $skill "Stealth")}}
+            {{ $scratch.Set "mod" (add ($scratch.Get "mod") $c.proficiencyBonus)}}
+          {{ end }}
           (+{{add ($scratch.Get "mod") $c.proficiencyBonus}}){{ end }}
         </dd>
       </div>
@@ -168,16 +171,28 @@
         <h2 class="character__header">Spellcasting</h2>
         <p>{{.Title}} is a level {{ $spell.level }} spellcaster. {{.Title}}'s spellcasting ability is {{ $spell.ability }} (spell save DC{{ $spell.dcSave }}; +{{ $spell.attack }} to hit with spell attacks) and has the following spells prepared:</p>
         <dl class="character-stats">
-          {{ if isset $spell "cantrips"}}
+          {{ if .Params.characterSheet.spellcasting.cantrips}}
             <div class="character-stat">
               <dt>Cantrips (at will)</dt>
               <dd>{{ $spell.cantrips }}</dd>
             </div>
           {{ end }}
-          {{ if isset $spell "lvl1"}}
+          {{ if .Params.characterSheet.spellcasting.spells}}
             <div class="character-stat">
-              <dt>1st Level ({{ $spell.lvl1Slots }} slots)</dt>
-              <dd>{{ $spell.lvl1 }}</dd>
+              <dt>Spells</dt>
+              <dd>{{ $spell.spells }}</dd>
+            </div>
+          {{ end }}
+          {{ if .Params.characterSheet.spellcasting.lvl1Slots}}
+            <div class="character-stat">
+              <dt>1st Level</dt>
+              <dd>{{ $spell.lvl1Slots }} Slots</dd>
+            </div>
+          {{ end}}
+          {{ if .Params.characterSheet.spellcasting.lvl2Slots}}
+            <div class="character-stat">
+              <dt>2nd Level</dt>
+              <dd>{{ $spell.lvl2Slots }} Slots</dd>
             </div>
           {{ end}}
         </dl>

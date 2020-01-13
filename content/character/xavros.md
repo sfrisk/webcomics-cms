@@ -18,6 +18,7 @@ characterSheet:
         Melee Weapon Attack: +1 to hit, reach 5ft., one target. Hit (1d6) bludgeoning damage, or (1d8) bludgeoning damaging if used with two hands
       title: Quarterstaff
   alignment: Neutral Good
+  archetype: School of Evocation
   class: Wizard
   equipment:
     - item: >-
@@ -31,7 +32,16 @@ characterSheet:
     - item: Letter from a missing (or dead) colleague posing questions he can't answer
     - item: Common Clothes
     - item: Small Pouch with 10GP
-  hp: 8
+  features:
+    - description: Xavros is a Spellcaster
+      title: Spellcasting
+    - description: Once per day, when Xavros finishes a short rest, he can choose expended spell slots to recover
+      title: Arcane Recovery
+    - description: See Handbook for Details
+      title: Evocation Savant
+    - description: See Handbook for Details
+      title: Sculpt Spells
+  hp: 20
   languages:
     - Common
     - Dwarvish
@@ -61,10 +71,11 @@ characterSheet:
     attack: 5
     cantrips: 'Firebolt, Light, Ray of Frost'
     dcSave: 13
-    level: 1
-    lvl1Slots: 2
-    lvl1: >-
+    level: 3
+    lvl1Slots: 4
+    spells: >-
       Comprehend Languages, Detect Magic, Unseen Servent, Mage Armor, Magic Missile, Identify
+    lvl2Slots: 2
   trinket: Diary with seven missing pages
   weapons: 'daggers, darts, slings, quaterstaff, light crossbows'
 ---
