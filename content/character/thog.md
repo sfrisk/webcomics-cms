@@ -4,6 +4,7 @@ type: character
 characterType: pc
 thumbnail: /assets/images/thog.png
 og_image: /assets/images/thog_og.jpg
+og_description: Half-Orc, Level 3 Barbarian (Path of the Berserker)
 characterSheet:
   abilityScores:
     cha: 10

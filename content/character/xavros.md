@@ -4,6 +4,7 @@ type: character
 characterType: pc
 thumbnail: /assets/images/xavros.png
 og_image: /assets/images/xavros_og.jpg
+og_description: Human, Level 3 Wizard (School of Transmutation)
 characterSheet:
   abilityScores:
     cha: 11
@@ -18,7 +19,7 @@ characterSheet:
         Melee Weapon Attack: +1 to hit, reach 5ft., one target. Hit (1d6) bludgeoning damage, or (1d8) bludgeoning damaging if used with two hands
       title: Quarterstaff
   alignment: Neutral Good
-  archetype: School of Evocation
+  archetype: School of Transmutation
   class: Wizard
   equipment:
     - item: >-
@@ -38,9 +39,9 @@ characterSheet:
     - description: Once per day, when Xavros finishes a short rest, he can choose expended spell slots to recover
       title: Arcane Recovery
     - description: See Handbook for Details
-      title: Evocation Savant
+      title: Transmutation Savant
     - description: See Handbook for Details
-      title: Sculpt Spells
+      title: Minor Alchemy
   hp: 20
   languages:
     - Common

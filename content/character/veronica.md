@@ -4,6 +4,7 @@ type: character
 characterType: wench
 thumbnail: /assets/images/veronica.png
 og_image: /assets/images/veronica_og.jpg
+og_description: Veronica is a sweet innocent young woman who was captured by a mysterious dark spell caster for an unknown summoning spell.
 censor: true
 characterSheet:
   abilityScores:
