@@ -4,7 +4,7 @@ type: character
 characterType: pc
 thumbnail: /assets/images/horbin.png
 og_image: /assets/images/horbin_og.jpg
-og_description: Horbin is a halfling rogue with a tendency of saying the wrong thing at the wrong time.
+og_description: Halfling, Level 3 Rogue (Thief)
 characterSheet:
   abilityScores:
     cha: 8
