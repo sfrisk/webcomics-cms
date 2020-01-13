@@ -41,12 +41,11 @@ comic:
             yells "I can see my life flashing before my eyes!"
         - panel: /assets/images/wenches-002-e.jpg
           transcript: >-
-            Horbin, bellow and off panel, is listing of the events in his life
+            Horbin, below and off panel, is listing of the events in his life
             that are supposedly flashing before his eyes. "Virginal Elvin
             Maidens! Busty Tavern Wenches! All just begging for some hot
             halfling loving!" Veronica, standing to the right of the entrance to
-            the lighthouse balcony, is rolling her eyes. "He fell, obviously,"
-            she says, answering the red haired man's earlier question.
+            the lighthouse balcony, is rolling her eyes.
         - panel: /assets/images/wenches-002-f.jpg
           transcript: >-
             Medium shot of the entrance to the balcony's entrance. The wizard is
@@ -56,8 +55,7 @@ comic:
             with large horns protruding from his forehead (although the right
             hand one is partly broken).  He is wearing nothing on the upper half
             of his torso, and he stares down a the scene below, a dismissive
-            look on his face. "Wench right," he declares. "Halfling fell."  The
-            halfling in question yells back "No shit, Sherlock!" from off panel.
+            look on his face. "Halfling slipped." The dark haired woman is quick to chime in "Uh, what he said".
 thumbnail: /assets/images/wenches-002-thumb.jpg
 og_image: /assets/images/wenches-002.jpg
 og_description: The PCs discover their fallen companion.
