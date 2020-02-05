@@ -1,15 +1,15 @@
 {{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\" ?>" | safeHTML }}
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Tavern Wenches' Comic</title>
+    <title>{{.Title}}</title>
     <link>{{ .Permalink }}</link>
-    <description>Recent Comics </description>
+    <description>Tavern Wenches follows the adventures of the NPC tavern wenches of *A Need for Mead* as they face down lecherous PCs, point the way towards Epic Quests, and try to make sure the tavern is still standing come morning.</description>
     {{ with .Site.LanguageCode }}
-    <language>{{.}}</language>{{end}}{{ with .Site.Author.email }}
-    <managingEditor>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</managingEditor>{{end}}{{ with .Site.Author.email }}
-    <webMaster>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</webMaster>{{end}}{{ with .Site.Copyright }}
-    <copyright>{{.}}</copyright>{{end}}{{ if not .Date.IsZero }}
-    <lastBuildDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>{{ end }}
+    <language>{{.}}</language>{{end}}
+    {{ with .Site.Author.name }}<managingEditor>{{.}}</managingEditor>{{end}}
+    {{ with .Site.Author.name }}<webMaster>{{.}}</webMaster>{{end}}{{ with .Site.Copyright }}
+    <copyright>{{.}}</copyright>{{end}}
+    <lastBuildDate>{{ now.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>
     {{ with .OutputFormats.Get "RSS" }}
         {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
     {{ end }}
@@ -17,11 +17,37 @@
     <item>
       <title>{{ .Title }}</title>
       <link>{{ .Permalink }}</link>
+      <category>{{ .Params.type }}</category>
       <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
-      {{ with .Site.Author.email }}<author>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</author>{{end}}
+      {{ with .Site.Author.name }}<author>{{.}}</author>{{end}}
       <guid>{{ .Permalink }}</guid>
       <description>{{ .Summary | html }}</description>
-      <content:encoded><![CDATA[{{ range .Params.comic.rows }}{{ range .cols}}<img src="{{ absURL .panel }}" />{{end}}{{ end }}]></content:encoded>
+      <content:encoded>{{ `<![CDATA[ ` | safeHTML }}
+        <div>
+        {{ range .Params.comic.rows }}
+          {{ range .cols}}
+					{{ $image := resources.Get .panel}}
+					{{ $image_mobile := $image.Resize "x500 q100" }}
+					{{ $image_mobile2x := $image.Resize "x1000 q100" }}
+					{{ if isset . "transcript" }} 
+						{{ $.Scratch.Set "isTranscript" true }}
+					{{ end }}
+          <div style="margin: 0 auto; text-align: center; display: block;">
+					<picture>
+						<source srcset="{{ $image_mobile2x.Permalink }} 2x, {{ $image_mobile.Permalink }} 1x">
+						<img
+              style="max-width: 100%"
+							src="{{ $image_mobile.Permalink }}"
+							class="comic__panel__image"
+							alt="{{ if isset . "transcript" }}{{.transcript}}{{end}}"
+						>
+					</picture>
+          </div>
+          {{end}}
+        {{ end }}
+        </div>
+        {{ partial "rss-footer.html" . }}
+       ]]></content:encoded>
     </item>
     {{ end }}
   </channel>
