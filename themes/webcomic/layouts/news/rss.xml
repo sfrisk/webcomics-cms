@@ -23,31 +23,9 @@
       <guid>{{ .Permalink }}</guid>
       <description>{{ .Summary | html }}</description>
       <content:encoded>{{ `<![CDATA[ ` | safeHTML }}
-        <div>
-        {{ range .Params.comic.rows }}
-          {{ range .cols}}
-					{{ $image := resources.Get .panel}}
-					{{ $image_mobile := $image.Resize "x500 q100" }}
-					{{ $image_mobile2x := $image.Resize "x1000 q100" }}
-					{{ if isset . "transcript" }} 
-						{{ $.Scratch.Set "isTranscript" true }}
-					{{ end }}
-          <div style="margin: 0 auto; text-align: center; display: block;">
-					<picture>
-						<source srcset="{{ $image_mobile2x.Permalink }} 2x, {{ $image_mobile.Permalink }} 1x">
-						<img
-              style="max-width: 100%"
-							src="{{ $image_mobile.Permalink }}"
-							class="comic__panel__image"
-							alt="{{ if isset . "transcript" }}{{.transcript}}{{end}}"
-						>
-					</picture>
-          </div>
-          {{end}}
-        {{ end }}
-        </div>
+        {{ .Content }}
         {{ partial "rss-footer.html" . }}
-       ]]></content:encoded>
+       ]]></content:encoded> 
     </item>
     {{ end }}
   </channel>

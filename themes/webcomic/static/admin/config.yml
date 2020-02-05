@@ -1,6 +1,6 @@
 backend:
-  name: github
-  repo: sfrisk/webcomics-cms
+  name: gitlab
+  repo: sfrisk/tavern-wenches
 
 media_folder: static/assets/images
 public_folder: assets/images
@@ -160,6 +160,7 @@ collections:
     preview_path: "news/{{slug}}/"
     fields:
       - {name: title, label: Title}
+      - {name: type, value: news, widget: hidden}
       - {name: date, label: Date, widget: datetime}
       - {name: body, label: Body, widget: markdown}
   - name: comic

@@ -25,7 +25,7 @@ characterSheet:
         Melee or Ranged Weapons. +5 to attack, reaching 5ft, one target, (1d6+3) piercing damage, ranged (30/120), (1d6+3) slashing damage
       title: Javelin
   alignment: Chaotic Good
-  archetype: Path of the Berserker
+  archetype: Path of the Totem Warrior
   armor: 'light armor, medium armor, shields'
   class: Barbarian
   equipment:
@@ -57,8 +57,10 @@ characterSheet:
       description: See Handbook for Details
     - title: Danger Sense
       description: See Handbook for Details
-    - title: Primal Path
+    - title: Spirit Seeker
       description: See Handbook for Details
+    - title: Totem Spirit
+      description: '[Has Not Created Totem Object Yet]'
   hp: 32
   languages:
     - Common

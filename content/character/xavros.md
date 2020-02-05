@@ -48,7 +48,7 @@ characterSheet:
     - Dwarvish
     - Draconic
     - Primordial
-  level: 1
+  level: 3
   proficiencyBonus: 2
   race: Human
   roleplaying:

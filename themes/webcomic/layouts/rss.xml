@@ -1,9 +1,9 @@
 {{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\" ?>" | safeHTML }}
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Tavern Wenches - Comic</title>
+    <title>{{ .Title }}</title>
     <link>{{ .Permalink }}</link>
-    <description>Tavern Wenches follows the adventures of the NPC tavern wenches of *A Need for Mead* as they face down lecherous PCs, point the way towards Epic Quests, and try to make sure the tavern is still standing come morning.</description>
+    <description>{{ if (isset .Params "og_description") }}{{ .Params.og_description }}{{ else }}{{ .Site.Params.og_description }}{{ end }}</description>
     {{ with .Site.LanguageCode }}
     <language>{{.}}</language>{{end}}
     {{ with .Site.Author.name }}<managingEditor>{{.}}</managingEditor>{{end}}
@@ -13,7 +13,9 @@
     {{ with .OutputFormats.Get "RSS" }}
         {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
     {{ end }}
-    {{ range .Pages }}
+    {{ range .Site.Pages }}
+    {{ if .Params.type }}
+    {{ if ne .Params.type "character" }}
     <item>
       <title>{{ .Title }}</title>
       <link>{{ .Permalink }}</link>
@@ -22,6 +24,7 @@
       {{ with .Site.Author.name }}<author>{{.}}</author>{{end}}
       <guid>{{ .Permalink }}</guid>
       <description>{{ .Summary | html }}</description>
+      {{ if eq .Params.type "comic" }}
       <content:encoded>{{ `<![CDATA[ ` | safeHTML }}
         <div>
         {{ range .Params.comic.rows }}
@@ -48,7 +51,15 @@
         </div>
         {{ partial "rss-footer.html" . }}
        ]]></content:encoded>
+       {{ else }}
+      <content:encoded>{{ `<![CDATA[ ` | safeHTML }}
+        {{ .Content }}
+        {{ partial "rss-footer.html" . }}
+       ]]></content:encoded> 
+       {{ end }}
     </item>
+    {{ end }}
+    {{ end }}
     {{ end }}
   </channel>
 </rss>
