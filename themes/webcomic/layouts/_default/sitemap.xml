@@ -5,15 +5,6 @@
 	{{ range .Data.Pages }}
 	<url>
 		<loc>{{ .Permalink }}</loc>
-		{{ if (isset .Params "comic_desktop")}}
-			{{ $desktop := resources.Get .Params.comic_desktop }}
-			<image:image>
-				<image:loc>{{ $desktop.Permalink }}</image:loc>
-				{{ if (isset .Params "transcript")}}
-				<image:caption>{{ .Params.transcript }}</image:caption>
-				{{ end }}
-			</image:image>
-		{{ end }}
 		{{ if (isset .Params "comic")}}
 			{{ range .Params.comic.rows }}
 				{{ range .cols }}
@@ -26,6 +17,11 @@
 					</image:image>
 				{{ end }}
 			{{end}}
+			{{ $comic := resources.Get .Params.og_image }}
+			<image:image>
+				<image:loc>{{ $comic.Permalink }}</image:loc>
+				<image:caption>{{ .Site.Title }}: {{ .Title }}</image:caption>
+			</image:image>
 		{{ end }}
 		{{ if not .Lastmod.IsZero }}
 			<lastmod>{{ safeHTML ( .Lastmod.Format "2006-01-02T15:04:05-07:00" ) }}</lastmod>

@@ -1,5 +1,4 @@
 {{ define "main" }}
-{{ $c := .Params.characterSheet }}
 {{ $scratch := newScratch }}
 {{ $character := .Title }}
 {{ $comics := where (where .Site.Pages.ByPublishDate "Type" "comic") ".Params.characters" "intersect" (slice $character)  }}
@@ -10,24 +9,25 @@
 </header>
 <div class="container page character">
   {{ if gt (len $comics) 0 }}
-  {{ if .Params.characterSheet }} 
-  <div class="character__character-sheet {{if eq .Params.censor true}}character__character-sheet_censor{{end}}"> 
+  {{ if .Params.characterSheet }}
+  {{ $c := .Params.characterSheet }}
+  <div class="character__character-sheet {{if eq .Params.censor true}}character__character-sheet_censor{{end}}">
     <h2 class="character__name">
       {{ .Title }}
     </h2>
     <p class="no-margin">
       <em>{{ $c.race }}, {{ $c.alignment }}</em>
     </p>
-    <hr/>
+    <hr />
     <dl class="character-stats">
       <div class="character-stat">
-          <dt>Class</dt>
-          {{ if isset $c "class" }}
-          <dd>Level {{$c.level}} {{$c.class}} {{ if .Params.characterSheet.archetype }} ({{$c.archetype }}) {{ end }}</dd>
-          {{ else }}
-          <dd>N/A</dd>
-          {{ end }}
-        </div>
+        <dt>Class</dt>
+        {{ if $c.class }}
+        <dd>Level {{$c.level}} {{$c.class}} {{ if .Params.characterSheet.archetype }} ({{$c.archetype }}) {{ end }}</dd>
+        {{ else }}
+        <dd>N/A</dd>
+        {{ end }}
+      </div>
       <div class="character-stat">
         <dt>Armor Class</dt>
         <dd>{{$c.ac}}</dd>
@@ -41,7 +41,7 @@
         <dd>{{$c.speed}} ft</dd>
       </div>
     </dl>
-    <hr/>
+    <hr />
     <table class="character__ability">
       <thead>
         <tr>
@@ -72,7 +72,7 @@
         </tr>
       </tbody>
     </table>
-    <hr/>
+    <hr />
     <dl class="character-stats">
       <div class="character-stat">
         <dt>Proficency Bonus</dt>
@@ -99,7 +99,7 @@
           {{end}}
           (+{{add ($scratch.Get "mod") $c.proficiencyBonus}}){{ end }}
           {{ else }}
-            N/A
+          N/A
           {{ end }}
         </dd>
       </div>
@@ -109,18 +109,18 @@
           {{ range $i, $skill := $c.skills }}{{ if $i }}, {{ end }}{{ $skill }}
           {{ $scratch.Set "mod" 0 }}
           {{ if eq $skill "Athletics" }}
-            {{ $scratch.Set "mod" $strMod }}
+          {{ $scratch.Set "mod" $strMod }}
           {{ else if or (eq $skill "Acrobatics") (eq $skill "Sleight of Hand") (eq $skill "Stealth")}}
-            {{ $scratch.Set "mod" $dexMod }}
+          {{ $scratch.Set "mod" $dexMod }}
           {{ else if or (eq $skill "Arcana") (eq $skill "History") (eq $skill "Investigation") (eq $skill "Nature") (eq $skill "Religion")}}
-            {{ $scratch.Set "mod" $intMod }}
+          {{ $scratch.Set "mod" $intMod }}
           {{ else if or (eq $skill "Animal Handling") (eq $skill "Insight") (eq $skill "Medicine") (eq $skill "Perception") (eq $skill "Survival")}}
-            {{ $scratch.Set "mod" $wisMod }}
+          {{ $scratch.Set "mod" $wisMod }}
           {{ else if or (eq $skill "Deception") (eq $skill "Intimidation") (eq $skill "Performance") (eq $skill "Persuasion")}}
-            {{ $scratch.Set "mod" $chaMod }}
+          {{ $scratch.Set "mod" $chaMod }}
           {{ end }}
           {{ if and (eq $character "Horbin") (eq $skill "Stealth")}}
-            {{ $scratch.Set "mod" (add ($scratch.Get "mod") $c.proficiencyBonus)}}
+          {{ $scratch.Set "mod" (add ($scratch.Get "mod") $c.proficiencyBonus)}}
           {{ end }}
           (+{{add ($scratch.Get "mod") $c.proficiencyBonus}}){{ end }}
         </dd>
@@ -129,7 +129,7 @@
         <dt>Senses</dt>
         {{ $scratch.Set "advantage" 0 }}
         {{ if in $c.skills "Perception" }}
-          {{ $scratch.Set "advantage" $c.proficiencyBonus }}
+        {{ $scratch.Set "advantage" $c.proficiencyBonus }}
         {{ end }}
         <dd>Passive Perception {{add 10 (add $wisMod ($scratch.Get "advantage"))}}</dd>
       </div>
@@ -155,50 +155,52 @@
         <dd>{{ $c.tools}}</dd>
       </div>
       {{end}}
-      {{ if isset $c "features"}}
+      {{ if $c.features}}
       {{ range $i, $feature := $c.features }}
-        <div class="character-stat">
-          <dt>{{ $feature.title }}</dt>
-          <dd>{{ $feature.description }}</dd>
-        </div>
-        {{ end }}
+      <div class="character-stat">
+        <dt>{{ $feature.title }}</dt>
+        <dd>{{ $feature.description }}</dd>
+      </div>
+      {{ end }}
       {{ end }}
     </dl>
-    <hr/>
-    {{ if isset $c.spellcasting "ability"}}
-      {{ $spell := $c.spellcasting }}
-      <div class="character__section">
-        <h2 class="character__header">Spellcasting</h2>
-        <p>{{.Title}} is a level {{ $spell.level }} spellcaster. {{.Title}}'s spellcasting ability is {{ $spell.ability }} (spell save DC{{ $spell.dcSave }}; +{{ $spell.attack }} to hit with spell attacks) and has the following spells prepared:</p>
-        <dl class="character-stats">
-          {{ if .Params.characterSheet.spellcasting.cantrips}}
-            <div class="character-stat">
-              <dt>Cantrips (at will)</dt>
-              <dd>{{ $spell.cantrips }}</dd>
-            </div>
-          {{ end }}
-          {{ if .Params.characterSheet.spellcasting.spells}}
-            <div class="character-stat">
-              <dt>Spells</dt>
-              <dd>{{ $spell.spells }}</dd>
-            </div>
-          {{ end }}
-          {{ if .Params.characterSheet.spellcasting.lvl1Slots}}
-            <div class="character-stat">
-              <dt>1st Level</dt>
-              <dd>{{ $spell.lvl1Slots }} Slots</dd>
-            </div>
-          {{ end}}
-          {{ if .Params.characterSheet.spellcasting.lvl2Slots}}
-            <div class="character-stat">
-              <dt>2nd Level</dt>
-              <dd>{{ $spell.lvl2Slots }} Slots</dd>
-            </div>
-          {{ end}}
-        </dl>
-      </div>
+    <hr />
+    {{ if $c.spellcasting.ability}}
+    {{ $spell := $c.spellcasting }}
+    <div class="character__section">
+      <h2 class="character__header">Spellcasting</h2>
+      <p>{{.Title}} is a level {{ $spell.level }} spellcaster. {{.Title}}'s spellcasting ability is {{ $spell.ability }}
+        (spell save DC{{ $spell.dcSave }}; +{{ $spell.attack }} to hit with spell attacks) and has the following spells
+        prepared:</p>
+      <dl class="character-stats">
+        {{ if .Params.characterSheet.spellcasting.cantrips}}
+        <div class="character-stat">
+          <dt>Cantrips (at will)</dt>
+          <dd>{{ $spell.cantrips }}</dd>
+        </div>
+        {{ end }}
+        {{ if .Params.characterSheet.spellcasting.spells}}
+        <div class="character-stat">
+          <dt>Spells</dt>
+          <dd>{{ $spell.spells }}</dd>
+        </div>
+        {{ end }}
+        {{ if .Params.characterSheet.spellcasting.lvl1Slots}}
+        <div class="character-stat">
+          <dt>1st Level</dt>
+          <dd>{{ $spell.lvl1Slots }} Slots</dd>
+        </div>
+        {{ end}}
+        {{ if .Params.characterSheet.spellcasting.lvl2Slots}}
+        <div class="character-stat">
+          <dt>2nd Level</dt>
+          <dd>{{ $spell.lvl2Slots }} Slots</dd>
+        </div>
+        {{ end}}
+      </dl>
+    </div>
     {{ end }}
-    {{ if isset $c "actions"}}
+    {{ if $c.actions }}
     <div class="character__section">
       <h2 class="character__header">Actions</h2>
       <dl class="character-stats">
@@ -218,7 +220,7 @@
         <li>{{ $item.item }}</li>
         {{ end }}
       </ul>
-      {{ if isset $c "trinket"}}
+      {{ if $c.trinket }}
       <dl class="character-stats">
         <div class="character-stat">
           <dt>Trinket</dt>
@@ -260,49 +262,45 @@
     </div>
   </div>
   {{ end }}
-    <div class="character__content">
-      {{ .Content }}
-      <div class="character__section">
-        <h2 class="character__header">Appearences</h2>
-        <dl>
-          <div>
-            <dt>Comics:</dt>
-            <dd>{{ len $comics }}</dd>
-          </div>
-          {{ range last 1 $comics }}
-            <div>
-              <dt>Recent Appearance:</dt>
-              <dd><a href="{{.Permalink}}" title=".Title">{{.Title}}</a></dd>
-            </div>
-          {{ end}}
-          {{ range first 1 $comics }}
-            <div>
-              <dt>First Appearance:</dt>
-              <dd><a href="{{.Permalink}}" title=".Title">{{.Title}}</a></dd>
-            </div>
-          {{ end}}
-        </dl>
-      </div>
+  <div class="character__content">
+    {{ .Content }}
+    <div class="character__section">
+      <h2 class="character__header">Appearences</h2>
+      <dl>
+        <div>
+          <dt>Comics:</dt>
+          <dd>{{ len $comics }}</dd>
+        </div>
+        {{ range last 1 $comics }}
+        <div>
+          <dt>Recent Appearance:</dt>
+          <dd><a href="{{.Permalink}}" title=".Title">{{.Title}}</a></dd>
+        </div>
+        {{ end}}
+        {{ range first 1 $comics }}
+        <div>
+          <dt>First Appearance:</dt>
+          <dd><a href="{{.Permalink}}" title=".Title">{{.Title}}</a></dd>
+        </div>
+        {{ end}}
+      </dl>
     </div>
+  </div>
   {{ else }}
-    <p class="character__no-info">No information about this character at this time.</p>
+  <p class="character__no-info">No information about this character at this time.</p>
   {{ end }}
   <div class="character__section">
-    {{ if (isset .Params "thumbnail")}}
+    {{ if .Params.thumbnail }}
     {{ $thumb := resources.Get .Params.thumbnail}}
     {{ $thumb_700x := $thumb.Resize "700x q100" }}
     {{ $thumb_350x := $thumb.Resize "350x q100" }}
     <picture class="character__image">
-    <source 
-      srcset="
+      <source srcset="
         {{ $thumb_700x.Permalink }} 700w,
-        {{ $thumb_350x.Permalink }} 350w"
-      >
-      <img
-        class="characters__thumb" 
-        src="{{ $thumb_350x.Permalink }}"
-        alt="{{ .Title }}">
-      </picture>
+        {{ $thumb_350x.Permalink }} 350w">
+      <img class="characters__thumb" src="{{ $thumb_350x.Permalink }}" alt="{{ .Title }}" width="{{ $thumb.Width }}"
+        height="{{ $thumb.Height }}" loading="lazy">
+    </picture>
     {{ end }}
   </div>
 </div>

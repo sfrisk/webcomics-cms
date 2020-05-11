@@ -4,7 +4,7 @@
   background: $site-header-mobile-bg;
   align-items: center;
   width: 100%;
-  z-index: 1;
+  z-index: 2;
   padding-bottom: env(safe-area-inset-bottom);
   @media (min-width: $bp_md) {
     background: $site-header-bg;
@@ -18,6 +18,10 @@
     &.active {
       box-shadow: 0 .4em .4em rgba($black, 0.4); 
     }
+    // @media (prefers-color-scheme: dark) {
+    //   background: $site-header-link;
+    //   color: $site-header-bg;
+    // }
   }
   a, button {
     text-decoration: none;
@@ -59,11 +63,26 @@
       @media (min-width: $bp_md) {
         display: none;
       }
+      &-label {
+        display: block;
+        font-size: .6em;
+        font-family: $serif;
+        font-weight: bold;
+        font-variant: small-caps;
+        letter-spacing: 1px;
+        color: $site-header-mobile-link;
+        @media (min-width: $bp_md) {
+          display:none;
+        }
+      }
     }
     @media (min-width: $bp_md) {
       padding: 0;
       font-size: 1.25rem;
       margin-right: 1rem;
+      // @media (prefers-color-scheme: dark) {
+      //   color: $site-header-bg;
+      // }
     }
   }
   &__name {
@@ -95,18 +114,21 @@
       display: inline-block;
       padding: .4rem;
       color: $site-header-link;
+      // @media (prefers-color-scheme: dark) {
+      //   color: $site-header-bg;
+      // }
     }
     @media (min-width: 875px) {
       padding: .5rem;
     }
     span {
-      display: none;
+      display: block;
+      font-size: .6em;
+      font-family: $serif;
+      font-weight: bold;
+      font-variant: small-caps;
+      letter-spacing: 1px;
       @media (min-width: $bp_md) {
-        display: block;
-        font-family: $serif;
-        font-weight: bold;
-        font-variant: small-caps;
-        letter-spacing: 1px;
         font-size: .7em;
       }
       @media (min-width: $bp_lg) {
@@ -174,6 +196,9 @@
         height: 1em;
         width: 1em;
         fill: $header-socials-color;
+        // @media (prefers-color-scheme: dark) {
+        //   fill: $site-header-bg;
+        // }
       }
     }
     @media (min-width: $bp_lg) {

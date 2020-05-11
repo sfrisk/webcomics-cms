@@ -2,17 +2,35 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 1em 0;
+  margin: 0;
   padding: 0;
   list-style: none;
+  font-family: $sans-serif;
   &__item {
-    margin: 0 1em;
+    margin: 0 .4em;
   }
   &__link {
     text-decoration: none;
     color: $pagination-color;
+    font-weight: bold;
+    font-size: 1.2em;
+    border-radius: 100%;
+    background: $pagination-contrast-color;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.5em;
+    width: 1.5em;
+    &:hover, &:active {
+      background: rgba($pagination-color, .2);
+    }
     &.current {
       font-weight: bold;
+      color: $pagination-contrast-color;
+      background: $pagination-color;
+      &:hover, &:active {
+        background: rgba($pagination-color, .8);
+      }
     }
     &.disabled {
       opacity: .85;

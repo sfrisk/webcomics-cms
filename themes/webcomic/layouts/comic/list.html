@@ -1,13 +1,13 @@
 {{ define "main" }}
 <div class="comic-archive">
-	<header class="comic-archive__header">
-			<h1 class="text-center comic-archive__title">{{ .Params.pageTitle }}</h1>
+	<header class="page__header">
+			<h1 class="text-center page__title">{{ .Params.pageTitle }}</h1>
 	</header>
 	<div class="container comic-archive__container">
 		<div class="row">
 			<div class="comic-archive__about">
 				{{ .Content }}
-				{{ $comics := ($.Site.GetPage "section" "comic").Pages.ByPublishDate }}
+				{{ $comics := where .Data.Pages.ByDate "Params.type" "comic"}}
 				{{ range first 1 $comics }}
 					<p class="text-center">
 							<a class="btn btn-primary btn-block" href="{{ .Permalink }}" role="button">First Comic</a>
@@ -18,8 +18,9 @@
 				{{ end }}
 			</div>
 			<div class="comic-archive__content">
+				{{ partial "pagination.html" . }}
 				<ul class="comic-archive__list">
-						{{ range (.Paginate (.Data.Pages.ByDate.Reverse)).Pages }}
+						{{ range (.Paginate (where .Data.Pages.ByDate.Reverse "Params.type" "comic")).Pages }}
 							<li class="comic-archive__item">
 								<a class="comic-archive__link" href="{{.Permalink}}">
 									{{ if (isset .Params "thumbnail")}}
@@ -28,14 +29,18 @@
 										{{ $thumbnail_1x := $thumbnail.Fill "80x80"}}
 									<picture class="comic-archive__item__thumb">
 										<source srcset="{{ $thumbnail_2x.Permalink }} 2x, {{ $thumbnail_1x.Permalink }} 1x">
-										<img src="{{ $thumbnail_1x.Permalink }}" alt="">
+										<img src="{{ $thumbnail_1x.Permalink }}"
+											alt="{{ .Title }}"
+											width="{{ $thumbnail_1x.Width }}"
+											height="{{ $thumbnail_1x.Height }}"
+											loading="lazy">
 									</picture>
 									{{ end }}
 									<span class="comic-archive__item__title">
 										{{ $.Scratch.Set "counter" 1 }}	
-										{{ $title := .Title }}
+										{{ $url := .Permalink }}
 										{{ range $comics }}
-											{{ if eq $title .Title}}
+											{{ if eq $url .Permalink}}
 												Page {{$.Scratch.Get "counter"}}: {{.Title}}
 											{{ end }}
 											{{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}

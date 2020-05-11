@@ -1,9 +1,8 @@
 .site-footer {
-	padding: 2em 0 3em;
+	padding: 2em 0 6em;
 	grid-row-start: 2;
 	grid-row-end: 3;
 	background: $site-footer;
-	margin-top: 2em;
 	font-weight: bold;
 	opacity: .9;
 	color: rgba($white, .7);
@@ -15,23 +14,22 @@
 	}
 	@media (min-width: $bp_md) {
 		text-align: right;
-		padding: 4em 0 2em 0;
+		padding: 2em 0;
 	}
 	.container {
-		display: flex;
-		justify-content: space-between;
-		align-content: center;
-		padding-bottom: 2em;
+    display: block;
+    @media (min-width: $bp_md) {
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+    }
 	}
 	&__copy {
 		text-transform: uppercase;
 		display: block;
 	}
 	&__left {
-		display: none;
-		@media (min-width: $bp_md) {
-			display: flex;
-		}
+		display: flex;
 	}
 	&__right {
 		text-align: left;
@@ -44,10 +42,6 @@
 
 	&__logo {
 		display: block;
-		margin-bottom: .5em;
-		@media (min-width: $bp_md) {
-			margin-bottom: 1em;
-		}
 		svg {
 			width: 200px;
 			height: auto;

@@ -7,7 +7,7 @@
 	<header class="comic__header">
 		<h1 class="comic__header__title">{{ .Title }}</h1>
 		{{ if and (isset .Site.Params "author") (isset .Site.Params "author_site") }}
-			<a class="comic__header__author" rel="author" href="{{ .Site.Params.author_site }}" target="_blank">{{ .Site.Params.author }}</a>
+			<a class="comic__header__author" rel="author" rel="noopener" href="{{ .Site.Params.author_site }}" target="_blank">{{ .Site.Params.author }}</a>
 		{{ end }}
 	</header>
 	{{ range .Params.comic.rows }}
@@ -29,7 +29,10 @@
 						<img
 							src="{{ $image_mobile.Permalink }}"
 							class="comic__panel__image"
+							width="{{ div $image.Width 2 }}"
+							height="{{ div $image.Height 2 }}"
 							alt="{{ if isset . "transcript" }}{{.transcript}}{{end}}"
+							loading="lazy"
 						>
 					</picture>
 				</div>
@@ -66,5 +69,4 @@
 	{{ end }}
 
 </article>
-
 {{end}}

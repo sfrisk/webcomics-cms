@@ -11,28 +11,26 @@
 }
 
 .page {
-	background: $page-background;
+	// background: $page-background;
   padding: 1em;
-  margin-top: -3em;
-  margin-bottom: 2em;
+  margin: 0em auto 2em;
   @media (min-width: $bp_md) {
     min-height: 500px;
+    margin: 0em auto 2em;
   }
   &__header {
     width: 100%;
-    background: $header-bg;
-    padding: 4em 1em 3em 1em;
-    height: 13em;
+    padding: 2em 1em 2em 1em;
+    // @media (prefers-color-scheme: dark) {
+    //   background: transparent
+    // }
     
   }
   &__title {
-    color: $header-color;
     text-align: center;
-    font-size: 2em;
     margin: 0;
   }
   &__subtitle {
-    color: $header-color;
     font-size: 1.25em;
     text-align: center;
     margin: 0;

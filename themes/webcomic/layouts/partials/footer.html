@@ -1,13 +1,12 @@
 <footer class="site-footer">
 	<div class="container">
 		<div class="site-footer__left">
-
+      <span class="site-footer__logo">{{ partial "logo.html" . }}</span>
 		</div>
 		<div class="site-footer__right">
-				<span class="site-footer__logo">{{ partial "logo.html" . }}</span>
 				<span class="site-footer__copy">&copy;{{ now.Format "2006"}} {{ .Site.Params.author}}</span>
 				{{ if (isset .Site.Params "patreon") }}
-				<em>Join us on <a rel="noreferrer" target="_blank" href="https://www.patreon.com/{{ .Site.Params.patreon }}" title="Patreon">Patreon</a>!</em>
+				<!-- <em>Join us on <a rel="noreferrer" target="_blank" href="https://www.patreon.com/{{ .Site.Params.patreon }}" title="Patreon">Patreon</a>!</em> -->
 				{{ end }}
 				<div class="site-footer__socials">
 					{{ partial "socials.html" . }}

@@ -4,7 +4,7 @@ $color3: #6D2E46;
 $color4: #D5B9B2;
 $color5: #CEBEBE;
 $white: #fbf8f9;
-$black: #1a0b11;
+$black: #010101;
 
 $html-background: $black;
 $site-background: $black;
@@ -32,7 +32,8 @@ $page-background: $white;
 $button-bg: $color3;
 $button-color: $white;
 
-$pagination-color: $black;
+$pagination-color: $color3;
+$pagination-contrast-color: $white;
 
 $comic-nav-bg: $color3;
 $comic-nav-link: $white;

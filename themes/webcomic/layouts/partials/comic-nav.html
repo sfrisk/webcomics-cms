@@ -1,5 +1,6 @@
 {{ $url := .Permalink }}
-{{ $comics := ($.Site.GetPage "section" .Section).Pages.ByPublishDate }}
+{{ $parent := .Parent }}
+{{ $comics := where ($.Site.GetPage $parent.Path).Pages.ByPublishDate "Params.type" "comic"}}
 <div class="comic-navigation">
 	<nav class="comic-navigation__list" aria-label="comic navigation">
 	{{ range first 1 $comics }}

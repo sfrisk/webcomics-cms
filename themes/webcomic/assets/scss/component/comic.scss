@@ -1,5 +1,5 @@
 .comic {
-	background: white;
+	// background: white;
 	margin: 3em 0 0;
 	@media (min-width: $bp_md) {
 		margin: 5em 1em 0;
@@ -25,21 +25,27 @@
 		}
 	}
 	&__row {
+		margin: 0 -1em;
 		@media (min-width: $bp_md) {
 			display: flex;
+			margin: 0;
 			justify-content: center;
 		}
 	}
 	&__panel {
-		padding: .5em;
+		padding: 3em 0;
 		text-align: center;
 		@media (min-width: $bp_md) {
+			padding: .5em;
 			height: auto;
 			display: block;
 		}
 		&__image {
+			background: $color5;
 			max-width: 100%; 
 			max-height: 500px;
+			width: auto;
+			height: auto;
 			@media (min-width: $bp_md) {
 				max-width: 100%;
 				height: auto;

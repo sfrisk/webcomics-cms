@@ -1,5 +1,5 @@
 {{ define "main" }}
-{{ $comics := ($.Site.GetPage "section" "comic").Pages.ByPublishDate }}
+{{ $comics := where ($.Site.GetPage "section" "comic").Pages.ByPublishDate "Params.type" "comic"}}
 {{ $news := ($.Site.GetPage "section" "news").Pages.ByPublishDate  }}
 {{ $banner := resources.Get .Params.bannerImage}}
 {{ $banner_4000x := $banner.Resize "4000x q100" }}
@@ -13,18 +13,9 @@
 {{ $banner_600x := $banner.Resize "600x q100" }}
 {{ $banner_500x := $banner.Resize "500x q100" }}
 
-{{ $firstImage := resources.Get .Params.firstcomic}}
-{{ $firstImage_1000x := $firstImage.Resize "1000x q100" }}
-{{ $firstImage_500x := $firstImage.Resize "500x q100" }}
-
 {{ $patreon := resources.Get .Params.patreon}}
 {{ $patreon_1000x := $patreon.Resize "1000x q100" }}
 {{ $patreon_500x := $patreon.Resize "500x q100" }}
-
-
-{{ $lastImage := resources.Get .Params.latestcomic}}
-{{ $lastImage_1000x := $lastImage.Resize "1000x q100" }}
-{{ $lastImage_500x := $lastImage.Resize "500x q100" }}
 
 {{ $archiveImage := resources.Get .Params.archive}}
 {{ $archiveImage_1000x := $archiveImage.Resize "1000x q100" }}
@@ -38,8 +29,7 @@
 <header class="home__header">
 	<h1 class="home__title">{{.Params.Subtitle}}</h1>
 	<picture class="home__banner-wrap">
-		<source 
-			srcset="
+		<source srcset="
 				{{ $banner_500x.Permalink }} 500w,
 				{{ $banner_600x.Permalink }} 600w,
 				{{ $banner_800x.Permalink }} 800w,
@@ -49,173 +39,75 @@
 				{{ $banner_2000x.Permalink }} 2000w,
 				{{ $banner_2400x.Permalink }} 2400w,
 				{{ $banner_3200x.Permalink }} 3200w,
-				{{ $banner_4000x.Permalink }} 4000w"
-			>
-		<img
-			class="home__banner" 
-			src="{{ $banner_1200x.Permalink }}"
-			alt="{{ .Title }}">
+				{{ $banner_4000x.Permalink }} 4000w">
+		<img class="home__banner" src="{{ $banner_1200x.Permalink }}" alt="{{ .Title }}">
 	</picture>
-</header>	
-	<div class="home container">
-		<a class="home__link home__read-latest hidden" id="comic-continue"  title="Continue Quest">
-			<picture class="characters__thumb">
-				<source 
-					srcset="
-						{{ $lastImage_1000x.Permalink }} 1000w,
-						{{ $lastImage_500x.Permalink }} 500w"
-					>
-				<img
-					class="characters__thumb" 
-					src="{{ $lastImage_500x.Permalink }}"
-					alt="Continue Comic">
-			</picture>
-			<span>Continue Quest</span>
-		</a>
-		{{ range last 1 $comics }}
-			<a class="home__link home__read-latest" id="comic-latest" href="{{ .Permalink }}" title="{{.Title}}">
-				<picture class="characters__thumb">
-					<source 
-						srcset="
-							{{ $lastImage_1000x.Permalink }} 1000w,
-							{{ $lastImage_500x.Permalink }} 500w"
-						>
-					<img
-						class="characters__thumb" 
-						src="{{ $lastImage_500x.Permalink }}"
-						alt="Latest Comic">
-				</picture>
-				<span>Latest Comic</span>
-			</a>
-		{{ end }}
-		<a class="home__link home__patreon" href="https://www.patreon.com/{{ .Site.Params.patreon }}" title="Patreon">
-			<img
-				class="characters__thumb" 
-				src="{{ $patreon.Permalink }}"
-				alt="Patreon">
-			<span>Join Us on Patreon!</span>
-		</a>
-		{{ range first 1 $comics }}
-			<a class="home__link home__read-first" href="{{ .Permalink }}" title="{{.Title}}">
-				<picture class="characters__thumb">
-					<source 
-						srcset="
+</header>
+<div class="home container">
+	{{ range first 1 $comics }}
+	{{ $firstImage := resources.Get .Params.thumbnail}}
+	{{ $firstImage_1000x := $firstImage.Resize "1000x q100" }}
+	{{ $firstImage_500x := $firstImage.Resize "500x q100" }}
+
+	<a class="home__link home__read-first" href="{{ .Permalink }}" title="{{.Title}}">
+		<picture class="home__thumb">
+			<source srcset="
 							{{ $firstImage_1000x.Permalink }} 1000w,
-							{{ $firstImage_500x.Permalink }} 500w"
-						>
-					<img
-						class="characters__thumb" 
-						src="{{ $firstImage_500x.Permalink }}"
-						alt="First Comic">
-				</picture>
-				<span>First Comic</span>
-			</a>
-		{{ end }}
-		<a class="home__link home__comic-archive" href="/comic" title="Comic Archive">
-			<picture class="characters__thumb">
-				<source 
-					srcset="
-						{{ $archiveImage_1000x.Permalink }} 1000w,
-						{{ $archiveImage_500x.Permalink }} 500w"
-					>
-				<img
-					class="characters__thumb" 
-					src="{{ $archiveImage_500x.Permalink }}"
-					alt="Comic Archive">
-			</picture>
-			<span>Comic Archive</span>
-		</a>
-		<div class="home__news">
-			<h2 class="home__news__header">Rumors from the Tavern</h2>
-			{{ range last 1 $news }}
-				<article>
-					<header class="post__header">
-						<h1 class="post__title">{{ .Title }}</h1>
-						<p class="post__meta">
-							<time datetime="{{.Date.Format "2006-01-02"}}">{{.Date.Format "January 2, 2006"}}</time>
-						</p>
-					</header>
-					<div class="post__content home__news__content">
-						{{.Content}}
-					</div>
-				</article>
-				<a href="/news/" class="home__news__archive">Read More</a>
-			{{ end }}
-		</div>
-		<!-- <div class="home__subheader">
-				<h2>New Reader?</h2>
-				<p><em>Tavern Wenches</em> follows the adventures of the NPC tavern wenches of <em>A Need for Mead</em> as they face down lecherous PCs, point the way towards Epic Quests, and try to make sure the tavern is still standing come morning.</p>
-		</div>
-		<a class="home__link home__wenches" href="/about">
-				<span>About the Comic</span>
-		</a>
-		<a class="home__link home__wenches" href="/character">
-			<picture class="characters__thumb">
-				<source 
-					srcset="
-						{{ $castImage.Permalink }} 1400w,
-						{{ $castImage.Permalink }} 700w,
-						{{ $castImage.Permalink }} 350w"
-					>
-				<img
-					class="characters__thumb" 
-					src="{{ $castImage.Permalink }}"
-					alt="Meet the Cast">
-			</picture>
-			<span>Meet the Cast</span>
-		</a>
-		{{ range first 1 $comics }}
-			<a class="home__link home__wenches" href="{{ .Permalink }}" title="{{.Title}}">
-				<span>Start at the Beginning</span>
-			</a>
-		{{ end }} -->
-<!-- 
-		<div class="home__subheader">
-				<h2>Meet the Wenches</h2>
-				<p>Get to know the wenches of <em>A Need for Mead</em></p>
-		</div>
-		{{ range .Params.featuredCharacters }}
-			{{ $url := printf "/%s/%s.md"  "character" ( . | urlize ) }}
-			{{ with $.Site.GetPage $url }}
-				{{ $thumb := resources.Get .Params.thumbnail}}
-				{{ $thumb_1400x := $thumb.Resize "1400x q100" }}
-				{{ $thumb_700x := $thumb.Resize "700x q100" }}
-				{{ $thumb_350x := $thumb.Resize "350x q100" }}
-				<a class="home__link home__wenches" href="{{ .Permalink }}">
-					<picture class="characters__thumb">
-						<source 
-							srcset="
-								{{ $thumb_1400x.Permalink }} 1400w,
-								{{ $thumb_700x.Permalink }} 700w,
-								{{ $thumb_350x.Permalink }} 350w"
-							>
-						<img
-							class="characters__thumb" 
-							src="{{ $thumb_350x.Permalink }}"
-							alt="{{ .Title }}">
-					</picture>
-					<span>{{ .Title }}</span>
-				</a>
-			{{end}}
+							{{ $firstImage_500x.Permalink }} 500w">
+			<img class="home__thumb" src="{{ $firstImage_500x.Permalink }}" alt="First Comic"
+				width="{{ $firstImage_1000x.Width }}" height="{{ $firstImage_1000x.Height }}" loading="lazy">
+		</picture>
+		<span>First</span>
+	</a>
+	{{ end }}
+
+	{{ range last 1 $comics }}
 	
+	{{ $lastImage := resources.Get .Params.thumbnail}}
+	{{ $lastImage_1000x := $lastImage.Resize "1000x q100" }}
+	{{ $lastImage_500x := $lastImage.Resize "500x q100" }}
+	<a class="home__link home__read-latest" id="comic-latest" href="{{ .Permalink }}" title="{{.Title}}">
+		<picture class="home__thumb">
+			<source srcset="
+							{{ $lastImage_1000x.Permalink }} 1000w,
+							{{ $lastImage_500x.Permalink }} 500w">
+			<img class="home__thumb" src="{{ $lastImage_500x.Permalink }}" alt="Latest Comic"
+				width="{{ $lastImage_1000x.Width }}" height="{{ $lastImage_1000x.Height }}" loading="lazy">
+		</picture>
+		<span>Latest</span>
+	</a>
+	{{ end }}
+	<a class="home__link home__patreon" href="https://www.patreon.com/{{ .Site.Params.patreon }}" title="Patreon">
+		<img class="home__thumb" src="{{ $patreon.Permalink }}" alt="Patreon" width="{{ $patreon.Width }}"
+			height="{{ $patreon.Height }}" loading="lazy">
+		<span>Join Us on Patreon!</span>
+	</a>
+	<a class="home__link home__comic-archive" href="/comic" title="Comic Archive">
+		<picture class="home__thumb">
+			<source srcset="
+						{{ $archiveImage_1000x.Permalink }} 1000w,
+						{{ $archiveImage_500x.Permalink }} 500w">
+			<img class="home__thumb" src="{{ $archiveImage_500x.Permalink }}" alt="Comic Archive"
+				width="{{ $archiveImage_1000x.Width }}" height="{{ $archiveImage_1000x.Height }}" loading="lazy">
+		</picture>
+		<span>Comic Archive</span>
+	</a>
+	<div class="home__news">
+		<h2 class="home__news__header">Rumors from the Tavern</h2>
+		{{ range last 1 $news }}
+		<article>
+			<header class="post__header">
+				<h1 class="post__title">{{ .Title }}</h1>
+				<p class="post__meta">
+					<time datetime="{{.Date.Format "2006-01-02"}}">{{.Date.Format "January 2, 2006"}}</time>
+				</p>
+			</header>
+			<div class="post__content home__news__content">
+				{{.Content}}
+			</div>
+		</article>
+		<a href="/news/" class="home__news__archive">Read More</a>
 		{{ end }}
-	</div> -->
-
-	<script>
-		var comics = [{{ range $comics }}{{ .Permalink }},{{ end }}]
-		var continueQuest = document.getElementById('comic-continue');
-		var latestComic = document.getElementById('comic-latest');
-		var currentComic = localStorage.getItem('current-comic');
-
-		comics.forEach((comic, index) => {
-			if (comic == currentComic) {
-				if (comics.length > index + 2) {
-					continueQuest.href = comics[index+1];
-					continueQuest.classList.remove('hidden')
-					latestComic.classList.add('hidden')
-
-				}
-			}
-		})
-		</script>
-{{ end }}
+	</div>
+	</div>
+	{{ end }}

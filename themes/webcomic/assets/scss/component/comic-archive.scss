@@ -5,7 +5,7 @@
 
 .comic-archive__title {
 	color: $header-color;
-	padding: 2em 1em 3em 1em;
+	padding: 2em 1em;
   margin: 0;
   text-align: center;
 }
@@ -13,12 +13,11 @@
 .comic-archive__container {
 	background: $page-background;
 	position: relative;
-	margin-top: -3em;
-	margin-bottom: 3em;
 	min-height: 500px;
 }
 
 .comic-archive__content {
+	padding: 2em 0;
 	@media (min-width: $bp_md) {
     grid-column-start: 1;
     grid-column-end: span 8;
@@ -43,7 +42,7 @@
 }
 
 .comic-archive__link {
-	height: 80px;;
+	height: 80px;
 	cursor: pointer;
 	display: flex;
 	justify-content: flex-start;
@@ -86,7 +85,8 @@
 	height:80px;
 	width: 80px;
   margin-right: 1em;
-  opacity: 1;
+	opacity: 1;
+	background: $color5;
 }
 
 .comic-archive__item__date {

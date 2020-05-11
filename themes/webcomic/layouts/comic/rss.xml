@@ -39,7 +39,10 @@
               style="max-width: 100%"
 							src="{{ $image_mobile.Permalink }}"
 							class="comic__panel__image"
+              width="{{ $image_mobile.Width }}"
+							height="{{ $image_mobile.Height }}"
 							alt="{{ if isset . "transcript" }}{{.transcript}}{{end}}"
+              loading="lazy"
 						>
 					</picture>
           </div>

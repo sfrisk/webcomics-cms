@@ -3,3 +3,5 @@ $
 public/
 resources/
 .DS_Store
+node_modules/
+storybook-static/
