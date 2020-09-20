@@ -1,0 +1,8 @@
+User-agent: * 
+Disallow: /admin/
+
+host: tavern-wenches.com
+crawl-delay: 10
+
+# Sitemap files
+Sitemap: https://tavern-wenches.com/sitemap.xml

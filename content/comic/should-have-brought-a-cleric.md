@@ -1,68 +1,101 @@
 ---
+summary: The wizard decides they should try to help their companion.
 title: Should Have Brought A Cleric
-date: 2019-01-13T00:00:02.000Z
+date: 2020-01-13T00:00:02.000Z
 type: comic
 chapter: You Meet in a Tavern
 characters:
-  - Horbin
-  - Xavros
-  - Veronica
-  - Thog
+  - horbin
+  - xavros
+  - veronica
+  - thog
 comic:
   rows:
     - cols:
-        - panel: /assets/images/wenches-003-a.jpg
+        - panel: /assets/images/comic/wenches-003-a.jpg
           transcript: >-
-            We see Horbin the halfling laying on grass, glaring above him.  "I'm
-            see a lot of blood down hear while I'm hearing a lot of yammering up
-            there," he calls out above him.  We do not actually see any blood.
-        - panel: /assets/images/wenches-003-b.jpg
+            Horbin lies in the grass with only a side view of his face and upper
+            chest visible, looking above him, an annoyed expression on his face.
+            He is calling the people above him, a hand raised next to his mouth,
+            as if it will help him speak louder.
+
+
+            “I’m seeing a lot of blood down here while I’m hearing a lot of yammering up there,” he says.
+        - panel: /assets/images/comic/wenches-003-b.jpg
           transcript: >-
-            We pan out to see more of the lighthouse, although not high up
-            enough to see where the half-orc, the wizard, and the womean with
-            black hair are standing.  Horbin the halfling is a shadow on the
-            ground as he continues to call up to his companions. "How much blood
-            does a halfling even have? Xavros? Thog!"
-        - panel: /assets/images/wenches-003-c.jpg
+            A zoomed out view of Horbin lying on the ground, he is now no more
+            than a dark silhouette on the grassy ground at the foot of a large
+            worn down lighthouse, with an attached lighthouse keeper’s house.
+            Horbin is the only living being that can be seen, as his companions
+            are much farther away above him, off panel.
+
+
+            “How much blood does a halfling even have?” he asks. “Xavros?” Another pause. “Thog!”
+        - panel: /assets/images/comic/wenches-003-c.jpg
           transcript: >-
-            Back near the top of the lighthouse, the wizard, woman, and the half
-            orc are standing at the balcony.  The wizard looks frustrated as he
-            laments "I knew we should have hired a cleric." Beside him, the
-            woman is smiling as she stares down at Horbin, clearly amused by
-            what she sees.  Next to her, the half-orc watches her reaction,
-            studying her.
-        - panel: /assets/images/wenches-003-d.jpg
+            Xavros, Veronica, and Thog stand in front of the right side of the
+            stone entryway into the lighthouse, illuminated by the pale yellow
+            light of the interior of the lighthouse. Xavros seems exhausted by
+            what he knows is to come, with dark shadows under his eyes as he
+            looks upwards, brows furrowed. Beside him, Veronica has an almost
+            maniacal grin on her face as she looks at the ground below them.
+            Thog, who is on Veronica’s other side, is looking at her with a
+            curious expression on his face.
+
+
+            “I knew we should have hired a cleric,” says Xavros, annoyed.
+        - panel: /assets/images/comic/wenches-003-d.jpg
           transcript: >-
-            The wizard is standing by himself, illuminated by the light from the
-            door.  "I'm coming, Horbin!" he shouts down to his companion.  His
-            companion, off panel, is amused by this and says back. "Heh.
-            Phrasing!"
+            Xavros stands alone, with only the light of the interior of the
+            lighthouse visible behind him. His arms are in front of him, as if
+            they are propped up on the railing of the lighthouse’s balcony,
+            currently off panel. Xavros is leaning forward, yelling to Horbin
+            who is somewhere below him.
+
+
+            “I’m coming, Horbin!” Xavros yells to the halfling below.
+
+
+            “Heh,” laughs Horbin from off-panel. “Phrasing!”
     - cols:
-        - panel: /assets/images/wenches-003-e.jpg
+        - panel: /assets/images/comic/wenches-003-e.jpg
+          transcript: Veronica and Thog stand in the left 2/3rds of the lighthouse’s
+            balcony entrance. Behind them, disappearing into the glowing light
+            within, is a shadowy outline of Xavros as he hurries away. Veronica
+            is looking down, presumably at Horbin below, her brow furrowed, with
+            a dark smirk on her face. To the right of Veronica, Thog stands
+            beside her, left eyebrow raised, and right hand scratching the back
+            of his head, as if considering something.
+        - panel: /assets/images/comic/wenches-003-f.jpg
           transcript: >-
-            The wizard has left, leaving the dark haired woman and the half-orc
-            standing alone on the balcony.  The dark haired woman is still
-            smirking, looking down at what happened to the halfling.  She is
-            watched by the half orc, who is raising an eyebrow, and has a hand
-            behind his head.
-        - panel: /assets/images/wenches-003-f.jpg
+            Veronica stands in front of an all black panel, outlined in white to
+            help contrast her from the background. She looks straight ahead,
+            eyes wide, a panicked expression on her face as she Thog speaks from
+            somewhere to her right, off panel.
+
+
+            “Thog never seen halfling punted that far by a human” Thog says.
+        - panel: /assets/images/comic/wenches-003-g.jpg
           transcript: >-
-            "Thog never seen halfling punted that far by a human" The dark
-            haired woman seems shocked and perhaps worried by this sudden
-            statement by the half orc.  She stands alone, surrounded by black,
-            emphasizing her feelings of dread.
-        - panel: /assets/images/wenches-003-g.jpg
+            Veronica and Thog stand in front of the right 2/3rds of the
+            lighthouse’s balcony entrance. Veronica looks alarmed, and a bit
+            guilty, her eyes wide and pupils shrunk. Her shoulders are hunched
+            and she is grasping her left arm with her right hand.
+
+
+            “I” she sutters, “I can explain?”
+
+
+            Thog has his hands up in front of him in non threatening gestures, eyes wide as he realized he must have been misinterpreted. “Thog not make self clear,” he says.
+        - panel: /assets/images/comic/wenches-003-h.jpg
           transcript: >-
-            On the balcony, the dark haired woman, looking surprised and a bit
-            worried stutters "I . . I can explain?". Beside her the half-orc,
-            Thog, raises his hands to placate her. "Thog not make self clear" he
-            says.
-        - panel: /assets/images/wenches-003-h.jpg
-          transcript: >-
-            We see a close up view of Thog's face, which takes up the full
-            panel. He is smirking. "Thog impressed," he says.
-thumbnail: /assets/images/wenches-003-thumb.jpg
-og_image: /assets/images/wenches-003.jpg
+            Thog is in front of an all light blue panel, outlined in white to
+            help contrast him. Only his head, neck, and shoulders are visible.
+            He is looking to the left, a large smirk on his face.
+
+
+            “Thog impressed.” he says.
+thumbnail: /assets/images/comic/wenches-003-thumb.jpg
+og_image: /assets/images/comic/wenches-003.jpg
 og_description: The wizard decides they should try to help their companion.
 ---
-

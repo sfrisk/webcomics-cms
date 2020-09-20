@@ -23,8 +23,6 @@
     }
   }
   &__icon {
-    height: 1em;
-    width: 1em;
-    fill: $color2;
+    fill: var(--social-share-color);
   }
 }

@@ -14,52 +14,52 @@
         {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
     {{ end }}
     {{ range .Site.Pages }}
-    {{ if .Params.type }}
-    {{ if ne .Params.type "character" }}
-    <item>
-      <title>{{ .Title }}</title>
-      <link>{{ .Permalink }}</link>
-      <category>{{ .Params.type }}</category>
-      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
-      {{ with .Site.Author.name }}<author>{{.}}</author>{{end}}
-      <guid>{{ .Permalink }}</guid>
-      <description>{{ .Summary | html }}</description>
-      {{ if eq .Params.type "comic" }}
-      <content:encoded>{{ `<![CDATA[ ` | safeHTML }}
-        <div>
-        {{ range .Params.comic.rows }}
-          {{ range .cols}}
-          {{ $image := resources.Get .panel}}
-          {{ $image_mobile := $image.Resize "x500 q100" }}
-          {{ $image_mobile2x := $image.Resize "x1000 q100" }}
-          {{ if isset . "transcript" }} 
-            {{ $.Scratch.Set "isTranscript" true }}
+      {{ if and (not .IsSection) (not .IsHome) }}
+        {{ if ne .Params.type "character" }}
+        <item>
+          <title>{{ .Title }}</title>
+          <link>{{ .Permalink }}</link>
+          <category>{{ .Params.type }}</category>
+          <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+          {{ with .Site.Author.name }}<author>{{.}}</author>{{end}}
+          <guid>{{ .Permalink }}</guid>
+          <description>{{ .Summary | html }}</description>
+          {{ if eq .Params.type "comic" }}
+          <content:encoded>{{ `<![CDATA[ ` | safeHTML }}
+            <div>
+            {{ range .Params.comic.rows }}
+              {{ range .cols}}
+              {{ $image := resources.Get .panel}}
+              {{ $image_mobile := $image.Resize "x500 q100" }}
+              {{ $image_mobile2x := $image.Resize "x1000 q100" }}
+              {{ if isset . "transcript" }} 
+                {{ $.Scratch.Set "isTranscript" true }}
+              {{ end }}
+              <div style="margin: 0 auto; text-align: center; display: block;">
+              <picture>
+                <source srcset="{{ $image_mobile2x.Permalink }} 2x, {{ $image_mobile.Permalink }} 1x">
+                <img
+                  style="max-width: 100%"
+                  src="{{ $image_mobile.Permalink }}"
+                  class="comic__panel__image"
+                  alt="{{ if isset . "transcript" }}{{.transcript}}{{end}}"
+                >
+              </picture>
+              </div>
+              {{end}}
+            {{ end }}
+            </div>
+            {{ partial "rss-footer.html" . }}
+          ]]></content:encoded>
+          {{ else }}
+          <content:encoded>{{ `<![CDATA[ ` | safeHTML }}
+            {{ .Content }}
+            {{ partial "rss-footer.html" . }}
+          ]]></content:encoded> 
           {{ end }}
-          <div style="margin: 0 auto; text-align: center; display: block;">
-          <picture>
-            <source srcset="{{ $image_mobile2x.Permalink }} 2x, {{ $image_mobile.Permalink }} 1x">
-            <img
-              style="max-width: 100%"
-              src="{{ $image_mobile.Permalink }}"
-              class="comic__panel__image"
-              alt="{{ if isset . "transcript" }}{{.transcript}}{{end}}"
-            >
-          </picture>
-          </div>
-          {{end}}
+        </item>
         {{ end }}
-        </div>
-        {{ partial "rss-footer.html" . }}
-       ]]></content:encoded>
-       {{ else }}
-      <content:encoded>{{ `<![CDATA[ ` | safeHTML }}
-        {{ .Content }}
-        {{ partial "rss-footer.html" . }}
-       ]]></content:encoded> 
-       {{ end }}
-    </item>
-    {{ end }}
-    {{ end }}
+      {{ end }}
     {{ end }}
   </channel>
 </rss>

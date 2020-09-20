@@ -6,12 +6,19 @@
   }
   @media (min-width: $bp_xl) {
     margin: 0 auto;
-    max-width: calc(1400px - 2em);
+    max-width: calc(1300px - 2em);
   }
 }
 
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
 .page {
-	// background: $page-background;
   padding: 1em;
   margin: 0em auto 2em;
   @media (min-width: $bp_md) {
@@ -21,9 +28,6 @@
   &__header {
     width: 100%;
     padding: 2em 1em 2em 1em;
-    // @media (prefers-color-scheme: dark) {
-    //   background: transparent
-    // }
     
   }
   &__title {

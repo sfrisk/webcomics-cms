@@ -2,15 +2,14 @@
 	padding: 2em 0 6em;
 	grid-row-start: 2;
 	grid-row-end: 3;
-	background: $site-footer;
-	font-weight: bold;
-	opacity: .9;
-	color: rgba($white, .7);
+  font-weight: bold;
+  background: var(--site-footer-bg);
+	color: var(--site-footer-color);
 	a {
-		color: rgba($white, .7);
+		color: var(--site-footer-color);
 	}
 	svg {
-		fill: rgba($white, .7);
+		fill: var(--site-footer-color);
 	}
 	@media (min-width: $bp_md) {
 		text-align: right;
@@ -49,30 +48,6 @@
 				width: 300px;
 				height: auto;
 			}	
-		}
-	}
-
-	&__socials {
-		margin-top: 1.5em;
-		@media (min-width: $bp_md) {
-			display: none;
-		}	
-		a {
-			text-decoration: none;
-			margin-right: 1em;
-			@media (min-width: $bp_md) {
-				margin-right: 0;
-				margin-left: 1.25em;
-			}
-		}
-		svg {
-			width: 24px;
-			height: 24px;
-			fill: rgba($white, .7);
-			@media (min-width: $bp_md) {
-				width: 32px;
-				height: 32px;
-			}
 		}
 	}
 }

@@ -1,60 +1,109 @@
 {{ define "main" }}
 <div class="comic-archive">
-	<header class="page__header">
-			<h1 class="text-center page__title">{{ .Params.pageTitle }}</h1>
-	</header>
-	<div class="container comic-archive__container">
-		<div class="row">
-			<div class="comic-archive__about">
-				{{ .Content }}
-				{{ $comics := where .Data.Pages.ByDate "Params.type" "comic"}}
-				{{ range first 1 $comics }}
-					<p class="text-center">
-							<a class="btn btn-primary btn-block" href="{{ .Permalink }}" role="button">First Comic</a>
-					</p>
-					<p class="text-center">
-						<a id="comic-continue" class="btn btn-inverse btn-block hidden" role="button">Continue Quest</a>
-					</p>
-				{{ end }}
-			</div>
-			<div class="comic-archive__content">
-				{{ partial "pagination.html" . }}
-				<ul class="comic-archive__list">
-						{{ range (.Paginate (where .Data.Pages.ByDate.Reverse "Params.type" "comic")).Pages }}
-							<li class="comic-archive__item">
-								<a class="comic-archive__link" href="{{.Permalink}}">
-									{{ if (isset .Params "thumbnail")}}
-										{{ $thumbnail := resources.Get .Params.thumbnail}}
-										{{ $thumbnail_2x := $thumbnail.Fill "160x160" }}
-										{{ $thumbnail_1x := $thumbnail.Fill "80x80"}}
-									<picture class="comic-archive__item__thumb">
-										<source srcset="{{ $thumbnail_2x.Permalink }} 2x, {{ $thumbnail_1x.Permalink }} 1x">
-										<img src="{{ $thumbnail_1x.Permalink }}"
-											alt="{{ .Title }}"
-											width="{{ $thumbnail_1x.Width }}"
-											height="{{ $thumbnail_1x.Height }}"
-											loading="lazy">
-									</picture>
-									{{ end }}
-									<span class="comic-archive__item__title">
-										{{ $.Scratch.Set "counter" 1 }}	
-										{{ $url := .Permalink }}
-										{{ range $comics }}
-											{{ if eq $url .Permalink}}
-												Page {{$.Scratch.Get "counter"}}: {{.Title}}
-											{{ end }}
-											{{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}
-										{{ end}}
-									</span>
-									<span class="comic-archive__item__date">{{ .Date.Format "Jan 2, 2006" }}</span>
-								</a>
-							</li>
-						{{ end }}
-					</ul>
-					{{ partial "pagination.html" . }}
-			</div>
-		</div>
-	</div>
+  <nav class="comic-archive__nav">
+    {{ $url := .Permalink}}
+    {{ $comicNav :=  where $.Site.Pages "Params.type" "comic-index" }}
+    <ul class="comic-archive__nav__list">
+    {{ range $comicNav }}
+      <li>
+        {{ if eq $url .Permalink }}
+        <span class="comic-archive__nav__item comic-archive__nav__item-active">
+          <span class="sr-only">Current Page: </span>{{ .Title }}
+          {{ if eq .Params.completed true }}
+            <span class="sr-only">(Completed)</span>
+            <svg aria-hidden="true" class="comic-archive__nav__item__completed" alt="completed" height="16" width="16">
+              <use xlink:href="/sprites/solid.svg#check"></use>
+            </svg>
+          {{ end }}
+        </span>
+        {{ else }}
+        <a class="comic-archive__nav__item" href="{{ .Permalink }}">
+          {{ .Title }}
+          {{ if eq .Params.completed true }}
+            <span class="sr-only">(Completed)</span>
+            <svg aria-hidden="true" class="comic-archive__nav__item__completed" alt="completed"  height="16" width="16">
+              <use xlink:href="/sprites/solid.svg#check"></use>
+            </svg>
+          {{ end }}
+        </a>
+        {{ end }}
+      </li>
+    {{ end }}
+    </ul>
+  </nav>
+  <div class="comic-archive__wrapper">
+    <div class="container comic-archive__container">
+      <div class="row">
+        <div class="comic-archive__about">
+          <div>
+            <header class="comic-archive__header">
+              <h1 class="comic-archive__title">{{ .Params.pageTitle }}</h1>
+              {{ if eq .Params.completed true }}
+              <p class="comic-archive__subtitle">
+                (Completed)
+              </p>
+              {{ end }}
+            </header>
+            {{ .Content }}
+            {{ $comics := where .Data.Pages.ByDate "Params.type" "comic"}}
+            {{ range first 1 $comics }}
+              <p class="text-center">
+                  <a class="btn btn-primary btn-block" href="{{ .Permalink }}" role="button">First Comic</a>
+              </p>
+              <p class="text-center">
+                <a id="comic-continue" class="btn btn-inverse btn-block hidden" role="button">Continue Quest</a>
+              </p>
+              <!-- <h2 class="comic-archive__title">Like the comic?</h2>
+              <p>Get it delivered to your email every week, for free!</p>
+              <p class="text-center">
+                <a href="https://mailchi.mp/b006f726f0e0/tavern-wenches" class="btn btn-block btn-primary" role="button">Subscribe Today!</a>
+              </p> -->
+            {{ end }}
+          </div>
+          {{ $thumbnail := resources.Get "/assets/images/bee-book.png"}}
+          {{ $thumbnail_1x := $thumbnail.Resize "500x q100" }}
+          <div class="comic-archive__about__image">
+            <picture>
+              <source srcset="
+                {{ $thumbnail_1x.Permalink }} 1x,
+                {{ $thumbnail.Permalink }} 2x">
+              <img class="characters__thumb" src="{{ $thumbnail_1x.Permalink }}" alt="Bee Reading Book" width="{{ $thumbnail_1x.Width }}"
+                height="{{ $thumbnail_1x.Height }}" >
+            </picture>
+          </div>
+        </div>
+        <div class="comic-archive__content">
+          {{ partial "pagination.html" . }}
+          <ul class="comic-archive__list">
+              {{ range (.Paginate (where .Data.Pages.ByDate.Reverse "Params.type" "comic")).Pages }}
+                <li class="comic-archive__item">
+                  <a class="comic-archive__link" href="{{.Permalink}}">
+                    {{ if (isset .Params "thumbnail")}}
+                      {{ $thumbnail := resources.Get .Params.thumbnail}}
+                      {{ $thumbnail_2x := $thumbnail.Resize "160x q100" }}
+                      {{ $thumbnail_1x := $thumbnail.Resize "80x q100"}}
+                    <picture class="comic-archive__item__thumb">
+                      <source srcset="{{ $thumbnail_2x.Permalink }} 2x, {{ $thumbnail_1x.Permalink }} 1x">
+                      <img src="{{ $thumbnail_1x.Permalink }}"
+                        alt="{{ .Title }}"
+                        width="{{ $thumbnail_1x.Width }}"
+                        height="{{ $thumbnail_1x.Height }}"
+                        loading="lazy">
+                    </picture>
+                    {{ end }}
+                    <span class="comic-archive__item__title">
+                      {{.Title}}
+                    </span>
+                    <span class="comic-archive__item__date">{{ .Date.Format "Jan 2, 2006" }}</span>
+                  </a>
+                </li>
+              {{ end }}
+            </ul>
+            {{ partial "pagination.html" . }}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>

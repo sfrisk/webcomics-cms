@@ -3,16 +3,10 @@ title: "Tavern Wenches"
 subtitle: "A Dungeon Not To Be Mastered"
 weight: 20
 priority: 1
-bannerImage: /assets/images/home.png
+bannerImage: /assets/images/home.jpg
 cast: /assets/images/cast.png
-firstcomic: /assets/images/first-comic.jpg
-latestcomic: /assets/images/latest-comic.jpg
 archive: /assets/images/archive.jpg
-patreon: /assets/images/wenches-001-e.jpg
-featuredCharacters:
-  - Veronica
-  - Lulu
-  - Anita
+patreon: /assets/images/comic/wenches-001-e.jpg
 ---
 
 This is my site

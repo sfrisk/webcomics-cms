@@ -27,7 +27,8 @@
 {{ $castImage_350x := $castImage.Resize "350x q100" }}
 
 <header class="home__header">
-	<h1 class="home__title">{{.Params.Subtitle}}</h1>
+  <h1 class="home__title">{{.Params.Title}}</h1>
+	{{/*  <h2 class="home__subtitle">{{.Params.Subtitle}}</h2>  */}}
 	<picture class="home__banner-wrap">
 		<source srcset="
 				{{ $banner_500x.Permalink }} 500w,
@@ -106,7 +107,7 @@
 				{{.Content}}
 			</div>
 		</article>
-		<a href="/news/" class="home__news__archive">Read More</a>
+		<a href="{{ .Permalink }}" class="home__news__archive">Read More</a>
 		{{ end }}
 	</div>
 	</div>

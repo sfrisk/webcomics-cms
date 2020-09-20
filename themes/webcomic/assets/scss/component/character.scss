@@ -4,11 +4,11 @@
   margin-right: auto;
   padding: 2em;
   &__character-sheet {
-    background: $character-background;
+    background: var(--block-bg);
     padding: 1em;
-    box-shadow: 1px 4px 14px $character-shadow;
-    border-top: 4px solid $character-border;
-    border-bottom: 4px solid $character-border;
+    // box-shadow: 1px 4px 14px $character-shadow;
+    border-top: 4px solid var(--block-border);
+    border-bottom: 4px solid var(--block-border);
     @media (min-width: $bp_md) {
       -moz-column-count: 2;
       -webkit-column-count: 2;
@@ -19,7 +19,7 @@
     &_censor {
       user-select: none;
       li, dd, td {
-        background: $black;
+        background: var(--character-censor-bg);
       }
       dd {
         min-width: 200px;
@@ -39,7 +39,7 @@
     &__header {
       font-weight: bold;
       padding-bottom: .3em;
-      color: $site-link;
+      color: var(--block-header-color);
     }
   }
   &__name {
@@ -50,7 +50,7 @@
   &__header {
     font-family: $sans-serif;
     padding-bottom: 2px;
-    border-bottom: 2px solid $site-link;
+    border-bottom: 2px solid var(--block-header-border);
   }
   &__content {
     margin: 1.5em 0;
@@ -67,7 +67,7 @@
   }
   &__image {
     img {
-      background: $color5;
+      background: var(--character-img-bg);
       border-radius: 100%;
       overflow: hidden;
       width: 350px;
@@ -81,7 +81,7 @@
     text-align: center;
     width: 75%;
     margin: 2em auto;
-    color: $site-header-link;
+    color: var(--site-heading-color);
     font-size: 2em;
   }
 }

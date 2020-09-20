@@ -1,0 +1,36 @@
+  <!-- TODO: Make this generated -->
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  {{ $favicon := resources.Get "/assets/images/favicon.png" }}
+  {{ $favicon_32x := $favicon.Resize "32x" }}
+  {{ $favicon_57x := $favicon.Resize "57x" }}
+  {{ $favicon_76x := $favicon.Resize "76x" }}
+  {{ $favicon_96x := $favicon.Resize "96x" }}
+  {{ $favicon_120x := $favicon.Resize "120x" }}
+  {{ $favicon_128x := $favicon.Resize "128x" }}
+  {{ $favicon_144x := $favicon.Resize "144x" }}
+  {{ $favicon_152x := $favicon.Resize "152x" }}
+  {{ $favicon_180x := $favicon.Resize "180x" }}
+  {{ $favicon_192x := $favicon.Resize "192x" }}
+  {{ $favicon_196x := $favicon.Resize "196x" }}
+  {{ $favicon_228x := $favicon.Resize "228x" }}
+  <!-- generics -->
+  <link rel="icon" href="{{ $favicon_32x.RelPermalink }}" sizes="32x32">
+  <link rel="icon" href="{{ $favicon_57x.RelPermalink }}" sizes="57x57">
+  <link rel="icon" href="{{ $favicon_76x.RelPermalink }}" sizes="76x76">
+  <link rel="icon" href="{{ $favicon_96x.RelPermalink }}" sizes="96x96">
+  <link rel="icon" href="{{ $favicon_128x.RelPermalink }}" sizes="128x128">
+  <link rel="icon" href="{{ $favicon_192x.RelPermalink }}" sizes="192x192">
+  <link rel="icon" href="{{ $favicon_228x.RelPermalink }}" sizes="228x228">
+
+  <!-- Android -->
+  <link rel="shortcut icon" sizes="196x196" href="{{ $favicon_196x.RelPermalink }}">
+
+  <!-- iOS -->
+  <link rel="apple-touch-icon" href="{{ $favicon_120x.RelPermalink }}" sizes="120x120">
+  <link rel="apple-touch-icon" href="{{ $favicon_152x.RelPermalink }}" sizes="152x152">
+  <link rel="apple-touch-icon" href="{{ $favicon_180x.RelPermalink }}" sizes="180x180">
+
+  <!-- Windows 8 IE 10-->
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+  <meta name="msapplication-TileImage" content="{{ $favicon_144x.RelPermalink }}">

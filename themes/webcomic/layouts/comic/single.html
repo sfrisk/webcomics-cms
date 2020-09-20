@@ -1,71 +1,72 @@
 {{ define "main" }}
-<article class="page comic container">
-	{{ partial "comic-nav.html" . }}
-
+<article class="comic">
+  {{ partial "comic-nav.html" . }}
+  <div class="comic__page container page">
 	{{ $.Scratch.Set "counter" 0 }}
 	{{ $.Scratch.Set "isTranscript" false }}
-	<header class="comic__header">
-		<h1 class="comic__header__title">{{ .Title }}</h1>
-		{{ if and (isset .Site.Params "author") (isset .Site.Params "author_site") }}
-			<a class="comic__header__author" rel="author" rel="noopener" href="{{ .Site.Params.author_site }}" target="_blank">{{ .Site.Params.author }}</a>
-		{{ end }}
-	</header>
-	{{ range .Params.comic.rows }}
-		<div class="comic__row">
-			{{ range .cols}}
-				{{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}
-				<div class="comic__panel ">
-					{{ $image := resources.Get .panel}}
-					{{ $noRetina := print "x" (div $image.Height 2) " q100" }}
-					{{ $image_1x := $image.Resize $noRetina }}
-					{{ $image_mobile := $image.Resize "x500 q100" }}
-					{{ $image_mobile2x := $image.Resize "x1000 q100" }}
-					{{ if isset . "transcript" }} 
-						{{ $.Scratch.Set "isTranscript" true }}
-					{{ end }}
-					<picture>
-						<source media="(max-width: 767px)" srcset="{{ $image_mobile2x.Permalink }} 2x, {{ $image_mobile.Permalink }} 1x">
-						<source media="(min-width: 768px)" srcset="{{ $image.Permalink }} 2x, {{ $image_1x.Permalink }} 1x">
-						<img
-							src="{{ $image_mobile.Permalink }}"
-							class="comic__panel__image"
-							width="{{ div $image.Width 2 }}"
-							height="{{ div $image.Height 2 }}"
-							alt="{{ if isset . "transcript" }}{{.transcript}}{{end}}"
-							loading="lazy"
-						>
-					</picture>
-				</div>
-			{{end}}
-		</div>
-	{{ end }}
-	<div class="comic__meta">
-		<time datetime="{{.Date.Format "2006-01-02"}}">{{.Date.Format "Jan 2, 2006"}}</time>
-		{{ partial "social-share.html" . }}
-	</div>
-	{{ with .Content}}
-	<div class="comic__content">
-		{{- . -}}
-	</div>
-	{{ end }}
-	{{ if eq ($.Scratch.Get "isTranscript") true }}
-	<details class="comic__transcript" id="comic-transcript">
-		<summary class="comic__transcript__title"><h2>Transcript</h2></summary>
-		<div class="comic__transcript__content">
-		{{ $.Scratch.Set "counter" 0 }}
-		{{ range .Params.comic.rows }}
-				{{ range .cols}}
-					{{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}
-						{{ if isset . "transcript" }} 
-						<div class="comic__transcript__panel" id="comic-transcript-panel-{{$.Scratch.Get "counter"}}">
-							<h3 class="comic__transcript__panel-header">Panel {{$.Scratch.Get "counter"}}</h3>
-								{{ .transcript | markdownify}}
-						</div>
-						{{ end }}
-				{{end}}
-		{{ end }}
-		</div>
-	</details>
+    <header class="comic__header">
+      <h1 class="comic__header__title">{{ .Title }}</h1>
+      {{ if and (isset .Params "author") (isset .Params "author_site") }}
+        <a class="comic__header__author" rel="author" rel="noopener" href="{{ .Params.author_site }}" target="_blank">{{ .Params.author }}</a>
+      {{ else if and (isset .Site.Params "author") (isset .Site.Params "author_site") }}
+        <a class="comic__header__author" rel="author" rel="noopener" href="{{ .Site.Params.author_site }}" target="_blank">{{ .Site.Params.author }}</a>
+      {{ end }}
+    </header>
+    {{ range .Params.comic.rows }}
+      <div class="comic__row">
+        {{ range .cols}}
+          {{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}
+          <div class="comic__panel ">
+           
+            {{ $image := resources.Get .panel }}
+            {{ $mobile_path := cond (isset . "panel_mobile") .panel_mobile .panel }}
+            {{ $mobile := resources.Get $mobile_path }}
+            {{ $noRetina := print "x" (div $image.Height 2) " q100" }}
+            {{ $noRetinaMobile := print "x" (div $mobile.Height 2) " q100" }}
+            {{ $image_1x := $image.Resize $noRetina }}
+            {{ $image_mobile := cond (isset . "panel_mobile") ($mobile.Resize $noRetinaMobile) ($mobile.Resize "x500 q100") }}
+            {{ $image_mobile2x := cond (isset . "panel_mobile") $mobile ($mobile.Resize "x1000 q100") }}
+            {{ if isset . "transcript" }} 
+              {{ $.Scratch.Set "isTranscript" true }}
+            {{ end }}
+            <picture>
+              <source media="(max-width: 767px)" srcset="{{ $image_mobile2x.Permalink }} 2x, {{ $image_mobile.Permalink }} 1x">
+              <source media="(min-width: 768px)" srcset="{{ $image.Permalink }} 2x, {{ $image_1x.Permalink }} 1x">
+              <img
+                src="{{ $image_mobile.Permalink }}"
+                class="comic__panel__image {{if .panel_mobile}} comic__panel__image-mobile {{end}}"
+                width="{{ div $image.Width 2 }}"
+                height="{{ div $image.Height 2 }}"
+                alt="{{ if isset . "transcript" }}Panel {{$.Scratch.Get "counter"}}: {{.transcript}}{{end}}"
+                loading="lazy"
+              >
+            </picture>
+          </div>
+        {{end}}
+      </div>
+    {{ end }}
+    <div class="comic__meta">
+      <time datetime="{{.Date.Format "2006-01-02"}}">{{.Date.Format "Jan 2, 2006"}}</time>
+      {{ partial "social-share.html" . }}
+    </div>
+  </div>
+  {{ if or .Content (or .Params.characters (eq ($.Scratch.Get "isTranscript") true)) }}
+  <div class="row container">
+    <div class="comic__content">
+      {{ with .Content}}
+      <div class="comic__description">
+        {{- . -}}
+      </div>
+      {{ end }}
+      {{ partial "comic/transcript.html" . }}
+      <div class="comic__navigation-notes">
+        <p><strong>Navigation Tip:</strong> You can quickly navigate the comic using your left and right arrow on your keyboard!</p>
+      </div>
+    </div>
+    <div class="comic__sidebar">
+      {{ partial "comic/characters.html" . }}
+    </div>
+  </div>
 	{{ end }}
 
 </article>

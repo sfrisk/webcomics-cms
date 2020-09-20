@@ -4,12 +4,12 @@
 	top: 0;
 	left: 0;
   padding: .5em 1em;
-  background: $comic-nav-bg;
+  background: var(--comic-nav-bg);
   z-index: 10000;
-  box-shadow: 0 .4em .4em rgba($black, 0.4); 
+  box-shadow: 0 .4em .4em var(--site-header-shadow); 
   @media (min-width: $bp_md) {
 		top: 2.75em;
-		background: $comic-nav-bg;
+		background: var(--comic-nav-bg);
   }
   @media (min-width: $bp_lg) {
     top: 3.4em;
@@ -23,7 +23,7 @@
     align-items: center;
     max-width: 35em;
     margin: 0 auto;
-    color: $comic-nav-link;
+    color: var(--comic-nav-link-color);
   } 
   &__item {
     &.current {
@@ -42,7 +42,7 @@
   &__link {
     display: inline-flex;
     align-items: center;
-    color: $comic-nav-link;
+    color: var(--comic-nav-link-color);
     text-decoration: none;
     span {
       display: none;
@@ -52,7 +52,7 @@
     }
     svg {
       margin: .5em;
-      fill: $comic-nav-link;
+      fill: var(--comic-nav-link-color);
     }
     &:hover,
     &:focus {

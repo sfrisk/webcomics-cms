@@ -1,8 +1,33 @@
 {{ define "main"}}
 <header class="page__header">
-	<h1 class="text-center page__title">404: Content Not Found</h1>
+	<h1 class="text-center page__title">Quest Not Found</h1>
 </header>
-<div class="posts container page">
-	<p>Well this is awkward. <a href="{{ "/" | relURL }}">Go Home</a></p>
+{{ $404 := resources.Get "/assets/images/404.png" }}
+{{ $noRetina := print "x" (div $404.Height 2) " q100" }}
+{{ $404_1x := $404.Resize $noRetina }}
+
+
+<div class="error-404 container page">
+  <a href="{{ "/" | relURL }}" title="Go Home">
+    <picture>
+      <source srcset="{{ $404.Permalink }} 2x, {{ $404_1x.Permalink }} 1x">
+      <img
+        src="{{ $404_1x.Permalink }}"
+        class="error-404__image"
+        width="{{ $404_1x.Width }}"
+        height="{{ $404_1x.Height }}"
+        alt="A drawing of Xavros facing away from the reader, looking at a map, with a wooden signpost in front of him, with two signs pointing in opposite directions. The sign pointing to the left says Dungeons, and the sign pointing the right says Dragons."
+        loading="lazy"
+      >
+    </picture>
+  </a>
+  <p class="error-404__notes">
+    The Server rolled a natural 1! Your party is confused when the landscape abruptly disappears. The Wizard casts <strong>Teleport</strong> and your party is whisked back to the tavern.
+  </p>
+  <p class="text-center">
+    <a href="{{ "/" | relURL }}" class="btn btn-small-caps">
+      Go Back to the Tavern
+    </a>
+  </p>
 </div>
 {{ end }}

@@ -1,0 +1,79 @@
+<section class="social-follow contrast">
+  <div class="container">
+    <h2>Follow Tavern Wenches</h2>
+    <div class="social-follow__socials">
+    {{ if (isset .Site.Params "patreon") }}
+      <a rel="noreferrer" target="_blank" href="https://www.patreon.com/{{ .Site.Params.patreon }}" title="Join us on Patreon">
+        <div class="social-follow__icon-wrap">
+          <svg aria-hidden="true"
+            class="social-follow__icon">
+            <use xlink:href="/sprites/brands.svg#patreon"></use>
+          </svg>
+        </div>
+        <span class="social-follow__text">
+          Patreon
+        </span>
+      </a>
+    {{ end }}
+    {{ if (isset .Site.Params "twitter") }}
+      <a rel="noreferrer" target="_blank" href="https://twitter.com/{{ .Site.Params.twitter }}" title="Follow on Twitter">
+        <div class="social-follow__icon-wrap">
+          <svg aria-hidden="true" class="social-follow__icon">
+            <use xlink:href="/sprites/brands.svg#twitter"></use>
+          </svg>
+        </div>
+        <span class="social-follow__text">
+          Twitter
+        </span>
+      </a>
+    {{ end }}
+  {{ if (isset .Site.Params "facebook") }}
+    <a rel="noreferrer" target="_blank" href="https://www.facebook.com/{{ .Site.Params.facebook }}" title="Follow on Facebook">
+      <div class="social-follow__icon-wrap">
+        <svg aria-hidden="true" class="social-follow__icon">
+          <use xlink:href="/sprites/brands.svg#facebook-f"></use>
+        </svg>
+      </div>
+      <span class="social-follow__text">
+        Facebook
+      </span>
+    </a>
+  {{ end }}
+  {{ if (isset .Site.Params "instagram") }}
+    <a rel="noreferrer" target="_blank" href="https://www.instagram.com/{{ .Site.Params.instagram }}" title="Follow on Instagram">
+      <div class="social-follow__icon-wrap">
+        <svg aria-hidden="true" class="social-follow__icon">
+          <use xlink:href="/sprites/brands.svg#instagram"></use>
+        </svg>
+      </div>
+      <span class="social-follow__text">
+        Instagram
+      </span>
+    </a>
+  {{ end }}
+  {{ if (isset .Site.Params "webtoon") }}
+    <a rel="noreferrer" target="_blank" href="{{ .Site.Params.webtoon }}" title="Read on Webtoon">
+      <div class="social-follow__icon-wrap">
+        {{ partial "icons/webtoon.html" . }}
+      </div>
+      <span class="social-follow__text">
+        Webtoon
+      </span>
+    </a>
+  {{ end }}
+  {{ if (isset .Site.Params "tapas") }}
+    <a rel="noreferrer" target="_blank" href="{{ .Site.Params.tapas }}" title="Read on Tapas">
+      <div class="social-follow__icon-wrap">
+        {{ partial "icons/tapas.html" . }}
+      </div>
+      <span class="social-follow__text">
+        Tapas
+      </span>
+    </a>
+  {{ end }}
+
+
+
+    </div>
+  </div>
+</section>

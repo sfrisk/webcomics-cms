@@ -1,6 +1,6 @@
 {{ define "main" }}
 {{ $scratch := newScratch }}
-{{ $character := .Title }}
+{{ $character := .File.BaseFileName }}
 {{ $comics := where (where .Site.Pages.ByPublishDate "Type" "comic") ".Params.characters" "intersect" (slice $character)  }}
 <header class="page__header">
   <h1 class="page__title">
@@ -290,8 +290,8 @@
   <p class="character__no-info">No information about this character at this time.</p>
   {{ end }}
   <div class="character__section">
-    {{ if .Params.thumbnail }}
-    {{ $thumb := resources.Get .Params.thumbnail}}
+    {{ if .Params.image_mobile }}
+    {{ $thumb := resources.Get .Params.image_mobile}}
     {{ $thumb_700x := $thumb.Resize "700x q100" }}
     {{ $thumb_350x := $thumb.Resize "350x q100" }}
     <picture class="character__image">

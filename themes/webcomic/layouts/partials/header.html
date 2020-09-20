@@ -27,6 +27,21 @@
 	</div>
 </header>
 <div id="top-of-site-pixel-anchor"></div>
+{{ if not .IsHome }}
+<div class="header-spacer">
+  {{ if not .IsSection }}
+  <div class="header-spacer__breadcrumbs container">
+    <a href="{{.Parent.Permalink}}">
+      <svg aria-hidden="true" height="18" width="10">
+        <use xlink:href="/sprites/solid.svg#angle-left"></use>
+      </svg>
+      <span class="sr-only">Back to</span>
+      {{ .Parent.Title }}
+    </a>
+  </div>
+  {{ end }}
+</div>
+{{ end }}
 <script type="text/javascript">
 	var header = document.getElementsByClassName('site-header')[0];
   if (

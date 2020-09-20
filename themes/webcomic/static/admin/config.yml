@@ -63,10 +63,12 @@ collections:
     create: true
     fields:
       - {name: title, label: Name}
+      - {name: visible, label: Visible, widget: boolean, required: false }
       - {name: type, value: character, widget: hidden}
       - {name: characterType, label: Type, widget: select, multiple: false, options: ['wench', 'npc', 'pc', 'other']}
       - {name: featured, label: Featured, value: false, required: false, widget: boolean}
       - {name: thumbnail, label: Thumbnail, widget: image}
+      - {name: accessibleDescription, label: Accessible Description, widget: markdown }
       - {label: Description, name: body, widget: markdown}
       - {label: GM Notes, name: notes, required: false }
       - {name: og_title, label: Social Share Title, widget: string, required: false}
@@ -160,7 +162,7 @@ collections:
     preview_path: "news/{{slug}}/"
     fields:
       - {name: title, label: Title}
-      - {name: type, value: news, widget: hidden}
+      - {name: type, value: news, widget: hidden, default: news}
       - {name: date, label: Date, widget: datetime}
       - {name: body, label: Body, widget: markdown}
   - name: comic
@@ -173,7 +175,7 @@ collections:
     fields:
       - {name: title, label: Title}
       - {name: date, label: Date, widget: datetime}
-      - {name: type, value: comic, widget: hidden}
+      - {name: type, value: comic, widget: hidden, default: comic}
       - label: Chapter
         name: chapter
         widget: relation
@@ -187,9 +189,60 @@ collections:
         name: characters
         widget: relation
         collection: character
-        searchFields: [title]
-        valueField: title
-        displayFields: [title]
+        searchFields: ["{{title}} ({{slug}})"]
+        valueField: "{{slug}}"
+        displayFields: ["{{title}} ({{slug}})"]
+        multiple: true
+        required: false
+      - name: comic
+        label: Comic (Panel By Panel - Use this to upload each panel individually to be used in both mobile/desktop layouts)
+        widget: object
+        fields:
+          - label: Rows
+            name: rows
+            widget: list
+            required: false
+            fields:
+              - label: Panels
+                name: cols
+                widget: list
+                required: false
+                fields:
+                  - name: panel
+                    label: Panel
+                    widget: image
+                    required: false
+                  - name: transcript
+                    label: Transcript
+                    widget: markdown
+                    required: false
+                  - name: panel_mobile
+                    label: Mobile Panel
+                    widget: image
+                    required: false
+      - {name: thumbnail, label: Thumbnail (Appears in Comic Archive), widget: image}
+      - {name: og_title, label: Social Share Title, widget: string, required: false}
+      - {name: og_image, label: Social Share Image (1200 x 630px), widget: image, required: false}
+      - {name: og_description, label: Social Share Description, widget: text, required: false}
+      - {name: og_type, widget: hidden, default: article}
+  - name: comic-legacy
+    slug: "{{chapter}}/{{slug}}"
+    label: Legacy Comic
+    folder: content/comic/legacy
+    create: true
+    preview_path: "comic/{{slug}}/"
+    filter: {field: "type", value: "comic"}
+    fields:
+      - {name: title, label: Title}
+      - {name: date, label: Date, widget: datetime}
+      - {name: type, value: comic, widget: hidden}
+      - label: Characters
+        name: characters
+        widget: relation
+        collection: character
+        searchFields: ["{{title}} ({{slug}})"]
+        valueField: "{{slug}}"
+        displayFields: ["{{title}} ({{slug}})"]
         multiple: true
         required: false
       - name: comic

@@ -1,11 +1,12 @@
 /* Base
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 @import "./base/colors.scss";
+@import "./base/theme.scss";
 @import "./base/fonts.scss";
 @import "./base/breakpoints.scss";
 @import "./base/button.scss";
 @import "./base/input.scss";
-
+@import "./base/text.scss";
 
 /* Layout
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -19,11 +20,14 @@
 @import "./component/comic-archive.scss";
 @import "./component/comic-nav.scss";
 @import "./component/pagination.scss";
+@import "./component/social-follow.scss";
 @import "./component/social-share.scss";
 @import "./component/character.scss";
 @import "./component/characters.scss";
 @import "./component/home.scss";
 @import "./component/post.scss";
+@import "./component/subscribe.scss";
+@import "./component/404.scss";
 
 html {
 	margin: 0;
@@ -33,10 +37,7 @@ html {
   height: 100%;
   font-family: $sans-serif;
 	line-height: 1.15;
-	background: $white;
-	// @media (prefers-color-scheme: dark) {
-	// 	background: $black;
-	// }
+	background: var(--html-bg);
 }
 
 *, *:before, *:after {
@@ -48,16 +49,13 @@ body {
 	padding: 0;
 	font-weight: 400;
 	line-height: 1.45;
-	color: $site-text;
+  color: var(--site-text-color);
+  background: var(--site-bg);
 	display: grid;
 	min-height: 100%;
   grid-template-rows: 1fr auto;
 	font-size: 1rem;
 	padding-bottom: 0px;
-	// @media (prefers-color-scheme: dark) {
-	// 	color: $white;
-	// 	background: $black;
-	// }
 }
 
 html {font-size: 100%;} /*16px*/
@@ -68,102 +66,63 @@ body {
   line-height: 1.65;
 }
 
-p {margin-bottom: 1.15rem;}
-
-h1, h2, h3, h4, h5, h6 {
-	margin: 2rem 0 1rem;
-	@media (min-width: $bp_md) {
-		margin: 2.75rem 0 1.05rem;
-	}
-	font-family: $serif;
-	color: $heading-color;
-  font-weight: 400;
-	line-height: 1.15;
-	// @media (prefers-color-scheme: dark) {
-	// 	color: $color1;
-	// }
-}
-
-h1 {
-	margin-top: 0;
-  font-size: 1.866em;
-	font-weight: bold;
-	font-variant: small-caps;
-	letter-spacing: 2px;
-	@media (min-width: $bp_md) {
-		font-size: 2.488em;
-	}
-}
-
-h2 {
-	font-size: 1.555em;
-	@media (min-width: $bp_md) {
-		font-size: 2.074em;
-	}
-}
-
-h3 {
-	font-size: 1.296em;
-	@media (min-width: $bp_md) {
-		font-size: 1.728em;
-	}
-}
-
-h4 {
-	font-size: 1.08em;
-	@media (min-width: $bp_md) {
-		font-size: 1.44em;
-	}
-}
-
-h5 {
-	font-size: 1em;
-	@media (min-width: $bp_md) {
-		font-size: 1.2em;
-	}
-}
-
-
-a {
-	color: $site-link;
-	// @media (prefers-color-scheme: dark) {
-	// 	color: $color4
-	// }
-}
-
 img {
 	max-width: 100%;
 	height: auto;
 }
 
-dt {
-	font-weight: bold;
-	color: $site-link;
-	display: inline;
-	padding-right: .5em;
-	margin: 0;
-}
-
-dd {
-	display: inline;
-	margin: 0;
-}
-
-p {
-	&.no-margin {
-		margin: 0;
-	}
-}
-
-hr {
-	width: 100%;
-	border: 0;
-	background: $site-link;
-	height: 4px;
-}
 
 details > summary {
 	cursor: pointer;
+}
+
+.focusable {
+	display: inline-block;
+	line-height: 0; // this prevents a weird margin under the textarea
+}
+
+a:focus,
+button:focus,
+input:focus,
+.focusable:focus-within {
+  position: relative;
+  outline: 0;
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background-image: var(--site-link-border);
+    background-size: 10px 2px, 10px 2px, 2px 10px, 2px 10px;
+    background-position: 0 0, 0 100%, 0 0, 100% 0;
+    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+    animation: marching-ants 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+}
+
+.contrast {
+  a:focus,
+  button:focus,
+  input:focus,
+  .focusable:focus-within {
+    &::after {
+      background-image: var(--site-link-border__contrast);
+    }
+  }
+}
+
+@keyframes marching-ants {
+  0% {
+    background-position: 0 0,  0 100%,  0 0,  100% 0;
+  }
+  100% {
+    background-position: 20px 0, -20px 100%, 0 -20px, 100% 20px;
+  }
 }
 
 .sr-only {

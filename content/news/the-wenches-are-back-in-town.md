@@ -1,6 +1,7 @@
 ---
 title: The Wenches are Back in Town
 date: 2020-01-11T05:00:00.000Z
+type: news
 ---
 
 The dark demiplane can be a strange and dangerous place, and known to warp the very fabric of space and time.  You go on many adventures, learn new skills, and sometimes find you aren't always the same person you were when you left.

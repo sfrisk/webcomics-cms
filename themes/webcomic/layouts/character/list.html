@@ -1,32 +1,41 @@
 {{ define "main" }}
 <div class="characters">
   <header class="page__header">
-    <h1 class="text-center page__title">{{ .Title }}</h1>
+    <h1 class="page__title">
+      {{ .Title }}
+    </h1>
   </header>
-    <div class="characters__group">
-    {{ range .Data.Pages }}
-      <a href="{{.Permalink}}" class="characters__item characters__item-{{lower .Title}}" title="{{ .Title}}">
-        <picture class="characters__thumb">
-          {{ if (isset .Params "thumbnail")}}
-          {{ $thumb := resources.Get .Params.thumbnail}}
-          {{ $thumb_1400x := $thumb.Resize "1400x q100" }}
-          {{ $thumb_700x := $thumb.Resize "700x q100" }}
-          {{ $thumb_350x := $thumb.Resize "350x q100" }}
-          <source srcset="
-                {{ $thumb_1400x.Permalink }} 1400w,
-                {{ $thumb_700x.Permalink }} 700w,
-                {{ $thumb_350x.Permalink }} 350w">
-          <img src="{{ $thumb_350x.Permalink }}" alt="{{ .Title }}" width="{{ $thumb.Width }}"
-            height="{{ $thumb.Height }}" loading="lazy">
-          {{ end }}
-        </picture>
-        <div class="characters__overlay"></div>
-        <div class="characters__details">
-          {{ .Title }}
-        </div>
-      </a>
-      {{ end }}
-    </div>
+  <div class="characters__group">
+  {{ range .Data.Pages }}
+    {{ if eq .Params.visible true }}
+    <a href="{{.Permalink}}" class="characters__item characters__item-{{lower .Title}}" title="{{ .Title}}">
+      <picture class="characters__thumb">
+        {{ if (isset .Params "thumbnail")}}
+        {{ $thumb := resources.Get .Params.thumbnail}}
+        {{ $mobile := resources.Get .Params.image_mobile}}
+        {{ $thumb_1400x := $thumb.Resize "1400x q100" }}
+        {{ $thumb_700x := $thumb.Resize "700x q100" }}
+        {{ $thumb_350x := $thumb.Resize "350x q100" }}
+        {{ $mobile_600x := $mobile.Resize "600x q100" }}
+        {{ $mobile_300x := $mobile.Resize "300x q100" }}
+        <source media="(min-width: 1100px)" srcset="
+              {{ $thumb_1400x.Permalink }} 1400w,
+              {{ $thumb_700x.Permalink }} 700w,
+              {{ $thumb_350x.Permalink }} 350w">
+        <source srcset="
+              {{ $mobile_600x.Permalink }} 600w,
+              {{ $mobile_300x.Permalink }} 300w">
+        <img src="{{ $thumb_350x.Permalink }}" alt="{{ .Params.accessibleDescription }}" width="{{ $thumb.Width }}"
+          height="{{ $thumb.Height }}" loading="lazy">
+        {{ end }}
+      </picture>
+      <div class="characters__overlay"></div>
+      <div class="characters__details">
+        {{ .Title }}
+      </div>
+    </a>
+    {{ end }}
+  {{ end }}
   </div>
 </div>
 {{ end }}

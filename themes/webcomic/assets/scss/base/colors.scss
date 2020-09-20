@@ -1,49 +1,51 @@
-$color1: #ECE2D0;
-$color2: #A26769;
-$color3: #6D2E46;
-$color4: #D5B9B2;
-$color5: #CEBEBE;
-$white: #fbf8f9;
-$black: #010101;
+:root {
+  --white: #fbf8f9;
+  --black: #010101;
 
-$html-background: $black;
-$site-background: $black;
-$site-link: $color3;
-$site-text: $black;
+  --accent-800: #491f2f;
+  --accent-600: #6D2E46;
+  --accent-500: #794056;
+  --accent-400: #926274;
+  --accent-300: #b4939f;
+  --accent-100: #dfd0d5;
 
-$site-footer: $color3;
+  --secondary-600: #CEBEBE;
+  --secondary-300: #ECE2D0;
+  
+  // opaque greys
+  --grey-800:   #0e0d0d;
+  --grey-700:   #333233;
+  --grey-600:   #656464;
+  --grey-500:   #979596;
+  --grey-400:   #c9c7c7;
+  --grey-300:   #d6d3d4;
+  --grey-200:   #e2dfe0;
+  --grey-100:   #efeced;
 
-$skip-nav-bg: $color2;
-$site-header-bg: $white;
-$site-header-mobile-bg: $black;
-$site-header-mobile-link: $white;
-$site-header-link: $color3;
+  --black-trans-800: rgba(1,1,1,0.95);
+  --black-trans-700: rgba(1,1,1,0.8);
+  --black-trans-600: rgba(1,1,1,0.6);
+  --black-trans-500: rgba(1,1,1,0.4);
+  --black-trans-400: rgba(1,1,1,0.2);
+  --black-trans-300: rgba(1,1,1,0.15);
+  --black-trans-200: rgba(1,1,1,0.1);
+  --black-trans-100: rgba(1,1,1,0.05);
 
-$header-socials-color: $color3;
-$header-socials-bg: $white;
+  --white-trans-800: rgba(251,248,249,0.95);
+  --white-trans-700: rgba(251,248,249,0.8);
+  --white-trans-600: rgba(251,248,249,0.6);
+  --white-trans-500: rgba(251,248,249,0.4);
+  --white-trans-400: rgba(251,248,249,0.2);
+  --white-trans-300: rgba(251,248,249,0.15);
+  --white-trans-200: rgba(251,248,249,0.1);
+  --white-trans-100: rgba(251,248,249,0.05);
 
-$header-bg: $color2;
-$header-color: $white;
-
-$heading-color: $color3;
-
-$page-background: $white;
-
-$button-bg: $color3;
-$button-color: $white;
-
-$pagination-color: $color3;
-$pagination-contrast-color: $white;
-
-$comic-nav-bg: $color3;
-$comic-nav-link: $white;
-
-$comic-archive-border: lighten($color2, 30%);
-$comic-archive-link-bg: $white;
-$comic-archive-link-color: $black;
-$comic-archive-link-date-color: lighten($black, 25%);
-$comic-archive-link-visited:  scale-color($black, $lightness: 50%,  $saturation: -80%);
-
-$character-shadow: rgba($black, .5);
-$character-border: $color3;
-$character-background: $color1;
+  --purple:     #8a53b0;
+  --grey-blue:  #7e88b7;
+  --blue:       #73cde5;
+  --sea-green:  #4b9482;
+  --green:      #588237;
+  --yellow:     #d7bd54;
+  --orange:     #af8229;
+  --red:        #974c4b;
+}

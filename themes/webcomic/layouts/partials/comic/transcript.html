@@ -1,0 +1,19 @@
+{{ if eq ($.Scratch.Get "isTranscript") true }}
+  <details class="comic__transcript" id="comic-transcript">
+    <summary class="comic__transcript__title"><h2>Transcript</h2></summary>
+    <div class="comic__transcript__content">
+    {{ $.Scratch.Set "counter" 0 }}
+    {{ range .Params.comic.rows }}
+        {{ range .cols}}
+          {{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}
+            {{ if isset . "transcript" }} 
+            <div class="comic__transcript__panel" id="comic-transcript-panel-{{$.Scratch.Get "counter"}}">
+              <h3 class="comic__transcript__panel-header">Panel {{$.Scratch.Get "counter"}}</h3>
+                {{ .transcript | markdownify}}
+            </div>
+            {{ end }}
+        {{end}}
+    {{ end }}
+    </div>
+  </details>
+{{ end }}

@@ -21,9 +21,8 @@ $grid-size-lg: 6;
     text-align: center;
     align-items: center;
     justify-content: center;
-    background: $black;
+    background: var(--home-link-bg);
     transition: background .35s ease-out;
-    // background: linear-gradient($color2, darken($color2, 10%));
     min-height: 10em;
     text-decoration: none;
     position: relative;
@@ -35,14 +34,14 @@ $grid-size-lg: 6;
       transition: opacity .35s ease-out;
     }
     &:hover, &:focus {
-      background: $color2;
+      background: var(--home-link-bg__hover);
       img {
         opacity: .75;
       }
     }
     span {
-      color: $white;
-      background: rgba($black, .8);
+      color: var(--home-link-text-color);
+      background: var(--home-link-text-bg);
       padding: .2em 1em;
       font-family: $serif;
       font-weight: bold;
@@ -60,8 +59,7 @@ $grid-size-lg: 6;
   }
   &__header {
     position: relative;   
-    background: $color3;
-    background: linear-gradient($color3, darken($color3, 10%));
+    background: var(--home-hero-bg);
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -72,18 +70,21 @@ $grid-size-lg: 6;
     align-items: flex-end;
   }
   &__title {
-    color: $white;
+    color: var(--home-hero-color);
     margin: 0;
-    background: rgba($black, .8);
+    background: var(--home-hero-text-bg);
     padding: .2em 1em;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 2em;
     width: 100%;
     @media (min-width: $bp_md) {
       position: absolute;
       bottom: 1em;
-      right: 1em;
+      right: 0;
+      left: 0;
+      padding: .2em 2em;
       width: auto;
+      text-align: right;
     }
     @media (min-width: $bp_md) {
       font-size: 2em;
@@ -97,6 +98,7 @@ $grid-size-lg: 6;
     margin: .5rem;
     padding: 1em 1em 4em 1em;
     position:relative;
+    background: var(--news-bg);
     @media (min-width: $bp_lg) {
       grid-column-start: 1;
       grid-column-end:span 4;
@@ -107,7 +109,7 @@ $grid-size-lg: 6;
       justify-content: space-between;
     }
     &__header {
-      border-bottom: 1px solid $character-border;
+      border-bottom: 1px solid var(--news-border);
     }
     &__content {
       max-height: 400px;
@@ -120,41 +122,25 @@ $grid-size-lg: 6;
       }
       p:first-child {
         &::first-letter {
-          color: $color3;
+          color: var(--text-drop-letter);
           font-weight: bold;
           font-family: serif;
           font-size: 3.5em;
           line-height: 1;
           float: left;
           position: relative;
-          margin-top: 0;
+          margin-top: .15em;
           margin-right: .1em;
-          // @media (prefers-color-scheme: dark) {
-          //   color: $color4
-          // }
         }
       }
       @media (min-width: $bp_md) {
         max-height: 500px;
       }
-      &:after {
-        width: 100%;
-        content: '';
-        display: block;
-        bottom: 0;
-        left: 0;
-        height: 6em;
-        position: absolute;
-        background: linear-gradient(rgba($white, 0), $white);
-        // @media (prefers-color-scheme: dark) {
-        //   background: linear-gradient(rgba($black, 0), $black);
-        // }
-      }
     }
     &__archive {
-        color: $white;
+        color: var(--home-link-text-color);
         position: absolute;
-        background: rgba($black, .8);
+        background: var(--home-link-text-bg);
         padding: .2em 1em;
         font-family: $serif;
         font-weight: bold;
@@ -164,6 +150,9 @@ $grid-size-lg: 6;
         font-size: .8em;
         bottom: 1em;
         right: 1em; 
+        &:focus, &:active {
+          position: absolute;
+        }
         @media (min-width: $bp_md) {
           font-size: 1.2em;
          }
@@ -215,35 +204,6 @@ $grid-size-lg: 6;
       @media (min-width: $bp_sm) {
         max-height: none;
       }
-    }
-  }
-  &__wenches {
-    grid-column: span 6;
-    display: flex;
-    align-items: flex-end;
-    @media (min-width: $bp_sm) {
-      grid-column: span 2;
-      height: auto;
-    }
-  }
-  &__subheader {
-    margin: .5rem;
-    text-shadow: 0 0 2px rgba($black, .8); 
-    grid-column-start: 1;
-    grid-column-end: end;
-    padding: .2em 1em;
-    @media (min-width: $bp_md) {
-      margin: 1rem;
-    }
-    h2 {
-      margin: 0;
-      color: $white;
-    }
-    p {
-      margin: 0;
-      font-weight: bold;
-      font-size: 1.25em;
-      color: $white;
     }
   }
 }

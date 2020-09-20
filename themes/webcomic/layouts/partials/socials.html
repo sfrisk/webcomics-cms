@@ -63,10 +63,16 @@
     </a>
   {{ end }}
   {{ if (isset .Site.Params "webtoon") }}
-  <a rel="noreferrer" target="_blank" href="{{ .Site.Params.webtoon }}" title="Follow on Twitch">
-    <span class="sr-only">Subscribe on Webtoon</span>
+  <a rel="noreferrer" target="_blank" href="{{ .Site.Params.webtoon }}" title="Read on Webtoon">
+    <span class="sr-only">Read on Webtoon</span>
     {{ partial "icons/webtoon.html" . }}
   </a>
+{{ end }}
+{{ if (isset .Site.Params "tapas") }}
+{{/*  <a rel="noreferrer" target="_blank" href="{{ .Site.Params.tapas }}" title="Read on Tapas">
+  <span class="sr-only">Read on Tapas</span>
+  <i class="ico tapas"></i>
+</a>  */}}
 {{ end }}
   <a rel="noreferrer" target="_blank" href="/index.xml" title="Subscribe to RSS Feed">
     <span class="sr-only">Subscribe to RSS Feed</span>

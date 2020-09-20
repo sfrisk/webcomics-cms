@@ -1,0 +1,86 @@
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 2rem 0 1rem;
+	@media (min-width: $bp_md) {
+		margin: 2.75rem 0 1.05rem;
+	}
+	font-family: $serif;
+	color: var(--site-heading-color);
+  font-weight: 400;
+	line-height: 1.15;
+}
+
+h1 {
+	margin-top: 0;
+  font-size: 1.866em;
+	font-weight: bold;
+	font-variant: small-caps;
+	letter-spacing: 2px;
+	@media (min-width: $bp_md) {
+		font-size: 2.488em;
+	}
+}
+
+h2 {
+	font-size: 1.555em;
+	@media (min-width: $bp_md) {
+		font-size: 2.074em;
+	}
+}
+
+h3 {
+	font-size: 1.296em;
+	@media (min-width: $bp_md) {
+		font-size: 1.728em;
+	}
+}
+
+h4 {
+	font-size: 1.08em;
+	@media (min-width: $bp_md) {
+		font-size: 1.44em;
+	}
+}
+
+h5 {
+	font-size: 1em;
+	@media (min-width: $bp_md) {
+		font-size: 1.2em;
+	}
+}
+
+
+a {
+	color: var(--site-link-color);
+	// @media (prefers-color-scheme: dark) {
+	// 	color: $color4
+	// }
+}
+
+dt {
+	font-weight: bold;
+	color: var(--site-dt-color);
+	display: inline;
+	padding-right: .5em;
+	margin: 0;
+}
+
+dd {
+	display: inline;
+	margin: 0;
+}
+
+p {
+  margin-bottom: 1.15rem;
+  margin-top: 0;
+	&.no-margin {
+		margin: 0;
+	}
+}
+
+hr {
+	width: 100%;
+	border: 0;
+	background: var(--site-hr-color);
+	height: 4px;
+}

@@ -1,7 +1,7 @@
 {{ $url := .Permalink }}
 {{ $parent := .Parent }}
 {{ $comics := where ($.Site.GetPage $parent.Path).Pages.ByPublishDate "Params.type" "comic"}}
-<div class="comic-navigation">
+<div class="comic-navigation contrast">
 	<nav class="comic-navigation__list" aria-label="comic navigation">
 	{{ range first 1 $comics }}
 		{{if eq $url .Permalink}}
@@ -37,9 +37,9 @@
 			{{ end }}
 			<span class="comic-navigation__item current" aria-hidden="true">
 				{{ $.Scratch.Set "counter" 1 }}	
-				{{ $title := .Title }}
+        {{ $comicSlug := .File.BaseFileName }}
 				{{ range $comics }}
-					{{ if eq $title .Title}}
+					{{ if eq $comicSlug .File.BaseFileName}}
 						Page {{$.Scratch.Get "counter"}}
 					{{ end }}
 					{{ $.Scratch.Set "counter" (add ($.Scratch.Get "counter") 1) }}

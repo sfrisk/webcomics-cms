@@ -1,39 +1,108 @@
+
+.posts {
+ margin: 0;
+}
 .post {
-  margin-bottom: 4em;
+  max-width: 1000px;
+  margin: 2em auto;
+  background: var(--news-bg);
+  padding: 2em;
+  border-top: 4px solid var(--news-border);
+  border-bottom: 4px solid var(--news-border); 
   &__title {
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     line-height: 1.4;
   }
   &__meta {
-    color: $site-text;
     font-weight: bold;
     font-size: .9em;
     display: block;
     margin-top: 0;
     margin-bottom: 2em;
   }
+  &__read-more {
+    background: var(--btn-read-more-bg);
+    color: var(--btn-read-more-color);
+    font-family: $serif;
+    font-weight: bold;
+    font-variant: small-caps;
+    letter-spacing: 1px;
+    text-decoration: none;
+    padding: .2em 1em;
+    &__wrap {
+      text-align: right;
+      padding-top: 2em;
+    }
+  }
   &__summary {
     p {
       margin-top: 0;
       margin-bottom: 1em;
+      clear: both;
     }
       p:first-child {
         &::first-letter {
-          color: $color3;
+          color: var(--text-drop-letter);
           font-weight: bold;
           font-family: serif;
           font-size: 3.5em;
           line-height: 1;
           float: left;
           position: relative;
-          margin-top: 0;
+          margin-top: .15em;
           margin-right: .1em;
-          // @media (prefers-color-scheme: dark) {
-          //   color: $color4
-          // }
         }
       }
 
+  }
+}
+
+.latest-posts {
+  background: var(--block-bg);
+  border-top: 4px solid var(--block-border);
+  border-bottom: 4px solid var(--block-border);
+  padding: 1em 0 3em;
+
+  h2 {
+    text-align: center;
+    color: var(--block-header-color);
+    margin-bottom: 1em;
+    padding-bottom: 8px;
+    position: relative;
+    font-variant: small-caps;
+    letter-spacing: 2px;
+    &:after {
+      content: '';
+      width: 200px;
+      height: 2px;
+      background: var(--block-header-border);
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      margin-left: -100px;
+    }
+  }
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1em;
+    @media (min-width: $bp_md) {
+      grid-template-columns: repeat(3, 1fr);
+
+    }
+  }
+
+  &__item {
+    background: var(--news-item-bg);
+    padding: 1em;
+    font-size: .85em;
+    display: flex;
+    flex-direction: column;
+
+    .post__content {
+      flex: 1;
+    }
   }
 }

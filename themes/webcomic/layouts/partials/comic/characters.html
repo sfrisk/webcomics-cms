@@ -1,0 +1,37 @@
+{{if .Params.characters }}
+<nav class="comic__characters" aria-label="Characters appearing in this comic">
+  <h2>Characters</h2>
+  <div class="comic__characters-group">
+  {{ range .Params.characters }}
+      {{ $url := printf "/%s/%s.md"  "character" ( . | urlize ) }}
+      {{ with $.Site.GetPage $url }}
+        {{ $thumb := resources.Get .Params.image_mobile}}
+        {{ $thumb_240x := $thumb.Resize "240x q100" }}
+        {{ $thumb_120x := $thumb.Resize "120x q100" }}
+        {{ if eq .Params.visible true }}
+          <a class="comic__character" href="{{ .Permalink }}" title="{{ .Title }}">
+        {{ else }}
+          <div class="comic__character">
+        {{ end }}
+          <picture>
+            <source 
+              srcset="
+                {{ $thumb_240x.Permalink }} 240w,
+                {{ $thumb_120x.Permalink }} 120w"
+              >
+            <img
+              src="{{ $thumb_120x.Permalink }}"
+              alt="{{ .Params.accessibleDescription }}">
+          </picture>
+          <span class="comic__character__title">{{ .Title }}</span>
+        {{ if eq .Params.visible true }}
+          </a>
+        {{ else }}
+          </div>
+        {{ end }}
+      {{end}}
+
+    {{ end }}
+  </div>
+</nav>
+{{ end }}

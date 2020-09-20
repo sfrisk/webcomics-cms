@@ -11,29 +11,31 @@
   }
   &__link {
     text-decoration: none;
-    color: $pagination-color;
+    color: var(--pagination-color);
     font-weight: bold;
     font-size: 1.2em;
     border-radius: 100%;
-    background: $pagination-contrast-color;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     height: 1.5em;
     width: 1.5em;
     &:hover, &:active {
-      background: rgba($pagination-color, .2);
+      background: var(--pagination-bg__hover);
     }
     &.current {
       font-weight: bold;
-      color: $pagination-contrast-color;
-      background: $pagination-color;
+      color: var(--pagination-color__active);
+      background: var(--pagination-bg__active);
       &:hover, &:active {
-        background: rgba($pagination-color, .8);
+        background: var(--pagination-bg__active__hover);
       }
     }
     &.disabled {
       opacity: .85;
+      &:hover {
+        background: transparent;
+      }
     }
   }
 }

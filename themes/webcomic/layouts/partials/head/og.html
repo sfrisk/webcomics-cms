@@ -1,0 +1,14 @@
+<meta name="description" content="{{ if (isset .Params "og_description") }}{{ .Params.og_description }}{{ else }}{{ .Site.Params.og_description }}{{ end }}">
+<meta property="og:title" content="{{ if (isset .Params "og_title") }}{{ .Params.og_title }}{{ else }}{{ .Title }}{{ end }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:description" content="{{ if (isset .Params "og_description") }}{{ .Params.og_description }}{{ else }}{{ .Site.Params.og_description }}{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:type" content="{{ if (isset .Params "og_type") }}{{ .Params.og_type }}{{ else }}{{ .Site.Params.og_type }}{{ end }}">
+<meta property="og:local" content="{{ .Site.Params.og_local }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ if (isset .Params "og_title") }}{{ .Params.og_title }}{{ else }}{{ .Title }}{{ end }}">
+<meta name="twitter:description" content="{{ if (isset .Params "og_description") }}{{ .Params.og_description }}{{ else }}{{ .Site.Params.og_description }}{{ end }}">
+<meta name="twitter:site" content="@{{ .Site.Params.twitter_site }}" />
+<meta name="twitter:creator" content="@{{ .Site.Params.twitter_creator }}" />
+<meta property="og:image" content="{{ $.Site.BaseURL }}{{ if (isset .Params "og_image") }}{{ .Params.og_image }}{{ else }}{{ .Site.Params.og_image }}{{ end }}" />
+<meta name="twitter:image" content="{{ $.Site.BaseURL }}{{ if (isset .Params "og_image") }}{{ .Params.og_image }}{{ else }}{{ .Site.Params.og_image }}{{ end }}" />

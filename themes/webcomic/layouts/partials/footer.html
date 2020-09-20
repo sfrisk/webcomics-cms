@@ -8,20 +8,17 @@
 				{{ if (isset .Site.Params "patreon") }}
 				<!-- <em>Join us on <a rel="noreferrer" target="_blank" href="https://www.patreon.com/{{ .Site.Params.patreon }}" title="Patreon">Patreon</a>!</em> -->
 				{{ end }}
-				<div class="site-footer__socials">
-					{{ partial "socials.html" . }}
-				</div>
 		</div>
 	</div>
-	{{if and (.NextInSection) (eq .Section "comic")}}
-	<div class="comic__load-more">
-		<svg aria-hidden="true" height="50" width="50">
-			<use xlink:href="/sprites/solid.svg#arrow-circle-down"></use>
-		</svg>
-		Next Page
-	</div>
-	{{ end }}
 </footer>
+{{if and (.NextInSection) (eq .Section "comic")}}
+<div class="comic__load-more">
+  <svg aria-hidden="true" height="50" width="50">
+    <use xlink:href="/sprites/solid.svg#arrow-circle-down"></use>
+  </svg>
+  Next Page
+</div>
+{{ end }}
 	{{ if and (eq .Section "comic") (ne .Title "Comic") }}
 	<script >
 			localStorage.setItem('current-comic', '{{.Permalink}}');
@@ -58,7 +55,7 @@
 							return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
 					}
 			};
-				if (isMobile.any()) {
+				if (isMobile.any() && loadMore) {
 					window.addEventListener('touchmove', function (event) {
 						if (window.innerWidth < 768) {
 								if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {

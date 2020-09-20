@@ -1,0 +1,175 @@
+:root {
+  --accentColor: var(--accent-600);
+  --secondaryColor: var(--secondary-300);
+  --html-bg: var(--white);
+
+  --site-bg: var(--black-trans-100);
+  --site-text-color: var(--black);
+  --site-heading-color: var(--accentColor);
+  --site-link-color: var(--accentColor);
+  --site-link-border: linear-gradient(to right, var(--black) 50%, transparent 50%), linear-gradient(to right, var(--black) 50%, transparent 50%), linear-gradient(to bottom, var(--black) 50%, transparent 50%), linear-gradient(to bottom, var(--black) 50%, transparent 50%);
+  --site-link-border__contrast: linear-gradient(to right, var(--white-trans-600) 50%, transparent 50%), linear-gradient(to right, var(--white-trans-600) 50%, transparent 50%), linear-gradient(to bottom, var(--white-trans-600) 50%, transparent 50%), linear-gradient(to bottom, var(--white-trans-600) 50%, transparent 50%);
+  --site-dt-color: var(--accentColor);
+  --site-hr-color: var(--accentColor);
+
+  --site-header-bg: var(--white);
+  --site-header-bg__mobile: var(--black);
+  --site-header-color: var(--accentColor);
+  --site-header-color__mobile: var(--white);
+  --site-header-shadow: var(--black-trans-400);
+  --site-header-skip-nav-bg: var(--accentColor);
+  --site-header-skip-nav-color: var(--white);
+  
+  --site-breadcrumbs-bg: linear-gradient(195.28deg, var(--purple) -4.18%,hsla(0,0%,100%,0) 86.92%),linear-gradient(64.97deg, var(--red) -7.18%,hsla(0,0%,100%,0) 82.29%);
+  --site-breadcrumbs-color: var(--white);
+
+  --site-footer-bg: var(--accent-800);
+  --site-footer-color: var(--white-trans-800);
+
+  --btn-color: var(--white);
+  --btn-bg: var(--accentColor);
+  --btn-bg__hover: var(--accent-400);
+  --btn-bg__focus: var(--accent-300);
+  --btn-border: var(--accentColor);
+
+  --btn-inverse-color: var(--accentColor);
+  --btn-inverse-bg: var(--white);
+  --btn-inverse-bg__hover: var(--white-trans-700);
+  --btn-inverse-bg__focus: var(--white-trans-500);
+  --btn-inverse-border: var(--accentColor);
+
+  --btn-read-more-bg: var(--black-trans-700);
+  --btn-read-more-color: var(--white);
+
+  --input-bg: var(--white);
+  --input-color: var(--black);
+  --input-border: var(--accentColor);
+  --input-background__disabled: var(--white-trans-600);
+
+  --text-drop-letter: var(--accentColor);
+
+  --block-bg: var(--secondaryColor);
+  --block-border: var(--accentColor);
+  --block-header-color: var(--accentColor);
+  --block-header-border: var(--accentColor);
+
+  --pagination-color: var(--accentColor);
+  --pagination-color__active: var(--white);
+  --pagination-bg__hover: var(--accent-100);
+  --pagination-bg__active: var(--accentColor);
+  --pagination-bg__active__hover: var(--accent-400);
+
+  --character-censor-bg: var(--black);
+  --character-img-bg: var(--secondary-600);
+
+  --character-anita: var(--purple);
+  --character-frank: var(--grey-blue);
+  --character-gm: var(--blue);
+  --character-horbin: var(--sea-green);
+  --character-lulu: var(--green);
+  --character-thog: var(--yellow);
+  --character-veronica: var(--orange);
+  --character-xavros: var(--red);
+  --character-default: var(--accentColor);
+  
+  --characters-details_bg: var(--black-trans-700);
+  --characters-details_color: var(--white);
+
+  --comic-bg: var(--white);
+  --comic-panel-bg: var(--white-trans-100);
+  --comic-load-more-bg: var(--white);
+  --comic-load-more-color: var(--black);
+  --comic-load-more-color__active: var(--accentColor);
+
+  --comic-sidebar-border: var(--accent-300);
+  --comic-character-bg: var(--black-trans-200);
+  --comic-character-border: var(--accentColor);
+  --comic-character-color: var(--black);
+
+  --comic-nav-bg: var(--accentColor);
+  --comic-nav-link-color: var(--white);
+
+  --comics-nav-active-bg: var(--accentColor);
+  --comics-nav-active-color: var(--white);
+  --comics-archive-bg: var(--black-trans-100);
+  --comic-archive-border: var(--accent-300);
+  --comic-img-bg: var(--secondary-600);
+  --comic-link-color: var(--black);
+  --comic-link-color__visited: var(--grey-600);
+  --comic-link-color__focus: var(--black);
+  --comic-link-bg: var(--grey-100);
+  --comic-link-bg__visited: var(--grey-200);
+  --comic-link-bg__focus: var(--white-trans-700);
+
+  --home-link-bg: var(--black);
+  --home-link-bg__hover: var(--accent-600);
+  --home-link-text-bg: var(--black-trans-700);
+  --home-link-text-color: var(--white);
+  --home-hero-bg: var(--accentColor);
+  --home-hero-text-bg: var(--black-trans-700);
+  --home-hero-color: var(--white);
+
+  --news-bg: var(--white);
+  --news-border: var(--accentColor);
+  --news-item-bg: var(--white-trans-600);
+
+  --social-follow-bg: var(--accent-600);
+  --social-follow-color: var(--white);
+  --social-follow-border: var(--white-trans-600);
+  --social-follow-link-bg: var(--white-trans-100);
+  --social-follow-link-bg__hover: var(--white-trans-200);
+  --social-follow-icon-color: var(--white-trans-700);
+  --social-follow-icon-bg: var(--black-trans-300);
+
+  --social-share-color: var(--accent-400);
+
+  --subscribe-bg: var(--accent-500);
+  --subscribe-color: var(--white);
+  --subscribe-follow-border: var(--white-trans-600);
+
+  @media (prefers-color-scheme: dark) {
+    --accentColor: var(--accent-100);
+    --html-bg: var(--accent-600);
+    --site-bg: var(--black-trans-600);
+    --site-text-color: var(--white);
+    --site-header-bg: var(--accent-600);
+    --site-header-color: var(--white);
+    --site-breadcrumbs-bg: var(--white-trans-100);
+    --site-link-border: linear-gradient(to right, var(--white-trans-800) 50%, transparent 50%), linear-gradient(to right, var(--white-trans-800) 50%, transparent 50%), linear-gradient(to bottom, var(--white-trans-800) 50%, transparent 50%), linear-gradient(to bottom, var(--white-trans-800) 50%, transparent 50%);
+    --site-link-border__contrast: linear-gradient(to right, var(--white-trans-600) 50%, transparent 50%), linear-gradient(to right, var(--white-trans-600) 50%, transparent 50%), linear-gradient(to bottom, var(--white-trans-600) 50%, transparent 50%), linear-gradient(to bottom, var(--white-trans-600) 50%, transparent 50%);
+
+    --block-bg: var(--white-trans-100);
+
+    --btn-bg: var(--accent-600);
+    --btn-border: var(--accent-600);
+  
+    --btn-inverse-color: var(--accent-600);
+    --btn-inverse-border: var(--accent-600);
+
+    --pagination-color: var(--white-trans-800);
+    --pagination-color__active: var(--accent-600);
+    --pagination-bg__hover: var(---white-trans-300);
+    --pagination-bg__active: var(--white-trans-800);
+    --pagination-bg__active__hover: var(--white-trans-600);
+
+    --comics-archive-bg: var(--white-trans-100);
+    --comic-img-bg: var(--accentColor);
+    --comic-panel-bg: var(--black-trans-100);
+    --comic-link-color: var(--white);
+    --comic-link-color__visited: var(--white-trans-700);
+    --comic-link-color__focus: var(--white);
+    --comic-link-bg: var(--white-trans-200);
+    --comic-link-bg__visited: var(--grey-700);
+    --comic-link-bg__focus: var(--white-trans-100);
+    --comics-nav-active-bg: var(--accent-600);
+
+    --comic-character-color: var(--white);
+    --comic-bg: var(--white-trans-100);
+    --comic-nav-bg: var(--accent-800);
+
+    --social-share-color: var(--accent-100);
+
+    --news-bg: var(--white-trans-100);
+    --news-item-bg: var(--white-trans-100);
+  }
+}

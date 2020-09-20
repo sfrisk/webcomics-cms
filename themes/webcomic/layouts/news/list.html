@@ -1,13 +1,14 @@
 {{ define "main" }}
+<div class="posts">
 <header class="page__header">
     <h1 class="text-center page__title">{{ .Params.pageTitle }}</h1>
 </header>
-<div class="posts container page">
+<div class="container page">
 		<div class="posts-list">
 		{{ range .Data.Pages }}
 				<article class="post">
 					<header class="post__header">
-						<h1 class="post__title">{{ .Title }}</h1>
+						<h1 class="post__title"><a href="{{.Permalink}}">{{ .Title }}</a></h1>
 						<p class="post__meta">
 							<time datetime="{{.Date.Format "2006-01-02"}}">{{.Date.Format "January 2, 2006"}}</time>
 						</p>
@@ -16,8 +17,8 @@
 						{{.Content}}
 					</div>
 				</article>
-				<hr>
 		{{ end }}
 			</div>
+</div>
 </div>
 {{ end }}

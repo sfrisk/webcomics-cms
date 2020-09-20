@@ -1,0 +1,13 @@
+<!-- Global site tag (gtag.js) - Google Analytics -->
+{{ if eq (getenv "HUGO_ENV") "production"}}
+	{{ if .Site.Params.google }}
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-33129519-1" rel="preconnect"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', {{.Site.Params.google}});
+	</script>
+	{{ end }}
+{{end}}

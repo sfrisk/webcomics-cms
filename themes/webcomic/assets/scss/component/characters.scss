@@ -1,5 +1,19 @@
+@mixin character-colors($color) {
+  background: $color;
+  @media (min-width: $bp_lg) {
+    background: transparent;
+    &:hover, &:focus {
+      background: $color;
+    }
+    .characters__overlay {
+      background: $color;
+    }
+  }
+}
+
 .characters {
   max-width: 1600px;
+  padding-bottom: 2em;
   margin: 0 auto;
   &__group {
     display: grid;
@@ -10,12 +24,12 @@
       grid-template-columns: repeat(4, 1fr);
     }
     @media (min-width: $bp_md) {
-      margin: 5em 1em;
+      padding: 2em;
+      margin: 2em 1em 0em;
       grid-gap: 1em;
       grid-template-columns: repeat(4, 1fr);
     }
     @media (min-width: $bp_lg) {
-      margin: 5em 1em;
       grid-gap: 1em;
       grid-template-columns: repeat(8, 1fr);
     }
@@ -27,107 +41,68 @@
     display: flex;
     align-items: flex-end;
     background: #999;
-    &:hover, &:focus {
-      .characters__overlay {
-        opacity: 0;
-      }
-      @media (min-width: $bp_md) {
-        .characters__details {
-          opacity: .8;
+    @media (min-width: $bp_lg) {
+      &:hover, &:focus {
+        .characters__overlay {
+          opacity: 0;
+        }
+        @media (min-width: $bp_md) {
+          .characters__details {
+            opacity: .8;
+          }
         }
       }
     }
-    @media (min-width: $bp_md) {
+    @media (min-width: $bp_lg) {
       height: 55vh;
     }
     &-anita {
-      @media (min-width: $bp_md) {
+      @media (min-width: $bp_lg) {
         clip-path: polygon(0 0, 100% 2%, 100% 98%, 0 100%);
       }
-      &:hover, &:focus {
-        background: #8a53b0;
-      }
-      .characters__overlay {
-        background: #8a53b0;
-      }
+      @include character-colors(var(--character-anita));
     }
     &-frank {
-      @media (min-width: $bp_md) {
+      @media (min-width: $bp_lg) {
         clip-path: polygon(0 7%, 100% 5%, 100% 96%, 0 95%);
       }
-      &:hover, &:focus {
-        background: #7e88b7;
-      }
-      .characters__overlay {
-        background: #7e88b7;
-      }
+      @include character-colors(var(--character-frank));
     }
     &-gm {
-      @media (min-width: $bp_md) {
+      @media (min-width: $bp_lg) {
        clip-path: polygon(0 3%, 100% 1%, 100% 98%, 0 97%);
       }
-      &:hover, &:focus {
-        background: #73cde5;
-      }
-      .characters__overlay {
-        background: #73cde5;
-      }
+      @include character-colors(var(--character-gm));
     }
     &-horbin {
-      @media (min-width: $bp_md) {
+      @media (min-width: $bp_lg) {
         clip-path: polygon(0 4%, 100% 7%, 100% 97%, 0 99%);
       }
-      &:hover, &:focus {
-        background: #4b9482;
-      }
-      .characters__overlay {
-        background: #4b9482;
-      }
+      @include character-colors(var(--character-horbin));
     }
     &-lulu {
-      @media (min-width: $bp_md) {
+      @media (min-width: $bp_lg) {
         clip-path: polygon(0 2%, 100% 0%, 100% 92%, 0 94%);
       }
-      &:hover, &:focus {
-        background: #588237;
-      }
-      .characters__overlay {
-        background: #588237;
-      }
+      @include character-colors(var(--character-lulu));
     }
     &-thog {
-      @media (min-width: $bp_md) {
+      @media (min-width: $bp_lg) {
         clip-path: polygon(0 3%, 100% 5%, 100% 96%, 0 93%);
       }
-      &:hover, &:focus {
-        background: #af8229;
-      }
-      .characters__overlay {
-        background: #af8229;
-      }
+      @include character-colors(var(--character-thog));
     }
     &-veronica {
-      @media (min-width: $bp_md) {
+      @media (min-width: $bp_lg) {
         clip-path: polygon(0 6%, 100% 4%, 100% 96%, 0 98%);
       }
-
-      &:hover, &:focus {
-        background: #d7bd54;
-      }
-      .characters__overlay {
-        background: #d7bd54;
-      }
+      @include character-colors(var(--character-veronica));
     }
     &-xavros {
-      @media (min-width: $bp_md) {
+      @media (min-width: $bp_lg) {
         clip-path: polygon(0 2%, 100% 0%, 100% 100%, 0 97%);
       }
-      &:hover, &:focus {
-        background: #974c4b;
-      }
-      .characters__overlay {
-        background: #974c4b;
-      }
+      @include character-colors(var(--character-xavros));
     }
   }
   &__thumb {
@@ -138,43 +113,53 @@
     width: 100%;
     overflow: hidden;
     img {
-      width: auto;
-      max-width: initial;
-      height: 100%;
+      max-width: 100%;
+      height: auto;
+      @media (min-width: $bp_lg) {
+        width: auto;
+        max-width: initial;
+        height: 100%;
+      }
     }
   }
   &__overlay {
-    background: $color3;
-    height: 100%;
-    left: 0;
-    width: 100%;
-    mix-blend-mode: color;
-    opacity: .9;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-    transition: opacity .35s ease-out;
+    display: none;
+    @media (min-width: $bp_lg) {
+      mix-blend-mode: color;
+      display: block;
+      background: var(--character-default);
+      height: 100%;
+      left: 0;
+      width: 100%;
+      mix-blend-mode: color;
+      opacity: .9;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+      transition: opacity .35s ease-out;
+    }
   }
   &__details {
     opacity: .8;
-    color: $white;
-    background: rgba($black, .8);
+    color: var(--characters-details_color);
+    background: var(--characters-details_bg);
     padding: .2em .2em;
     font-family: $serif;
     font-weight: bold;
     font-variant: small-caps;
     letter-spacing: 1px;
     position: absolute;
-    bottom: 2em;
+    bottom: 0em;
     right: 0; 
     left: 0;
     text-align: center;
     font-size: .8em;
     transition: opacity .35s ease-out;
-    @media (min-width: $bp_md) {
+    @media (min-width: $bp_lg) {
       font-size: 1.2em;
       opacity: 0;
+      bottom: 2em;
     }
   }
 }

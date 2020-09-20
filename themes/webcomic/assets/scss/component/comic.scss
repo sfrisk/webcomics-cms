@@ -6,7 +6,19 @@
 	}
 	@media (min-width: $bp_lg) {
 		margin: 5em auto 0;
-	}
+  }
+  &__navigation-notes {
+    display: none;
+    @media (min-width: $bp_md) {
+      display: block;
+      text-align: center;
+      font-style: italic;
+    }
+  }
+  &__page {
+    background: var(--comic-bg);
+    padding: 2em;
+  }
 	&__header {
 		padding: 1em 0;
 		text-align: center;
@@ -18,7 +30,8 @@
 		}
 		&__title {
 			font-size: 1em;
-			padding-bottom: 1em;
+      padding-bottom: 1em;
+      margin-bottom: 0;
 			@media (min-width: $bp_md) {
 				padding-bottom: 0;
 			}
@@ -41,7 +54,7 @@
 			display: block;
 		}
 		&__image {
-			background: $color5;
+			background: var(--comic-panel-bg);
 			max-width: 100%; 
 			max-height: 500px;
 			width: auto;
@@ -51,6 +64,10 @@
 				height: auto;
 				max-height: inherit;
 			}
+      &-mobile {
+        max-height: inherit;
+        max-width: 100%;
+      }
 		}
 	}
 	&__footer {
@@ -74,51 +91,53 @@
 		}
 	}
 	&__load-more {
-		height: 200px;
+    height: 200px;
+    background: var(--comic-load-more-bg);
+    color: var(--comic-load-more-color);
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
+    justify-content: center;
+    padding-bottom: 4em;
 		transition: color .25s linear, background .25s linear; 
 		@media (min-width: $bp_md) {
 			display: none;
 		}
 		svg {
-			margin: 1em;
+      margin: 1em;
+      fill: currentColor;
 			transition: fill .25s linear; 
 		}
 		&.active {
-			color: $site-link;
-			background: rgba($white, .5);
-			svg {
-				fill: $site-link;
-			}
+			color: var(--comic-load-more-color__active);
 		}
 		&.hidden {
 			display: none;
 		}
 	}
 	&__transcript {
-		background: $character-background;
+		background: var(--block-bg);
 		padding: 1em;
-		margin: 1em 0;
-    box-shadow: 1px 4px 14px $character-shadow;
-    border-top: 4px solid $character-border;
-		border-bottom: 4px solid $character-border;
+		margin: 0 auto 1em;
+    border-top: 4px solid var(--block-border);
+		border-bottom: 4px solid var(--block-border);
 		@media (min-width: $bp_md) {
-			margin: 2em .5em;
-		}
+			margin: 0 auto 2em;
+    }
 		&__title {
 			margin: 0;
-			color: $heading-color;
+			color: var(--site-heading-color);
 			h2 {
-				margin: 0;
+        margin: 0;
 				display: inline;
-				font-size: 1.5em;
-				text-transform: uppercase;
+				text-align: center;
+        font-weight: bold;
+        font-variant: small-caps;
+        font-size: 1.5em;
 			}
 		}
 		&__content {
+      padding-top: 2em;
 			@media (min-width: $bp_md) {
 				-moz-column-count: 2;
 				-webkit-column-count: 2;
@@ -130,8 +149,67 @@
 			break-inside: avoid;
 			&-header {
 				font-family: $sans-serif;
-				border-bottom: 1px solid $site-link;
-			}
+        border-bottom: 1px solid var(--block-header-border);
+        margin: 0 0 .5em 0;
+      }
+      margin-bottom: 1.5em;
 		}
-	}
+  }
+  &__content {
+    padding: 1em 0;
+    @media (min-width: $bp_md) {
+      padding: 2em 2em 2em 0;
+      grid-column-start: 1;
+      grid-column-end: span 8;
+      grid-row-start: 1;
+    }
+  }
+  &__sidebar {
+    padding: 1em 0;
+    @media (min-width: $bp_md) {
+      padding: 2em 0 2em 2em;
+      grid-column-start: 9;
+      grid-column-end: span 4;
+      grid-row-start: 1;
+      border-left: 1px solid var(--comic-sidebar-border);
+    }
+  }
+  &__characters {
+    border-top: 4px solid var(--block-border);
+    border-bottom: 4px solid var(--block-border);
+    background: var(--block-bg);
+    padding: 1em;
+    h2 {
+      margin: 0;
+      text-align: center;
+      font-weight: bold;
+      font-variant: small-caps;
+      font-size: 1.5em;
+    }
+    img {
+      background: var(--comic-character-bg);
+      margin: 0;
+      border: 2px solid var(--comic-character-border);
+    }
+  }
+  &__characters-group {
+    display: grid;
+    margin: 1em;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1em .5em;
+  }
+
+  &__character {
+    text-decoration: none;
+    &__title {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      color: var(--comic-character-color);
+      font-family: $serif;
+      font-weight: bold;
+      font-variant: small-caps;
+      line-height: 1.15;
+    }
+  }
 }

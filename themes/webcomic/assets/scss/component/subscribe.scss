@@ -1,0 +1,57 @@
+.subscribe {
+	padding: 1em 0 3em;
+	margin: 0;
+	text-align: center;
+  background: var(--subscribe-bg);
+  margin-top: 2em;
+  color: var(--subscribe-color);
+	&__form {
+    display: flex;
+    flex-direction: column;
+    @media (min-width: $bp_md) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+	}
+	h2 {
+    text-align: center;
+    color: var(--subscribe-color);
+    margin-bottom: 1em;
+    padding-bottom: 8px;
+    position: relative;
+    font-variant: small-caps;
+    letter-spacing: 2px;
+    &:after {
+      content: '';
+      width: 200px;
+      height: 2px;
+      background: var(--subscribe-follow-border);
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      margin-left: -100px;
+    }
+  }
+  .input {
+    width: 100%;
+    text-align: center;
+    @media (min-width: $bp_md) {
+      width: auto;
+      text-align: left;
+    }
+    &::placeholder {
+      text-align: center;
+      @media (min-width: $bp_md) {
+        text-align: left;
+      }
+    }
+  }
+  .btn {
+    margin-top: .5em;
+    @media (min-width: $bp_md) {
+      margin-top: 0;
+    }
+  }
+}

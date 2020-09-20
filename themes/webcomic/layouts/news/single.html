@@ -1,17 +1,50 @@
 {{ define "main" }}
-<div class="page__header">
-    <div class="text-center page__title">News</div>
-</div>
-<div class="post container page">
+<header class="page__header">
+  <h1 class="text-center page__title">Rumors from the Tavern</h1>
+</header>
+<div class="container page">
+  <article class="post">
 		<header class="post__header">
 			<h1 class="post__title">{{ .Title }}</h1>
 			<p class="post__meta">
 					<time>{{.Date.Format "January 1, 2006"}}</time>
 			</p>
 		</header>
-		<div class="post__content">
+		<div class="post__summary">
 			{{.Content}}
 		</div>
-		{{ partial "social-share.html" . }}
+  {{ partial "social-share.html" . }}
+  </article>
+  
+  
+  {{ $news := ($.Site.GetPage "section" "news").Pages.ByPublishDate  }}
+
+  </div>
+
+<div class="latest-posts">
+  <div class="container">
+  <h2>Latest Rumors</h2>
+  <div class="latest-posts__items">
+    {{ range last 3 $news }}
+      <article class="latest-posts__item">
+        <header class="post__header">
+          <h1 class="post__title">{{ .Title }}</h1>
+          <p class="post__meta">
+            <time datetime="{{.Date.Format "2006-01-02"}}">{{.Date.Format "January 2, 2006"}}</time>
+          </p>
+        </header>
+        <div class="post__content">
+          {{ .Summary }}
+        </div>
+        <div class="post__read-more__wrap">
+          <a
+          href="{{ .Permalink }}"
+          class="post__read-more">
+          Read More
+        </a>
+        </div>
+      </article>
+    {{ end }}
+  </div>
 </div>
 {{ end }}
