@@ -1,6 +1,6 @@
 backend:
-  name: gitlab
-  repo: sfrisk/tavern-wenches
+  name: github
+  repo: sfrisk/webcomics-cms
 
 media_folder: static/assets/images
 public_folder: assets/images
