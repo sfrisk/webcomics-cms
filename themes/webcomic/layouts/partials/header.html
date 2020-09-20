@@ -30,6 +30,7 @@
 {{ if not .IsHome }}
 <div class="header-spacer">
   {{ if not .IsSection }}
+    {{ if .Parent }}
   <div class="header-spacer__breadcrumbs container">
     <a href="{{.Parent.Permalink}}">
       <svg aria-hidden="true" height="18" width="10">
@@ -39,6 +40,7 @@
       {{ .Parent.Title }}
     </a>
   </div>
+    {{ end }}
   {{ end }}
 </div>
 {{ end }}
