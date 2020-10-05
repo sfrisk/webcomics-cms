@@ -23,3 +23,39 @@
     width: 100%;
   }
 }
+
+.form {
+  background: var(--form-bg);
+  border: 1px solid var(--form-border);
+  padding: 1em;
+
+  &__fieldset {
+    border: 0;
+    padding: 0;
+  }
+  &__legend {
+    font-family: $serif;
+	  color: var(--site-heading-color);
+    font-size: 1.296em;
+    margin-bottom: 1rem;
+    @media (min-width: $bp_md) {
+      font-size: 1.728em;
+    }
+  }
+  &__label {
+    width: 200px;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  &__field {
+    padding-bottom: 1em;
+  }
+  &__select {
+    font-size: 1rem;
+  }
+  &__checkbox {
+    height: 24px;
+    width: 24px;
+  }
+}

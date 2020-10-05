@@ -1,0 +1,126 @@
+{{ define "main" }}
+<div class="settings">
+  <header class="page__header">
+      <h1 class="text-center page__title">{{ .Params.pageTitle }}</h1>
+  </header>
+  <div class="container page">
+    <a href="{{.Permalink}}#settings" class="settings__skip">Skip to CC User Preferences</a>
+    {{ .Content }}
+    <form class="form">
+      <fieldset class="form__fieldset"> 
+        <legend class="form__legend">CC User Preferences</legend>
+
+        <div class="form__field">
+          <label class="form__label" for="font-select">Font</label>
+          <select class="form__select" name="font-family" id="font-select">
+            <option value="'Source Sans Pro', sans-serif">Source Sans Pro (Default)</option>
+            <option value="Arial, Helvetica, sans-serif">Arial</option>
+            <option value="'Comic Sans MS', cursive, sans-serif">Comic Sans</option>
+            <option value="Verdana, Geneva, sans-serif">Verdana</option>
+            <option value="Tahoma, Geneva, sans-serif">Tahoma</option>
+            <option value="'Trebuchet MS', Helvetica, sans-serif">Trebuchet</option>
+          </select>
+        </div>
+
+        <div class="form__field">
+          <label class="form__label" for="font-size-text">Font Size</label>
+          <span class="focusable">
+            <input class="input" type="text" name="font-size" id="font-size-text" placeholder="32" />
+          </span>
+        </div>
+
+        <div class="form__field">
+          <label class="form__label" for="lineheight-text">Line Height</label>
+          <span class="focusable">
+            <input class="input" type="text" name="lineheight" id="lineheight-text" placeholder="1.65" />
+          </span>
+        </div>
+
+        <div class="form__field">
+          <label class="form__label" for="letter-spacing-text">Letter Spacing</label>
+          <span class="focusable">
+            <input class="input" type="text" name="letterspacing" id="letter-spacing-text" placeholder="0" />
+          </span>
+        </div>
+
+        <div class="form__field">
+          <label class="form__label" for="font-cc-check">Keep CC Mode On</label>
+          <span class="focusable">
+            <input class="form__checkbox" type="checkbox" name="font-cc-on" id="font-cc-check" />
+          </span>
+        </div>
+      </fieldset>
+    </form>
+    <h2>Preview</h2>
+    <div class="comic__example">
+      <div class="comic cc">
+        <div class="comic__panel ">
+          <picture>
+            <img src="/assets/images/comic/wenches-022-b.jpg" class="comic__panel__image " alt="Panel 2: Thog and Xavros and walking down a path. Behind them in the distance, the lighthouse ca be seen standing at the top of a hill.  A tree is to their left, with an old wooden sign on the right.  From the forward view, more of what Thog is carrying can be seen, including a variety of javelins that seemed to be strapped to the back of his bag.  Two small axes are hanging  out ot either side of his bag, with a much larger greataxe extending to the right behind Xavros's head. Thog is looking down at Horbin in his hands, who is passed out, his mouth open wide as if mid snore. &quot;Thog prefers to hold a weapon while traveling,&quot; Thog says. Xavros looks away from the two, rolling his eyes.  &quot;I told you, Thog,&quot; says Xavros, &quot;You can't drag him behind us using your fifty feet of rope.&quot;" loading="lazy" width="489" height="480">
+          </picture>    
+          <div class="comic__script">
+            <div class="comic__script__content">
+              <p><strong>Thog:</strong> Thog prefers to hold a weapon while traveling.</p>
+              <p><strong>Xavros:</strong> I told you, Thog, you can’t drag him behind us using your fifty feet of rope.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var comic = document.querySelector('.comic');
+  var ccFont = document.querySelector('#font-select');
+  var ccSize = document.querySelector('#font-size-text');
+  var ccLineHeight = document.querySelector('#lineheight-text');
+  var ccLetterSpacing = document.querySelector('#letter-spacing-text');
+  var ccDefault = document.querySelector('#font-cc-check');
+
+  var defaultValues = {
+    ccFont: "'Source Sans Pro', sans-serif",
+    ccSize: "32",
+    ccLineHeight: '1.65',
+    ccLetterSpacing: '0',
+    ccDefault: false
+  }
+
+  ccFont.value = localStorage.getItem('ccFont') || defaultValues.ccFont;
+  ccSize.value = localStorage.getItem('ccSize') || defaultValues.ccSize;
+  ccLineHeight.value = localStorage.getItem('ccLineHeight') || defaultValues.ccLineHeight;
+  ccLetterSpacing.value = localStorage.getItem('ccLetterSpacing') || defaultValues.ccLetterSpacing;
+  ccDefault.checked = localStorage.getItem('ccDefault')  || defaultValues.ccDefault;
+
+  comic.style.setProperty('--comic-cc-font', ccFont.value);
+  comic.style.setProperty('--comic-cc-font-size', `${ccSize.value}px`);
+  comic.style.setProperty('--comic-cc-line-height', ccLineHeight.value);
+  comic.style.setProperty('--comic-cc-letter-spacing', `${ccLetterSpacing.value}px`);
+
+
+
+  ccFont.addEventListener('change', e => {
+    localStorage.setItem('ccFont', ccFont.value || defaultValues.ccFont);
+    comic.style.setProperty('--comic-cc-font', ccFont.value || defaultValues.ccFont);
+  });
+
+  ccSize.addEventListener('change', e => {
+    localStorage.setItem('ccSize', ccSize.value || defaultValues.ccSize);
+    comic.style.setProperty('--comic-cc-font-size', `${ccSize.value || defaultValues.ccSize}px`);
+  });
+
+  ccLineHeight.addEventListener('change', e => {
+    localStorage.setItem('ccLineHeight', ccLineHeight.value || defaultValues.ccLineHeight);
+    comic.style.setProperty('--comic-cc-line-height', ccLineHeight.value || defaultValues.ccLineHeight);
+  });
+
+  ccLetterSpacing.addEventListener('change', e => {
+    localStorage.setItem('ccLetterSpacing', ccLetterSpacing.value || defaultValues.ccLetterSpacing);
+    comic.style.setProperty('--comic-cc-letter-spacing', `${ccLetterSpacing.value || defaultValues.ccLetterSpacing}px`);
+  });
+
+  ccDefault.addEventListener('change', e => {
+    ccDefault.checked ? localStorage.setItem('ccDefault', ccDefault.checked) : localStorage.removeItem('ccDefault');
+  });
+</script>
+{{ end }}

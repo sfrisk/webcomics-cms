@@ -21,6 +21,8 @@ comic:
 
 
             “I’m seeing a lot of blood down here while I’m hearing a lot of yammering up there,” he says.
+          script: "**Horbin:** I’m seeing a lot of blood down here while I’m hearing a lot
+            of yammering up there."
         - panel: /assets/images/comic/wenches-003-b.jpg
           transcript: >-
             A zoomed out view of Horbin lying on the ground, he is now no more
@@ -31,6 +33,7 @@ comic:
 
 
             “How much blood does a halfling even have?” he asks. “Xavros?” Another pause. “Thog!”
+          script: "**Horbin:** How much blood does a halfling even have? Xavros? Thog!"
         - panel: /assets/images/comic/wenches-003-c.jpg
           transcript: >-
             Xavros, Veronica, and Thog stand in front of the right side of the
@@ -44,6 +47,7 @@ comic:
 
 
             “I knew we should have hired a cleric,” says Xavros, annoyed.
+          script: "**Xavros:** I knew we should have hired a cleric."
         - panel: /assets/images/comic/wenches-003-d.jpg
           transcript: >-
             Xavros stands alone, with only the light of the interior of the
@@ -57,6 +61,10 @@ comic:
 
 
             “Heh,” laughs Horbin from off-panel. “Phrasing!”
+          script: |-
+            **Xavros:** I’m coming, Horbin!
+
+            **Horbin:** Heh. Phrasing!
     - cols:
         - panel: /assets/images/comic/wenches-003-e.jpg
           transcript: Veronica and Thog stand in the left 2/3rds of the lighthouse’s
@@ -66,6 +74,7 @@ comic:
             a dark smirk on her face. To the right of Veronica, Thog stands
             beside her, left eyebrow raised, and right hand scratching the back
             of his head, as if considering something.
+          script: "   "
         - panel: /assets/images/comic/wenches-003-f.jpg
           transcript: >-
             Veronica stands in front of an all black panel, outlined in white to
@@ -75,6 +84,7 @@ comic:
 
 
             “Thog never seen halfling punted that far by a human” Thog says.
+          script: "**Thog:** Thog never seen halfling punted that far by a human."
         - panel: /assets/images/comic/wenches-003-g.jpg
           transcript: >-
             Veronica and Thog stand in front of the right 2/3rds of the
@@ -83,10 +93,14 @@ comic:
             and she is grasping her left arm with her right hand.
 
 
-            “I” she sutters, “I can explain?”
+            “I” she stutters, “I can explain?”
 
 
             Thog has his hands up in front of him in non threatening gestures, eyes wide as he realized he must have been misinterpreted. “Thog not make self clear,” he says.
+          script: |-
+            **Veronica:** I-I can explain?
+
+            **Thog:** Thog not make self clear.
         - panel: /assets/images/comic/wenches-003-h.jpg
           transcript: >-
             Thog is in front of an all light blue panel, outlined in white to
@@ -94,7 +108,8 @@ comic:
             He is looking to the left, a large smirk on his face.
 
 
-            “Thog impressed.” he says.
+            “Thog impressed,” he says.
+          script: "**Thog:** Thog impressed."
 thumbnail: /assets/images/comic/wenches-003-thumb.jpg
 og_image: /assets/images/comic/wenches-003.jpg
 og_description: The wizard decides they should try to help their companion.

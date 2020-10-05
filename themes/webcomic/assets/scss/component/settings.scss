@@ -1,0 +1,20 @@
+.settings {
+  .page {
+    margin: 2em auto;
+    background: var(--news-bg);
+    padding: 2em;
+    border-top: 4px solid var(--news-border);
+    border-bottom: 4px solid var(--news-border); 
+  }
+  p {
+    font-size: 1.5em;
+  }
+  &__skip {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    display: inline-block;
+  }
+  .comic {
+    margin: 0;
+  }
+}

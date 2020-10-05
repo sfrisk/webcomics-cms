@@ -25,7 +25,7 @@
 		@media (min-width: $bp_md) {
 			display: flex;
 			justify-content: space-between;
-			align-items: flex-end;
+			align-items: center;
 			padding: .5em;
 		}
 		&__title {
@@ -35,7 +35,21 @@
 			@media (min-width: $bp_md) {
 				padding-bottom: 0;
 			}
-		}
+    }
+    &__cc-btn {
+      border: 0;
+      padding: 0;
+      background: transparent;
+      margin-left: .5em;
+      cursor: pointer;
+      color: var(--site-link-color);
+      svg {
+        fill: currentColor;
+      }
+    }
+    &__spacer {
+      flex: 1;
+    }
 	}
 	&__row {
 		margin: 0 -1em;
@@ -69,6 +83,9 @@
         max-width: 100%;
       }
 		}
+  }
+  &__script {
+		display: none;
 	}
 	&__footer {
 		&__image {
@@ -212,4 +229,51 @@
       line-height: 1.15;
     }
   }
+
+  &.cc {
+		.comic {
+			&__script {
+        font-family: var(--comic-cc-font);
+				display: block;
+        text-align: left;
+        line-height: var(--comic-cc-line-height);
+        font-size: var(--comic-cc-font-size__mobile);
+        letter-spacing: var(--comic-cc-letter-spacing);
+				@media (min-width: $bp_md) {
+					border-left: 1px solid var(--comic-cc-border);
+					font-size: var(--comic-cc-font-size);
+					padding-left: 1em;
+				  flex: 1;
+        }
+        p {
+          font-size: var(--comic-cc-font-size__mobile);
+          @media (min-width: $bp_md) {
+            font-size: var(--comic-cc-font-size);
+          }
+        }
+			}
+			&__row {
+				@media (min-width: $bp_md) {
+					display: block;
+				}
+			}
+			&__panel {
+				border: 1px solid var(--comic-cc-panel-border);
+				padding: 1em;
+				margin: 1em 0;
+				background: var(--comic-cc-panel-bg);
+				@media (min-width: $bp_md) {
+					display: flex;
+				}
+				picture {
+					@media (min-width: $bp_md) {
+						max-height: 500px;
+						padding-right: 1em;
+						flex: 1;
+					}
+					
+				}
+			}
+		}
+	}
 }

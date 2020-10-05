@@ -2,6 +2,7 @@ backend:
   name: github
   repo: sfrisk/webcomics-cms
 
+
 media_folder: static/assets/images
 public_folder: assets/images
 # publish_mode: editorial_workflow
@@ -211,6 +212,10 @@ collections:
                   - name: panel
                     label: Panel
                     widget: image
+                    required: false
+                  - name: script
+                    label: Script
+                    widget: markdown
                     required: false
                   - name: transcript
                     label: Transcript

@@ -41,6 +41,9 @@
   --btn-read-more-bg: var(--black-trans-700);
   --btn-read-more-color: var(--white);
 
+  --form-bg: var(--black-trans-100);
+  --form-border: var(--black-trans-300);
+
   --input-bg: var(--white);
   --input-color: var(--black);
   --input-border: var(--accentColor);
@@ -88,6 +91,17 @@
 
   --comic-nav-bg: var(--accentColor);
   --comic-nav-link-color: var(--white);
+
+
+  --comic-cc-border: var(--accent-300);
+  --comic-cc-panel-border: var(--black-trans-300);
+  --comic-cc-panel-bg: var(--black-trans-100);
+
+  --comic-cc-font: 'Source Sans Pro', sans-serif;
+  --comic-cc-font-size: 32px;
+  --comic-cc-font-size__mobile: 24px;
+  --comic-cc-line-height: 1.65;
+  --comic-cc-letter-spacing: 0;
 
   --comics-nav-active-bg: var(--accentColor);
   --comics-nav-active-color: var(--white);
@@ -162,6 +176,10 @@
     --comic-link-bg__visited: var(--grey-700);
     --comic-link-bg__focus: var(--white-trans-100);
     --comics-nav-active-bg: var(--accent-600);
+
+    --comic-cc-border: var(--accent-300);
+    --comic-cc-panel-border: var(--white-trans-300);
+    --comic-cc-panel-bg: var(--black-trans-300);
 
     --comic-character-color: var(--white);
     --comic-bg: var(--white-trans-100);

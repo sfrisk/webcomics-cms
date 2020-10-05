@@ -3,9 +3,29 @@
   {{ partial "comic-nav.html" . }}
   <div class="comic__page container page">
 	{{ $.Scratch.Set "counter" 0 }}
-	{{ $.Scratch.Set "isTranscript" false }}
+  {{ $.Scratch.Set "isTranscript" false }}
+  {{ $.Scratch.Set "isCC" false }}
+  {{ range .Params.comic.rows }}
+    {{ range .cols}}
+      {{ if isset . "transcript" }} 
+        {{ $.Scratch.Set "isTranscript" true }}
+      {{ end }}
+      {{ if isset . "script" }} 
+        {{ $.Scratch.Set "isCC" true }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
     <header class="comic__header">
       <h1 class="comic__header__title">{{ .Title }}</h1>
+      {{ if eq ($.Scratch.Get "isCC") true}}
+      <button class="comic__header__cc-btn" aria-label="Toggle Closed Caption Mode">
+        <svg aria-hidden="true" height="24" width="24">
+          <use xlink:href="/sprites/regular.svg#closed-captioning"></use>
+        </svg>
+      </button>
+      {{ end }}
+      <div class="comic__header__spacer"></div>
       {{ if and (isset .Params "author") (isset .Params "author_site") }}
         <a class="comic__header__author" rel="author" rel="noopener" href="{{ .Params.author_site }}" target="_blank">{{ .Params.author }}</a>
       {{ else if and (isset .Site.Params "author") (isset .Site.Params "author_site") }}
@@ -26,9 +46,6 @@
             {{ $image_1x := $image.Resize $noRetina }}
             {{ $image_mobile := cond (isset . "panel_mobile") ($mobile.Resize $noRetinaMobile) ($mobile.Resize "x500 q100") }}
             {{ $image_mobile2x := cond (isset . "panel_mobile") $mobile ($mobile.Resize "x1000 q100") }}
-            {{ if isset . "transcript" }} 
-              {{ $.Scratch.Set "isTranscript" true }}
-            {{ end }}
             <picture>
               <source media="(max-width: 767px)" srcset="{{ $image_mobile2x.Permalink }} 2x, {{ $image_mobile.Permalink }} 1x">
               <source media="(min-width: 768px)" srcset="{{ $image.Permalink }} 2x, {{ $image_1x.Permalink }} 1x">
@@ -41,6 +58,13 @@
                 loading="lazy"
               >
             </picture>
+            {{ if eq ($.Scratch.Get "isCC") true}}
+            <div class="comic__script">
+              <div class="comic__script__content">
+                {{ if isset . "script" }}{{ .script | markdownify }}{{end}}
+              </div>
+            </div>
+            {{ end }}
           </div>
         {{end}}
       </div>
@@ -68,6 +92,39 @@
     </div>
   </div>
 	{{ end }}
-
 </article>
+
+{{ if eq ($.Scratch.Get "isCC") true}}
+<script type="text/javascript">
+  var ccBtn = document.querySelector('.comic__header__cc-btn');
+  var comic = document.querySelector('.comic')
+  var ccFont = localStorage.getItem('ccFont');
+  var ccSize = localStorage.getItem('ccSize');
+  var ccLineHeight = localStorage.getItem('ccLineHeight');
+  var ccLetterSpacing = localStorage.getItem('ccLetterSpacing');
+  var ccDefault = localStorage.getItem('ccDefault') || false;
+
+  ccBtn.addEventListener("click", (event) => {
+    ccDefault ? comic.classList.remove('cc') : comic.classList.add('cc');
+    ccDefault = !ccDefault
+    ccDefault ? localStorage.setItem('ccDefault', ccDefault) : localStorage.removeItem('ccDefault');
+  })
+
+  if (ccFont) {
+    comic.style.setProperty('--comic-cc-font', ccFont);
+  }
+  if (ccSize) {
+    comic.style.setProperty('--comic-cc-font-size', `${ccSize}px`);
+  }
+  if (ccLineHeight) {
+    comic.style.setProperty('--comic-cc-line-height', ccLineHeight);
+  }
+  if (ccLetterSpacing) {
+    comic.style.setProperty('--comic-cc-letter-spacing', `${ccLetterSpacing}px`);
+  }
+  if (ccDefault) {
+    comic.classList.add('cc');
+  }
+</script>
 {{end}}
+{{ end }}

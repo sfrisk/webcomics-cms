@@ -28,6 +28,10 @@ comic:
 
 
             “Eh” says Veronica, he left hand raised in a shrugging/dismissive gesture. “He’s probably fine.”
+          script: |-
+            **Xavros:** Horbin!
+
+            **Veronica:** Eh. He’s probably fine.
         - panel: /assets/images/comic/wenches-002-b.jpg
           transcript: >-
             A zoomed out view of a stone lighthouse, standing on a grassy hill
@@ -46,6 +50,7 @@ comic:
 
 
             “Does this look fine to you?!” Horbin yells to the others in the lighthouse.
+          script: "**Horbin:** Does this look fine to you?!"
         - panel: /assets/images/comic/wenches-002-c.jpg
           transcript: >-
             Veronica stands in front of an all black panel, outlined in white to
@@ -55,6 +60,7 @@ comic:
 
 
             “If he wasn’t fine, he wouldn’t be talking,” she says.
+          script: "**Veronica:** If he wasn’t fine, he wouldn’t be talking."
     - cols:
         - panel: /assets/images/comic/wenches-002-d.jpg
           transcript: >-
@@ -66,6 +72,10 @@ comic:
 
 
             “I can see my life flashing before my eyes!” shouts Horbin from below and off panel.
+          script: |-
+            **Xavros:** What happened!?
+
+            **Horbin:** I can see my life flashing before my eyes!
         - panel: /assets/images/comic/wenches-002-e.jpg
           transcript: >-
             Veronica stands in front of the right side of the stone archway that
@@ -75,6 +85,8 @@ comic:
 
 
             “Virginal Elvin Maidens!” yells Horbin. “Busty Tavern Wenches!” A pause. “All just begging for some hot halfling loving!
+          script: "**Horbin:** Virginal Elvin Maidens! Busty Tavern Wenches! All just
+            begging for some hot halfling loving!"
         - panel: /assets/images/comic/wenches-002-f.jpg
           transcript: >-
             At the lighthouse’s entrance from the balcony, another figure
@@ -93,6 +105,10 @@ comic:
 
 
             Xavros seems unaware of this observation, as he still stares open mouth at the scene below. Veronica seems surprised by either Thog’s appearance, or by what he said, and is looking at him with eyebrows raised. “Uh,” she says. “What he said,” indicating her agreement with Thog.
+          script: |-
+            **Thog:** Halfling slipped.
+
+            **Xavros:** Uh. What he said.
 thumbnail: /assets/images/comic/wenches-002-thumb.jpg
 og_image: /assets/images/comic/wenches-002.jpg
 og_description: The PCs discover their fallen companion.

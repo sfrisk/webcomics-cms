@@ -56,12 +56,12 @@
       <tbody>
         <tr>
           {{ $abilityScores := $c.abilityScores }}
-          {{ $strMod := math.Floor (div (sub $abilityScores.str 10) 2)}}
-          {{ $dexMod := math.Floor (div (sub $abilityScores.dex 10) 2)}}
-          {{ $conMod := math.Floor (div (sub $abilityScores.con 10) 2)}}
-          {{ $intMod := math.Floor (div (sub $abilityScores.int 10) 2)}}
-          {{ $wisMod := math.Floor (div (sub $abilityScores.wis 10) 2)}}
-          {{ $chaMod := math.Floor (div (sub $abilityScores.cha 10) 2)}}
+          {{ $strMod := math.Floor (sub (div $abilityScores.str 2) 5)}}
+          {{ $dexMod := math.Floor (sub (div $abilityScores.dex 2) 5)}}
+          {{ $conMod := math.Floor (sub (div $abilityScores.con 2) 5)}}
+          {{ $intMod := math.Floor (sub (div $abilityScores.int 2) 5)}}
+          {{ $wisMod := math.Floor (sub (div $abilityScores.wis 2) 5)}}
+          {{ $chaMod := math.Floor (sub (div $abilityScores.cha 2) 5)}}
 
           <td>{{ $abilityScores.str }} ({{ $strMod }})</td>
           <td>{{ $abilityScores.dex }} ({{ $dexMod }})</td>
