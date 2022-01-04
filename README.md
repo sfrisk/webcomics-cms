@@ -11,4 +11,6 @@ Follow the step one directions on the [Quick Start](https://gohugo.io/getting-st
 
 To run locally, go to the directory of this project on your machine using your terminal and run `hugo serve -D`
 
+Currently updated to work with Hugo version 0.91.2
+
 ## TODO: Guide on updating netlifycms configs, and netlify configs
